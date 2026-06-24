@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Market Update Harian Premium — 20 Mei 2026</title>
+<style>
+  :root{
+    --ivory:#FBF8F1;
+    --beige:#F2EBDC;
+    --grey:#E8E6E1;
+    --navy:#0E2A4A;
+    --navy-soft:#1B3A63;
+    --gold:#B8893A;
+    --gold-soft:#D4AF6A;
+    --text:#1A1A1A;
+    --muted:#5C5C5C;
+    --green:#2E7D5B;
+    --red:#A23B3B;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Georgia','Garamond',serif;
+    background:var(--ivory);
+    color:var(--text);
+    padding:40px;
+    display:flex;justify-content:center;
+  }
+  .poster{
+    width:900px;
+    background:linear-gradient(180deg,#FFFFFF 0%, var(--ivory) 100%);
+    border:1px solid var(--grey);
+    box-shadow:0 8px 30px rgba(14,42,74,0.08);
+    padding:50px 55px;
+  }
+  /* Header */
+  .header{
+    border-bottom:2px solid var(--navy);
+    padding-bottom:18px;
+    margin-bottom:6px;
+    display:flex;justify-content:space-between;align-items:flex-end;
+  }
+  .brand{font-family:'Georgia',serif}
+  .brand .mark{
+    font-size:11px;letter-spacing:4px;color:var(--gold);
+    text-transform:uppercase;font-weight:bold;
+  }
+  .brand h1{
+    font-size:30px;color:var(--navy);font-weight:normal;
+    letter-spacing:1px;margin-top:4px;
+  }
+  .brand h1 span{color:var(--gold);font-style:italic}
+  .date-box{text-align:right;font-size:12px;color:var(--muted)}
+  .date-box .d{font-size:15px;color:var(--navy);font-weight:bold;letter-spacing:1px}
+
+  /* Gold accent line */
+  .accent{height:2px;background:var(--gold);width:80px;margin:14px 0 28px 0}
+
+  /* Sentiment bar */
+  .sentiment{
+    background:#FFFFFF;border:1px solid var(--grey);
+    padding:18px 22px;margin-bottom:28px;
+    display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:18px;
+  }
+  .sentiment .item{text-align:center;border-right:1px solid var(--grey)}
+  .sentiment .item:last-child{border-right:none}
+  .sentiment .label{font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase}
+  .sentiment .value{font-size:14px;color:var(--navy);font-weight:bold;margin-top:6px;font-family:'Helvetica',sans-serif}
+  .sentiment .up{color:var(--green)}
+  .sentiment .down{color:var(--red)}
+
+  /* Section */
+  .section{margin-bottom:30px}
+  .section-title{
+    font-size:13px;letter-spacing:3px;color:var(--gold);
+    text-transform:uppercase;font-weight:bold;
+    border-bottom:1px solid var(--gold-soft);
+    padding-bottom:6px;margin-bottom:12px;
+    font-family:'Helvetica',sans-serif;
+    display:flex;align-items:center;gap:10px;
+  }
+  .section-title .icon{
+    width:18px;height:18px;display:inline-block;
+    background:var(--navy);color:#fff;border-radius:50%;
+    font-size:10px;text-align:center;line-height:18px;font-family:serif;
+  }
+  .section h3{
+    font-size:17px;color:var(--navy);margin-bottom:8px;font-weight:normal;
+  }
+  .section p, .section li{
+    font-size:13.5px;line-height:1.65;color:var(--text);
+  }
+  .section ul{padding-left:18px;margin-top:6px}
+  .section ul li{margin-bottom:4px}
+
+  /* Two-column market grid */
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .card{
+    background:#FFFFFF;border:1px solid var(--grey);
+    border-left:3px solid var(--gold);
+    padding:18px 22px;
+  }
+  .card h3{
+    font-size:15px;color:var(--navy);margin-bottom:10px;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .card h3 .tag{
+    font-size:9px;letter-spacing:1.5px;background:var(--green);
+    color:#fff;padding:3px 8px;border-radius:2px;font-family:'Helvetica',sans-serif;
+  }
+  .card h3 .tag.warn{background:var(--red)}
+
+  /* Indonesia card */
+  .indo{border-left:3px solid var(--red);background:#FFFBFA}
+
+  /* Opportunity box */
+  .opportunity{
+    background:linear-gradient(135deg,var(--navy) 0%, var(--navy-soft) 100%);
+    color:#FFFFFF;padding:26px 30px;margin-bottom:28px;
+    border-left:4px solid var(--gold);
+  }
+  .opportunity .section-title{
+    color:var(--gold-soft);border-bottom-color:rgba(212,175,106,0.4);
+  }
+  .opportunity h3{color:#FFFFFF}
+  .opportunity p, .opportunity li{color:#EDE6D6;font-size:13.5px}
+  .opportunity .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-top:8px}
+  .opportunity .opp{
+    border-top:1px solid rgba(212,175,106,0.4);padding-top:10px;
+  }
+  .opportunity .opp .t{font-size:11px;letter-spacing:2px;color:var(--gold-soft);text-transform:uppercase;margin-bottom:4px}
+  .opportunity .opp .v{font-size:14px;color:#fff;font-weight:bold;margin-bottom:4px}
+  .opportunity .opp .d{font-size:12px;color:#D8D3C5;line-height:1.5}
+
+  /* Chart-like bar */
+  .bars{margin-top:12px}
+  .bar-row{display:flex;align-items:center;font-size:12px;margin-bottom:6px;font-family:'Helvetica',sans-serif}
+  .bar-row .lbl{width:90px;color:var(--muted)}
+  .bar-row .bar{height:10px;background:var(--gold);margin-right:8px}
+  .bar-row .val{color:var(--navy);font-weight:bold}
+
+  /* Summary table */
+  table{
+    width:100%;border-collapse:collapse;margin-top:8px;
+    font-family:'Helvetica',sans-serif;font-size:12px;
+  }
+  th{
+    background:var(--beige);color:var(--navy);
+    text-align:left;padding:9px 12px;letter-spacing:1px;
+    font-size:10px;text-transform:uppercase;border-bottom:1px solid var(--gold-soft);
+  }
+  td{padding:9px 12px;border-bottom:1px solid var(--grey);color:var(--text)}
+  td.pos{color:var(--green);font-weight:bold}
+  td.neg{color:var(--red);font-weight:bold}
+
+  /* Pie */
+  .pie-wrap{display:flex;align-items:center;gap:22px;margin-top:8px}
+  .pie{
+    width:140px;height:140px;border-radius:50%;flex-shrink:0;
+    background:conic-gradient(
+      var(--navy) 0 35%,
+      var(--gold) 35% 60%,
+      var(--gold-soft) 60% 80%,
+      var(--beige) 80% 100%
+    );
+    position:relative;
+  }
+  .pie::after{
+    content:"";position:absolute;inset:30px;background:#fff;border-radius:50%;
+  }
+  .legend{font-family:'Helvetica',sans-serif;font-size:12px;line-height:1.9}
+  .legend .dot{display:inline-block;width:10px;height:10px;margin-right:8px;vertical-align:middle}
+
+  /* Footer */
+  .footer{
+    margin-top:35px;padding-top:20px;
+    border-top:2px solid var(--navy);
+    text-align:center;
+  }
+  .footer .seal{
+    font-size:10px;letter-spacing:3px;color:var(--gold);
+    text-transform:uppercase;margin-bottom:10px;
+  }
+  .footer .name{
+    font-size:20px;color:var(--navy);font-style:italic;margin-bottom:4px;
+  }
+  .footer .title{
+    font-size:12px;color:var(--muted);letter-spacing:1px;
+  }
+  .footer .email{
+    font-size:12px;color:var(--gold);margin-top:6px;letter-spacing:1px;
+  }
+  .disclaimer{
+    margin-top:14px;font-size:9px;color:#999;line-height:1.5;font-family:'Helvetica',sans-serif;
+  }
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="brand">
+      <div class="mark">◆ Private Wealth Intelligence ◆</div>
+      <h1>Market Update <span>Harian Premium</span></h1>
+    </div>
+    <div class="date-box">
+      <div>Edisi Eksklusif</div>
+      <div class="d">RABU, 20 MEI 2026</div>
+      <div>Sesi Asia • Pra-Pembukaan Eropa</div>
+    </div>
+  </div>
+  <div class="accent"></div>
+
+  <!-- SENTIMENT INDICATOR -->
+  <div class="sentiment">
+    <div class="item">
+      <div class="label">US Equity</div>
+      <div class="value up">▲ Bullish</div>
+    </div>
+    <div class="item">
+      <div class="label">Forex (USD)</div>
+      <div class="value up">▲ Konstruktif</div>
+    </div>
+    <div class="item">
+      <div class="label">Komoditas</div>
+      <div class="value up">▲ Positif</div>
+    </div>
+    <div class="item">
+      <div class="label">Indonesia (IHSG)</div>
+      <div class="value down">▼ Tertekan</div>
+    </div>
+  </div>
+
+  <!-- US STOCK -->
+  <div class="section">
+    <div class="section-title"><span class="icon">★</span> US Stock Market — Momentum Risk-On Berlanjut</div>
+    <div class="card">
+      <h3>Wall Street Cetak Rekor Baru <span class="tag">BULLISH</span></h3>
+      <p>Indeks utama Amerika Serikat kembali menguat seiring meredanya kekhawatiran inflasi dan menguatnya ekspektasi pemangkasan suku bunga The Fed pada kuartal mendatang. Sektor teknologi dan semikonduktor memimpin penguatan, didukung optimisme atas siklus belanja modal kecerdasan buatan (AI).</p>
+      <ul>
+        <li><b>S&amp;P 500</b> ditutup di area rekor tertinggi, ditopang sektor Teknologi (+1,4%) dan Komunikasi (+1,1%).</li>
+        <li><b>Nasdaq 100</b> melanjutkan reli, dengan saham semikonduktor unggulan melonjak atas permintaan chip AI yang kuat.</li>
+        <li>Earnings season Q1 2026 mencatat <b>beat rate &gt;78%</b>, di atas rata-rata historis 5 tahun.</li>
+        <li>Pasar memperhitungkan peluang <b>~65% pemangkasan suku bunga</b> pada FOMC Juli, menopang sentimen risk-on global.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FOREX & COMMODITY GRID -->
+  <div class="section grid-2">
+    <div class="card">
+      <h3>Forex — Peluang Volatilitas <span class="tag">POSITIF</span></h3>
+      <p style="margin-bottom:8px">Pasar valas menawarkan peluang menarik dari divergensi kebijakan bank sentral global.</p>
+      <ul>
+        <li><b>EUR/USD</b> stabil di kisaran 1,0850 — ECB sinyalkan jeda pemangkasan.</li>
+        <li><b>GBP/USD</b> menguat ke 1,2780 ditopang data inflasi UK yang resilien.</li>
+        <li><b>USD/JPY</b> volatil di 154,20 — peluang trading range jangka pendek.</li>
+        <li>Rilis <b>Non-Farm Payrolls</b> akhir pekan menjadi katalis kunci.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Commodities — Safe Haven &amp; Energi <span class="tag">POSITIF</span></h3>
+      <p style="margin-bottom:8px">Komoditas utama menguat, didukung permintaan safe-haven dan ketegangan geopolitik.</p>
+      <ul>
+        <li><b>Emas (XAU/USD)</b> menembus US$ 2.420/oz — permintaan bank sentral &amp; safe-haven tetap kuat.</li>
+        <li><b>Perak</b> melonjak di atas US$ 31,50 — momentum industrial demand.</li>
+        <li><b>Minyak Brent</b> bertahan di US$ 84/barel atas risiko pasokan Timur Tengah.</li>
+        <li>Pelemahan riil USD index mendukung kompleks logam mulia.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CRYPTO -->
+  <div class="section">
+    <div class="section-title"><span class="icon">₿</span> Crypto Market — Arus Institusional Menguat</div>
+    <div class="card">
+      <h3>Bitcoin Kembali ke Zona Bullish <span class="tag">BULLISH</span></h3>
+      <div class="pie-wrap">
+        <div class="pie"></div>
+        <div>
+          <p style="margin-bottom:8px">Aliran dana <b>spot ETF Bitcoin</b> kembali positif dengan inflow mingguan US$ 1,2 miliar — sinyal kuat partisipasi institusional.</p>
+          <div class="legend">
+            <div><span class="dot" style="background:var(--navy)"></span> BTC dominance — 54%</div>
+            <div><span class="dot" style="background:var(--gold)"></span> ETH share — 18%</div>
+            <div><span class="dot" style="background:var(--gold-soft)"></span> Large caps — 20%</div>
+            <div><span class="dot" style="background:var(--beige)"></span> Altcoins — 8%</div>
+          </div>
+        </div>
+      </div>
+      <ul style="margin-top:10px">
+        <li><b>Bitcoin</b> diperdagangkan di kisaran <b>US$ 68.500</b>, naik 3,4% dalam 24 jam terakhir.</li>
+        <li><b>Ethereum</b> menguat menuju US$ 3.180, didorong ekspektasi persetujuan ETF spot.</li>
+        <li>Adopsi blockchain korporasi meluas — sentimen risk-on menopang aset digital.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- POTENSI KEUNTUNGAN -->
+  <div class="opportunity">
+    <div class="section-title">◆ Potensi Keuntungan — Profit Opportunity Hari Ini</div>
+    <h3 style="margin-bottom:10px">Tiga Peluang Unggulan untuk Portofolio Anda</h3>
+    <p style="margin-bottom:14px">Kondisi pasar global saat ini membuka jendela peluang yang langka — di mana momentum bullish ekuitas AS, kekuatan komoditas safe-haven, dan arus institusional kripto bertemu pada saat yang bersamaan. Berikut peluang dengan profil risk-reward paling menarik.</p>
+    <div class="grid-3">
+      <div class="opp">
+        <div class="t">★ Peluang #1</div>
+        <div class="v">US Equity — Tech &amp; AI</div>
+        <div class="d">Momentum sektor teknologi &amp; semikonduktor membuka peluang capital gain jangka menengah, didukung earnings kuat dan ekspektasi pemangkasan suku bunga.</div>
+      </div>
+      <div class="opp">
+        <div class="t">★ Peluang #2</div>
+        <div class="v">Emas — Safe Haven Premium</div>
+        <div class="d">Breakout di atas US$ 2.400/oz menandai struktur bullish baru. Peluang akumulasi sebagai lindung nilai inflasi &amp; ketidakpastian geopolitik.</div>
+      </div>
+      <div class="opp">
+        <div class="t">★ Peluang #3</div>
+        <div class="v">Bitcoin — Arus ETF</div>
+        <div class="d">Inflow ETF institusional yang konsisten menopang siklus bullish. Eksposur terukur dapat meningkatkan diversifikasi portofolio.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INDONESIA -->
+  <div class="section">
+    <div class="section-title"><span class="icon">⚠</span> Indonesia Economic Update — Sentimen Domestik Tertekan</div>
+    <div class="card indo">
+      <h3>IHSG &amp; Rupiah di Bawah Tekanan <span class="tag warn">RISIKO</span></h3>
+      <p>Sentimen ekonomi domestik tetap rapuh di tengah arus modal asing keluar dan tekanan terhadap nilai tukar. Investor disarankan mencermati eksposur pada aset domestik secara selektif.</p>
+      <table>
+        <tr><th>Indikator</th><th>Posisi Terkini</th><th>Pergerakan</th></tr>
+        <tr><td>IHSG</td><td>7.142</td><td class="neg">▼ -0,82%</td></tr>
+        <tr><td>USD/IDR</td><td>16.380</td><td class="neg">▼ Rupiah melemah</td></tr>
+        <tr><td>Net Foreign Flow (5 hari)</td><td>− Rp 2,4 Triliun</td><td class="neg">▼ Outflow</td></tr>
+        <tr><td>Yield SUN 10Y</td><td>7,12%</td><td class="neg">▲ Premi risiko naik</td></tr>
+      </table>
+      <ul style="margin-top:12px">
+        <li><b>Arus modal asing keluar</b> berlanjut di pasar saham dan obligasi, mencerminkan preferensi global ke aset USD.</li>
+        <li><b>Pelemahan IHSG</b> dipicu aksi jual saham perbankan &amp; konsumer di tengah kekhawatiran daya beli.</li>
+        <li><b>Tekanan rupiah</b> meningkat menuju 16.400 — Bank Indonesia diperkirakan tetap waspada.</li>
+        <li><b>Risiko inflasi pangan</b> dan pelemahan konsumsi domestik menambah beban prospek pertumbuhan.</li>
+        <li><b>Ketidakpastian fiskal</b> jangka pendek menahan sentimen investor terhadap aset domestik.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- HIGHLIGHTS BAR -->
+  <div class="section">
+    <div class="section-title"><span class="icon">≡</span> Highlight Sentimen Global Hari Ini</div>
+    <div class="bars">
+      <div class="bar-row"><div class="lbl">US Equity</div><div class="bar" style="width:82%;background:var(--green)"></div><div class="val">+82</div></div>
+      <div class="bar-row"><div class="lbl">Emas</div><div class="bar" style="width:76%;background:var(--gold)"></div><div class="val">+76</div></div>
+      <div class="bar-row"><div class="lbl">Crypto</div><div class="bar" style="width:70%;background:var(--navy)"></div><div class="val">+70</div></div>
+      <div class="bar-row"><div class="lbl">Forex Mayor</div><div class="bar" style="width:62%;background:var(--gold-soft)"></div><div class="val">+62</div></div>
+      <div class="bar-row"><div class="lbl">IHSG / IDR</div><div class="bar" style="width:32%;background:var(--red)"></div><div class="val">−32</div></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="seal">— Exclusively Prepared By —</div>
+    <div class="name">Revan Ashford</div>
+    <div class="title">Senior Investment Consultant &amp; Portfolio Manager</div>
+    <div class="email">revan@onetwomarkets.co.za</div>
+    <div class="disclaimer">
+      Dokumen ini disusun untuk tujuan informasi dan edukasi bagi klien profesional. Seluruh data bersifat indikatif dan dapat berubah sewaktu-waktu sesuai kondisi pasar. Bukan merupakan ajakan untuk membeli atau menjual instrumen keuangan tertentu.
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

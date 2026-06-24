@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Market Briefing — Tuesday 12 May 2026</title>
+<style>
+  /* ─── Base ─── */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', serif;
+    background: #f8f6f1;
+    color: #1a1a1a;
+    line-height: 1.7;
+    font-size: 15px;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* ─── Header ─── */
+  .header {
+    background: #ffffff;
+    border-top: 5px solid #1a3a5c;
+    padding: 30px 48px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid #ddd;
+  }
+  .header-left h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1a3a5c;
+    letter-spacing: -0.5px;
+  }
+  .header-left p {
+    font-size: 13px;
+    color: #666;
+    margin-top: 4px;
+    font-style: italic;
+  }
+  .header-right {
+    text-align: right;
+    font-size: 12px;
+    color: #888;
+  }
+  .header-right .date-badge {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    display: inline-block;
+    margin-bottom: 4px;
+  }
+
+  /* ─── Layout ─── */
+  .container { max-width: 960px; margin: 0 auto; padding: 32px 24px 64px; }
+
+  /* ─── Section Titles ─── */
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #1a3a5c;
+    margin-bottom: 14px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #1a3a5c;
+  }
+  .section { margin-bottom: 40px; }
+
+  /* ─── Ticker Bar ─── */
+  .ticker-bar {
+    background: #1a3a5c;
+    padding: 14px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-bottom: 32px;
+  }
+  .ticker-item { text-align: center; }
+  .ticker-name { font-size: 10px; color: #aac4e0; letter-spacing: 1px; text-transform: uppercase; }
+  .ticker-price { font-size: 16px; font-weight: 700; color: #fff; }
+  .ticker-change { font-size: 12px; }
+  .up { color: #4ade80; }
+  .down { color: #f87171; }
+  .neutral { color: #fbbf24; }
+
+  /* ─── Callout Boxes ─── */
+  .callout {
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 16px;
+    border-left: 5px solid;
+  }
+  .callout-green { background: #f0fdf4; border-color: #16a34a; }
+  .callout-amber { background: #fffbeb; border-color: #d97706; }
+  .callout-blue  { background: #eff6ff; border-color: #2563eb; }
+  .callout-red   { background: #fff1f2; border-color: #dc2626; }
+  .callout-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .callout-green .callout-tag { color: #16a34a; }
+  .callout-amber .callout-tag { color: #d97706; }
+  .callout-blue  .callout-tag { color: #2563eb; }
+  .callout-red   .callout-tag { color: #dc2626; }
+  .callout h3 { font-size: 15px; margin-bottom: 6px; }
+  .callout p  { font-size: 14px; color: #333; }
+
+  /* ─── Tier Headers ─── */
+  .tier-header {
+    border-radius: 8px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .tier-starter { background: #f0f9ff; border: 1px solid #bae6fd; }
+  .tier-premium { background: #fefce8; border: 1px solid #fde68a; }
+  .tier-badge {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .tier-starter .tier-badge { background: #0284c7; color: #fff; }
+  .tier-premium .tier-badge { background: #b45309; color: #fff; }
+  .tier-desc { font-size: 13px; color: #555; }
+
+  /* ─── Trade Card ─── */
+  .trade-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 22px 24px;
+    margin-bottom: 18px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .trade-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+  .trade-name { font-size: 17px; font-weight: 700; color: #1a3a5c; }
+  .trade-sub  { font-size: 12px; color: #888; margin-top: 2px; }
+  .risk-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+  }
+  .risk-low    { background: #dcfce7; color: #166534; }
+  .risk-medium { background: #fef9c3; color: #713f12; }
+  .risk-high   { background: #fee2e2; color: #991b1b; }
+
+  .trade-analogy {
+    background: #f8fafc;
+    border-left: 3px solid #94a3b8;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #555;
+    font-style: italic;
+    margin-bottom: 14px;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .trade-levels {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .level-box {
+    flex: 1;
+    min-width: 100px;
+    background: #f1f5f9;
+    border-radius: 6px;
+    padding: 10px 14px;
+    text-align: center;
+  }
+  .level-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #888; }
+  .level-value { font-size: 15px; font-weight: 700; color: #1a3a5c; }
+  .level-entry .level-value { color: #0284c7; }
+  .level-target .level-value { color: #16a34a; }
+  .level-stop   .level-value { color: #dc2626; }
+
+  /* ─── Sizing Table ─── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 8px;
+  }
+  th {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+  }
+  td { padding: 8px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  tr:last-child td { border-bottom: none; }
+
+  /* ─── Special Boxes ─── */
+  .tip-box {
+    background: #fff;
+    border: 2px solid #1a3a5c;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 22px 0;
+  }
+  .tip-box-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a3a5c;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+  .tip-box p { font-size: 14px; color: #333; }
+
+  /* ─── Allocation Table ─── */
+  .alloc-table th { background: #92400e; }
+  .bucket-safety { color: #166534; font-weight: 700; }
+  .bucket-growth { color: #0369a1; font-weight: 700; }
+
+  /* ─── Risk Chips ─── */
+  .risk-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .chip {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 20px;
+  }
+  .chip-red    { background: #fee2e2; color: #991b1b; }
+  .chip-amber  { background: #fef9c3; color: #713f12; }
+  .chip-blue   { background: #dbeafe; color: #1d4ed8; }
+  .chip-green  { background: #dcfce7; color: #166534; }
+
+  /* ─── EM Section ─── */
+  .em-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 22px 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .em-flags { font-size: 20px; margin-bottom: 10px; }
+
+  /* ─── WhatsApp ─── */
+  .whatsapp-box {
+    background: #dcfce7;
+    border: 1px solid #86efac;
+    border-radius: 10px;
+    padding: 18px 24px;
+  }
+  .whatsapp-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #166534;
+    margin-bottom: 8px;
+  }
+  .whatsapp-text { font-size: 14px; color: #14532d; font-weight: 600; }
+
+  /* ─── Footer ─── */
+  .footer {
+    margin-top: 48px;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+    font-size: 11px;
+    color: #999;
+    line-height: 1.6;
+  }
+
+  /* ─── Scenario Box ─── */
+  .scenario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .scenario-card {
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+  .scenario-bull { background: #f0fdf4; border: 1px solid #86efac; }
+  .scenario-bear { background: #fff1f2; border: 1px solid #fca5a5; }
+  .scenario-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+  .scenario-bull .scenario-label { color: #16a34a; }
+  .scenario-bear .scenario-label { color: #dc2626; }
+  .scenario-card p { font-size: 13px; color: #333; }
+
+  @media (max-width: 640px) {
+    .header { flex-direction: column; gap: 12px; padding: 20px; }
+    .ticker-bar { gap: 16px; }
+    .scenario-grid { grid-template-columns: 1fr; }
+    .trade-levels { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<div class="header">
+  <div class="header-left">
+    <h1>Daily Market Briefing</h1>
+    <p>Prepared for FSCA-Regulated CFD Clients &nbsp;|&nbsp; Confidential &amp; For Client Use Only</p>
+  </div>
+  <div class="header-right">
+    <div class="date-badge">Tuesday, 12 May 2026</div><br/>
+    <span>Markets open — data as of morning session</span>
+  </div>
+</div>
+
+<!-- ═══════════════ TICKER BAR ═══════════════ -->
+<div class="ticker-bar">
+  <div class="ticker-item">
+    <div class="ticker-name">S&amp;P 500</div>
+    <div class="ticker-price">7,412</div>
+    <div class="ticker-change up">▲ +0.19%</div>
+  </div>
+  <div class="ticker-item">
+    <div class="ticker-name">Nasdaq</div>
+    <div class="ticker-price">26,274</div>
+    <div class="ticker-change up">▲ +0.10%</div>
+  </div>
+  <div class="ticker-item">
+    <div class="ticker-name">Dow Jones</div>
+    <div class="ticker-price">49,704</div>
+    <div class="ticker-change up">▲ +0.19%</div>
+  </div>
+  <div class="ticker-item">
+    <div class="ticker-name">VIX (Fear)</div>
+    <div class="ticker-price">18.41</div>
+    <div class="ticker-change down">▲ +7.10%</div>
+  </div>
+  <div class="ticker-item">
+    <div class="ticker-name">Gold</div>
+    <div class="ticker-price">$4,717</div>
+    <div class="ticker-change down">▼ Pressured</div>
+  </div>
+  <div class="ticker-item">
+    <div class="ticker-name">Crude Oil</div>
+    <div class="ticker-price">~$98</div>
+    <div class="ticker-change up">▲ Rising</div>
+  </div>
+  <div class="ticker-item">
+    <div class="ticker-name">Bitcoin</div>
+    <div class="ticker-price">$118K+</div>
+    <div class="ticker-change up">▲ +5%</div>
+  </div>
+</div>
+
+<!-- ═══════════════ MAIN CONTAINER ═══════════════ -->
+<div class="container">
+
+  <!-- ─── STEP 2: WHAT HAPPENED ─── -->
+  <div class="section">
+    <div class="section-label">What Happened Overnight</div>
+
+    <div class="callout callout-green">
+      <div class="callout-tag">✅ The Good News</div>
+      <h3>Stock Markets Pushed Higher — Corporate Profits Are Booming</h3>
+      <p>Think of America's biggest companies as the shops in your town. Right now, almost all of them are reporting better-than-expected sales. Overall, Q1 2026 corporate earnings came in 18% above forecasts — nearly three times the historical average. That strong foundation is keeping the S&amp;P 500 near record highs. Bitcoin also surged above $118,000, adding a bright spot for anyone with digital assets. The economy, overall, is still growing.</p>
+    </div>
+
+    <div class="callout callout-amber">
+      <div class="callout-tag">⚠️ Caution: Watch Closely</div>
+      <h3>The US and Iran Are Still at War — And Oil Is Getting Expensive Again</h3>
+      <p>Imagine a major shipping lane — like the Suez Canal — being partially blocked. That is essentially what is happening in the Strait of Hormuz right now. The US and Iran have been in active conflict since early 2026, and peace talks broke down again on May 10 when President Trump rejected Iran's latest proposal as "totally unacceptable." Oil has climbed back toward $98 a barrel, petrol prices in the US have crossed $4.50, and this threatens to push inflation higher again — making it harder for central banks to cut interest rates.</p>
+    </div>
+
+    <div class="callout callout-blue">
+      <div class="callout-tag">📋 Today's Biggest Event</div>
+      <h3>US Inflation Data Drops at 8:30 AM New York Time — This Is a Market Mover</h3>
+      <p>The US government releases its April Consumer Price Index (CPI) report this morning — essentially the official "shopping basket" cost measurement. Markets are expecting inflation to come in at 3.7% annually, pushed up largely by war-driven energy costs. A higher-than-expected number = rates stay high for longer = bad for stocks. A lower-than-expected number = rate cut hopes revive = good for stocks. This single number can swing markets by 1–2% in either direction. Stay alert around 8:30 AM ET.</p>
+    </div>
+  </div>
+
+  <!-- ─── STEP 3: TIER 1 — STARTER ─── -->
+  <div class="section">
+    <div class="section-label">Tier 1 — Starter Clients ($1,000 – $3,000 per trade)</div>
+
+    <div class="tier-header tier-starter">
+      <span class="tier-badge">Starter</span>
+      <span class="tier-desc">Simple, clear trade ideas with plain English explanations. Always use a stop loss. Never risk more than you can afford to lose.</span>
+    </div>
+
+    <!-- CPI WARNING -->
+    <div class="callout callout-amber" style="margin-bottom:20px;">
+      <div class="callout-tag">⏸️ Important — Starter Clients: Wait Before Trading Today</div>
+      <p>The US inflation number (CPI) releases at 8:30 AM New York time. <strong>Do not open new trades in US stocks or indices until after this number is published.</strong> Markets can jump sharply in either direction in the minutes after. It is better to wait 30 minutes, see the reaction, and trade with clarity than to be caught on the wrong side. Patience is a skill.</p>
+    </div>
+
+    <!-- Trade 1 -->
+    <div class="trade-card">
+      <div class="trade-card-header">
+        <div>
+          <div class="trade-name">Gold (XAU/USD)</div>
+          <div class="trade-sub">Buy on dip after CPI — long-term safe-haven play</div>
+        </div>
+        <span class="risk-badge risk-low">Low Risk</span>
+      </div>
+      <div class="trade-analogy">Think of gold like buying a quality umbrella before the rainy season. You might not need it today, but if the storm gets worse — more war, higher inflation — everyone wants one and the price goes up. Gold is your financial umbrella.</div>
+      <div class="trade-levels">
+        <div class="level-box level-entry">
+          <div class="level-label">Entry (Buy Around)</div>
+          <div class="level-value">$4,680</div>
+        </div>
+        <div class="level-box level-target">
+          <div class="level-label">Target (Take Profit)</div>
+          <div class="level-value">$4,850</div>
+        </div>
+        <div class="level-box level-stop">
+          <div class="level-label">Stop Loss (Exit If Wrong)</div>
+          <div class="level-value">$4,600</div>
+        </div>
+      </div>
+      <table>
+        <thead><tr><th>Account Size</th><th>Position Size</th><th>Potential Gain</th><th>Max Loss</th></tr></thead>
+        <tbody>
+          <tr><td>$1,000</td><td>0.02 oz equivalent</td><td>~$34</td><td>~$16</td></tr>
+          <tr><td>$2,000</td><td>0.04 oz equivalent</td><td>~$68</td><td>~$32</td></tr>
+          <tr><td>$3,000</td><td>0.06 oz equivalent</td><td>~$102</td><td>~$48</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Trade 2 -->
+    <div class="trade-card">
+      <div class="trade-card-header">
+        <div>
+          <div class="trade-name">US Oil (WTI Crude)</div>
+          <div class="trade-sub">Short-term buy — geopolitical tension supports price</div>
+        </div>
+        <span class="risk-badge risk-medium">Medium Risk</span>
+      </div>
+      <div class="trade-analogy">Imagine you know a road that connects two big cities is about to have construction blocking it. Whoever has trucks parked already will be able to charge more when traffic is diverted. That is oil right now — the Strait of Hormuz disruption means supply is squeezed and prices tend to rise.</div>
+      <div class="trade-levels">
+        <div class="level-box level-entry">
+          <div class="level-label">Entry (Buy Around)</div>
+          <div class="level-value">$96.50</div>
+        </div>
+        <div class="level-box level-target">
+          <div class="level-label">Target</div>
+          <div class="level-value">$104.00</div>
+        </div>
+        <div class="level-box level-stop">
+          <div class="level-label">Stop Loss</div>
+          <div class="level-value">$93.00</div>
+        </div>
+      </div>
+      <table>
+        <thead><tr><th>Account Size</th><th>Position Size</th><th>Potential Gain</th><th>Max Loss</th></tr></thead>
+        <tbody>
+          <tr><td>$1,000</td><td>3 barrels (CFD)</td><td>~$22</td><td>~$10</td></tr>
+          <tr><td>$2,000</td><td>6 barrels (CFD)</td><td>~$45</td><td>~$21</td></tr>
+          <tr><td>$3,000</td><td>9 barrels (CFD)</td><td>~$68</td><td>~$31</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Trade 3 -->
+    <div class="trade-card">
+      <div class="trade-card-header">
+        <div>
+          <div class="trade-name">S&amp;P 500 Index (SPX500)</div>
+          <div class="trade-sub">Wait for CPI — then buy if inflation comes in low</div>
+        </div>
+        <span class="risk-badge risk-medium">Medium Risk</span>
+      </div>
+      <div class="trade-analogy">The S&amp;P 500 is like a big fruit basket containing the 500 largest American companies. When the basket is doing well, most people inside it are doing well. Right now, earnings are strong. The only thing that could ruin the basket is if inflation spooks the market — hence waiting for today's number before stepping in.</div>
+      <div class="trade-levels">
+        <div class="level-box level-entry">
+          <div class="level-label">Entry (Buy If CPI Soft)</div>
+          <div class="level-value">7,380</div>
+        </div>
+        <div class="level-box level-target">
+          <div class="level-label">Target</div>
+          <div class="level-value">7,520</div>
+        </div>
+        <div class="level-box level-stop">
+          <div class="level-label">Stop Loss</div>
+          <div class="level-value">7,310</div>
+        </div>
+      </div>
+      <table>
+        <thead><tr><th>Account Size</th><th>CFD Contracts</th><th>Potential Gain</th><th>Max Loss</th></tr></thead>
+        <tbody>
+          <tr><td>$1,000</td><td>0.1 contract</td><td>~$14</td><td>~$7</td></tr>
+          <tr><td>$2,000</td><td>0.2 contract</td><td>~$28</td><td>~$14</td></tr>
+          <tr><td>$3,000</td><td>0.3 contract</td><td>~$42</td><td>~$21</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Seatbelt Box -->
+    <div class="tip-box">
+      <div class="tip-box-title">🔒 Simple Rule to Protect Yourself: The Stop Loss Is Your Seatbelt</div>
+      <p>When you drive, you wear a seatbelt — not because you plan to crash, but because unexpected things happen. A <strong>stop loss</strong> works exactly the same way. You set it when you open the trade, and if the market moves against you, the position automatically closes before you lose too much. It is not a sign of failure — it is the sign of a smart trader. <em>Never open a trade without a stop loss set.</em></p>
+    </div>
+  </div>
+
+  <!-- ─── STEP 3: TIER 2 — PREMIUM ─── -->
+  <div class="section">
+    <div class="section-label">Tier 2 — Premium Clients ($50,000+ Capital)</div>
+
+    <div class="tier-header tier-premium">
+      <span class="tier-badge">Premium</span>
+      <span class="tier-desc">Strategic allocation thinking for experienced investors. Two-bucket framework: Safety and Growth. Horizons of 3–6 months.</span>
+    </div>
+
+    <!-- CPI Scenario for Premium -->
+    <div class="callout callout-blue" style="margin-bottom:22px;">
+      <div class="callout-tag">📊 Today's Binary: CPI at 8:30 AM ET — Two Scenarios</div>
+      <div class="scenario-grid" style="margin-top:12px;">
+        <div class="scenario-card scenario-bull">
+          <div class="scenario-label">✅ If CPI Comes In Low (Below 3.5%)</div>
+          <p>Rate cut expectations revive. Add to S&amp;P 500 and Nasdaq positions. Gold may dip short-term as dollar firms — consider adding on that dip. Target S&amp;P 500 at 7,550+ over 4–6 weeks.</p>
+        </div>
+        <div class="scenario-card scenario-bear">
+          <div class="scenario-label">🔴 If CPI Comes In High (Above 4.0%)</div>
+          <p>Rate cut hopes fade. Reduce equity exposure by 10–15%. Rotate into gold and short-dated US Treasuries. Oil likely stays elevated. Re-evaluate entry on S&amp;P 500 near 7,200 support.</p>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-weight:700; font-size:14px; color:#1a3a5c; margin-bottom:16px;">Safety Bucket (50–60% Allocation)</p>
+
+    <!-- Safety 1: Gold -->
+    <div class="trade-card">
+      <div class="trade-card-header">
+        <div>
+          <div class="trade-name">Gold (XAU/USD) — Core Holding</div>
+          <div class="trade-sub">3–6 month horizon | Safety Bucket</div>
+        </div>
+        <span class="risk-badge risk-low">Low Risk</span>
+      </div>
+      <p style="font-size:14px; color:#333; margin-bottom:12px;">With US inflation running at 3.3% (and likely rising) and a live geopolitical conflict cutting through the world's most important oil shipping route, gold's fundamental case is as strong as it has been in years. The metal already touched $4,717 this week. Any pullback toward $4,650–$4,700 is a gift for long-term buyers.</p>
+      <div class="trade-levels">
+        <div class="level-box level-entry"><div class="level-label">Accumulate On Dips</div><div class="level-value">$4,650–4,700</div></div>
+        <div class="level-box level-target"><div class="level-label">6-Month Target</div><div class="level-value">$5,100–5,300</div></div>
+        <div class="level-box level-stop"><div class="level-label">Portfolio Stop</div><div class="level-value">$4,400</div></div>
+      </div>
+    </div>
+
+    <!-- Safety 2: Broad Index -->
+    <div class="trade-card">
+      <div class="trade-card-header">
+        <div>
+          <div class="trade-name">S&amp;P 500 / Global ETF — Broad Market Core</div>
+          <div class="trade-sub">3–6 month horizon | Safety Bucket</div>
+        </div>
+        <span class="risk-badge risk-low">Low Risk</span>
+      </div>
+      <p style="font-size:14px; color:#333; margin-bottom:12px;">Corporate earnings growing 18% above forecasts is exceptional. The broad S&amp;P 500 remains structurally sound. Hold or add to existing positions on dips. This is not a trade — it is a core allocation. Reduce only if CPI comes in shockingly high today.</p>
+      <div class="trade-levels">
+        <div class="level-box level-entry"><div class="level-label">Hold / Add On Dip</div><div class="level-value">7,300–7,380</div></div>
+        <div class="level-box level-target"><div class="level-label">6-Month Target</div><div class="level-value">7,700–7,900</div></div>
+        <div class="level-box level-stop"><div class="level-label">Portfolio Stop</div><div class="level-value">7,000</div></div>
+      </div>
+    </div>
+
+    <p style="font-weight:700; font-size:14px; color:#1a3a5c; margin-bottom:16px; margin-top:6px;">Growth Bucket (30–40% Allocation)</p>
+
+    <!-- Growth 1: Oil -->
+    <div class="trade-card">
+      <div class="trade-card-header">
+        <div>
+          <div class="trade-name">WTI Crude Oil — Geopolitical Long</div>
+          <div class="trade-sub">4–8 week tactical | Growth Bucket</div>
+        </div>
+        <span class="risk-badge risk-medium">Medium Risk</span>
+      </div>
+      <p style="font-size:14px; color:#333; margin-bottom:12px;">With the Strait of Hormuz still at risk and US-Iran talks collapsed again, the floor under oil is well-supported. The $90–95 range has held as support. A renewed escalation before the May 15 ceasefire deadline could push WTI toward $108–115. Sizing: 8–12% of growth bucket.</p>
+      <div class="trade-levels">
+        <div class="level-box level-entry"><div class="level-label">Entry Zone</div><div class="level-value">$94–97</div></div>
+        <div class="level-box level-target"><div class="level-label">Target</div><div class="level-value">$108–115</div></div>
+        <div class="level-box level-stop"><div class="level-label">Stop</div><div class="level-value">$88</div></div>
+      </div>
+    </div>
+
+    <!-- Growth 2: Nasdaq Tech -->
+    <div class="trade-card">
+      <div class="trade-card-header">
+        <div>
+          <div class="trade-name">Nasdaq 100 — AI &amp; Chip Sector Momentum</div>
+          <div class="trade-sub">6–10 week tactical | Growth Bucket</div>
+        </div>
+        <span class="risk-badge risk-medium">Medium Risk</span>
+      </div>
+      <p style="font-size:14px; color:#333; margin-bottom:12px;">The AI semiconductor rally continues to carry Nasdaq. Applied Materials (AMAT) reports Thursday with an expected 12% EPS jump. Cisco reports Wednesday. If CPI is benign today, Nasdaq could break to fresh highs. Cisco and AMAT earnings this week serve as additional confirmation signals.</p>
+      <div class="trade-levels">
+        <div class="level-box level-entry"><div class="level-label">Entry (Post-CPI Clarity)</div><div class="level-value">26,100–26,300</div></div>
+        <div class="level-box level-target"><div class="level-label">Target</div><div class="level-value">27,200–27,800</div></div>
+        <div class="level-box level-stop"><div class="level-label">Stop</div><div class="level-value">25,400</div></div>
+      </div>
+    </div>
+
+    <!-- Growth 3: Bitcoin -->
+    <div class="trade-card">
+      <div class="trade-card-header">
+        <div>
+          <div class="trade-name">Bitcoin (BTC/USD) — Digital Asset Opportunistic</div>
+          <div class="trade-sub">Tactical swing | Growth Bucket (5–10% only)</div>
+        </div>
+        <span class="risk-badge risk-high">High Risk</span>
+      </div>
+      <p style="font-size:14px; color:#333; margin-bottom:12px;">Bitcoin's 5%+ surge past $118,000 is driven by improving risk appetite and institutional inflows. It is now behaving more like a macro asset than a speculative token. <strong>Limit exposure to 5–10% of growth bucket only.</strong> High volatility means drawdowns of 15–25% remain possible at any time.</p>
+      <div class="trade-levels">
+        <div class="level-box level-entry"><div class="level-label">Tactical Entry</div><div class="level-value">$112,000–116,000</div></div>
+        <div class="level-box level-target"><div class="level-label">Target</div><div class="level-value">$128,000–135,000</div></div>
+        <div class="level-box level-stop"><div class="level-label">Stop</div><div class="level-value">$104,000</div></div>
+      </div>
+    </div>
+
+    <!-- Portfolio Allocation Table -->
+    <p style="font-weight:700; font-size:14px; color:#1a3a5c; margin-bottom:12px; margin-top:6px;">Full Portfolio Allocation Guide</p>
+    <table class="alloc-table">
+      <thead>
+        <tr>
+          <th>Asset</th>
+          <th>Bucket</th>
+          <th>Suggested %</th>
+          <th>Why</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Gold (XAU/USD)</strong></td>
+          <td><span class="bucket-safety">Safety</span></td>
+          <td>25–30%</td>
+          <td>War, inflation, dollar uncertainty all support price</td>
+        </tr>
+        <tr>
+          <td><strong>S&amp;P 500 / Global Index</strong></td>
+          <td><span class="bucket-safety">Safety</span></td>
+          <td>25–30%</td>
+          <td>Record earnings, structural bull market intact</td>
+        </tr>
+        <tr>
+          <td><strong>WTI Crude Oil</strong></td>
+          <td><span class="bucket-growth">Growth</span></td>
+          <td>10–12%</td>
+          <td>Geopolitical supply squeeze, Hormuz risk premium</td>
+        </tr>
+        <tr>
+          <td><strong>Nasdaq 100 (Tech/AI)</strong></td>
+          <td><span class="bucket-growth">Growth</span></td>
+          <td>15–18%</td>
+          <td>AI momentum, strong semiconductor earnings cycle</td>
+        </tr>
+        <tr>
+          <td><strong>Bitcoin (BTC/USD)</strong></td>
+          <td><span class="bucket-growth">Growth</span></td>
+          <td>5–8%</td>
+          <td>Institutional adoption, macro hedge alternative</td>
+        </tr>
+        <tr>
+          <td><strong>Cash / Short Bonds</strong></td>
+          <td><span class="bucket-safety">Safety</span></td>
+          <td>10–15%</td>
+          <td>Reserve for CPI reaction, dry powder for opportunities</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Premium Mindset Box -->
+    <div class="tip-box" style="margin-top:22px; border-color:#b45309;">
+      <div class="tip-box-title" style="color:#b45309;">💎 Premium Client Mindset: The Garden, Not the Casino</div>
+      <p>The best investors treat their portfolio like a well-planned garden. You plant in the right season (early positioning), you water consistently (systematic risk management), you pull the weeds promptly (disciplined stop losses) — and you do <em>not</em> dig up the seeds every morning to check if they have grown. Today's CPI report is weather. A smart gardener does not panic at one cloudy day. They check their soil, adjust their watering, and stay focused on the harvest three months from now.</p>
+    </div>
+  </div>
+
+  <!-- ─── STEP 4: RISK SECTION ─── -->
+  <div class="section">
+    <div class="section-label">What to Watch This Week</div>
+
+    <div class="risk-chips">
+      <span class="chip chip-red">🔴 US-Iran War Escalation Risk</span>
+      <span class="chip chip-red">🔴 CPI Beat — Inflation Shock Today</span>
+      <span class="chip chip-amber">🟡 Cisco &amp; AMAT Earnings (Wed–Thu)</span>
+      <span class="chip chip-amber">🟡 Strait of Hormuz — May 15 Ceasefire Deadline</span>
+      <span class="chip chip-blue">🔵 Fed Speaker Comments on Rate Path</span>
+    </div>
+
+    <div class="callout callout-red">
+      <div class="callout-tag">📐 Why Risk Management Matters Most Right Now</div>
+      <p>When markets trade near all-time highs — as the S&amp;P 500 does today above 7,400 — the air gets thinner. There is less upside cushion and more downside risk per dollar of upside potential. This does not mean you should not be invested. It means your position sizes should be <strong>conservative</strong>, your stop losses <strong>tighter than usual</strong>, and your cash reserves <strong>higher than normal</strong>. The best traders know that protecting capital in uncertain markets is itself a form of profit. An account that survives a 10% market fall unharmed is already ahead of the investor who lost 10% and now needs a 12% gain just to get back to even.</p>
+    </div>
+  </div>
+
+  <!-- ─── STEP 5: EM ANGLE ─── -->
+  <div class="section">
+    <div class="section-label">Emerging Markets Angle — Indonesia &amp; Malaysia</div>
+
+    <div class="em-card">
+      <div class="em-flags">🇮🇩 🇲🇾</div>
+      <p style="font-size:14px; color:#333; margin-bottom:14px;"><strong>Indonesia (IHSG / IDR):</strong> The Jakarta Composite Index (IHSG) closed at approximately <strong>6,906</strong> on Monday, May 11 — down 0.92% as rising global uncertainty weighed on sentiment. The Indonesian rupiah weakened to <strong>Rp 17,414 per USD</strong>, reflecting the dual pressure of a stronger dollar and elevated oil import costs. Indonesia is a net oil importer, meaning rising crude prices directly hurt the trade balance and the currency. For clients with IDR savings or Indonesian equity exposure, this is a period of caution. Any de-escalation in the Middle East would be immediately positive for the rupiah.</p>
+
+      <p style="font-size:14px; color:#333;"><strong>Malaysia (MYR):</strong> The ringgit is trading at approximately <strong>3.92 per USD</strong> — stronger by 1.33% over the past month and up 8.72% over 12 months. Malaysia's economy grew 5.2% year-on-year in Q3 2025, and the country benefits from its status as a net oil exporter, meaning higher crude prices offer a partial buffer. Malaysia's key risk is its dependence on both the US and China as export markets — any deterioration in either relationship is a risk. For MYR-based clients, the currency's strength means USD assets (priced in dollars) have become slightly cheaper — a mild opportunity for those looking to increase international exposure.</p>
+
+      <div style="margin-top:16px; padding-top:14px; border-top:1px solid #e2e8f0; font-size:13px; color:#666; font-style:italic;">
+        Talking point for client conversations: "Oil above $100 hurts Indonesia more than Malaysia due to their import/export positions. Gold above $4,700 helps both countries' central bank reserves and supports their currencies long-term."
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── STEP 6: WHATSAPP SUMMARY ─── -->
+  <div class="section">
+    <div class="section-label">WhatsApp Client Summary — Copy &amp; Send</div>
+
+    <div class="whatsapp-box">
+      <div class="whatsapp-label">Ready to Send</div>
+      <div class="whatsapp-text">
+        Markets are steady near record highs (S&P 500 at 7,412) but today's US inflation data at 8:30 AM New York time is critical — expect short-term volatility. Gold holds above $4,700 on war risks, oil is near $98 as US-Iran talks stall, and Bitcoin surged past $118,000. Starter clients: wait for the inflation number before trading. Premium clients: use any dip in gold as an opportunity. Full briefing available — message us for details.
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── FOOTER ─── -->
+  <div class="footer">
+    <p><strong>Disclaimer:</strong> This briefing is produced for informational and client communication purposes only. It does not constitute financial advice, a solicitation, or a recommendation to buy or sell any financial instrument. CFD trading involves significant risk of loss and may not be suitable for all investors. Past performance is not indicative of future results. All prices and data are sourced from publicly available market data as of 12 May 2026 morning session. This document is prepared for use by FSCA-regulated broker representatives only and should not be shared beyond the intended client base without compliance approval.</p>
+    <br/>
+    <p>Data sources: Yahoo Finance, Trading Economics, NBC News, Axios, Sunday Guardian Live, Tempo.co, Bloomberg, CNBC, ExchangeRates.org.</p>
+  </div>
+
+</div><!-- /container -->
+</body>
+</html>

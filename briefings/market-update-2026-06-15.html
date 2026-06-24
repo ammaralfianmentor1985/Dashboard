@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Update Harian Premium — 15 Juni 2026</title>
+<script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-ticker-tape.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --navy:      #1B2A4A;
+  --gold:      #B8962E;
+  --gold-l:    #D4A843;
+  --ivory:     #FAFAF7;
+  --white:     #FFFFFF;
+  --green:     #1A7A4A;
+  --green-bg:  #EEF8F3;
+  --red:       #C0392B;
+  --red-bg:    #FEF4F3;
+  --orange:    #D4850A;
+  --orange-bg: #FFFBF0;
+  --blue:      #1F6FAE;
+  --blue-bg:   #EEF4FC;
+  --gold-bg:   #FDF8EC;
+  --gray:      #6B7280;
+  --text:      #1B2A4A;
+  --border:    #E5E3DC;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #EDEDEA;
+  font-family: 'Source Sans 3', 'Segoe UI', Georgia, sans-serif;
+  color: var(--text);
+  min-height: 100vh;
+  padding: 0;
+}
+
+/* ── TICKER TAPE ── */
+.ticker-wrap {
+  background: var(--navy);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.ticker-wrap tv-ticker-tape {
+  display: block;
+  width: 100%;
+}
+
+/* ── PAGE ── */
+.page {
+  max-width: 960px;
+  margin: 24px auto 48px;
+  background: var(--ivory);
+  box-shadow: 0 8px 48px rgba(0,0,0,0.14);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+/* ── HEADER ── */
+.header {
+  background: var(--navy);
+  padding: 36px 48px 30px;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -80px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(184,150,46,0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+.header::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, var(--gold) 20%, var(--gold-l) 50%, var(--gold) 80%, transparent 100%);
+}
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  z-index: 1;
+}
+.header-left {}
+.brand-label {
+  font-size: 8.5px;
+  letter-spacing: 3.8px;
+  text-transform: uppercase;
+  color: var(--gold-l);
+  opacity: 0.82;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+.header h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.18;
+  letter-spacing: 0.2px;
+  margin-bottom: 10px;
+}
+.header h1 .accent { color: var(--gold-l); }
+.header-tagline {
+  font-size: 11px;
+  color: rgba(255,255,255,0.50);
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+}
+.header-date {
+  text-align: right;
+  flex-shrink: 0;
+  margin-left: 28px;
+}
+.date-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 56px;
+  font-weight: 600;
+  color: var(--gold-l);
+  line-height: 1;
+}
+.date-month {
+  font-size: 10.5px;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.58);
+  margin-top: 4px;
+  font-weight: 400;
+}
+.date-note {
+  font-size: 9px;
+  color: rgba(255,255,255,0.30);
+  letter-spacing: 1px;
+  margin-top: 3px;
+}
+
+/* ── SENTIMENT RIBBON ── */
+.sentiment-ribbon {
+  background: #F5F3EE;
+  border-bottom: 1px solid var(--border);
+  padding: 9px 32px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.ribbon-lbl {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.5;
+  margin-right: 6px;
+  white-space: nowrap;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border-radius: 2px;
+  font-size: 9.5px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.bg-green  { background: rgba(26,122,74,0.10);  color: var(--green);  border: 1px solid rgba(26,122,74,0.18); }
+.bg-red    { background: rgba(192,57,43,0.10);   color: var(--red);    border: 1px solid rgba(192,57,43,0.18); }
+.bg-orange { background: rgba(212,133,10,0.10);  color: var(--orange); border: 1px solid rgba(212,133,10,0.18); }
+
+/* ── CONTENT AREA ── */
+.content {
+  padding: 24px 28px 0;
+}
+
+/* ── CARD GRID ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 14px 15px 14px 18px;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+}
+
+.c-green  { background: var(--green-bg);  } .c-green::before  { background: var(--green); }
+.c-gold   { background: var(--gold-bg);   } .c-gold::before   { background: var(--gold); }
+.c-navy   { background: var(--white);     } .c-navy::before   { background: var(--navy); }
+.c-orange { background: var(--orange-bg); } .c-orange::before { background: var(--orange); }
+.c-blue   { background: var(--blue-bg);   } .c-blue::before   { background: var(--blue); }
+.c-red    { background: var(--red-bg);    } .c-red::before    { background: var(--red); }
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.card-lbl {
+  font-size: 7.5px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.65;
+}
+.cbadge {
+  font-size: 8.5px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 2px;
+}
+.cb-green  { background: rgba(26,122,74,0.12);  color: var(--green); }
+.cb-red    { background: rgba(192,57,43,0.12);   color: var(--red); }
+.cb-orange { background: rgba(212,133,10,0.12);  color: var(--orange); }
+.cb-blue   { background: rgba(31,111,174,0.12);  color: var(--blue); }
+
+.card-hl {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.35;
+  margin-bottom: 9px;
+}
+.card-hl-red { color: var(--red); }
+
+ul.card-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+ul.card-list li {
+  font-size: 10px;
+  line-height: 1.52;
+  color: #2D3748;
+  padding: 2px 0 2px 13px;
+  position: relative;
+}
+ul.card-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-size: 9px;
+  top: 3px;
+}
+.card-red-text ul.card-list li { color: var(--red); }
+.card-red-text ul.card-list li::before { color: var(--red); opacity: 0.7; }
+
+cite {
+  font-size: 8px;
+  color: var(--gray);
+  font-style: italic;
+  font-family: 'Source Sans 3', sans-serif;
+  opacity: 0.85;
+}
+
+/* ── SENTIMENT TABLE ── */
+.sent-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 6px;
+}
+.sent-table th {
+  background: var(--navy);
+  color: #FFFFFF;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  padding: 5px 8px;
+  text-align: left;
+}
+.sent-table td {
+  font-size: 10px;
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  line-height: 1.4;
+}
+.sent-table tr:nth-child(even) td { background: rgba(27,42,74,0.025); }
+.sent-table tr:last-child td { border-bottom: none; }
+
+/* ── FOREX TABLE ── */
+.forex-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 6px 0 0;
+}
+.forex-table th {
+  background: var(--navy);
+  color: #FFFFFF;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 4px 6px;
+  text-align: left;
+}
+.forex-table td {
+  font-size: 10px;
+  padding: 3.5px 6px;
+  border-bottom: 1px solid rgba(31,111,174,0.12);
+}
+.forex-table tr:last-child td { border-bottom: none; }
+.t-up   { color: var(--green);  font-weight: 700; }
+.t-down { color: var(--red);    font-weight: 700; }
+.t-neu  { color: var(--orange); font-weight: 600; }
+.forex-src { font-size: 8px; color: var(--gray); font-style: italic; margin-top: 6px; opacity: 0.8; }
+
+/* ── PROFIT BAR ── */
+.profit-bar {
+  background: var(--navy);
+  border-radius: 2px;
+  padding: 20px 26px 22px;
+  margin-bottom: 22px;
+  position: relative;
+  overflow: hidden;
+}
+.profit-bar::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--gold);
+}
+.profit-bar::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+}
+.profit-title {
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  color: var(--gold-l);
+  margin-bottom: 16px;
+  opacity: 0.9;
+}
+.profit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.profit-item {
+  padding-right: 16px;
+  border-right: 1px dashed rgba(212,168,67,0.22);
+}
+.profit-item:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+.profit-ttl {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--gold-l);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+.profit-txt {
+  font-size: 10px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.55;
+  font-weight: 300;
+}
+
+/* ── FOOTER ── */
+.footer-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 5%, var(--gold) 30%, var(--gold-l) 50%, var(--gold) 70%, transparent 95%);
+  margin: 0 28px 14px;
+  opacity: 0.55;
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 28px 28px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.footer-l {
+  font-size: 10px;
+  color: var(--gray);
+  line-height: 1.6;
+}
+.footer-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+}
+.footer-sep { color: rgba(107,114,128,0.4); margin: 0 6px; }
+.footer-r {
+  font-size: 8.5px;
+  color: var(--gray);
+  font-style: italic;
+  text-align: right;
+  opacity: 0.65;
+  line-height: 1.5;
+}
+
+/* ── DATA NOTE STRIP ── */
+.data-note {
+  background: #F0EDE6;
+  border-top: 1px solid var(--border);
+  padding: 8px 28px;
+  font-size: 8.5px;
+  color: var(--gray);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+@media print {
+  .ticker-wrap { display: none; }
+  body { background: white; }
+  .page { margin: 0; box-shadow: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── TICKER TAPE ── -->
+<div class="ticker-wrap">
+  <tv-ticker-tape
+    symbols="FOREXCOM:SPXUSD,FOREXCOM:NSXUSD,FOREXCOM:DJI,FX:EURUSD,BITSTAMP:BTCUSD,CMCMARKETS:GOLD,FX_IDC:USDIDR"
+    hide-chart
+    style="width:100%;display:block">
+  </tv-ticker-tape>
+</div>
+
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <div class="header">
+    <div class="header-inner">
+      <div class="header-left">
+        <div class="brand-label">Institutional Market Intelligence &nbsp;·&nbsp; Edisi Harian</div>
+        <h1>Market Update <span class="accent">Harian Premium</span></h1>
+        <div class="header-tagline">
+          Laporan Pasar Eksklusif — Private Banking Grade<br>
+          Senin, 15 Juni 2026 &nbsp;·&nbsp; Data penutupan: Jum'at 12 Juni 2026
+        </div>
+      </div>
+      <div class="header-date">
+        <div class="date-num">15</div>
+        <div class="date-month">Juni 2026</div>
+        <div class="date-note">Edisi Senin Pagi</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SENTIMENT RIBBON ── -->
+  <div class="sentiment-ribbon">
+    <span class="ribbon-lbl">Sentimen Pasar</span>
+    <span class="badge bg-green">🟢 US Stocks &mdash; Bullish</span>
+    <span class="badge bg-green">🟢 Emas &mdash; Bullish</span>
+    <span class="badge bg-orange">🟡 Crypto &mdash; Netral</span>
+    <span class="badge bg-orange">🟡 Forex &mdash; Mixed</span>
+    <span class="badge bg-orange">🟡 Minyak &mdash; Mixed</span>
+    <span class="badge bg-red">🔴 IHSG / IDR &mdash; Bearish</span>
+  </div>
+
+  <!-- ── MAIN CONTENT ── -->
+  <div class="content">
+
+    <div class="grid">
+
+      <!-- CARD 1 · US STOCK MARKET -->
+      <div class="card c-green">
+        <div class="card-top">
+          <span class="card-lbl">🇺🇸&nbsp; US Stock Market</span>
+          <span class="cbadge cb-green">🟢 Bullish</span>
+        </div>
+        <div class="card-hl">Wall Street Raih Level Tertinggi — SpaceX IPO Terbesar Sepanjang Sejarah</div>
+        <ul class="card-list">
+          <li>S&amp;P 500 ditutup 7.431,46 (+0,50%) <cite>[Yahoo Finance, 12 Jun 2026]</cite></li>
+          <li>Nasdaq Composite 25.888,84 (+0,31%) — momentum AI &amp; teknologi berlanjut <cite>[Yahoo Finance, 12 Jun 2026]</cite></li>
+          <li>Dow Jones 51.202,26 (+0,70%, +354 poin) <cite>[TheStreet, 12 Jun 2026]</cite></li>
+          <li>SpaceX IPO terbesar dalam sejarah — valuasi USD 1,75 triliun, saham naik +19% di hari pertama <cite>[TheStreet / Yahoo Finance, 12 Jun 2026]</cite></li>
+          <li>Optimisme kesepakatan damai AS–Iran memperkuat sentimen risk-on global</li>
+        </ul>
+      </div>
+
+      <!-- CARD 2 · COMMODITIES -->
+      <div class="card c-gold">
+        <div class="card-top">
+          <span class="card-lbl">🥇&nbsp; Commodities</span>
+          <span class="cbadge cb-green">🟢 Bullish</span>
+        </div>
+        <div class="card-hl">Emas Kokoh di $4.330 — Safe-Haven &amp; Akumulasi Bank Sentral Global Berlanjut</div>
+        <ul class="card-list">
+          <li>Emas (XAU/USD) $4.330,19/troy oz <cite>[APMEX, 14 Jun 2026]</cite></li>
+          <li>Perak (Silver) $71,18/troy oz — tetap di level premium <cite>[JM Bullion, 14 Jun 2026]</cite></li>
+          <li>Emas +64,5% year-on-year — melampaui seluruh kelas aset konvensional <cite>[LiteFinance, Jun 2026]</cite></li>
+          <li>Minyak Brent $80,73/bbl (-4,89%) — tekanan dari harapan normalisasi Selat Hormuz <cite>[Trading Economics, 15 Jun 2026]</cite></li>
+          <li>Safe-haven demand &amp; pelemahan USD dukung logam mulia jangka menengah</li>
+        </ul>
+      </div>
+
+      <!-- CARD 3 · SENTIMENT TABLE -->
+      <div class="card c-navy">
+        <div class="card-top">
+          <span class="card-lbl">📊&nbsp; Sentiment Summary</span>
+        </div>
+        <table class="sent-table">
+          <thead>
+            <tr>
+              <th>Market</th>
+              <th>Sentimen</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>US Stocks</td><td>🟢 Bullish</td></tr>
+            <tr><td>Emas (Gold)</td><td>🟢 Bullish</td></tr>
+            <tr><td>Perak (Silver)</td><td>🟢 Bullish</td></tr>
+            <tr><td>Minyak Brent</td><td>🟡 Mixed</td></tr>
+            <tr><td>Crypto (BTC/ETH)</td><td>🟡 Netral</td></tr>
+            <tr><td>Forex Majors</td><td>🟡 Mixed</td></tr>
+            <tr><td>IHSG / IDR</td><td>🔴 Bearish</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- CARD 4 · CRYPTO -->
+      <div class="card c-orange">
+        <div class="card-top">
+          <span class="card-lbl">₿&nbsp; Crypto Market</span>
+          <span class="cbadge cb-orange">🟡 Netral</span>
+        </div>
+        <div class="card-hl">Bitcoin Stabil di $65.500 — Tekanan Jual Mereda, Pemulihan Masih Terbatas</div>
+        <ul class="card-list">
+          <li>Bitcoin (BTC) $65.500 — stabil setelah tekanan jual di awal Juni <cite>[ZebPay Technical Analysis, 15 Jun 2026]</cite></li>
+          <li>Ethereum (ETH) $1.639,80 (+0,09%) — minat institusional masih terjaga <cite>[MetaMask / Yahoo Finance, 15 Jun 2026]</cite></li>
+          <li>Sentimen risk-on dari Wall Street memberi dukungan terbatas pada kripto</li>
+          <li>Volatilitas masih tinggi — investor institusional bersikap hati-hati jangka pendek</li>
+        </ul>
+      </div>
+
+      <!-- CARD 5 · FOREX -->
+      <div class="card c-blue">
+        <div class="card-top">
+          <span class="card-lbl">💱&nbsp; Forex Market</span>
+          <span class="cbadge cb-orange">🟡 Mixed</span>
+        </div>
+        <div class="card-hl">USD Perkasa — Rupiah Tertekan, Peluang Taktis di Major Pairs</div>
+        <table class="forex-table">
+          <thead>
+            <tr><th>Pair</th><th>Level</th><th>Arah</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>USD/IDR</td>
+              <td>17.870</td>
+              <td class="t-up">↑ USD Kuat</td>
+            </tr>
+            <tr>
+              <td>EUR/USD</td>
+              <td>~1,16–1,18</td>
+              <td class="t-neu">— Stabil</td>
+            </tr>
+            <tr>
+              <td>GBP/USD</td>
+              <td>~1,344</td>
+              <td class="t-neu">— Stabil</td>
+            </tr>
+            <tr>
+              <td>USD/JPY</td>
+              <td>~160</td>
+              <td class="t-down">↑ JPY Lemah</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="forex-src"><cite>Sumber: Bloomberg, MTFX Group, Cambridge Currencies — Jun 2026. EUR/GBP/JPY: kisaran estimasi analis.</cite></div>
+      </div>
+
+      <!-- CARD 6 · INDONESIA -->
+      <div class="card c-red card-red-text">
+        <div class="card-top">
+          <span class="card-lbl">🇮🇩&nbsp; Indonesia Economic Update</span>
+          <span class="cbadge cb-red">🔴 Bearish</span>
+        </div>
+        <div class="card-hl card-hl-red">⚠️ IHSG di Level Terendah 6 Tahun — Risiko Outflow &amp; Rupiah Masih Tinggi</div>
+        <ul class="card-list">
+          <li>IHSG ~5.988 (rebound +1,5% pada 12 Jun) — namun masih di level terendah 6 tahun <cite>[heygotrade.com, 12 Jun 2026]</cite></li>
+          <li>USD/IDR mencapai 17.870 — Rupiah di level terlemah dalam beberapa tahun terakhir <cite>[Bloomberg / exchangerates.org.uk, 15 Jun 2026]</cite></li>
+          <li>Bank Indonesia naikkan suku bunga 25bp → 5,50% — upaya darurat stabilisasi Rupiah <cite>[heygotrade.com, Jun 2026]</cite></li>
+          <li>World Bank: Pertumbuhan ekonomi Indonesia diproyeksikan melambat ke 5% di 2026 <cite>[World Bank, 11 Jun 2026]</cite></li>
+          <li>Arus modal asing terus keluar — tekanan berlanjut pada sektor keuangan domestik</li>
+        </ul>
+      </div>
+
+    </div><!-- end .grid -->
+
+    <!-- ── PROFIT OPPORTUNITY ── -->
+    <div class="profit-bar">
+      <div class="profit-title">💡&nbsp; Potensi Keuntungan Hari Ini</div>
+      <div class="profit-grid">
+
+        <div class="profit-item">
+          <div class="profit-ttl">📈&nbsp; US TECH &amp; SpaceX ECOSYSTEM</div>
+          <div class="profit-txt">Momentum IPO terbesar dalam sejarah menandai era baru space economy. Eksposur ke saham teknologi, AI, dan sektor luar angkasa layak dipertimbangkan di tengah sentimen risk-on yang menguat pasca IPO SpaceX.</div>
+        </div>
+
+        <div class="profit-item">
+          <div class="profit-ttl">🥇&nbsp; GOLD / EMAS</div>
+          <div class="profit-txt">$4.330/oz — masih +64% year-on-year. Ideal sebagai lindung nilai sekaligus aset pertumbuhan jangka menengah-panjang. Safe-haven demand dan akumulasi bank sentral global terus menopang harga logam mulia.</div>
+        </div>
+
+        <div class="profit-item">
+          <div class="profit-ttl">💵&nbsp; USD STRENGTH</div>
+          <div class="profit-txt">Rupiah di 17.870/USD membuka peluang menarik bagi investor yang sudah terposisi dalam aset berdenominasi dolar AS — baik ekuitas AS, obligasi USD, maupun produk terstruktur berbasis dolar.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── FOOTER ── -->
+    <div class="footer-rule"></div>
+    <div class="footer">
+      <div class="footer-l">
+        <div>Exclusively Prepared by &nbsp;<span class="footer-name">Revan Ashford</span></div>
+        <div>Senior Investment Consultant &amp; Portfolio Manager<span class="footer-sep">|</span>revan@onetwomarkets.co.za</div>
+      </div>
+      <div class="footer-r">
+        Laporan ini untuk tujuan informasi semata.<br>
+        Bukan rekomendasi atau saran investasi.
+      </div>
+    </div>
+
+  </div><!-- end .content -->
+
+  <!-- ── DATA NOTE ── -->
+  <div class="data-note">
+    Semua data terverifikasi melalui pencarian langsung sebelum penerbitan laporan ini.
+    Sumber: Yahoo Finance, TheStreet, Trading Economics, APMEX, JM Bullion, ZebPay, Bloomberg, heygotrade.com, World Bank, MTFX Group, Cambridge Currencies, LiteFinance — 12–15 Juni 2026.
+    Data pasar saham AS dan komoditas mengacu pada penutupan Jum'at 12 Juni 2026 (hari perdagangan terakhir).
+    Laporan ini diterbitkan Senin pagi, 15 Juni 2026.
+  </div>
+
+</div><!-- end .page -->
+
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<title>Market Update Harian Premium — 22 Mei 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #ecebe6;
+    color: #1a2238;
+    padding: 40px;
+  }
+  .poster {
+    width: 1080px;
+    margin: 0 auto;
+    background: linear-gradient(180deg, #fdfcf8 0%, #f7f4ec 100%);
+    border: 1px solid #d9d2bf;
+    box-shadow: 0 30px 80px rgba(20, 30, 60, 0.12);
+    padding: 60px 70px 50px;
+    position: relative;
+  }
+  .poster::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+    background: linear-gradient(90deg, #c8a35a 0%, #1a2238 50%, #c8a35a 100%);
+  }
+  header { border-bottom: 1px solid #d9d2bf; padding-bottom: 24px; margin-bottom: 32px; }
+  .brand-row { display: flex; justify-content: space-between; align-items: flex-end; }
+  .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; letter-spacing: 4px; color: #c8a35a; text-transform: uppercase;
+  }
+  .date { font-size: 12px; color: #6c6759; letter-spacing: 2px; text-transform: uppercase; }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px; font-weight: 700; color: #1a2238; margin-top: 14px; line-height: 1.1;
+  }
+  h1 .accent { color: #c8a35a; font-style: italic; }
+  .sub { font-size: 13px; color: #6c6759; margin-top: 8px; letter-spacing: 1px; }
+
+  .sentiment-bar {
+    display: flex; gap: 12px; margin: 28px 0 36px;
+  }
+  .chip {
+    flex: 1; background: #fff; border: 1px solid #e3dcc8; padding: 14px 16px; border-radius: 4px;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .chip .lbl { font-size: 10px; letter-spacing: 2px; color: #6c6759; text-transform: uppercase; }
+  .chip .val { font-size: 16px; font-weight: 600; color: #1a2238; }
+  .chip.pos .val { color: #1f6f4a; }
+  .chip.neg .val { color: #a23a3a; }
+  .chip .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+  .dot.green { background: #1f6f4a; }
+  .dot.red { background: #a23a3a; }
+  .dot.gold { background: #c8a35a; }
+
+  section { margin-bottom: 34px; }
+  .sec-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .sec-head .num {
+    font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #c8a35a; font-weight: 700;
+    border-right: 1px solid #d9d2bf; padding-right: 12px;
+  }
+  .sec-head h2 {
+    font-family: 'Cormorant Garamond', serif; font-size: 24px; color: #1a2238; font-weight: 700;
+  }
+  .sec-head .tag {
+    margin-left: auto; font-size: 10px; padding: 4px 10px; border-radius: 20px;
+    letter-spacing: 1.5px; text-transform: uppercase;
+  }
+  .tag.bull { background: #e7f1ea; color: #1f6f4a; border: 1px solid #c5dccd; }
+  .tag.bear { background: #f6e4e4; color: #a23a3a; border: 1px solid #e3c4c4; }
+
+  ul.points { list-style: none; padding-left: 0; }
+  ul.points li {
+    font-size: 14px; line-height: 1.65; color: #2a2f45; padding: 6px 0 6px 22px; position: relative;
+  }
+  ul.points li::before {
+    content: "◆"; position: absolute; left: 0; top: 6px; color: #c8a35a; font-size: 10px;
+  }
+  ul.points li b { color: #1a2238; }
+
+  table.snap {
+    width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 13px;
+    background: #fff; border: 1px solid #e3dcc8;
+  }
+  table.snap th, table.snap td {
+    padding: 10px 14px; text-align: left; border-bottom: 1px solid #efe9d8;
+  }
+  table.snap th {
+    background: #f4efe1; color: #1a2238; font-weight: 600; letter-spacing: 1px;
+    font-size: 11px; text-transform: uppercase;
+  }
+  table.snap td.pos { color: #1f6f4a; font-weight: 600; }
+  table.snap td.neg { color: #a23a3a; font-weight: 600; }
+
+  .summary-box {
+    background: #1a2238; color: #f4efe1; padding: 26px 30px; border-radius: 4px;
+    margin: 24px 0 30px; position: relative; overflow: hidden;
+  }
+  .summary-box::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: #c8a35a;
+  }
+  .summary-box h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #c8a35a; margin-bottom: 10px;
+  }
+  .summary-box p { font-size: 14px; line-height: 1.7; color: #e8e4d4; }
+
+  .opportunity {
+    background: #fff; border: 1px solid #d9d2bf; padding: 28px 32px; border-radius: 4px;
+    margin-top: 10px;
+  }
+  .opportunity h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 26px; color: #1a2238; margin-bottom: 14px;
+  }
+  .opp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .opp-card { background: #fbf8ee; border-left: 3px solid #c8a35a; padding: 14px 16px; }
+  .opp-card .title { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: #c8a35a; font-weight: 600; }
+  .opp-card .body { font-size: 13px; line-height: 1.6; color: #2a2f45; margin-top: 6px; }
+
+  /* Bar chart */
+  .chart { margin-top: 12px; }
+  .bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; font-size: 12px; }
+  .bar-row .lbl { width: 90px; color: #1a2238; font-weight: 500; }
+  .bar-track { flex: 1; height: 14px; background: #efe9d8; border-radius: 2px; position: relative; overflow: hidden; }
+  .bar-fill { height: 100%; background: linear-gradient(90deg, #c8a35a, #1f6f4a); }
+  .bar-fill.neg { background: linear-gradient(90deg, #a23a3a, #c97a7a); }
+  .bar-val { width: 70px; text-align: right; font-weight: 600; }
+  .pos { color: #1f6f4a; }
+  .neg { color: #a23a3a; }
+
+  /* Pie / donut */
+  .donut-wrap { display: flex; align-items: center; gap: 26px; margin-top: 12px; }
+  .donut {
+    width: 160px; height: 160px; border-radius: 50%;
+    background: conic-gradient(
+      #1f6f4a 0 35%,
+      #c8a35a 35% 65%,
+      #1a2238 65% 85%,
+      #a23a3a 85% 100%
+    );
+    position: relative;
+  }
+  .donut::after {
+    content: "Risk-On"; position: absolute; inset: 28px;
+    background: #fdfcf8; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif; font-size: 18px; color: #1a2238; font-weight: 700;
+  }
+  .legend { font-size: 12px; line-height: 1.9; }
+  .legend span.sw { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 8px; vertical-align: middle; }
+
+  footer {
+    margin-top: 40px; border-top: 1px solid #d9d2bf; padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+  .signature .label { font-size: 10px; letter-spacing: 3px; color: #6c6759; text-transform: uppercase; }
+  .signature .name {
+    font-family: 'Cormorant Garamond', serif; font-size: 24px; color: #1a2238; font-weight: 700; margin-top: 4px;
+  }
+  .signature .role { font-size: 12px; color: #2a2f45; margin-top: 2px; }
+  .signature .email { font-size: 12px; color: #c8a35a; margin-top: 2px; letter-spacing: 0.5px; }
+  .seal {
+    width: 90px; height: 90px; border: 1px solid #c8a35a; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; flex-direction: column;
+    color: #c8a35a; font-family: 'Cormorant Garamond', serif;
+  }
+  .seal .a { font-size: 22px; font-weight: 700; }
+  .seal .b { font-size: 8px; letter-spacing: 2px; }
+
+  .disclaimer { font-size: 9.5px; color: #6c6759; line-height: 1.5; margin-top: 18px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <header>
+    <div class="brand-row">
+      <div class="brand">◆ Private Client Research ◆</div>
+      <div class="date">Jumat • 22 Mei 2026</div>
+    </div>
+    <h1>Market Update <span class="accent">Harian Premium</span></h1>
+    <div class="sub">GLOBAL MARKETS BRIEFING — INSTITUTIONAL EDITION</div>
+  </header>
+
+  <!-- Sentiment Bar -->
+  <div class="sentiment-bar">
+    <div class="chip pos"><span class="lbl"><span class="dot green"></span>Crypto</span><span class="val">Risk-On ▲</span></div>
+    <div class="chip pos"><span class="lbl"><span class="dot gold"></span>Emas</span><span class="val">Bullish ▲</span></div>
+    <div class="chip pos"><span class="lbl"><span class="dot green"></span>USD</span><span class="val">Menguat ▲</span></div>
+    <div class="chip neg"><span class="lbl"><span class="dot red"></span>Indonesia</span><span class="val">Tertekan ▼</span></div>
+  </div>
+
+  <!-- Summary Box -->
+  <div class="summary-box">
+    <h3>◆ Ringkasan Eksekutif</h3>
+    <p>Sentimen global hari ini bergerak <b style="color:#c8a35a">risk-on selektif</b>: Bitcoin dan Ethereum mencatat rebound tajam, emas menembus level rekor baru di tengah penguatan dolar AS, dan minat investor terhadap aset lindung nilai meningkat. Sebaliknya, pasar domestik Indonesia berada dalam tekanan signifikan — IHSG melemah 8 hari beruntun dan rupiah menyentuh level baru di kisaran Rp17.700/USD meskipun BI menaikkan suku bunga acuan ke 5,25%.</p>
+  </div>
+
+  <!-- 1. Crypto -->
+  <section>
+    <div class="sec-head">
+      <span class="num">01</span><h2>Crypto Market — Momentum Risk-On</h2>
+      <span class="tag bull">Bullish</span>
+    </div>
+    <ul class="points">
+      <li><b>Bitcoin</b> diperdagangkan di <b>USD 71.643,84 (+4,71%)</b> didorong arus masuk ETF spot dan minat institusional yang menguat. <span style="color:#6c6759;font-size:11px">[Fortune, 22 Mei 2026]</span></li>
+      <li><b>Ethereum</b> melonjak <b>+6,84% ke USD 2.243,48</b>, mengungguli Bitcoin secara persentase — sinyal rotasi ke altcoin layer-1. <span style="color:#6c6759;font-size:11px">[Fortune, 22 Mei 2026]</span></li>
+      <li>Sentimen institusional positif berlanjut: aliran masuk produk ETF kripto dan ekspektasi pelonggaran moneter global menjadi katalis utama.</li>
+    </ul>
+    <div class="chart">
+      <div class="bar-row"><div class="lbl">Ethereum</div><div class="bar-track"><div class="bar-fill" style="width:78%"></div></div><div class="bar-val pos">+6,84%</div></div>
+      <div class="bar-row"><div class="lbl">Bitcoin</div><div class="bar-track"><div class="bar-fill" style="width:55%"></div></div><div class="bar-val pos">+4,71%</div></div>
+    </div>
+  </section>
+
+  <!-- 2. Commodities -->
+  <section>
+    <div class="sec-head">
+      <span class="num">02</span><h2>Commodities — Emas Cetak Rekor Baru</h2>
+      <span class="tag bull">Bullish</span>
+    </div>
+    <ul class="points">
+      <li><b>Emas</b> melonjak <b>+3,46% ke USD 4.846,80/oz</b> (+USD 162,10) — didorong safe-haven demand dan ketidakpastian geopolitik global. <span style="color:#6c6759;font-size:11px">[hasil pencarian, 22 Mei 2026]</span></li>
+      <li>Permintaan dari bank sentral dan investor institusi terus meningkat sebagai lindung nilai terhadap inflasi.</li>
+      <li>Pelemahan mata uang Asia memperkuat narasi emas sebagai store of value premium.</li>
+    </ul>
+  </section>
+
+  <!-- 3. US Stocks (selective bright spots) -->
+  <section>
+    <div class="sec-head">
+      <span class="num">03</span><h2>US Equities — Bright Spots Selektif</h2>
+      <span class="tag bull">Selective Bullish</span>
+    </div>
+    <ul class="points">
+      <li><b>IBM</b> menguat <b>+3,69%</b> memimpin Dow, didorong momentum bisnis AI enterprise. <span style="color:#6c6759;font-size:11px">[CNBC, 21 Mei 2026]</span></li>
+      <li><b>Nvidia</b> mencatat <b>earnings melampaui ekspektasi</b> dengan kenaikan dividen — konfirmasi struktural permintaan AI/semikonduktor. <span style="color:#6c6759;font-size:11px">[CNBC, 21 Mei 2026]</span></li>
+      <li>Honeywell (+0,99%) dan Chevron (+0,97%) menjadi penopang sektor industri dan energi.</li>
+    </ul>
+    <table class="snap">
+      <tr><th>Saham</th><th>Perubahan</th><th>Tema</th></tr>
+      <tr><td>IBM</td><td class="pos">+3,69%</td><td>AI Enterprise</td></tr>
+      <tr><td>Honeywell</td><td class="pos">+0,99%</td><td>Industrial</td></tr>
+      <tr><td>Chevron</td><td class="pos">+0,97%</td><td>Energy</td></tr>
+    </table>
+  </section>
+
+  <!-- 4. Indonesia -->
+  <section>
+    <div class="sec-head">
+      <span class="num">04</span><h2>Indonesia Economic Update — Tekanan Berlanjut</h2>
+      <span class="tag bear">Risk Alert</span>
+    </div>
+    <ul class="points">
+      <li><b>IHSG</b> melemah <b>-0,94% ke 6.037,414</b>, melanjutkan koreksi <b>8 hari beruntun</b>. Sebanyak <b>406 saham</b> melemah vs 198 menguat. <span style="color:#6c6759;font-size:11px">[Babel Insight & Suara.com, 22 Mei 2026]</span></li>
+      <li><b>Rupiah</b> menembus <b>Rp17.706/USD</b> (-0,22%), meneruskan tekanan arus modal keluar dari pasar negara berkembang. <span style="color:#6c6759;font-size:11px">[Babel Insight, 22 Mei 2026]</span></li>
+      <li><b>BI Rate</b> dinaikkan agresif <b>+50 bps ke 5,25%</b>, namun pasar menilai langkah ini <b>belum cukup</b> meredam capital outflow. <span style="color:#6c6759;font-size:11px">[Suara.com, 22 Mei 2026]</span></li>
+      <li>Tekanan domestik diperburuk oleh penguatan dolar AS global dan pelemahan mata uang regional Asia.</li>
+      <li>Risiko inflasi impor dan tekanan daya beli rumah tangga menjadi perhatian utama dalam 1–2 kuartal mendatang.</li>
+    </ul>
+    <div class="chart" style="margin-top:14px">
+      <div class="bar-row"><div class="lbl">IHSG</div><div class="bar-track"><div class="bar-fill neg" style="width:35%"></div></div><div class="bar-val neg">-0,94%</div></div>
+      <div class="bar-row"><div class="lbl">Rupiah</div><div class="bar-track"><div class="bar-fill neg" style="width:18%"></div></div><div class="bar-val neg">-0,22%</div></div>
+      <div class="bar-row"><div class="lbl">BI Rate</div><div class="bar-track"><div class="bar-fill" style="width:52%"></div></div><div class="bar-val pos">+50 bps</div></div>
+    </div>
+  </section>
+
+  <!-- Sentiment donut -->
+  <section>
+    <div class="sec-head">
+      <span class="num">05</span><h2>Global Sentiment Map</h2>
+    </div>
+    <div class="donut-wrap">
+      <div class="donut"></div>
+      <div class="legend">
+        <div><span class="sw" style="background:#1f6f4a"></span> Crypto — Strong Bullish (35%)</div>
+        <div><span class="sw" style="background:#c8a35a"></span> Precious Metals — Bullish (30%)</div>
+        <div><span class="sw" style="background:#1a2238"></span> US Equities — Selective (20%)</div>
+        <div><span class="sw" style="background:#a23a3a"></span> Emerging Markets / IDR — Bearish (15%)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Opportunity -->
+  <div class="opportunity">
+    <h3>◆ Potensi Keuntungan — Profit Opportunity</h3>
+    <div class="opp-grid">
+      <div class="opp-card">
+        <div class="title">▲ Crypto Allocation</div>
+        <div class="body">Momentum Bitcoin & Ethereum yang menguat tajam memberi peluang reaksi cepat dalam alokasi taktis kripto. Cocok untuk porsi growth dengan disiplin manajemen risiko.</div>
+      </div>
+      <div class="opp-card">
+        <div class="title">▲ Gold Hedge</div>
+        <div class="body">Emas di rekor baru USD 4.846,80 mengkonfirmasi peran sebagai lindung nilai premium terhadap inflasi dan volatilitas mata uang — pertimbangan strategis 5–10% portofolio.</div>
+      </div>
+      <div class="opp-card">
+        <div class="title">▲ AI &amp; Semiconductor</div>
+        <div class="body">Beat earnings Nvidia &amp; rally IBM mengonfirmasi tema struktural AI enterprise — peluang akumulasi selektif pada koreksi sektor teknologi AS.</div>
+      </div>
+      <div class="opp-card">
+        <div class="title">▲ USD Strength Play</div>
+        <div class="body">Penguatan dolar AS terhadap mata uang Asia membuka peluang carry &amp; diversifikasi mata uang bagi investor berbasis rupiah.</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="signature">
+      <div class="label">EXCLUSIVELY PREPARED BY</div>
+      <div class="name">Revan Ashford</div>
+      <div class="role">Senior Investment Consultant &amp; Portfolio Manager</div>
+      <div class="email">revan@onetwomarkets.co.za</div>
+    </div>
+    <div class="seal">
+      <div class="a">RA</div>
+      <div class="b">PRIVATE CLIENT</div>
+    </div>
+  </footer>
+
+  <div class="disclaimer">
+    Laporan ini disusun berdasarkan sumber publik (CNBC, Fortune, Suara.com, Babel Insight) per 21–22 Mei 2026 dan bersifat informatif, bukan rekomendasi investasi mengikat. Kinerja masa lalu tidak menjamin hasil masa depan. Setiap keputusan investasi tetap menjadi tanggung jawab investor.
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Market Briefing — Friday, 1 May 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #f7f7f5;
+    color: #1a1a2e;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .page-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ffffff;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.08);
+  }
+
+  /* HEADER */
+  .header {
+    background: #ffffff;
+    border-bottom: 3px solid #1a1a2e;
+    padding: 32px 48px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .header-left h1 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .header-left h2 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #1a1a2e;
+    letter-spacing: -0.5px;
+  }
+  .header-right {
+    text-align: right;
+  }
+  .header-right .date {
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+  }
+  .header-right .badge {
+    display: inline-block;
+    background: #1a1a2e;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    padding: 4px 10px;
+    border-radius: 3px;
+    margin-top: 6px;
+    text-transform: uppercase;
+  }
+
+  /* TICKER BAR */
+  .ticker-bar {
+    background: #1a1a2e;
+    padding: 14px 48px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: center;
+  }
+  .ticker-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 90px;
+  }
+  .ticker-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: #aaa;
+    text-transform: uppercase;
+  }
+  .ticker-price {
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.3px;
+  }
+  .ticker-change {
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .up { color: #4ade80; }
+  .down { color: #f87171; }
+  .neutral { color: #facc15; }
+
+  /* MAIN CONTENT */
+  .content {
+    padding: 36px 48px;
+  }
+
+  /* SECTION HEADERS */
+  .section-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #888;
+    border-top: 2px solid #e8e8e8;
+    padding-top: 28px;
+    margin-bottom: 18px;
+  }
+  .section-label:first-child { border-top: none; padding-top: 0; }
+
+  /* CALLOUT BOXES */
+  .callout {
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 14px;
+    border-left: 5px solid;
+  }
+  .callout-green {
+    background: #f0fdf4;
+    border-color: #22c55e;
+  }
+  .callout-amber {
+    background: #fffbeb;
+    border-color: #f59e0b;
+  }
+  .callout-blue {
+    background: #eff6ff;
+    border-color: #3b82f6;
+  }
+  .callout-red {
+    background: #fef2f2;
+    border-color: #ef4444;
+  }
+  .callout-purple {
+    background: #faf5ff;
+    border-color: #8b5cf6;
+  }
+  .callout-icon {
+    font-size: 16px;
+    margin-right: 8px;
+  }
+  .callout-title {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #444;
+    margin-bottom: 6px;
+  }
+  .callout p {
+    font-size: 14.5px;
+    color: #2d2d2d;
+    line-height: 1.6;
+  }
+
+  /* STORY PARAGRAPHS */
+  .story p {
+    font-size: 15px;
+    color: #333;
+    margin-bottom: 14px;
+    line-height: 1.72;
+  }
+
+  /* TRADE CARDS */
+  .trade-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .trade-card {
+    border: 1.5px solid #e4e4e4;
+    border-radius: 10px;
+    padding: 18px;
+    background: #fafafa;
+  }
+  .trade-card h4 {
+    font-size: 13px;
+    font-weight: 800;
+    color: #1a1a2e;
+    margin-bottom: 4px;
+    letter-spacing: -0.2px;
+  }
+  .trade-card .direction {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+  }
+  .long-badge { background: #dcfce7; color: #166534; }
+  .wait-badge { background: #fef9c3; color: #854d0e; }
+  .trade-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    padding: 4px 0;
+    border-bottom: 1px solid #eee;
+  }
+  .trade-row:last-child { border-bottom: none; }
+  .trade-row .label { color: #888; font-weight: 500; }
+  .trade-row .value { font-weight: 700; color: #1a1a2e; }
+  .risk-pill {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 12px;
+    letter-spacing: 0.05em;
+  }
+  .risk-low { background: #dcfce7; color: #166534; }
+  .risk-med { background: #fef9c3; color: #854d0e; }
+  .risk-high { background: #fee2e2; color: #991b1b; }
+
+  /* SIZING TABLE */
+  .table-wrap {
+    overflow-x: auto;
+    margin-bottom: 20px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+  th {
+    background: #1a1a2e;
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #eee;
+    color: #2d2d2d;
+  }
+  tr:nth-child(even) td { background: #fafafa; }
+  tr:last-child td { border-bottom: none; }
+
+  /* ALLOCATION TABLE */
+  .bucket-safety { background: #eff6ff !important; }
+  .bucket-growth { background: #f0fdf4 !important; }
+
+  /* RISK CHIPS */
+  .risk-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 16px 0;
+  }
+  .chip {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .chip-red { background: #fee2e2; color: #991b1b; }
+  .chip-amber { background: #fef9c3; color: #854d0e; }
+  .chip-yellow { background: #fef3c7; color: #92400e; }
+  .chip-green { background: #dcfce7; color: #166534; }
+  .chip-blue { background: #dbeafe; color: #1e40af; }
+
+  /* WHATSAPP BOX */
+  .whatsapp-box {
+    background: #f0fdf4;
+    border: 1.5px solid #86efac;
+    border-radius: 10px;
+    padding: 18px 22px;
+    font-size: 14px;
+    font-style: italic;
+    color: #166534;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+  .whatsapp-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #166534;
+    margin-bottom: 8px;
+  }
+
+  /* SPECIAL BOXES */
+  .mindset-box {
+    background: #faf5ff;
+    border: 1.5px solid #c4b5fd;
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-top: 20px;
+  }
+  .mindset-box h4 {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #7c3aed;
+    margin-bottom: 8px;
+  }
+  .mindset-box p {
+    font-size: 14px;
+    color: #4c1d95;
+    line-height: 1.65;
+  }
+
+  .seatbelt-box {
+    background: #fff7ed;
+    border: 1.5px solid #fdba74;
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-top: 20px;
+  }
+  .seatbelt-box h4 {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #c2410c;
+    margin-bottom: 8px;
+  }
+  .seatbelt-box p {
+    font-size: 14px;
+    color: #7c2d12;
+    line-height: 1.65;
+  }
+
+  .em-box {
+    background: #fffbeb;
+    border: 1.5px solid #fcd34d;
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin-top: 8px;
+  }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 28px 0;
+  }
+
+  /* TIER HEADER */
+  .tier-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding: 16px 20px;
+    border-radius: 10px;
+  }
+  .tier-starter { background: #f0f9ff; border: 1.5px solid #7dd3fc; }
+  .tier-premium { background: #faf5ff; border: 1.5px solid #c4b5fd; }
+  .tier-header h3 {
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+  }
+  .tier-starter h3 { color: #0369a1; }
+  .tier-premium h3 { color: #7c3aed; }
+  .tier-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 3px 10px;
+    border-radius: 12px;
+    text-transform: uppercase;
+  }
+  .ts-badge { background: #bae6fd; color: #0369a1; }
+  .tp-badge { background: #ddd6fe; color: #6d28d9; }
+  .tier-sub {
+    font-size: 13px;
+    color: #666;
+    font-weight: 400;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: #f7f7f5;
+    border-top: 2px solid #e4e4e4;
+    padding: 20px 48px;
+    font-size: 11px;
+    color: #888;
+    line-height: 1.6;
+  }
+  .footer strong { color: #555; }
+
+  @media print {
+    body { background: white; }
+    .page-wrap { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <h1>Market Intelligence</h1>
+      <h2>Daily Client Briefing</h2>
+    </div>
+    <div class="header-right">
+      <div class="date">Friday, 1 May 2026</div>
+      <div class="badge">FSCA-Regulated CFD Broker</div>
+    </div>
+  </div>
+
+  <!-- TICKER BAR -->
+  <div class="ticker-bar">
+    <div class="ticker-item">
+      <span class="ticker-label">S&amp;P 500</span>
+      <span class="ticker-price">7,209</span>
+      <span class="ticker-change up">▲ +1.02%</span>
+    </div>
+    <div class="ticker-item">
+      <span class="ticker-label">Nasdaq</span>
+      <span class="ticker-price">24,892</span>
+      <span class="ticker-change up">▲ +0.89%</span>
+    </div>
+    <div class="ticker-item">
+      <span class="ticker-label">Dow Jones</span>
+      <span class="ticker-price">49,652</span>
+      <span class="ticker-change up">▲ +1.62%</span>
+    </div>
+    <div class="ticker-item">
+      <span class="ticker-label">VIX Fear</span>
+      <span class="ticker-price">17.10</span>
+      <span class="ticker-change up">▼ -9.10%</span>
+    </div>
+    <div class="ticker-item">
+      <span class="ticker-label">Gold / oz</span>
+      <span class="ticker-price">$4,628</span>
+      <span class="ticker-change up">▲ +1.55%</span>
+    </div>
+    <div class="ticker-item">
+      <span class="ticker-label">WTI Oil</span>
+      <span class="ticker-price">$104.86</span>
+      <span class="ticker-change down">▼ -1.89%</span>
+    </div>
+    <div class="ticker-item">
+      <span class="ticker-label">Bitcoin</span>
+      <span class="ticker-price">$76,466</span>
+      <span class="ticker-change up">▲ +1.24%</span>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="content">
+
+    <!-- SECTION 1: WHAT HAPPENED -->
+    <div class="section-label">What Happened — Plain English Summary</div>
+
+    <div class="story">
+      <p>April ended with a bang. The S&P 500 — America's main measure of stock market health, think of it like a scoreboard covering 500 of the biggest companies — just had its best month since 2020. After a scary dip earlier in the year caused by the ongoing US-Iran conflict and oil shock, markets have spent April clawing back. By last night's close, the S&P 500 crossed 7,200 for the first time ever. If you bought a broad US index fund on January 1, you are essentially flat for the year — the panic of February and March has been almost entirely erased.</p>
+      <p>The reason markets are cheering this week: tech earnings. Apple, the world's biggest company, reported last night and the results were exceptional — revenue of $111 billion, up 17% from a year ago, and iPhone sales jumped 22%. Amazon also beat profit expectations, though investors are slightly nervous about its forward guidance. These results matter because when the largest companies in the world make more money than expected, it lifts confidence across the entire market.</p>
+      <p>The background risk has not gone away: the US-Iran war, now in its ninth week, continues to keep oil prices elevated above $100 a barrel and is slowly pushing inflation higher (US CPI is now 3.3%, the highest since May 2024). The Federal Reserve — America's central bank — is expected to hold interest rates steady until at least July. Think of the Fed as a doctor carefully watching a patient recover: they want to be sure the war-inflation is temporary before prescribing any relief.</p>
+    </div>
+
+    <!-- THREE CALLOUTS -->
+    <div class="callout callout-green">
+      <div class="callout-title">🟢 The Good News</div>
+      <p>Apple delivered a blowout quarter — 17% revenue growth, iPhone sales up 22%, Services revenue smashing records. This is the most widely-held stock in the world, and when Apple wins, confidence rises everywhere. The S&amp;P 500 finished April up significantly — its best month since 2020. The "fear index" (VIX) has fallen 9% in a single day, meaning the people who bet on panic are quietly retreating. Markets are showing resilience.</p>
+    </div>
+
+    <div class="callout callout-amber">
+      <div class="callout-title">🟡 The Caution — Watch This</div>
+      <p>Oil is still above $100 a barrel. Every dollar on oil is a dollar of extra cost for airlines, transport, and manufacturing — and ultimately for your grocery bill. US inflation has crept back up to 3.3%. The Federal Reserve may be forced to keep rates higher for longer, which is like keeping a hand on the brakes of the economy. Amazon's after-hours drop of 3% despite beating earnings suggests investors are nervous about future profit margins. Also watch: US tariffs on imported goods may return as early as July — that could be a fresh source of uncertainty.</p>
+    </div>
+
+    <div class="callout callout-blue">
+      <div class="callout-title">🔵 Today's Biggest Event — 10:00 AM New York Time</div>
+      <p>The ISM Manufacturing PMI for April releases at 10:00 AM Eastern (10:00 PM Jakarta / Kuala Lumpur). Think of this like a health report card for US factories — did they produce more or less this month? The previous reading was strong at 52.7 (anything above 50 = growth). A reading above 52 today will likely push markets higher; a surprise drop below 50 (contraction territory) could reverse this morning's gains quickly. This is the single most important data point released today.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- SECTION 2: TIER 1 STARTER -->
+    <div class="section-label">Trade Ideas — Client Tiers</div>
+
+    <div class="tier-header tier-starter">
+      <div>
+        <span class="tier-badge ts-badge">Tier 1 — Starter</span>
+        <h3>Simple Ideas for Getting Started</h3>
+        <div class="tier-sub">For clients trading $1,000 – $3,000 per position</div>
+      </div>
+    </div>
+
+    <p style="font-size:14px; color:#444; margin-bottom:18px;">These are ideas written in plain English — no jargon. Think of each trade like making a simple bet on something you understand. <strong>None of these are guarantees</strong> — every trade carries risk. The goal is to give you a framework, not a crystal ball.</p>
+
+    <div class="trade-grid">
+
+      <!-- IDEA 1: GOLD -->
+      <div class="trade-card">
+        <h4>Gold — The Safe Harbour</h4>
+        <span class="direction long-badge">BUY / LONG</span>
+        <p style="font-size:13px; color:#555; margin-bottom:10px; line-height:1.55;">
+          <em>The analogy:</em> Imagine gold as a life jacket. When storms hit — wars, inflation, uncertainty — people reach for it. Right now, there is a war in the Middle East, inflation is creeping up, and investors are nervous. Gold is near all-time highs for good reason. When conditions like this persist, gold tends to keep climbing.
+        </p>
+        <div class="trade-row"><span class="label">Entry Level</span><span class="value">$4,580 – $4,640/oz</span></div>
+        <div class="trade-row"><span class="label">Target (Take Profit)</span><span class="value">$4,850/oz</span></div>
+        <div class="trade-row"><span class="label">Stop Loss</span><span class="value">$4,440/oz</span></div>
+        <div class="trade-row"><span class="label">Risk Level</span><span class="value"><span class="risk-pill risk-low">Low-Medium</span></span></div>
+        <div class="trade-row"><span class="label">Timeframe</span><span class="value">4 – 8 weeks</span></div>
+      </div>
+
+      <!-- IDEA 2: APPLE -->
+      <div class="trade-card">
+        <h4>Apple (AAPL) — Earnings Momentum</h4>
+        <span class="direction long-badge">BUY / LONG</span>
+        <p style="font-size:13px; color:#555; margin-bottom:10px; line-height:1.55;">
+          <em>The analogy:</em> Imagine a restaurant that just got a glowing five-star review — customers flood in after great news. Apple reported exceptional results last night, beating all expectations. The stock is rising this morning on that momentum. Strong earnings tend to keep a stock elevated for days to weeks after the announcement.
+        </p>
+        <div class="trade-row"><span class="label">Entry Level</span><span class="value">Market open price today</span></div>
+        <div class="trade-row"><span class="label">Target (Take Profit)</span><span class="value">+8% from entry</span></div>
+        <div class="trade-row"><span class="label">Stop Loss</span><span class="value">-4% from entry</span></div>
+        <div class="trade-row"><span class="label">Risk Level</span><span class="value"><span class="risk-pill risk-med">Medium</span></span></div>
+        <div class="trade-row"><span class="label">Timeframe</span><span class="value">1 – 3 weeks</span></div>
+      </div>
+
+      <!-- IDEA 3: WAIT ON AMAZON -->
+      <div class="trade-card" style="border-color: #fcd34d; background: #fffbeb;">
+        <h4>Amazon (AMZN) — Wait &amp; Watch</h4>
+        <span class="direction wait-badge">WAIT — DO NOT ENTER YET</span>
+        <p style="font-size:13px; color:#555; margin-bottom:10px; line-height:1.55;">
+          <em>The analogy:</em> Amazon is like a shop that got a mixed report card — the sales were great, but management was cautious about next quarter. The stock fell 3% after hours. For starters, the smart move is to <strong>watch from the sideline</strong> today. If Amazon stabilises above its 3-month average price in the next few days, that becomes an entry opportunity. Chasing a falling stock is like catching a falling knife — painful.
+        </p>
+        <div class="trade-row"><span class="label">Action Today</span><span class="value">Observe Only</span></div>
+        <div class="trade-row"><span class="label">Re-evaluate</span><span class="value">Monday 4 May 2026</span></div>
+        <div class="trade-row"><span class="label">Risk Level</span><span class="value"><span class="risk-pill risk-high">High if entered now</span></span></div>
+      </div>
+
+    </div>
+
+    <!-- POSITION SIZING TABLE -->
+    <div class="section-label" style="border-top:none; padding-top:0; margin-top:8px;">Position Sizing — How Much to Risk</div>
+    <p style="font-size:14px; color:#444; margin-bottom:14px;">This table shows approximately how many units to trade based on your account size. Always confirm exact sizing with your broker.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Trade Idea</th>
+            <th>$1,000 Account</th>
+            <th>$2,000 Account</th>
+            <th>$3,000 Account</th>
+            <th>Max Risk per Trade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Gold (Long)</strong></td>
+            <td>0.02 oz (micro lot)</td>
+            <td>0.05 oz</td>
+            <td>0.07 oz</td>
+            <td>~2% of account</td>
+          </tr>
+          <tr>
+            <td><strong>Apple (Long)</strong></td>
+            <td>1–2 shares CFD</td>
+            <td>3–4 shares CFD</td>
+            <td>5–6 shares CFD</td>
+            <td>~2% of account</td>
+          </tr>
+          <tr>
+            <td><strong>Amazon</strong></td>
+            <td colspan="3" style="text-align:center; color:#888; font-style:italic;">Wait — do not enter today</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SEATBELT BOX -->
+    <div class="seatbelt-box">
+      <h4>Simple Rule to Protect Yourself — Stop Losses Are Your Seatbelt</h4>
+      <p>A <strong>stop loss</strong> is an automatic instruction that closes your trade if it goes wrong — before the damage gets too big. Think of it exactly like a car seatbelt: you never plan to crash, but you always buckle up. A 2% risk per trade means if you have $1,000 in your account, you are willing to lose no more than $20 on a single trade. That keeps you in the game long enough to be right more often than you are wrong. <strong>Never trade without a stop loss set.</strong></p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- SECTION 3: TIER 2 PREMIUM -->
+    <div class="tier-header tier-premium">
+      <div>
+        <span class="tier-badge tp-badge">Tier 2 — Premium</span>
+        <h3>Strategic Portfolio Thinking</h3>
+        <div class="tier-sub">For clients with $50,000+ in capital — think in portfolios, not single trades</div>
+      </div>
+    </div>
+
+    <p style="font-size:14px; color:#444; margin-bottom:20px;">Premium clients do not just pick trades — they think in <strong>buckets</strong>. Allocate your capital across two buckets: a Safety Bucket that preserves wealth during uncertainty, and a Growth Bucket that captures upside when conditions are right. Today's environment calls for a slightly defensive posture with selective growth exposure.</p>
+
+    <!-- BUCKET 1: SAFETY -->
+    <div class="callout callout-blue" style="margin-bottom:10px;">
+      <div class="callout-title">Safety Bucket (50–60% of capital) — 3 to 6 Month Horizon</div>
+      <p><strong>Position 1 — Gold (25–30% allocation):</strong> The US-Iran war has no clear end date. Oil disruptions are inflationary. Central banks are accumulating gold. The secular (long-term) bull case for gold remains intact as long as geopolitical risk persists. Buy on any dip toward $4,500 – $4,550/oz. Target: $5,000 within 6 months.</p>
+      <p style="margin-top:10px;"><strong>Position 2 — S&P 500 Broad Index (25–30% allocation):</strong> The best month since 2020 just confirmed this bull market has legs. Corporate earnings are strong — Apple, Alphabet, and Caterpillar all beat expectations this week. Hold your broad US equity exposure with a trailing stop at 6,800 to protect against sudden deterioration. Do not try to time the top — be in, protect with a stop, and let compounding do the work.</p>
+    </div>
+
+    <!-- BUCKET 2: GROWTH -->
+    <div class="callout callout-green" style="margin-bottom:10px;">
+      <div class="callout-title">Growth Bucket (30–40% of capital) — Tactical, 1 to 3 Months</div>
+      <p><strong>Position 1 — Apple (AAPL) Long (10–15% allocation):</strong> This is not just an earnings trade. Apple's services business ($30.98 billion this quarter) is now a compounding annuity — recurring revenue that grows regardless of how many iPhones people buy. Greater China revenues beat by $1.6 billion. At these growth rates, Apple's forward price/earnings ratio remains reasonable. The post-earnings dip (if any) is a buy.</p>
+      <p style="margin-top:10px;"><strong>Position 2 — Nasdaq 100 (Tech Index) Long (10–12% allocation):</strong> The Nasdaq just posted its longest win streak since 1992 — 12 consecutive winning days in April. AI investment spend by Microsoft, Alphabet, and Amazon continues at record pace. This is a structural tailwind. Buy the index rather than single stocks to reduce company-specific risk.</p>
+      <p style="margin-top:10px;"><strong>Position 3 — Gold Miners ETF (5–8% allocation):</strong> When gold rises, gold mining companies typically rise faster — they have "leverage" to the gold price. As gold heads toward $5,000, miners offer amplified upside. This is for clients comfortable with slightly higher volatility for higher potential returns.</p>
+    </div>
+
+    <!-- AMAZON BINARY SCENARIO -->
+    <div class="callout callout-amber">
+      <div class="callout-title">Amazon — Binary Scenario (Earnings Aftermath)</div>
+      <p><strong>If Amazon stabilises and holds above $195 today:</strong> This signals the after-hours sell-off was an overreaction. Enter long with a target of $215 and stop at $188. AWS growth of 28% year-over-year is exceptional and will eventually be rewarded.</p>
+      <p style="margin-top:8px;"><strong>If Amazon breaks below $188 today:</strong> Do not enter yet. The market is pricing in a more serious guidance concern. Wait for the stock to find support and form a base — this could take 1 to 2 weeks. Patience here is worth more than action.</p>
+    </div>
+
+    <!-- PORTFOLIO ALLOCATION TABLE -->
+    <div class="section-label" style="border-top:none; padding-top:4px; margin-top:20px;">Full Premium Portfolio Allocation — Suggested Framework</div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Asset</th>
+            <th>Bucket</th>
+            <th>Suggested %</th>
+            <th>Why Now</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bucket-safety">
+            <td><strong>Gold (Long)</strong></td>
+            <td>Safety</td>
+            <td>25–30%</td>
+            <td>Iran war, inflation, central bank demand; secular bull intact</td>
+          </tr>
+          <tr class="bucket-safety">
+            <td><strong>S&amp;P 500 Index (Long)</strong></td>
+            <td>Safety</td>
+            <td>25–30%</td>
+            <td>Best month since 2020; strong earnings season; trailing stop at 6,800</td>
+          </tr>
+          <tr class="bucket-growth">
+            <td><strong>Apple (AAPL)</strong></td>
+            <td>Growth</td>
+            <td>10–15%</td>
+            <td>Blowout Q2: +17% revenue, +22% iPhone, Services $31B — buy dip</td>
+          </tr>
+          <tr class="bucket-growth">
+            <td><strong>Nasdaq 100 Index</strong></td>
+            <td>Growth</td>
+            <td>10–12%</td>
+            <td>12-day winning streak; AI spend structural tailwind; diversified</td>
+          </tr>
+          <tr class="bucket-growth">
+            <td><strong>Gold Miners ETF</strong></td>
+            <td>Growth</td>
+            <td>5–8%</td>
+            <td>Leveraged play on gold's run toward $5,000; amplified upside</td>
+          </tr>
+          <tr>
+            <td><strong>Cash / Watch List</strong></td>
+            <td>Reserve</td>
+            <td>10–15%</td>
+            <td>Keep dry powder for ISM surprise, NFP on May 8, or Amazon entry</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- PREMIUM MINDSET BOX -->
+    <div class="mindset-box">
+      <h4>Premium Client Mindset — Three Principles for This Environment</h4>
+      <p>
+        <strong>1. Patience is a position.</strong> The 10–15% cash allocation is not laziness — it is optionality. When the ISM releases today or when NFP drops on May 8, there may be a sharp move. Having cash means you can act on opportunities others cannot.<br><br>
+        <strong>2. Early positioning beats chasing.</strong> Gold's next leg toward $5,000 will happen gradually. The clients who are positioned before the move always outperform those who buy on the news. You do not need to be perfect — you need to be early and patient.<br><br>
+        <strong>3. Discipline over conviction.</strong> Even the best trade ideas have stop losses. A 10% drawdown on a position that you "believe in" is still a 10% drawdown. Belief does not stop losses — stop-loss orders do.
+      </p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- SECTION 4: RISK EVENTS -->
+    <div class="section-label">What to Watch This Week — Risk Events</div>
+
+    <div class="risk-chips">
+      <span class="chip chip-red">WAR: Hormuz Disruption</span>
+      <span class="chip chip-amber">ISM PMI — Today 10AM ET</span>
+      <span class="chip chip-amber">NFP Jobs Report — Fri 8 May</span>
+      <span class="chip chip-yellow">US Tariffs Possible July Return</span>
+      <span class="chip chip-blue">Amazon Earnings Fallout</span>
+    </div>
+
+    <div class="callout callout-red">
+      <div class="callout-title">Why Risk Management Matters Most at All-Time Highs</div>
+      <p>Here is a truth that Wall Street rarely says out loud: <strong>the higher markets climb, the further they can fall.</strong> When the S&amp;P 500 is at an all-time high, every piece of bad news hits harder — because there is less cushion below. Right now, three risks could cause a sharp reversal with very little warning: an escalation in the Iran conflict that fully blocks the Strait of Hormuz (which would send oil above $130 and spike inflation); a surprise miss on the May 8 jobs report that signals the economy is slowing; or a return of US tariffs in July that reignites trade war fears. None of these are predictions — they are possibilities. The correct response to all-time highs is not to sell everything, but to tighten your stop losses, reduce position sizes slightly, and make sure your portfolio can survive a sudden 5–10% market correction without you needing to make panic decisions.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- SECTION 5: EM ANGLE -->
+    <div class="section-label">EM Angle — Indonesia &amp; Malaysia Client Note</div>
+
+    <div class="em-box">
+      <p style="font-size:13px; color:#888; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:10px;">IDR / MYR / IHSG Context for Today</p>
+
+      <p style="font-size:14.5px; color:#2d2d2d; line-height:1.7;">
+        <strong>IHSG Notice:</strong> The Jakarta Stock Exchange (IDX) is <strong>CLOSED today</strong> for Hari Buruh — Indonesian Labor Day. Indonesian clients cannot trade domestic equities. However, they can trade global CFDs on gold, US indices, and Apple through your platform — and today's environment is actually ideal for those conversations.
+      </p>
+      <p style="font-size:14.5px; color:#2d2d2d; margin-top:12px; line-height:1.7;">
+        <strong>IHSG context:</strong> The last recorded IHSG level was approximately 6,927 — a significant decline from its January 2026 peak of 9,174. That is a ~24% drawdown from the high, driven primarily by risk-off capital outflows following the Iran war outbreak, the global oil shock, and a stronger US dollar pulling money back to American assets. Indonesian clients sitting in domestic stocks have had a painful few months.
+      </p>
+      <p style="font-size:14.5px; color:#2d2d2d; margin-top:12px; line-height:1.7;">
+        <strong>IDR &amp; MYR pressure:</strong> Both currencies remain under pressure as oil price inflation (domestically: higher subsidised fuel costs or pass-through to consumers) and capital outflow to the US weigh on exchange rates. Higher oil prices hurt Indonesia and Malaysia's import bills for goods priced in dollars, even as both countries are net oil producers — because refined products are still partly imported. For high-net-worth Indonesian and Malaysian clients, today is a strong conversation starter about the value of holding <strong>gold exposure</strong> as a USD-denominated, inflation-protected asset that has significantly outperformed IDR-denominated assets year to date.
+      </p>
+      <p style="font-size:14.5px; color:#2d2d2d; margin-top:12px; line-height:1.7;">
+        <strong>Talking point for your call:</strong> <em>"Your gold position in US dollar terms is up over 7% this year. Your IHSG holdings are down 24% from January. That contrast is exactly why we diversify into global hard assets."</em>
+      </p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- SECTION 6: WHATSAPP -->
+    <div class="section-label">WhatsApp Client Summary — Copy &amp; Send</div>
+    <div class="whatsapp-label">Ready to paste — plain text, no emoji</div>
+    <div class="whatsapp-box">
+      Good morning. Markets ended April at all-time highs — S&P 500 crossed 7,200 for the first time, best month since 2020. Apple reported blowout earnings overnight: revenue up 17%, iPhone sales up 22%. Gold holds near $4,628 as the Iran conflict keeps demand for safe assets elevated. Key event today: US ISM Manufacturing data at 10am New York time. Indonesian market is closed today for Labor Day. For those looking at gold or US tech exposure, this is an active environment — reach out if you would like to talk through positioning.
+    </div>
+
+  </div><!-- end .content -->
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <strong>Important Disclaimer:</strong> This document is prepared by an FSCA-regulated CFD broker for informational and discussion purposes only. It does not constitute financial advice, a solicitation, or a recommendation to buy or sell any financial instrument. CFD trading involves significant risk of loss and is not suitable for all investors. Past performance is not indicative of future results. All prices are indicative based on data as of 30 April 2026 close. Please ensure you fully understand the risks involved before trading. Clients should seek independent advice if necessary. <strong>This briefing is for professional use by licensed brokers only and is not for direct distribution to retail clients without appropriate risk disclosures.</strong>
+    <br><br>
+    <strong>Data Sources:</strong> CNBC, Yahoo Finance, 9to5Mac, The Street, Investing.com, EIA, IMF, Dallas Fed, Allianz Research, Trading Economics &bull; Generated: 1 May 2026
+  </div>
+
+</div>
+</body>
+</html>

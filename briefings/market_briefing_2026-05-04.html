@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Market Briefing — Monday, May 4, 2026</title>
+<style>
+  /* ===== BASE ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: #f9f7f4;
+    color: #1a1a2e;
+    line-height: 1.7;
+    font-size: 15px;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* ===== HEADER ===== */
+  .header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #fff;
+    padding: 40px 50px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 200px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .brand { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #8ec5fc; margin-bottom: 8px; }
+  .header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; color: #fff; }
+  .header-date {
+    text-align: right;
+    font-size: 12px;
+    color: #b0c4de;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .header-date span { display: block; font-size: 22px; color: #fff; letter-spacing: 0; font-weight: 600; margin-bottom: 2px; }
+  .disclaimer-banner {
+    margin-top: 18px;
+    background: rgba(255,255,255,0.08);
+    border-left: 3px solid #f0a500;
+    border-radius: 4px;
+    padding: 10px 16px;
+    font-size: 11px;
+    color: #ccd6f6;
+    letter-spacing: 0.3px;
+  }
+
+  /* ===== TICKER BAR ===== */
+  .ticker-bar {
+    background: #fff;
+    border-bottom: 2px solid #e8e0d0;
+    padding: 0 50px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .ticker-bar::-webkit-scrollbar { display: none; }
+  .ticker-item {
+    flex: 1;
+    min-width: 130px;
+    padding: 14px 18px;
+    border-right: 1px solid #f0ece4;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .ticker-item:last-child { border-right: none; }
+  .ticker-name { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #888; font-family: 'Arial', sans-serif; }
+  .ticker-price { font-size: 18px; font-weight: 700; color: #1a1a2e; margin: 3px 0; font-family: 'Arial', sans-serif; }
+  .ticker-change { font-size: 12px; font-weight: 600; font-family: 'Arial', sans-serif; }
+  .up { color: #2d8a4e; }
+  .down { color: #c0392b; }
+  .neutral { color: #888; }
+
+  /* ===== MAIN LAYOUT ===== */
+  .container { max-width: 920px; margin: 0 auto; padding: 40px 30px 60px; }
+
+  /* ===== SECTION HEADERS ===== */
+  .section-label {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #8b7355;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e8e0d0;
+  }
+
+  /* ===== CALLOUT BOXES ===== */
+  .callout-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 36px; }
+  @media(max-width:700px){ .callout-grid { grid-template-columns: 1fr; } }
+
+  .callout {
+    border-radius: 8px;
+    padding: 20px 22px;
+    border-left: 5px solid;
+  }
+  .callout-icon { font-size: 22px; margin-bottom: 8px; }
+  .callout-tag {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .callout h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .callout p { font-size: 13.5px; line-height: 1.65; }
+
+  .callout-green { background: #f0faf4; border-color: #2d8a4e; }
+  .callout-green .callout-tag { color: #2d8a4e; }
+  .callout-amber { background: #fffbf0; border-color: #f0a500; }
+  .callout-amber .callout-tag { color: #c97d00; }
+  .callout-blue { background: #f0f6ff; border-color: #2563eb; }
+  .callout-blue .callout-tag { color: #2563eb; }
+
+  /* ===== NARRATIVE ===== */
+  .narrative { margin-bottom: 36px; }
+  .narrative p { font-size: 15px; margin-bottom: 16px; color: #2c2c3e; }
+
+  /* ===== DIVIDER ===== */
+  .divider {
+    border: none;
+    border-top: 1px solid #e8e0d0;
+    margin: 40px 0;
+  }
+
+  /* ===== TIER CARDS ===== */
+  .tier-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 24px;
+    border-radius: 10px 10px 0 0;
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+  .tier-badge {
+    font-size: 11px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 20px;
+  }
+  .tier-card {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid;
+    margin-bottom: 40px;
+  }
+  .tier1-card { border-color: #c3daf5; }
+  .tier1-header { background: #dceeff; }
+  .tier1-badge { background: #1a6fbb; color: #fff; }
+  .tier1-body { background: #fff; padding: 28px; }
+
+  .tier2-card { border-color: #d4c4a0; }
+  .tier2-header { background: #f5efd6; }
+  .tier2-badge { background: #8b6914; color: #fff; }
+  .tier2-body { background: #fff; padding: 28px; }
+
+  .tier-title { font-size: 18px; font-weight: 700; }
+  .tier-subtitle { font-size: 13px; color: #666; font-family: 'Arial', sans-serif; }
+
+  /* ===== TRADE IDEAS ===== */
+  .trade-idea {
+    border: 1px solid #e8e0d0;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    background: #fcfaf7;
+  }
+  .trade-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
+  .trade-name { font-size: 16px; font-weight: 700; }
+  .risk-chip {
+    font-size: 11px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 12px;
+  }
+  .risk-low { background: #e3f5e9; color: #2d8a4e; }
+  .risk-medium { background: #fff3dc; color: #c97d00; }
+  .risk-high { background: #fde8e8; color: #c0392b; }
+
+  .trade-analogy {
+    font-style: italic;
+    color: #5a4a3a;
+    font-size: 13.5px;
+    margin-bottom: 14px;
+    padding: 10px 14px;
+    background: #f5f0e8;
+    border-radius: 6px;
+    border-left: 3px solid #d4a853;
+  }
+  .trade-levels {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  @media(max-width:500px){ .trade-levels { grid-template-columns: 1fr 1fr; } }
+  .level-box {
+    background: #fff;
+    border: 1px solid #e8e0d0;
+    border-radius: 6px;
+    padding: 10px 12px;
+    text-align: center;
+  }
+  .level-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #999; font-family: 'Arial', sans-serif; margin-bottom: 4px; }
+  .level-value { font-size: 15px; font-weight: 700; }
+  .entry-val { color: #1a6fbb; }
+  .target-val { color: #2d8a4e; }
+  .stop-val { color: #c0392b; }
+
+  /* ===== SIZING TABLE ===== */
+  .sizing-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-family: 'Arial', sans-serif; font-size: 13px; }
+  .sizing-table th {
+    background: #f0ece4;
+    padding: 8px 12px;
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #666;
+    border-bottom: 2px solid #ddd;
+  }
+  .sizing-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #f0ece4;
+    color: #1a1a2e;
+  }
+  .sizing-table tr:last-child td { border-bottom: none; }
+  .sizing-table tr:hover td { background: #faf8f4; }
+
+  /* ===== SPECIAL BOXES ===== */
+  .info-box {
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+  .seatbelt-box {
+    background: #f0f6ff;
+    border: 1px solid #bed3f5;
+    border-left: 5px solid #2563eb;
+  }
+  .seatbelt-box h4 { color: #1a3c7c; font-size: 14px; margin-bottom: 8px; }
+  .seatbelt-box p { font-size: 13.5px; color: #1a3c7c; }
+
+  .wait-box {
+    background: #fff8f0;
+    border: 1px solid #f5d4a8;
+    border-left: 5px solid #f0a500;
+  }
+  .wait-box h4 { color: #7a4900; font-size: 14px; margin-bottom: 8px; }
+  .wait-box p { font-size: 13.5px; color: #7a4900; }
+
+  .mindset-box {
+    background: #f9f5ec;
+    border: 1px solid #d4c4a0;
+    border-left: 5px solid #8b6914;
+  }
+  .mindset-box h4 { color: #5a3e00; font-size: 14px; margin-bottom: 8px; }
+  .mindset-box p { font-size: 13.5px; color: #5a3e00; }
+
+  /* ===== PORTFOLIO TABLE ===== */
+  .portfolio-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13px; font-family: 'Arial', sans-serif; }
+  .portfolio-table th {
+    background: #1a1a2e;
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .portfolio-table td { padding: 10px 14px; border-bottom: 1px solid #e8e0d0; vertical-align: top; }
+  .portfolio-table tr:hover td { background: #faf8f4; }
+  .bucket-safety { background: #e3f5e9; color: #1b5e35; font-weight: 700; border-radius: 4px; padding: 2px 8px; font-size: 11px; }
+  .bucket-growth { background: #e8f0fe; color: #1a3c7c; font-weight: 700; border-radius: 4px; padding: 2px 8px; font-size: 11px; }
+
+  /* ===== SCENARIO BOX ===== */
+  .scenario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+  @media(max-width:580px){ .scenario-grid { grid-template-columns: 1fr; } }
+  .scenario-box { border-radius: 8px; padding: 18px 20px; }
+  .scenario-good { background: #f0faf4; border: 1px solid #a3d9b5; }
+  .scenario-bad { background: #fff5f5; border: 1px solid #f5a8a8; }
+  .scenario-title { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; font-family: 'Arial', sans-serif; }
+  .scenario-good .scenario-title { color: #2d8a4e; }
+  .scenario-bad .scenario-title { color: #c0392b; }
+  .scenario-box p { font-size: 13px; }
+
+  /* ===== RISK CHIPS ===== */
+  .risk-events { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0 20px; }
+  .event-chip {
+    font-size: 12px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 20px;
+    border: 1.5px solid;
+  }
+  .chip-red { background: #fde8e8; border-color: #e57373; color: #8b0000; }
+  .chip-amber { background: #fff3dc; border-color: #f5c060; color: #7a4900; }
+  .chip-blue { background: #e8f0fe; border-color: #90b8f5; color: #1a3c7c; }
+  .chip-green { background: #e3f5e9; border-color: #7ecf99; color: #1b5e35; }
+
+  /* ===== EM SECTION ===== */
+  .em-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0 24px; }
+  @media(max-width:500px){ .em-grid { grid-template-columns: 1fr; } }
+  .em-box {
+    border-radius: 8px;
+    padding: 18px 20px;
+    border: 1px solid #e8e0d0;
+    background: #fcfaf7;
+  }
+  .em-box-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-family: 'Arial', sans-serif; color: #888; margin-bottom: 6px; }
+  .em-box-value { font-size: 22px; font-weight: 700; color: #1a1a2e; margin-bottom: 2px; font-family: 'Arial', sans-serif; }
+  .em-box-change { font-size: 12px; font-family: 'Arial', sans-serif; }
+
+  /* ===== WHATSAPP ===== */
+  .whatsapp-section {
+    background: #f5f0e8;
+    border: 1px solid #d4c4a0;
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-top: 40px;
+  }
+  .whatsapp-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+    color: #8b7355;
+    margin-bottom: 12px;
+  }
+  .whatsapp-message {
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    color: #1a1a2e;
+    background: #fff;
+    border: 1px solid #e0d8c8;
+    border-radius: 8px;
+    padding: 16px 20px;
+    line-height: 1.6;
+    cursor: text;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: #1a1a2e;
+    color: #8b9dc3;
+    padding: 28px 50px;
+    font-family: 'Arial', sans-serif;
+    font-size: 11px;
+    line-height: 1.7;
+    letter-spacing: 0.3px;
+  }
+
+  /* ===== PRINT ===== */
+  @media print {
+    body { background: #fff; font-size: 12px; }
+    .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .callout, .trade-idea, .tier-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="brand">Daily Market Intelligence</div>
+      <h1>Market Briefing &amp; Trade Opportunities</h1>
+    </div>
+    <div class="header-date">
+      <span>Monday, May 4, 2026</span>
+      Published by your broker team · For client use only
+    </div>
+  </div>
+  <div class="disclaimer-banner">
+    ⚠️ &nbsp;<strong>Important:</strong> This document is for information purposes only and does not constitute financial advice. CFD trading involves significant risk of loss and is not suitable for all investors. Past performance is not indicative of future results. FSCA-regulated broker.
+  </div>
+</div>
+
+<!-- ===== TICKER BAR ===== -->
+<div class="ticker-bar">
+  <div class="ticker-item">
+    <div class="ticker-name">S&amp;P 500</div>
+    <div class="ticker-price">7,234</div>
+    <div class="ticker-change up">▲ +0.20%</div>
+  </div>
+  <div class="ticker-item">
+    <div class="ticker-name">Nasdaq</div>
+    <div class="ticker-price">25,114</div>
+    <div class="ticker-change up">▲ +0.10%</div>
+  </div>
+  <div class="ticker-item">
+    <div class="ticker-name">Dow Jones</div>
+    <div class="ticker-price">49,499</div>
+    <div class="ticker-change up">▲ +0.20%</div>
+  </div>
+  <div class="ticker-item">
+    <div class="ticker-name">VIX</div>
+    <div class="ticker-price">16.78</div>
+    <div class="ticker-change down">▼ −0.65%</div>
+  </div>
+  <div class="ticker-item">
+    <div class="ticker-name">Gold</div>
+    <div class="ticker-price">$4,644</div>
+    <div class="ticker-change up">▲ +0.32%</div>
+  </div>
+  <div class="ticker-item">
+    <div class="ticker-name">Oil (WTI)</div>
+    <div class="ticker-price">$101.94</div>
+    <div class="ticker-change down">▼ −2.98%</div>
+  </div>
+  <div class="ticker-item">
+    <div class="ticker-name">Bitcoin</div>
+    <div class="ticker-price">$78,795</div>
+    <div class="ticker-change up">▲ +0.51%</div>
+  </div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="container">
+
+  <!-- STEP 2 — WHAT HAPPENED -->
+  <div class="section-label">Market Overview</div>
+  <div class="section-title">What Happened Overnight &amp; This Morning</div>
+
+  <div class="narrative">
+    <p>Global stock markets are opening this week with a quiet sense of relief. After a turbulent month driven by a US-Israel-Iran military conflict that began in late February, investors are seeing faint but real signals that a ceasefire may be getting closer. This is pushing stock prices gently upward and, importantly, pulling the price of oil — the fuel that powers inflation — noticeably lower today.</p>
+
+    <p>The S&amp;P 500 — the benchmark for the 500 biggest American companies — is hovering near <strong>7,234</strong>, touching levels that would have seemed extraordinary just a year ago. The Nasdaq, home to technology giants, ended last week at a record high of <strong>25,114</strong>. Meanwhile, the fear gauge (VIX) at 16.78 tells us that professional traders are relatively calm — not complacent, but not panicking.</p>
+
+    <p>The biggest story this week is not what happened over the weekend, but what is coming: a critical week of US employment data, culminating in Friday's all-important Jobs Report. Markets will listen very carefully to every number that arrives.</p>
+  </div>
+
+  <div class="callout-grid">
+    <div class="callout callout-green">
+      <div class="callout-icon">✅</div>
+      <div class="callout-tag">Good News</div>
+      <h3>Peace Talks Inch Forward</h3>
+      <p>US-Iran negotiations are ongoing (Day 65 of the Middle East conflict). Oil has dropped nearly 3% today to $101.94 on hopes of progress. Stocks are firmer. The "fear index" (VIX) is the lowest it has been in weeks.</p>
+    </div>
+    <div class="callout callout-amber">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-tag">Watch Carefully</div>
+      <h3>The Strait of Hormuz Remains Closed</h3>
+      <p>Iran has blocked this critical oil shipping lane since late February. Until a deal is signed, oil above $100 remains the reality — and one failed negotiating session could send prices spiking again overnight.</p>
+    </div>
+    <div class="callout callout-blue">
+      <div class="callout-icon">📅</div>
+      <div class="callout-tag">Tonight's Big Event</div>
+      <h3>A Week Full of Market-Moving Data</h3>
+      <p>Job Openings (JOLTS) on Tuesday, ADP Employment on Wednesday, ISM Services on Wednesday, and the big Jobs Report on Friday. Each one could move markets sharply. CVS Health reports earnings today.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- STEP 3 — TIER 1 -->
+  <div class="section-label">Starter Clients · $1,000 – $3,000 per trade</div>
+  <div class="section-title">Tier 1 — Simple Trade Ideas</div>
+
+  <div class="tier-card tier1-card">
+    <div class="tier-header tier1-header">
+      <div class="tier-badge tier1-badge">STARTER TIER</div>
+      <div>
+        <div class="tier-title" style="color:#0f3460;">For clients with $1,000 – $3,000 to put into a single idea</div>
+        <div class="tier-subtitle">Plain English · Smaller positions · Easy to understand</div>
+      </div>
+    </div>
+    <div class="tier1-body">
+
+      <!-- Trade Idea 1 -->
+      <div class="trade-idea">
+        <div class="trade-header">
+          <div class="trade-name">🟡 Gold — BUY (Long)</div>
+          <div class="risk-chip risk-low">Low Risk</div>
+        </div>
+        <div class="trade-analogy">
+          Think of gold like a sturdy brick house in a neighbourhood where some houses are on fire. When the world feels uncertain, people move their savings into gold. At $4,644, gold has been one of the strongest performers of the past year — and the Middle East conflict has only added to its appeal as a "safe place to park money."
+        </div>
+        <div class="trade-levels">
+          <div class="level-box">
+            <div class="level-label">Enter Around</div>
+            <div class="level-value entry-val">$4,620–$4,650</div>
+          </div>
+          <div class="level-box">
+            <div class="level-label">Price Target</div>
+            <div class="level-value target-val">$4,780</div>
+          </div>
+          <div class="level-box">
+            <div class="level-label">Stop Loss</div>
+            <div class="level-value stop-val">$4,540</div>
+          </div>
+        </div>
+        <table class="sizing-table">
+          <thead>
+            <tr>
+              <th>Capital You Use</th>
+              <th>What This Means</th>
+              <th>Potential Gain (to target)</th>
+              <th>Maximum Loss (stop)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>$1,000</strong></td><td>Small starter position</td><td>~+$30</td><td>~−$22</td></tr>
+            <tr><td><strong>$2,000</strong></td><td>Comfortable mid-size</td><td>~+$60</td><td>~−$43</td></tr>
+            <tr><td><strong>$3,000</strong></td><td>Full starter position</td><td>~+$90</td><td>~−$65</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Trade Idea 2 -->
+      <div class="trade-idea">
+        <div class="trade-header">
+          <div class="trade-name">🛢️ Oil (WTI) — SELL (Short)</div>
+          <div class="risk-chip risk-medium">Medium Risk</div>
+        </div>
+        <div class="trade-analogy">
+          Imagine you own a petrol station and someone tells you the oil truck shortage will soon be over. You'd lower your prices before everyone else does. Today, oil is falling 3% because peace talks with Iran are making people think the Strait of Hormuz might reopen. Selling oil (betting the price goes down) can profit from that expectation — but it can snap back fast if talks collapse.
+        </div>
+        <div class="trade-levels">
+          <div class="level-box">
+            <div class="level-label">Enter Around</div>
+            <div class="level-value entry-val">$101.50–$103.00</div>
+          </div>
+          <div class="level-box">
+            <div class="level-label">Price Target</div>
+            <div class="level-value target-val">$95.00</div>
+          </div>
+          <div class="level-box">
+            <div class="level-label">Stop Loss</div>
+            <div class="level-value stop-val">$107.50</div>
+          </div>
+        </div>
+        <table class="sizing-table">
+          <thead>
+            <tr>
+              <th>Capital You Use</th>
+              <th>What This Means</th>
+              <th>Potential Gain (to target)</th>
+              <th>Maximum Loss (stop)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>$1,000</strong></td><td>Small starter position</td><td>~+$64</td><td>~−$54</td></tr>
+            <tr><td><strong>$2,000</strong></td><td>Comfortable mid-size</td><td>~+$128</td><td>~−$108</td></tr>
+            <tr><td><strong>$3,000</strong></td><td>Full starter position</td><td>~+$191</td><td>~−$162</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Trade Idea 3 -->
+      <div class="trade-idea">
+        <div class="trade-header">
+          <div class="trade-name">💻 US Tech (Nasdaq) — HOLD / WATCH</div>
+          <div class="risk-chip risk-medium">Medium Risk</div>
+        </div>
+        <div class="trade-analogy">
+          This is like standing in a queue for a restaurant where you know the chef is very talented — but tonight they're serving a special dish (earnings announcements) that nobody has tasted yet. AMD, Palantir, and Walt Disney all report this week. Buying before results is a gamble. Buying after a strong result is smarter. <strong>For Tier 1 clients: wait and watch until at least Wednesday.</strong>
+        </div>
+        <div class="level-box" style="max-width:300px; margin-bottom:0;">
+          <div class="level-label">Current Nasdaq Level</div>
+          <div class="level-value entry-val">25,114</div>
+        </div>
+      </div>
+
+      <div class="info-box seatbelt-box">
+        <h4>🔒 Simple Rule to Protect Yourself — The Seatbelt Rule</h4>
+        <p>Every time you open a trade, you must set a <strong>Stop Loss</strong>. Think of it exactly like a seatbelt. You do not put on a seatbelt because you plan to crash — you put it on because accidents happen. A Stop Loss automatically closes your trade if it moves against you, so you can never lose more than you decided in advance. Every trade in this document includes a Stop Loss. Always use it.</p>
+      </div>
+
+      <div class="info-box wait-box">
+        <h4>⏸️ Earnings Alert — When In Doubt, Stay Out</h4>
+        <p>Major company results (AMD, Palantir, Walt Disney, Uber) are being announced this week. Stock prices can jump OR fall 10–15% in minutes after an earnings announcement. <strong>Starter clients should avoid technology stocks until results are published.</strong> Patience is a skill, not a weakness.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- STEP 3 — TIER 2 -->
+  <div class="section-label">Premium Clients · $50,000+ Capital</div>
+  <div class="section-title">Tier 2 — Portfolio Strategy</div>
+
+  <div class="tier-card tier2-card">
+    <div class="tier-header tier2-header">
+      <div class="tier-badge tier2-badge">PREMIUM TIER</div>
+      <div>
+        <div class="tier-title" style="color:#5a3e00;">For clients with $50,000+ in capital to deploy</div>
+        <div class="tier-subtitle">Structured allocation · 3–6 month horizons · Institutional thinking</div>
+      </div>
+    </div>
+    <div class="tier2-body">
+
+      <p style="margin-bottom:20px; font-size:14px; color:#444;">The premium approach divides capital into two buckets: a <strong>Safety Bucket</strong> (50–60%) that preserves and grows steadily, and a <strong>Growth Bucket</strong> (30–40%) that captures tactical opportunities. Think of it as a ship with ballast and sails — the ballast keeps you stable, the sails capture the wind.</p>
+
+      <!-- SAFETY BUCKET -->
+      <h3 style="font-size:16px; color:#1b5e35; margin:20px 0 14px; padding-left:12px; border-left:4px solid #2d8a4e;">🛡️ Safety Bucket (50–60% of Capital)</h3>
+
+      <div class="trade-idea">
+        <div class="trade-header">
+          <div class="trade-name">Gold (XAU/USD) — Core Long Position</div>
+          <div class="risk-chip risk-low">Low Risk</div>
+        </div>
+        <p style="font-size:13.5px; margin-bottom:10px;">Gold at $4,644 remains the anchor in any geopolitical-sensitive portfolio. With the US-Iran conflict unresolved, a new Fed Chair (Kevin Warsh) taking over on May 15th with uncertain policy direction, and global central banks continuing to accumulate gold reserves, the structural tailwind is intact. Add on dips toward $4,550–4,580. Hold target: $5,000+ over 6 months. Stop: $4,350.</p>
+      </div>
+
+      <div class="trade-idea">
+        <div class="trade-header">
+          <div class="trade-name">S&amp;P 500 Index (SPX) — Core Long Position</div>
+          <div class="risk-chip risk-low">Low Risk</div>
+        </div>
+        <p style="font-size:13.5px; margin-bottom:10px;">The S&amp;P 500 above 7,200 reflects robust corporate earnings and a resilient US economy. This is not a momentum trade — it is a 3–6 month position building on the structural growth story in AI, defence, and energy infrastructure. Layer in on any pullback to 7,050–7,100 (which may come post-NFP on Friday). Hold target: 7,600. Stop: 6,800.</p>
+      </div>
+
+      <!-- GROWTH BUCKET -->
+      <h3 style="font-size:16px; color:#1a3c7c; margin:24px 0 14px; padding-left:12px; border-left:4px solid #2563eb;">🚀 Growth Bucket (30–40% of Capital)</h3>
+
+      <div class="trade-idea">
+        <div class="trade-header">
+          <div class="trade-name">Oil Short (WTI Crude) — Tactical Position</div>
+          <div class="risk-chip risk-medium">Medium Risk</div>
+        </div>
+        <p style="font-size:13.5px; margin-bottom:10px;">A ceasefire in the Middle East — even a partial one — could see oil drop rapidly from $102 toward $85–88. This is an asymmetric opportunity: the downside risk (talks collapse, oil spikes to $115) is manageable with a tight stop; the upside (deal signed, oil drops $15–20) is substantial. Position size: 10–15% of growth bucket. Entry: $101–103. Target: $88. Stop: $109.</p>
+      </div>
+
+      <div class="trade-idea">
+        <div class="trade-header">
+          <div class="trade-name">AMD — Post-Earnings Strategic Entry</div>
+          <div class="risk-chip risk-medium">Medium Risk</div>
+        </div>
+        <p style="font-size:13.5px; margin-bottom:10px;">AMD reports this week. The AI chip cycle is still in its early innings, and AMD's competitive position against Nvidia has strengthened. <strong>Do not enter before results.</strong> If earnings beat estimates and guidance holds firm, look for a dip-and-hold entry. If they disappoint materially, stand aside for 5–7 days. Pre-position your levels now; execute only on confirmation.</p>
+
+        <div class="scenario-grid">
+          <div class="scenario-box scenario-good">
+            <div class="scenario-title">✅ If AMD Beats Estimates</div>
+            <p><strong>Action:</strong> Enter long on any post-earnings pullback (first 30 minutes of reaction often overdone). Target: +12–18% from entry over 8 weeks. Stop: −6% from entry.</p>
+          </div>
+          <div class="scenario-box scenario-bad">
+            <div class="scenario-title">❌ If AMD Misses Estimates</div>
+            <p><strong>Action:</strong> Stand aside entirely. Do not "buy the dip" instinctively. Wait for a stable base to form over 5–7 trading days. Reassess when price finds support.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="trade-idea">
+        <div class="trade-header">
+          <div class="trade-name">Bitcoin (BTC/USD) — Speculative Allocation</div>
+          <div class="risk-chip risk-high">Higher Risk</div>
+        </div>
+        <p style="font-size:13.5px; margin-bottom:10px;">Bitcoin at $78,795 has been quietly outperforming gold during this conflict period, as institutional allocators use it as a geopolitical hedge alongside (not instead of) gold. Keep this to a maximum 5–8% of the total portfolio. The 4-year halving cycle continues to provide a structural tailwind. Entry zone: $75,000–79,000. Target: $95,000–100,000 over 4–6 months. Stop: $68,000.</p>
+      </div>
+
+      <!-- PORTFOLIO ALLOCATION TABLE -->
+      <h3 style="font-size:16px; color:#1a1a2e; margin:28px 0 14px;">📊 Suggested Portfolio Allocation Table</h3>
+      <table class="portfolio-table">
+        <thead>
+          <tr>
+            <th>Asset</th>
+            <th>Bucket</th>
+            <th>Suggested %</th>
+            <th>Why</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Gold (XAU/USD)</strong></td>
+            <td><span class="bucket-safety">Safety</span></td>
+            <td><strong>25–30%</strong></td>
+            <td>Geopolitical hedge, inflation protection, central bank demand</td>
+          </tr>
+          <tr>
+            <td><strong>S&amp;P 500 Index (SPX)</strong></td>
+            <td><span class="bucket-safety">Safety</span></td>
+            <td><strong>25–30%</strong></td>
+            <td>Core US equity exposure, AI &amp; defence tailwinds</td>
+          </tr>
+          <tr>
+            <td><strong>Oil Short (WTI)</strong></td>
+            <td><span class="bucket-growth">Growth</span></td>
+            <td><strong>10–15%</strong></td>
+            <td>Asymmetric peace-deal play, tight stop limits downside</td>
+          </tr>
+          <tr>
+            <td><strong>AMD (post-earnings)</strong></td>
+            <td><span class="bucket-growth">Growth</span></td>
+            <td><strong>10–15%</strong></td>
+            <td>AI chip cycle, conditional on earnings beat</td>
+          </tr>
+          <tr>
+            <td><strong>Bitcoin (BTC/USD)</strong></td>
+            <td><span class="bucket-growth">Growth</span></td>
+            <td><strong>5–8%</strong></td>
+            <td>Speculative geopolitical hedge + halving cycle</td>
+          </tr>
+          <tr>
+            <td><strong>Cash / Undeployed</strong></td>
+            <td>—</td>
+            <td><strong>10–15%</strong></td>
+            <td>Dry powder for Friday's Jobs Report reaction</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="info-box mindset-box">
+        <h4>🧠 Premium Client Mindset — The Patient Hunter</h4>
+        <p>The most expensive mistake premium investors make in volatile markets is <em>over-trading</em>. A market that moves 3% in a day feels urgent — but urgency is the enemy of good decisions. Your edge is not speed; it is discipline. Early positioning in Gold and the S&amp;P 500, held with conviction through short-term noise, historically outperforms frantic switching. Keep 10–15% in cash this week specifically to deploy after Friday's Jobs Report — that reaction will likely offer the cleanest entry of the month.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- STEP 4 — RISK SECTION -->
+  <div class="section-label">Risk Management</div>
+  <div class="section-title">What to Watch This Week</div>
+
+  <div class="risk-events">
+    <div class="event-chip chip-red">🔴 US-Iran Peace Talks · Ongoing · Any session</div>
+    <div class="event-chip chip-amber">🟡 JOLTS Job Openings · Tuesday, May 5</div>
+    <div class="event-chip chip-amber">🟡 ADP Employment + ISM Services · Wednesday, May 6</div>
+    <div class="event-chip chip-red">🔴 US Non-Farm Payrolls (Jobs Report) · Friday, May 8</div>
+    <div class="event-chip chip-blue">🔵 AMD / Palantir / Walt Disney Earnings · Wed–Thu this week</div>
+    <div class="event-chip chip-amber">🟡 New Fed Chair Kevin Warsh Takes Office · May 15</div>
+  </div>
+
+  <p style="font-size:14px; color:#444; line-height:1.75; padding:20px 24px; background:#fff8f0; border-radius:8px; border-left:4px solid #f0a500;">
+    <strong>Why risk management matters most right now:</strong> The S&amp;P 500 is trading near all-time highs while a real shooting war is ongoing in the Middle East and the world's most important oil shipping lane remains blocked. Historically, markets at all-time highs are not necessarily dangerous — but markets at all-time highs with unresolved geopolitical risk need extra respect. If this week's Jobs Report comes in too hot (strong economy = Fed keeps rates high), or if peace talks collapse and oil spikes back toward $120, equities could pull back 4–8% quickly. This is not a reason to avoid markets — it is a reason to always have your stop losses in place and to never risk more on a single trade than you can comfortably absorb.
+  </p>
+
+  <hr class="divider">
+
+  <!-- STEP 5 — EM ANGLE -->
+  <div class="section-label">Emerging Markets Focus</div>
+  <div class="section-title">Indonesia &amp; Malaysia — What This Means For Your Clients</div>
+
+  <div class="em-grid">
+    <div class="em-box">
+      <div class="em-box-label">USD / IDR (Indonesian Rupiah)</div>
+      <div class="em-box-value">17,368</div>
+      <div class="em-box-change up">▲ +0.20% — Rupiah weakening slightly vs. USD</div>
+    </div>
+    <div class="em-box">
+      <div class="em-box-label">USD / MYR (Malaysian Ringgit)</div>
+      <div class="em-box-value">3.97</div>
+      <div class="em-box-change neutral">● Stable — Ringgit holding relatively firm</div>
+    </div>
+    <div class="em-box">
+      <div class="em-box-label">IHSG (Jakarta Composite Index)</div>
+      <div class="em-box-value">~6,838–6,956</div>
+      <div class="em-box-change down">▼ Under pressure · closed −2.03% last session</div>
+    </div>
+    <div class="em-box">
+      <div class="em-box-label">Key Catalyst to Watch</div>
+      <div class="em-box-value" style="font-size:15px; margin-top:4px;">IDR Trade Balance Data</div>
+      <div class="em-box-change neutral">● Upcoming Indonesian domestic data release</div>
+    </div>
+  </div>
+
+  <p style="font-size:14px; color:#444; line-height:1.75;">
+    <strong>Talking point for Indonesian clients:</strong> The IHSG is under selling pressure, having lost over 2% last week, and analysts at MNC Sekuritas are flagging support around 6,838 and 6,745. This is partly global risk-off (Middle East uncertainty) and partly domestic — the rupiah at 17,368 against the dollar is a concern for import-heavy Indonesian businesses. When the dollar is strong (as it tends to be during geopolitical crises), Indonesian and Malaysian consumers feel it at the pump and at the supermarket. The silver lining: if US-Iran peace talks succeed this week and oil drops further, that is directly positive for fuel-importing nations like Indonesia and Malaysia — and could support a bounce in the IHSG.
+  </p>
+  <p style="font-size:14px; color:#444; line-height:1.75; margin-top:12px;">
+    <strong>Talking point for Malaysian clients:</strong> The ringgit at 3.97 is remarkably stable compared to regional peers. Malaysia's oil export revenues have been a buffer (Malaysia is a net oil exporter, so higher oil actually helps the country's books, unlike Indonesia). Any oil price decline this week is worth monitoring for the MYR — a significant peace deal could put modest pressure on the ringgit as oil revenue expectations ease.
+  </p>
+
+  <hr class="divider">
+
+  <!-- STEP 6 — WHATSAPP SUMMARY -->
+  <div class="whatsapp-section">
+    <div class="whatsapp-label">📱 WhatsApp Client Summary — Copy &amp; Paste Ready</div>
+    <div class="whatsapp-message">
+      Markets open this week with cautious optimism as US-Iran peace talks progress, sending oil down 3% to $102. The S&amp;P 500 is near record highs at 7,234, Gold holds firm at $4,644, and Bitcoin trades near $78,795. This is a critical data week — job openings Tuesday, employment Wednesday, and the big Jobs Report Friday — each capable of moving markets sharply. Starter clients: Gold remains the cleanest opportunity. Premium clients: hold your core positions and keep 10-15% cash ready to deploy after Friday. Full briefing is available. Reply with any questions.
+    </div>
+  </div>
+
+</div><!-- end container -->
+
+<!-- ===== FOOTER ===== -->
+<div class="footer">
+  <p><strong>Risk Disclosure &amp; Legal Notice</strong> — This document has been prepared for informational purposes only and does not constitute investment advice, a recommendation, or a solicitation to buy or sell any financial instrument. CFD products are complex instruments and come with a high risk of losing money rapidly due to leverage. You should consider whether you understand how CFDs work and whether you can afford to take the high risk of losing your money. This broker is regulated by the Financial Sector Conduct Authority (FSCA). Past performance is not a reliable indicator of future results. Information contained herein is believed to be accurate at the time of publication but may be subject to change without notice. Neither "guaranteed," "sure thing," "can't lose," nor any similar phrase appears in this document — and for good reason: no such investment exists.</p>
+  <p style="margin-top:12px;">Data sources: Yahoo Finance, Trading Economics, CNBC, Al Jazeera, CNN, KITCO, ForexFactory, heygotrade.com, TipRanks, TheStreet. © 2026 · Daily Market Briefing · Monday, May 4, 2026</p>
+</div>
+
+</body>
+</html>

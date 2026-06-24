@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Update Harian Premium — 22 Juni 2026</title>
+<script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-ticker-tape.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:wght@300;400;600&family=Source+Sans+3:wght@300;400;600;700&display=swap');
+
+  :root {
+    --bg-page:    #060e08;
+    --bg-card:    #0d1f12;
+    --bg-section: #112417;
+    --bg-panel:   #163020;
+    --bg-panel2:  #1a3a26;
+    --gold:       #d4a843;
+    --gold-light: #eacc7a;
+    --gold-dim:   rgba(212,168,67,0.15);
+    --gold-border:rgba(212,168,67,0.22);
+    --green:      #3ecf82;
+    --green-dim:  rgba(62,207,130,0.12);
+    --red:        #e05c5c;
+    --red-dim:    rgba(224,92,92,0.11);
+    --amber:      #e8a030;
+    --text:       #e8f5ec;
+    --text-2:     #8ab89a;
+    --text-3:     #557060;
+    --border:     rgba(212,168,67,0.18);
+    --border-2:   rgba(212,168,67,0.09);
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--bg-page);
+    font-family: 'Source Sans 3', Georgia, sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 28px auto 48px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    box-shadow: 0 16px 80px rgba(0,0,0,0.55);
+    border-radius: 2px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: linear-gradient(150deg, #071509 0%, #0d1f12 55%, #071509 100%);
+    padding: 40px 54px 30px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .header::before {
+    content:'';
+    position:absolute; top:0; left:0; right:0; height:3px;
+    background: linear-gradient(90deg, transparent 0%, var(--gold) 25%, var(--gold-light) 50%, var(--gold) 75%, transparent 100%);
+  }
+  .header::after {
+    content:'';
+    position:absolute; top:-80px; right:-80px;
+    width:260px; height:260px;
+    background: radial-gradient(circle, rgba(212,168,67,0.07) 0%, transparent 65%);
+    pointer-events:none;
+  }
+  .header-row {
+    display:flex; justify-content:space-between; align-items:flex-start;
+    margin-bottom:20px;
+  }
+  .brand-label {
+    font-size:9px; font-weight:400; letter-spacing:3.8px;
+    text-transform:uppercase; color:var(--gold); opacity:0.8;
+    margin-bottom:8px;
+  }
+  .header h1 {
+    font-family:'Playfair Display', Georgia, serif;
+    font-size:28px; font-weight:700; color:var(--text);
+    line-height:1.22; letter-spacing:0.2px;
+  }
+  .header h1 em { font-style:normal; color:var(--gold); }
+  .header-date { text-align:right; flex-shrink:0; }
+  .date-num {
+    font-family:'Playfair Display', serif;
+    font-size:48px; font-weight:600; color:var(--gold); line-height:1;
+  }
+  .date-rest {
+    font-size:10.5px; font-weight:400; letter-spacing:2.5px;
+    text-transform:uppercase; color:var(--text-2); margin-top:4px;
+  }
+  .date-sub {
+    font-size:9.5px; font-weight:300; color:var(--text-3);
+    letter-spacing:1.2px; margin-top:2px;
+  }
+  .header-tagline {
+    font-size:12px; font-weight:300; color:var(--text-2);
+    letter-spacing:0.4px; font-style:italic;
+    border-top:1px solid rgba(212,168,67,0.15); padding-top:14px;
+    line-height:1.5;
+  }
+
+  /* ── SENTIMENT BAR ── */
+  .sentiment-bar {
+    background: var(--bg-section);
+    border-bottom: 1px solid var(--border-2);
+    padding: 13px 54px;
+    display: flex; align-items:center; gap:16px;
+  }
+  .sbar-label {
+    font-size:9px; letter-spacing:2.2px; text-transform:uppercase;
+    color:var(--text-3); font-weight:600; white-space:nowrap;
+  }
+  .sbar-track {
+    flex:1; height:6px;
+    background: linear-gradient(90deg, #c0392b 0%, #e67e22 30%, #f1c40f 50%, #27ae60 75%, #1abc9c 100%);
+    border-radius:3px; position:relative;
+  }
+  .sbar-needle {
+    position:absolute; top:-5px;
+    left:58%; /* ~58 = Hati-Hati Optimis */
+    width:16px; height:16px;
+    background:var(--bg-card);
+    border:2px solid var(--gold); border-radius:50%;
+    transform:translateX(-50%);
+    box-shadow: 0 0 10px rgba(212,168,67,0.45);
+  }
+  .sbar-val { font-size:11px; font-weight:700; color:var(--green); white-space:nowrap; }
+  .sbar-note { font-size:9.5px; color:var(--text-3); white-space:nowrap; }
+
+  /* ── LIVE TICKER (TradingView — Data Real-Time) ── */
+  .live-ticker {
+    background: var(--bg-section);
+    border-bottom: 1px solid var(--border-2);
+    padding: 12px 54px 14px;
+  }
+  .live-ticker-head {
+    display:flex; align-items:center; gap:8px; margin-bottom:9px;
+  }
+  .live-dot {
+    width:7px; height:7px; border-radius:50%;
+    background: var(--green);
+    box-shadow: 0 0 8px rgba(62,207,130,0.7);
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity:1; }
+    50% { opacity:0.35; }
+  }
+  .live-ticker-label {
+    font-size:9px; letter-spacing:2.2px; text-transform:uppercase;
+    color:var(--text-3); font-weight:600;
+  }
+  .live-ticker-label strong { color:var(--green); }
+  .live-ticker-body {
+    border:1px solid var(--border-2);
+    border-radius:8px;
+    overflow:hidden;
+    background:rgba(0,0,0,0.25);
+  }
+  .live-ticker tv-ticker-tape { width:100% !important; display:block; }
+
+  /* ── BODY ── */
+  .body { padding: 0 54px 52px; }
+
+  /* ── SECTION ── */
+  .section { margin-top:36px; }
+  .sec-head {
+    display:flex; align-items:center; gap:12px;
+    margin-bottom:18px; padding-bottom:11px;
+    border-bottom:1px solid var(--border);
+  }
+  .sec-icon {
+    width:34px; height:34px;
+    background:var(--bg-panel); border:1px solid var(--border);
+    border-radius:7px; display:flex; align-items:center; justify-content:center;
+    font-size:17px; flex-shrink:0;
+  }
+  .sec-title {
+    font-family:'Playfair Display', serif;
+    font-size:16.5px; font-weight:600; color:var(--text); letter-spacing:0.3px;
+  }
+  .badge {
+    margin-left:auto; font-size:8.5px; font-weight:700;
+    letter-spacing:1.5px; text-transform:uppercase;
+    padding:3px 10px; border-radius:12px; white-space:nowrap;
+  }
+  .badge-pos { background:var(--green-dim); color:var(--green);  border:1px solid rgba(62,207,130,0.28); }
+  .badge-neg { background:var(--red-dim);   color:var(--red);    border:1px solid rgba(224,92,92,0.28); }
+  .badge-cau { background:rgba(232,160,48,0.1); color:var(--amber); border:1px solid rgba(232,160,48,0.28); }
+  .badge-neu { background:rgba(255,255,255,0.04); color:var(--text-2); border:1px solid rgba(255,255,255,0.1); }
+
+  /* ── STAT CARDS ── */
+  .stat-grid { display:grid; gap:12px; margin-bottom:18px; }
+  .sg3 { grid-template-columns:repeat(3,1fr); }
+  .sg4 { grid-template-columns:repeat(4,1fr); }
+  .sg2 { grid-template-columns:repeat(2,1fr); }
+  .stat-card {
+    background:var(--bg-section); border:1px solid var(--border-2);
+    border-radius:8px; padding:14px 16px; text-align:center;
+  }
+  .s-name { font-size:9px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; color:var(--text-3); margin-bottom:6px; }
+  .s-val { font-family:'Playfair Display', serif; font-size:19px; font-weight:700; color:var(--text); line-height:1; }
+  .s-val.sm { font-size:15px; }
+  .s-chg { font-size:10.5px; font-weight:700; margin-top:5px; }
+  .up   { color:var(--green); }
+  .dn   { color:var(--red); }
+  .neu  { color:var(--text-2); }
+  .amb  { color:var(--amber); }
+
+  /* ── BULLET LIST ── */
+  .blist { list-style:none; }
+  .blist li {
+    font-size:13.5px; line-height:1.68;
+    padding:7px 0 7px 22px;
+    border-bottom:1px solid rgba(255,255,255,0.038);
+    position:relative; color:var(--text);
+  }
+  .blist li:last-child { border-bottom:none; }
+  .blist li::before {
+    content:'▸'; position:absolute; left:0; top:9px;
+    color:var(--gold); font-size:11px;
+  }
+  .blist li strong { color:var(--gold-light); font-weight:600; }
+  .src { font-size:10px; color:var(--text-3); font-style:italic; }
+
+  /* ── HIGHLIGHT BOX ── */
+  .hl-box {
+    background:var(--bg-panel); border:1px solid var(--border);
+    border-left:3px solid var(--gold);
+    border-radius:0 8px 8px 0; padding:16px 20px; margin-bottom:16px;
+  }
+  .hl-box h4 {
+    font-size:9px; letter-spacing:2.2px; text-transform:uppercase;
+    color:var(--gold); margin-bottom:8px; font-weight:600;
+  }
+  .hl-box p { font-size:13.5px; color:var(--text); line-height:1.65; }
+  .hl-box p strong { color:var(--gold-light); }
+
+  /* ── WARNING BOX ── */
+  .warn-box {
+    background:rgba(224,92,92,0.07); border:1px solid rgba(224,92,92,0.2);
+    border-left:3px solid var(--red);
+    border-radius:0 8px 8px 0; padding:16px 20px; margin-top:14px;
+  }
+  .warn-box h4 {
+    font-size:9px; letter-spacing:2.2px; text-transform:uppercase;
+    color:var(--red); margin-bottom:8px; font-weight:600;
+  }
+  .warn-box p { font-size:13px; color:#e8b4b4; line-height:1.65; }
+  .warn-box p strong { color:var(--red); }
+
+  /* ── CHART WRAP ── */
+  .chart-wrap {
+    background:var(--bg-section); border:1px solid var(--border-2);
+    border-radius:8px; padding:18px 22px; margin-bottom:18px;
+  }
+  .chart-ttl {
+    font-size:9px; letter-spacing:2px; text-transform:uppercase;
+    color:var(--text-3); margin-bottom:14px; font-weight:600;
+  }
+
+  /* ── DIVIDER ── */
+  .divider { height:1px; background:var(--border-2); margin:32px 0; }
+
+  /* ── SUMMARY BOX ── */
+  .sum-box {
+    background:var(--bg-panel); border:1px solid var(--border);
+    border-radius:10px; padding:26px 30px; margin-top:36px;
+    position:relative; overflow:hidden;
+  }
+  .sum-box::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:2px;
+    background:linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+  }
+  .sum-box h3 {
+    font-family:'Playfair Display', serif; font-size:12px; font-weight:600;
+    color:var(--gold); letter-spacing:2.5px; text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  .sum-list { list-style:none; }
+  .sum-list li {
+    font-size:13px; line-height:1.6; padding:5px 0;
+    color:var(--text); display:flex; align-items:flex-start; gap:10px;
+  }
+  .sum-ico { color:var(--gold); font-size:11px; flex-shrink:0; margin-top:4px; }
+
+  /* ── PROFIT SECTION ── */
+  .profit {
+    background:linear-gradient(145deg, #183524 0%, #112517 100%);
+    border:1.5px solid var(--gold); border-radius:12px;
+    padding:30px 34px; margin-top:36px;
+    position:relative; overflow:hidden;
+  }
+  .profit::after {
+    content:''; position:absolute; top:-100px; right:-100px;
+    width:300px; height:300px;
+    background:radial-gradient(circle, rgba(212,168,67,0.06) 0%, transparent 65%);
+    pointer-events:none;
+  }
+  .profit-head {
+    display:flex; align-items:center; gap:12px;
+    margin-bottom:24px; padding-bottom:16px;
+    border-bottom:1px solid rgba(212,168,67,0.22);
+  }
+  .profit-head-ico { font-size:22px; }
+  .profit-head h2 {
+    font-family:'Playfair Display', serif;
+    font-size:19px; font-weight:700; color:var(--text);
+  }
+  .profit-head h2 em { font-style:normal; color:var(--gold); }
+  .profit-head-badge {
+    margin-left:auto; background:var(--gold-dim);
+    border:1px solid rgba(212,168,67,0.32); color:var(--gold);
+    font-size:8.5px; letter-spacing:1.5px; text-transform:uppercase;
+    font-weight:700; padding:4px 12px; border-radius:12px;
+  }
+  .profit-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .p-card {
+    background:rgba(255,255,255,0.035); border:1px solid rgba(212,168,67,0.16);
+    border-radius:9px; padding:18px 20px;
+  }
+  .p-card.full { grid-column: 1 / -1; }
+  .p-card-head { display:flex; align-items:center; gap:9px; margin-bottom:11px; }
+  .p-card-ico { font-size:20px; }
+  .p-card-title {
+    font-size:10.5px; font-weight:700; letter-spacing:1.2px;
+    text-transform:uppercase; color:var(--gold);
+  }
+  .p-card-type {
+    margin-left:auto; font-size:8.5px; letter-spacing:0.8px;
+    text-transform:uppercase; color:var(--text-3);
+    background:rgba(255,255,255,0.04); padding:2px 8px;
+    border-radius:8px; border:1px solid rgba(255,255,255,0.07);
+  }
+  .p-card-desc { font-size:13px; color:var(--text); line-height:1.62; margin-bottom:13px; }
+  .p-card-desc strong { color:var(--gold-light); }
+  .p-levels {
+    display:grid; grid-template-columns:1fr 1fr; gap:8px;
+    border-top:1px solid rgba(212,168,67,0.11); padding-top:12px;
+  }
+  .p-level { font-size:10px; color:var(--text-2); }
+  .p-level strong { color:var(--green); font-size:12px; font-weight:700; display:block; margin-top:2px; }
+  .p-level.neg strong { color:var(--amber); }
+
+  /* ── FOOTER ── */
+  .footer {
+    background:var(--bg-section); border-top:1px solid var(--border);
+    padding:28px 54px 32px;
+  }
+  .sig { margin-bottom:20px; padding-bottom:18px; border-bottom:1px solid var(--border-2); }
+  .sig-label { font-size:8px; letter-spacing:2.8px; text-transform:uppercase; color:var(--text-3); margin-bottom:6px; }
+  .sig-name { font-family:'Playfair Display', serif; font-size:17px; font-weight:600; color:var(--gold); }
+  .sig-role { font-size:11px; color:var(--text-2); margin-top:3px; }
+  .sig-email { font-size:10.5px; color:var(--text-3); margin-top:2px; font-style:italic; }
+  .sources-label { font-size:8px; letter-spacing:2.2px; text-transform:uppercase; color:var(--text-3); margin-bottom:7px; font-weight:600; }
+  .sources-text { font-size:9.5px; color:var(--text-3); line-height:1.75; margin-bottom:16px; }
+  .disclaimer { font-size:9px; color:var(--text-3); line-height:1.7; font-style:italic; opacity:0.72; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ══════════ HEADER ══════════ -->
+  <div class="header">
+    <div class="header-row">
+      <div>
+        <div class="brand-label">Premium Market Intelligence · Institutional Report</div>
+        <h1>Market Update <em>Harian</em><br>Indonesia &amp; Global</h1>
+      </div>
+      <div class="header-date">
+        <div class="date-num">22</div>
+        <div class="date-rest">Juni 2026</div>
+        <div class="date-sub">Senin · Sesi Asia / Eropa</div>
+      </div>
+    </div>
+    <div class="header-tagline">
+      Laporan pasar eksklusif untuk investor profesional — analisis peluang dan risiko terkini di pasar global &amp; domestik, disajikan dalam gaya institutional-grade.
+    </div>
+  </div>
+
+  <!-- ══════════ SENTIMENT BAR ══════════ -->
+  <div class="sentiment-bar">
+    <div class="sbar-label">Sentimen Pasar Global</div>
+    <div class="sbar-track"><div class="sbar-needle"></div></div>
+    <div class="sbar-val">Hati-Hati Optimis</div>
+    <div class="sbar-note">· ~58 / 100</div>
+  </div>
+
+  <!-- ══════════ LIVE MARKET TICKER — DATA REAL-TIME TRADINGVIEW ══════════ -->
+  <div class="live-ticker">
+    <div class="live-ticker-head">
+      <div class="live-dot"></div>
+      <div class="live-ticker-label"><strong>LIVE</strong> · Harga Pasar Real-Time — Widget TradingView (Ter-update Otomatis Saat Laporan Dibuka)</div>
+    </div>
+    <div class="live-ticker-body">
+      <tv-ticker-tape symbols="FOREXCOM:SPXUSD,FOREXCOM:NSXUSD,FOREXCOM:DJI,FX:EURUSD,TVC:DXY,CMCMARKETS:GOLD,FX_IDC:USDIDR" hide-chart style="width: 100%"></tv-ticker-tape>
+    </div>
+  </div>
+
+  <!-- ══════════ BODY ══════════ -->
+  <div class="body">
+
+    <!-- ── 1. US STOCK MARKET ── -->
+    <div class="section">
+      <div class="sec-head">
+        <div class="sec-icon">🇺🇸</div>
+        <div class="sec-title">US Stock Market</div>
+        <div class="badge badge-pos">Positif · Momentum AI Berlanjut</div>
+      </div>
+
+      <div class="stat-grid sg3">
+        <div class="stat-card">
+          <div class="s-name">NASDAQ Composite</div>
+          <div class="s-val">26.517,93</div>
+          <div class="s-chg up">▲ +1,91% · Penutupan 18 Jun</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-name">S&amp;P 500</div>
+          <div class="s-val">7.500,58</div>
+          <div class="s-chg up">▲ +1,08% · Penutupan 18 Jun</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-name">NVIDIA (NVDA)</div>
+          <div class="s-val">$210,33</div>
+          <div class="s-chg up">21 Jun · Pemimpin Rally AI</div>
+        </div>
+      </div>
+
+      <div class="hl-box">
+        <h4>Tema Dominan — Boom Chip Memori &amp; Supercycle AI Belum Berakhir</h4>
+        <p>Wall Street melanjutkan momentum dari penutupan kuat 18 Juni (<strong>NASDAQ +1,91%</strong> ke 26.517,93; pasar AS libur 19 Juni untuk Juneteenth). Pendorong utama tetap sektor semikonduktor: belanja chip global diproyeksikan menembus <strong>USD 1 triliun</strong> pada 2026, dengan saham produsen memori — Micron, Seagate, Western Digital — melonjak lebih dari <strong>+200% YTD</strong>, dan SanDisk <strong>+600% YTD</strong>. <span class="src">[TheStreet, 18 Jun 2026; Morningstar/Marketshost, Jun 2026]</span></p>
+      </div>
+
+      <ul class="blist">
+        <li><strong>NASDAQ Composite +1,91%</strong> ke 26.517,93 dan <strong>S&amp;P 500 +1,08%</strong> ke 7.500,58 pada penutupan 18 Juni — sesi konfirmasi terakhir sebelum bursa AS libur Juneteenth (19 Jun). <span class="src">[TheStreet/BBNTimes, 18 Jun 2026]</span></li>
+        <li><strong>NVIDIA diperdagangkan di $210,33</strong> (21 Jun, kisaran $206,50–$211,39), mempertahankan posisi sebagai motor utama rally AI di tengah permintaan data center yang terus meningkat. <span class="src">[Yahoo Finance, 21 Jun 2026]</span></li>
+        <li><strong>Boom chip memori</strong>: Micron, Seagate, dan Western Digital melonjak lebih dari +200% YTD; SanDisk +600% YTD — salah satu rally sektoral terkuat sepanjang 2026. <span class="src">[Morningstar/Marketshost, Jun 2026]</span></li>
+        <li><strong>Belanja semikonduktor global diproyeksikan tembus USD 1 triliun</strong> pada 2026, didukung kesepakatan dagang AS–Taiwan senilai USD 250 miliar untuk investasi manufaktur chip baru (efektif Jan 2026). <span class="src">[Exness Insights, Jun 2026]</span></li>
+        <li><strong>Broadcom</strong> mencatat kenaikan +4,30% pada sesi 16 Juni, ditopang revisi naik proyeksi pendapatan chip AI oleh analis Wall Street. <span class="src">[Yahoo Finance, 16 Jun 2026]</span></li>
+      </ul>
+    </div>
+
+    <!-- ── 2. COMMODITIES ── -->
+    <div class="section">
+      <div class="sec-head">
+        <div class="sec-icon">🥇</div>
+        <div class="sec-title">Commodities Market</div>
+        <div class="badge badge-pos">Bullish · Target Bank Optimis</div>
+      </div>
+
+      <div class="stat-grid sg3">
+        <div class="stat-card">
+          <div class="s-name">Emas (XAU/USD)</div>
+          <div class="s-val">$4.188</div>
+          <div class="s-chg up">▲ +0,68% · 22 Jun</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-name">Target J.P. Morgan</div>
+          <div class="s-val">$6.000</div>
+          <div class="s-chg up">▲ Year-End 2026</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-name">Brent Crude</div>
+          <div class="s-val">$78,9</div>
+          <div class="s-chg amb">▼ -1,42% · Mereda</div>
+        </div>
+      </div>
+
+      <div class="hl-box">
+        <h4>Tema Dominan — J.P. Morgan Pertahankan Target $6.000 untuk Emas</h4>
+        <p>Emas diperdagangkan di <strong>$4.188,42/oz</strong> (22 Jun), naik dari penutupan sebelumnya $4.160,26. J.P. Morgan Global Research mempertahankan target year-end 2026 sebesar <strong>$6.000/oz</strong> — meski memangkas estimasi rata-rata tahunan ke $5.243 dari $5.708 — mengindikasikan ekspektasi akselerasi permintaan pada semester II 2026. <span class="src">[InvestingLive, 18 Mei 2026]</span></p>
+      </div>
+
+      <!-- SVG Horizontal Performance Bar Chart — Daily moves, sesi 22 Jun (verified) -->
+      <div class="chart-wrap">
+        <div class="chart-ttl">Pergerakan Pasar Utama — Sesi 22 Juni 2026 (% Harian, Data Terverifikasi)</div>
+        <svg width="100%" viewBox="0 0 720 145" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#3ecf82;stop-opacity:0.85"/>
+              <stop offset="100%" style="stop-color:#3ecf82;stop-opacity:0.5"/>
+            </linearGradient>
+            <linearGradient id="gAmber" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#e8a030;stop-opacity:0.5"/>
+              <stop offset="100%" style="stop-color:#e8a030;stop-opacity:0.85"/>
+            </linearGradient>
+          </defs>
+          <!-- Row Labels -->
+          <text x="6" y="32"  font-size="11.5" fill="#8ab89a" font-family="Source Sans 3">IHSG (JCI)</text>
+          <text x="6" y="69"  font-size="11.5" fill="#8ab89a" font-family="Source Sans 3">Emas (XAU)</text>
+          <text x="6" y="106" font-size="11.5" fill="#8ab89a" font-family="Source Sans 3">Brent Crude</text>
+          <!-- Zero axis line -->
+          <line x1="150" y1="12" x2="150" y2="125" stroke="rgba(212,168,67,0.22)" stroke-width="1"/>
+          <text x="150" y="139" font-size="8.5" fill="#557060" font-family="Source Sans 3" text-anchor="middle">0%</text>
+          <!-- IHSG +2,82% -->
+          <rect x="150" y="22" width="254" height="20" rx="3" fill="url(#gGreen)"/>
+          <text x="412" y="36" font-size="11" fill="#3ecf82" font-weight="bold" font-family="Source Sans 3">▲ +2,82%</text>
+          <!-- Emas +0,68% -->
+          <rect x="150" y="59" width="61" height="20" rx="3" fill="url(#gGreen)" opacity="0.75"/>
+          <text x="219" y="73" font-size="11" fill="#7dab8a" font-weight="bold" font-family="Source Sans 3">▲ +0,68%</text>
+          <!-- Brent -1,42% -->
+          <rect x="22" y="96" width="128" height="20" rx="3" fill="url(#gAmber)"/>
+          <text x="16" y="110" font-size="11" fill="#e8a030" font-weight="bold" font-family="Source Sans 3" text-anchor="end">▼ -1,42%</text>
+        </svg>
+      </div>
+
+      <ul class="blist">
+        <li><strong>Emas (XAU/USD) di $4.188,42</strong> (22 Jun), naik dari penutupan sebelumnya $4.160,26 (kisaran harian $4.136,74–$4.220,34). <span class="src">[Investing.com, 22 Jun 2026]</span></li>
+        <li><strong>J.P. Morgan mempertahankan target year-end 2026 sebesar $6.000/oz</strong> meski memangkas estimasi rata-rata tahunan ke $5.243 dari $5.708 — menyiratkan keyakinan permintaan H2 2026 tetap kuat. Potensi penguatan +43% dari level saat ini. <span class="src">[InvestingLive, 18 Mei 2026]</span></li>
+        <li><strong>Permintaan bank sentral global</strong> diproyeksikan rata-rata 585 ton per kuartal sepanjang 2026, menjadi penopang struktural harga emas di luar siklus sentimen jangka pendek. <span class="src">[J.P. Morgan Global Research, 2026]</span></li>
+        <li><strong>Brent Crude melunak ke $78,91</strong> (-1,42%), turut menahan tekanan inflasi global di tengah redanya intensitas ketegangan geopolitik — kondusif bagi daya beli &amp; margin korporasi secara luas. <span class="src">[Investing.com/TradingEconomics, 22 Jun 2026]</span></li>
+      </ul>
+    </div>
+
+    <!-- ── 3. FOREX ── -->
+    <div class="section">
+      <div class="sec-head">
+        <div class="sec-icon">💱</div>
+        <div class="sec-title">Forex Market</div>
+        <div class="badge badge-pos">Peluang · Dolar AS Tetap Kokoh</div>
+      </div>
+
+      <div class="stat-grid sg4">
+        <div class="stat-card">
+          <div class="s-name">DXY Index</div>
+          <div class="s-val sm">~100,85</div>
+          <div class="s-chg up">Solid · Fed Hawkish</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-name">US 10Y Yield</div>
+          <div class="s-val sm">4,44%</div>
+          <div class="s-chg up">Tertinggi Multi-Pekan</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-name">EUR / USD</div>
+          <div class="s-val">1,143</div>
+          <div class="s-chg amb">Tertekan oleh USD</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-name">USD / IDR</div>
+          <div class="s-val">17.819</div>
+          <div class="s-chg up">▲ Rupiah Melemah</div>
+        </div>
+      </div>
+
+      <div class="hl-box">
+        <h4>Tema Dominan — Sikap Hawkish The Fed Menopang Dolar AS</h4>
+        <p>The Fed mempertahankan suku bunga di <strong>3,50–3,75%</strong> pada pertemuan 17 Juni — namun outlook bergeser dari ekspektasi pemangkasan menjadi potensi <strong>kenaikan</strong> suku bunga, dengan 9 dari 18 anggota memproyeksikan hike sebelum akhir 2026 akibat inflasi yang terdorong kenaikan harga energi terkait perang di Timur Tengah. Proyeksi median suku bunga akhir tahun naik ke 3,8%, menopang dolar AS secara luas terhadap mata uang utama maupun emerging market. <span class="src">[CNBC/Fox Business, 17 Jun 2026]</span></p>
+      </div>
+
+      <ul class="blist">
+        <li><strong>Indeks Dolar (DXY) bertahan solid di ~100,85</strong>, dengan yield US Treasury 10-tahun di ~4,44–4,46% — tertinggi dalam beberapa pekan terakhir, mencerminkan ekspektasi suku bunga AS yang lebih tinggi lebih lama (higher-for-longer). <span class="src">[FRED/TradingEconomics, 18 Jun 2026]</span></li>
+        <li><strong>The Fed menahan suku bunga di 3,50–3,75%</strong> (FOMC 17 Jun, rapat perdana Ketua Kevin Warsh); 9 dari 18 anggota memproyeksikan kenaikan suku bunga sebelum akhir 2026 — proyeksi median naik ke 3,8%. <span class="src">[CNBC/Fox Business/Advisor Perspectives, 17–18 Jun 2026]</span></li>
+        <li><strong>ECB menaikkan suku bunga deposito ke 2,25%</strong> (11 Jun, kenaikan pertama sejak 2023; suku bunga refinancing utama ke 2,40%), namun EUR/USD tetap tertekan di ~1,143 — terkapit di bawah 1,15 akibat dominasi kekuatan dolar AS. <span class="src">[Cambridge Currencies, 19 Jun 2026]</span></li>
+        <li><strong>USD/IDR diperdagangkan di ~Rp17.819</strong> (22 Jun) — dolar yang kokoh membuka peluang directional yang jelas bagi trader berpengalaman terhadap rupiah dan mata uang emerging market lainnya. <span class="src">[Investor.id, 22 Jun 2026]</span></li>
+      </ul>
+    </div>
+
+    <!-- ── DIVIDER ── -->
+    <div class="divider"></div>
+
+    <!-- ── 4. INDONESIA ECONOMIC UPDATE ── -->
+    <div class="section">
+      <div class="sec-head">
+        <div class="sec-icon">🇮🇩</div>
+        <div class="sec-title">Indonesia Economic Update</div>
+        <div class="badge badge-neg">Waspada · Tekanan Struktural Berlanjut</div>
+      </div>
+
+      <div class="stat-grid sg4">
+        <div class="stat-card">
+          <div class="s-name">IHSG / JCI</div>
+          <div class="s-val">6.209</div>
+          <div class="s-chg up">▲ +2,82% (rebound teknikal)</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-name">USD / IDR</div>
+          <div class="s-val">17.819</div>
+          <div class="s-chg dn">▼ Melemah Tanpa Henti</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-name">BI Rate</div>
+          <div class="s-val">5,75%</div>
+          <div class="s-chg dn">▲ Kenaikan ke-3 · 2026</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-name">Net Sell Asing YTD</div>
+          <div class="s-val sm">Rp68,25 T</div>
+          <div class="s-chg dn">▼ Arus Keluar Modal</div>
+        </div>
+      </div>
+
+      <div class="warn-box">
+        <h4>⚠ Peringatan Kritis — Kenaikan Suku Bunga Defensif &amp; Outflow Modal Berlanjut</h4>
+        <p>Meski IHSG menguat <strong>+2,82% ke 6.209</strong> pada 22 Juni, kenaikan ini berlangsung BERSAMAAN dengan net sell asing yang telah mencapai <strong>Rp68,25 triliun</strong> sepanjang 2026 — mengindikasikan rebound bersifat teknikal, bukan perubahan arah modal asing. Bank Indonesia menaikkan BI-Rate untuk ketiga kalinya tahun ini menjadi <strong>5,75%</strong> (efektif 18 Jun), langkah defensif untuk menahan pelemahan rupiah &amp; inflasi impor di tengah sikap hawkish The Fed. Moody's dan Fitch masih mempertahankan outlook <strong>NEGATIF</strong> atas peringkat kredit Indonesia. <span class="src">[Bareksa/CNBC Indonesia, 22 Jun 2026]</span></p>
+      </div>
+
+      <ul class="blist">
+        <li><strong>IHSG menguat +2,82% ke 6.209,26</strong> pada 22 Juni — namun rebound ini terjadi bersamaan dengan net sell asing yang mencapai Rp68,25 triliun sepanjang tahun, menandakan kenaikan bersifat teknikal, bukan reversal arus modal struktural. <span class="src">[Bareksa, 22 Jun 2026]</span></li>
+        <li><strong>Rupiah terus melemah ke ~Rp17.819/USD</strong> (22 Jun), bergerak selaras tren pelemahan luas mata uang Asia terhadap dolar AS yang kokoh. <span class="src">[Investor.id, 22 Jun 2026]</span></li>
+        <li><strong>Bank Indonesia menaikkan BI-Rate +25 bps ke 5,75%</strong> (RDG 17–18 Jun) — kenaikan ketiga sepanjang 2026, langkah pre-emptive demi menahan inflasi impor &amp; menjaga stabilitas rupiah, namun menambah biaya dana dan membebani momentum pertumbuhan domestik. <span class="src">[CNBC Indonesia, 18 Jun 2026]</span></li>
+        <li>Inflasi tahunan Mei 2026 tercatat <strong>3,08%</strong> (inti 2,59%) — masih dalam target, namun risiko tekanan harga impor meningkat akibat dolar yang kokoh &amp; ketegangan energi global. <span class="src">[Bank Indonesia, 2026]</span></li>
+        <li><strong>Outlook peringkat kredit memburuk</strong>: Moody's (5 Feb 2026, rating Baa2 dipertahankan) dan Fitch (4 Mar 2026, rating BBB dipertahankan) tetap dengan outlook NEGATIF — mencerminkan kekhawatiran berkelanjutan atas prediktabilitas kebijakan dan tata kelola fiskal. <span class="src">[CNBC Indonesia, 2026]</span></li>
+        <li><strong>Katalis risiko mendatang</strong>: pengumuman hasil evaluasi MSCI dijadwalkan 24 Juni WIB — potensi reklasifikasi indeks dapat memicu volatilitas tambahan pada arus modal asing. <span class="src">[Beritasatu, 19 Jun 2026]</span></li>
+      </ul>
+    </div>
+
+    <!-- ══════════ PROFIT OPPORTUNITY ══════════ -->
+    <div class="profit">
+      <div class="profit-head">
+        <div class="profit-head-ico">💡</div>
+        <h2>Potensi <em>Keuntungan</em> — Peluang Terkuat Hari Ini</h2>
+        <div class="profit-head-badge">22 Juni 2026</div>
+      </div>
+
+      <div class="profit-grid">
+
+        <!-- Card 1: Gold -->
+        <div class="p-card">
+          <div class="p-card-head">
+            <div class="p-card-ico">🥇</div>
+            <div class="p-card-title">Emas · XAU/USD</div>
+            <div class="p-card-type">Komoditas</div>
+          </div>
+          <div class="p-card-desc">
+            Emas di <strong>$4.188/oz</strong>, dengan J.P. Morgan mempertahankan target year-end 2026 di <strong>$6.000/oz</strong> — potensi penguatan +43% dari level saat ini. Permintaan bank sentral struktural (585 ton/kuartal) dan ketegangan geopolitik yang masih membara menjaga daya tarik emas sebagai aset lindung nilai utama.
+          </div>
+          <div class="p-levels">
+            <div class="p-level">
+              Entry Ideal
+              <strong>$4.100 – $4.250</strong>
+            </div>
+            <div class="p-level">
+              Target J.P. Morgan (YE 2026)
+              <strong>$6.000</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: US Tech / AI -->
+        <div class="p-card">
+          <div class="p-card-head">
+            <div class="p-card-ico">🤖</div>
+            <div class="p-card-title">AI &amp; Semikonduktor</div>
+            <div class="p-card-type">Ekuitas AS</div>
+          </div>
+          <div class="p-card-desc">
+            Boom chip memori (Micron, SanDisk +200–600% YTD) dan belanja semikonduktor global yang diproyeksikan &gt;USD 1 triliun di 2026 menegaskan supercycle AI masih dalam fase awal. NVIDIA ($210,33) dan Broadcom memimpin partisipasi institusional yang kuat.
+          </div>
+          <div class="p-levels">
+            <div class="p-level">
+              NASDAQ Saat Ini
+              <strong>26.518 (18 Jun)</strong>
+            </div>
+            <div class="p-level">
+              Horizon Investasi
+              <strong>6 – 12 Bulan</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: USD strength (full width) -->
+        <div class="p-card full">
+          <div class="p-card-head">
+            <div class="p-card-ico">💵</div>
+            <div class="p-card-title">Dolar AS · USD/IDR</div>
+            <div class="p-card-type">Forex</div>
+          </div>
+          <div class="p-card-desc">
+            Sikap hawkish The Fed (potensi hike, bukan cut) menjaga dolar AS kokoh terhadap mata uang emerging market termasuk rupiah, yang telah melemah ke ~Rp17.819 di tengah net sell asing Rp68,25 triliun YTD pada pasar Indonesia. Posisi panjang dolar AS terhadap rupiah tetap relevan selama divergensi kebijakan moneter ini berlanjut.
+          </div>
+          <div class="p-levels">
+            <div class="p-level">
+              Level Saat Ini
+              <strong>Rp17.819 / USD</strong>
+            </div>
+            <div class="p-level">
+              Potensi Lanjutan
+              <strong>Rp18.000 – 18.300</strong>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end profit-grid -->
+    </div><!-- end profit -->
+
+    <!-- ══════════ SUMMARY BOX ══════════ -->
+    <div class="sum-box">
+      <h3>Ringkasan Eksekutif — 22 Juni 2026</h3>
+      <ul class="sum-list">
+        <li><span class="sum-ico">▸</span><span><strong style="color:var(--gold-light)">Emas</strong> tetap pilihan utama preservasi &amp; apresiasi kekayaan — J.P. Morgan pertahankan target $6.000/oz akhir 2026 meski sempat merevisi estimasi rata-rata tahunan.</span></li>
+        <li><span class="sum-ico">▸</span><span><strong style="color:var(--gold-light)">US Stocks (AI/Semikonduktor)</strong>: boom chip memori &amp; belanja semikonduktor global &gt;USD 1 triliun menegaskan supercycle masih berlanjut; NASDAQ +1,91% pada penutupan konfirmasi terakhir.</span></li>
+        <li><span class="sum-ico">▸</span><span><strong style="color:var(--gold-light)">Forex</strong>: dolar AS kokoh ditopang sikap hawkish The Fed; USD/IDR menawarkan peluang directional yang jelas bagi trader berpengalaman.</span></li>
+        <li><span class="sum-ico">▸</span><span><strong style="color:var(--red)">IHSG &amp; Rupiah</strong>: rebound +2,82% pada 22 Jun bersifat teknikal — net sell asing Rp68,25 triliun YTD dan outlook rating negatif Moody's/Fitch menegaskan tekanan struktural belum mereda.</span></li>
+        <li><span class="sum-ico">▸</span><span><strong style="color:var(--red)">BI-Rate</strong>: kenaikan ketiga 2026 ke 5,75% adalah langkah defensif yang menambah beban biaya dana domestik di tengah divergensi kebijakan dengan The Fed.</span></li>
+      </ul>
+    </div>
+
+  </div><!-- end .body -->
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <div class="footer">
+    <div class="sig">
+      <div class="sig-label">Exclusively Prepared by</div>
+      <div class="sig-name">Revan Ashford</div>
+      <div class="sig-role">Senior Investment Consultant &amp; Portfolio Manager</div>
+      <div class="sig-email">revan@onetwomarkets.co.za</div>
+    </div>
+
+    <div class="sources-label">Sumber Data — Diverifikasi via Web Search · 22 Juni 2026</div>
+    <div class="sources-text">
+      <strong style="color:var(--green)">Catatan provenance:</strong> Ticker LIVE di bagian atas ditenagai widget web TradingView (menampilkan harga pasar aktual saat laporan dibuka). Angka statis di dalam laporan bersumber dari web search terverifikasi per tanggal di bawah — jembatan data TradingView Desktop (CDP port 9222) tidak aktif saat penyusunan laporan ini (proses TradingView pengguna tidak dihentikan demi menjaga sesi tetap utuh), sehingga level snapshot diambil dari sumber publik dan dapat berbeda dari harga live.
+    </div>
+    <div class="sources-text">
+      NASDAQ, S&amp;P 500 (18 Jun): TheStreet, BBNTimes ·
+      NVIDIA (21 Jun): Yahoo Finance ·
+      Broadcom (16 Jun): Yahoo Finance ·
+      Boom chip memori &amp; capex semikonduktor global: Morningstar, Marketshost, Exness Insights (Jun 2026) ·
+      Emas &amp; target J.P. Morgan: Investing.com (22 Jun 2026), InvestingLive (18 Mei 2026), J.P. Morgan Global Research ·
+      Brent Crude (22 Jun): Investing.com/TradingEconomics ·
+      DXY &amp; yield UST 10Y (18 Jun): FRED, TradingEconomics, Yahoo Finance ·
+      FOMC/suku bunga Fed (17 Jun): CNBC, Fox Business, Advisor Perspectives ·
+      EUR/USD &amp; ECB (19 Jun): Cambridge Currencies ·
+      USD/IDR &amp; IHSG (22 Jun): Investor.id, Bareksa, BCA ·
+      BI-Rate (18 Jun): CNBC Indonesia, Medcom, Detik Finance ·
+      Net sell asing YTD (22 Jun): Bareksa ·
+      Outlook rating Moody's/Fitch: CNBC Indonesia (Feb–Mar 2026) ·
+      Katalis MSCI: Beritasatu (19 Jun 2026).
+    </div>
+
+    <div class="disclaimer">
+      Laporan ini disusun semata-mata untuk tujuan informasi dan edukasi bagi investor profesional. Tidak merupakan rekomendasi investasi, nasihat keuangan, atau ajakan untuk membeli maupun menjual instrumen keuangan apa pun. Semua investasi mengandung risiko, termasuk risiko kehilangan pokok investasi. Kinerja masa lalu tidak menjamin atau mengindikasikan hasil di masa depan. Data bersumber dari sumber publik terpercaya dan telah diverifikasi pada tanggal penerbitan — namun demikian, akurasi tidak dapat dijamin sepenuhnya. Pastikan Anda memahami risiko sepenuhnya dan, jika perlu, konsultasikan dengan penasihat keuangan independen sebelum mengambil keputusan investasi.
+    </div>
+  </div>
+
+</div><!-- end .page -->
+</body>
+</html>

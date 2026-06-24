@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Briefing — Monday 11 May 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  :root {
+    --black:       #0a0a0a;
+    --black-soft:  #111111;
+    --black-card:  #161616;
+    --black-border:#222222;
+    --white:       #f5f5f0;
+    --white-dim:   #aaaaaa;
+    --white-faint: #555555;
+    --gold:        #c9913d;
+    --gold-bright: #e8a94a;
+    --gold-light:  #f2c96e;
+    --gold-dim:    #6b4a1a;
+    --gold-bg:     rgba(201,145,61,0.08);
+    --gold-border: rgba(201,145,61,0.25);
+    --orange:      #d4601a;
+    --orange-bg:   rgba(212,96,26,0.10);
+    --cream:       #f0ece4;
+    --green-acc:   #5dba7e;
+    --red-acc:     #e05050;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    background: var(--black-soft);
+    border-bottom: 1px solid var(--gold-border);
+    padding: 40px 52px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+  }
+  .header-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .broker-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-family: 'Merriweather', serif;
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1.15;
+    color: var(--white);
+  }
+  .header h1 span { color: var(--gold); }
+  .header-right { text-align: right; }
+  .header-date { font-size: 12px; color: var(--white-dim); margin-bottom: 8px; letter-spacing: 1px; }
+  .edition-badge {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+  }
+  .tagline { margin-top: 10px; font-size: 12px; color: var(--white-faint); font-style: italic; }
+
+  /* ─── TICKER BAR ─── */
+  .ticker-bar {
+    background: var(--black-card);
+    border-bottom: 1px solid var(--black-border);
+    padding: 10px 52px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 24px;
+    align-items: center;
+  }
+  .tick { display: flex; align-items: center; gap: 7px; }
+  .tick-name { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--white-faint); }
+  .tick-price { font-size: 13px; font-weight: 600; color: var(--white); }
+  .tick-chg { font-size: 11px; font-weight: 700; padding: 1px 6px; border-radius: 4px; }
+  .up   { background: rgba(93,186,126,0.15); color: var(--green-acc); }
+  .dn   { background: rgba(224,80,80,0.15);  color: var(--red-acc);   }
+  .flat { background: rgba(255,255,255,0.06); color: var(--white-dim); }
+  .tick-sep { width: 1px; height: 20px; background: var(--black-border); }
+
+  /* ─── LAYOUT ─── */
+  .main { max-width: 1020px; margin: 0 auto; padding: 40px 52px 70px; }
+
+  /* ─── SECTION HEADING ─── */
+  .sec-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--black-border);
+  }
+  .sec-head-bar { width: 3px; height: 18px; background: var(--gold); border-radius: 2px; flex-shrink: 0; }
+  .sec-head-text {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ─── CALLOUT BOXES ─── */
+  .callout {
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 14px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    border: 1px solid transparent;
+  }
+  .callout-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+  .callout-label {
+    font-size: 9px; font-weight: 800; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 5px;
+  }
+  .callout-body { font-size: 13px; line-height: 1.65; color: rgba(245,245,240,0.85); }
+  .box-green  { background: rgba(93,186,126,0.07);  border-color: rgba(93,186,126,0.25);  }
+  .box-green  .callout-label  { color: var(--green-acc); }
+  .box-amber  { background: rgba(212,96,26,0.09);   border-color: rgba(212,96,26,0.28);   }
+  .box-amber  .callout-label  { color: var(--gold-bright); }
+  .box-blue   { background: rgba(201,145,61,0.07);  border-color: var(--gold-border);     }
+  .box-blue   .callout-label  { color: var(--gold); }
+
+  /* ─── DIVIDER ─── */
+  .divider { height: 1px; background: var(--black-border); margin: 36px 0; }
+  .section { margin-bottom: 38px; }
+
+  /* ─── TIER BANNERS ─── */
+  .tier-banner {
+    border-radius: 10px;
+    padding: 20px 28px;
+    margin-bottom: 26px;
+    border: 1px solid var(--gold-border);
+    background: var(--black-card);
+    position: relative;
+    overflow: hidden;
+  }
+  .tier-banner::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+  }
+  .tier-tag { font-size: 9px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+  .tier-title { font-family: 'Merriweather', serif; font-size: 17px; font-weight: 700; color: var(--white); }
+  .tier-sub { font-size: 12px; color: var(--white-dim); margin-top: 3px; }
+
+  /* ─── TRADE CARD ─── */
+  .trade-card {
+    background: var(--black-card);
+    border: 1px solid var(--black-border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+  .trade-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0; width: 3px;
+    background: var(--gold);
+  }
+  .trade-head { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+  .trade-asset { font-size: 15px; font-weight: 700; color: var(--white); }
+  .trade-dir {
+    font-size: 10px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 20px;
+  }
+  .dir-buy  { background: rgba(93,186,126,0.15); color: var(--green-acc); }
+  .dir-hold { background: var(--gold-bg); color: var(--gold); border: 1px solid var(--gold-border); }
+  .dir-watch { background: rgba(224,80,80,0.12); color: var(--red-acc); }
+  .dir-scen { background: rgba(201,145,61,0.12); color: var(--gold-bright); border: 1px solid var(--gold-border); }
+
+  .analogy {
+    font-size: 12px; color: var(--white-dim); font-style: italic;
+    background: rgba(255,255,255,0.04); border-radius: 5px;
+    padding: 9px 12px; margin-bottom: 12px;
+    border-left: 2px solid var(--gold-dim);
+  }
+
+  .levels { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+  .level {
+    flex: 1; min-width: 90px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--black-border);
+    border-radius: 6px; padding: 10px 12px; text-align: center;
+  }
+  .lv-label { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--white-faint); margin-bottom: 4px; }
+  .lv-val   { font-size: 14px; font-weight: 700; }
+  .lv-entry { color: var(--white); }
+  .lv-target { color: var(--green-acc); }
+  .lv-stop  { color: var(--red-acc); }
+
+  .risk-tag {
+    display: inline-block; font-size: 10px; font-weight: 700;
+    padding: 2px 10px; border-radius: 20px; margin-bottom: 10px;
+  }
+  .r-low  { background: rgba(93,186,126,0.12); color: var(--green-acc); }
+  .r-med  { background: rgba(201,145,61,0.15); color: var(--gold-bright); }
+  .r-high { background: rgba(224,80,80,0.15);  color: var(--red-acc);   }
+
+  .note { font-size: 12px; color: var(--white-dim); line-height: 1.6; }
+
+  /* ─── TABLES ─── */
+  table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 6px; }
+  th {
+    background: rgba(201,145,61,0.15); color: var(--gold);
+    font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 9px 13px; text-align: left; border-bottom: 1px solid var(--gold-border);
+  }
+  td { padding: 9px 13px; border-bottom: 1px solid var(--black-border); color: var(--white); }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: rgba(255,255,255,0.025); }
+  .tbl-note { font-size: 11px; color: var(--white-faint); margin-top: 5px; font-style: italic; }
+
+  /* ─── PROTECT / MINDSET BOXES ─── */
+  .shield-box {
+    background: var(--black-card);
+    border: 1px solid var(--gold-border);
+    border-radius: 8px; padding: 20px 24px; margin: 18px 0;
+  }
+  .shield-title {
+    font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px;
+  }
+  .shield-body { font-size: 13px; color: rgba(245,245,240,0.85); line-height: 1.65; }
+
+  /* ─── STOCK WATCHLIST ─── */
+  .stock-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .stock-pill {
+    background: var(--black-card);
+    border: 1px solid var(--black-border);
+    border-radius: 7px;
+    padding: 12px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    transition: border-color 0.2s;
+  }
+  .stock-pill:hover { border-color: var(--gold-border); }
+  .stock-pill.hot   { border-left: 3px solid var(--gold); }
+  .stock-pill.cool  { border-left: 3px solid var(--red-acc); }
+  .sp-left {}
+  .sp-ticker { font-size: 13px; font-weight: 700; color: var(--white); }
+  .sp-name   { font-size: 10px; color: var(--white-faint); }
+  .sp-right  { text-align: right; }
+  .sp-price  { font-size: 13px; font-weight: 600; color: var(--white); }
+  .sp-chg    { font-size: 11px; font-weight: 700; }
+  .chg-up    { color: var(--green-acc); }
+  .chg-dn    { color: var(--red-acc); }
+
+  /* ─── CHART CONTAINERS ─── */
+  .chart-wrap {
+    background: var(--black-card);
+    border: 1px solid var(--black-border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+  }
+  .chart-title { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  canvas { display: block; width: 100% !important; }
+
+  /* ─── RISK CHIPS ─── */
+  .risk-events { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+  .chip { font-size: 11px; font-weight: 600; padding: 5px 13px; border-radius: 20px; }
+  .chip-red   { background: rgba(224,80,80,0.13);  color: var(--red-acc);   border: 1px solid rgba(224,80,80,0.3);  }
+  .chip-gold  { background: var(--gold-bg);          color: var(--gold-bright);border: 1px solid var(--gold-border); }
+  .chip-blue  { background: rgba(255,255,255,0.05);  color: var(--white-dim); border: 1px solid var(--black-border); }
+
+  /* ─── EM CARD ─── */
+  .em-card { background: var(--black-card); border: 1px solid var(--black-border); border-radius: 8px; padding: 20px 24px; margin-bottom: 18px; }
+  .em-card p { font-size: 13px; color: rgba(245,245,240,0.85); margin-bottom: 10px; line-height: 1.65; }
+  .em-card p:last-child { margin-bottom: 0; }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--black-soft);
+    border-top: 1px solid var(--black-border);
+    color: var(--white-faint);
+    font-size: 11px;
+    line-height: 1.7;
+    padding: 22px 52px;
+    text-align: center;
+  }
+
+  p { margin-bottom: 10px; }
+  .mt16 { margin-top: 16px; }
+  .mb16 { margin-bottom: 16px; }
+  strong { color: var(--white); }
+
+  @media (max-width: 680px) {
+    .header, .ticker-bar, .main, .footer { padding-left: 18px; padding-right: 18px; }
+    .header h1 { font-size: 21px; }
+    .levels { flex-direction: column; }
+    .header-right { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<div class="header">
+  <div class="header-grid">
+    <div>
+      <div class="broker-label">Market Intelligence Briefing</div>
+      <h1>Monday Morning<br><span>Market Update</span></h1>
+      <div class="tagline">Your knowledgeable friend at the trading table</div>
+    </div>
+    <div class="header-right">
+      <div class="header-date">Monday · 11 May 2026</div>
+      <div class="edition-badge">Weekly Edition</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TICKER BAR ═══ -->
+<div class="ticker-bar">
+  <div class="tick"><span class="tick-name">S&P 500</span><span class="tick-price">7,399</span><span class="tick-chg up">+0.84%</span></div>
+  <div class="tick-sep"></div>
+  <div class="tick"><span class="tick-name">Nasdaq</span><span class="tick-price">26,247</span><span class="tick-chg up">+1.71%</span></div>
+  <div class="tick-sep"></div>
+  <div class="tick"><span class="tick-name">Dow</span><span class="tick-price">49,609</span><span class="tick-chg up">+0.02%</span></div>
+  <div class="tick-sep"></div>
+  <div class="tick"><span class="tick-name">VIX</span><span class="tick-price">17.19</span><span class="tick-chg flat">+0.64%</span></div>
+  <div class="tick-sep"></div>
+  <div class="tick"><span class="tick-name">Gold</span><span class="tick-price">$4,731</span><span class="tick-chg up">Rec. High</span></div>
+  <div class="tick-sep"></div>
+  <div class="tick"><span class="tick-name">Brent Oil</span><span class="tick-price">$97.61</span><span class="tick-chg dn">−3.61%</span></div>
+  <div class="tick-sep"></div>
+  <div class="tick"><span class="tick-name">Bitcoin</span><span class="tick-price">$80,704</span><span class="tick-chg up">+0.41%</span></div>
+</div>
+
+<!-- ═══ MAIN ═══ -->
+<div class="main">
+
+  <!-- ── SECTION 1: WHAT HAPPENED ── -->
+  <div class="section">
+    <div class="sec-head"><div class="sec-head-bar"></div><div class="sec-head-text">01 — What Happened This Weekend</div></div>
+
+    <div class="callout box-green">
+      <div class="callout-icon">✅</div>
+      <div>
+        <div class="callout-label">The Good News</div>
+        <div class="callout-body">US stock markets closed last week near all-time records. Think of the S&P 500 like a basket holding 500 of America's biggest companies — it finished at 7,399, close to its highest ever level. Tech stocks had an especially strong week (Nasdaq up 1.7%). Why? Because US companies just reported their best profit margins in history — over 13% on average. That means for every $100 in sales, companies kept $13+ as profit. This is very healthy. Jobs data also came in better than feared, with 115,000 new positions added in April. NVIDIA alone reached a <strong>$5.2 trillion market cap</strong> — the most valuable company ever.</div>
+      </div>
+    </div>
+
+    <div class="callout box-amber">
+      <div class="callout-icon">⚠️</div>
+      <div>
+        <div class="callout-label">The Caution — What to Watch</div>
+        <div class="callout-body">The Middle East is the wildcard this week. Think of the Strait of Hormuz like a narrow toll road — almost 20% of the world's oil passes through it. The US and Iran were briefly close to a deal, which sent oil prices crashing. But over the weekend Iran submitted a counter-proposal that the US rejected as "totally unacceptable," and fresh drone attacks in the Gulf reignited fears. Oil bounced back to $97.61/barrel. This matters because expensive oil raises costs for everyone — airlines, shipping, manufacturing. Markets will react instantly to any headline from the Middle East this week.</div>
+      </div>
+    </div>
+
+    <div class="callout box-blue">
+      <div class="callout-icon">📅</div>
+      <div>
+        <div class="callout-label">This Week's Biggest Event</div>
+        <div class="callout-body"><strong>Tuesday 12 May — US Inflation (CPI) at 8:30 AM New York time.</strong> Inflation is like the price of your grocery basket — if it rose more than expected this year (forecast: +3.7%), interest rates could stay high for longer, and markets could dip sharply. A cooler reading would likely spark a rally. Also this week: <strong>Cisco (Wed), Alibaba (Wed), Applied Materials (Thu)</strong> — all major earnings reports that could move the entire tech sector. AMAT and LRCX earnings will act as a direct signal for chip spending trends.</div>
+      </div>
+    </div>
+
+    <!-- CHART 1: Index Performance -->
+    <div class="chart-wrap mt16">
+      <div class="chart-title">US Index — Week-Over-Week Gain (Fri Close, May 8 2026)</div>
+      <canvas id="indexChart" height="90"></canvas>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── SECTION 2: TECH WATCHLIST ── -->
+  <div class="section">
+    <div class="sec-head"><div class="sec-head-bar"></div><div class="sec-head-text">02 — Tech Stock Watchlist (Your 20 Names)</div></div>
+    <p class="note" style="margin-bottom:16px;">Prices as of last close / most recent available. <span style="color:var(--gold)">Gold border</span> = momentum / notable move. <span style="color:var(--red-acc)">Red border</span> = laggard / caution.</p>
+
+    <div class="stock-grid">
+      <div class="stock-pill hot">
+        <div class="sp-left"><div class="sp-ticker">NVDA</div><div class="sp-name">NVIDIA</div></div>
+        <div class="sp-right"><div class="sp-price">$215.22</div><div class="sp-chg chg-up">+1.76%</div></div>
+      </div>
+      <div class="stock-pill hot">
+        <div class="sp-left"><div class="sp-ticker">MU</div><div class="sp-name">Micron Tech</div></div>
+        <div class="sp-right"><div class="sp-price">$746.81</div><div class="sp-chg chg-up">+15.52%</div></div>
+      </div>
+      <div class="stock-pill hot">
+        <div class="sp-left"><div class="sp-ticker">AMD</div><div class="sp-name">Adv. Micro Devices</div></div>
+        <div class="sp-right"><div class="sp-price">$461.20</div><div class="sp-chg chg-up">+11.44%</div></div>
+      </div>
+      <div class="stock-pill hot">
+        <div class="sp-left"><div class="sp-ticker">INTC</div><div class="sp-name">Intel</div></div>
+        <div class="sp-right"><div class="sp-price">$124.92</div><div class="sp-chg chg-up">+13.96%</div></div>
+      </div>
+      <div class="stock-pill hot">
+        <div class="sp-left"><div class="sp-ticker">AMAT</div><div class="sp-name">Applied Materials</div></div>
+        <div class="sp-right"><div class="sp-price">$435.44</div><div class="sp-chg chg-up">+6.07%</div></div>
+      </div>
+      <div class="stock-pill hot">
+        <div class="sp-left"><div class="sp-ticker">KLAC</div><div class="sp-name">KLA Corp</div></div>
+        <div class="sp-right"><div class="sp-price">$1,869.19</div><div class="sp-chg chg-up">+6.01%</div></div>
+      </div>
+      <div class="stock-pill hot">
+        <div class="sp-left"><div class="sp-ticker">AVGO</div><div class="sp-name">Broadcom</div></div>
+        <div class="sp-right"><div class="sp-price">$432.41</div><div class="sp-chg chg-up">+5.00%</div></div>
+      </div>
+      <div class="stock-pill">
+        <div class="sp-left"><div class="sp-ticker">TSM</div><div class="sp-name">TSMC (ADR)</div></div>
+        <div class="sp-right"><div class="sp-price">$411.68</div><div class="sp-chg chg-dn">−0.60%</div></div>
+      </div>
+      <div class="stock-pill">
+        <div class="sp-left"><div class="sp-ticker">AAPL</div><div class="sp-name">Apple</div></div>
+        <div class="sp-right"><div class="sp-price">$293.86</div><div class="sp-chg chg-up">+1.30%</div></div>
+      </div>
+      <div class="stock-pill cool">
+        <div class="sp-left"><div class="sp-ticker">MSFT</div><div class="sp-name">Microsoft</div></div>
+        <div class="sp-right"><div class="sp-price">$415.06</div><div class="sp-chg chg-dn">−1.39%</div></div>
+      </div>
+      <div class="stock-pill">
+        <div class="sp-left"><div class="sp-ticker">LRCX</div><div class="sp-name">Lam Research</div></div>
+        <div class="sp-right"><div class="sp-price">$286.52</div><div class="sp-chg chg-up">+4.20%</div></div>
+      </div>
+      <div class="stock-pill">
+        <div class="sp-left"><div class="sp-ticker">PLTR</div><div class="sp-name">Palantir</div></div>
+        <div class="sp-right"><div class="sp-price">$146.50</div><div class="sp-chg chg-up">+3.10%</div></div>
+      </div>
+      <div class="stock-pill">
+        <div class="sp-left"><div class="sp-ticker">IBM</div><div class="sp-name">IBM</div></div>
+        <div class="sp-right"><div class="sp-price">$231.31</div><div class="sp-chg chg-up">+0.90%</div></div>
+      </div>
+      <div class="stock-pill">
+        <div class="sp-left"><div class="sp-ticker">CSCO</div><div class="sp-name">Cisco Systems</div></div>
+        <div class="sp-right"><div class="sp-price">~$58</div><div class="sp-chg chg-up">Reporting Wed</div></div>
+      </div>
+      <div class="stock-pill">
+        <div class="sp-left"><div class="sp-ticker">ASML</div><div class="sp-name">ASML Holding</div></div>
+        <div class="sp-right"><div class="sp-price">~$720</div><div class="sp-chg chg-up">+2.40%</div></div>
+      </div>
+      <div class="stock-pill">
+        <div class="sp-left"><div class="sp-ticker">ORCL</div><div class="sp-name">Oracle</div></div>
+        <div class="sp-right"><div class="sp-price">~$185</div><div class="sp-chg chg-up">+1.20%</div></div>
+      </div>
+      <div class="stock-pill">
+        <div class="sp-left"><div class="sp-ticker">QCOM</div><div class="sp-name">Qualcomm</div></div>
+        <div class="sp-right"><div class="sp-price">~$154</div><div class="sp-chg chg-up">+2.80%</div></div>
+      </div>
+      <div class="stock-pill">
+        <div class="sp-left"><div class="sp-ticker">TXN</div><div class="sp-name">Texas Instruments</div></div>
+        <div class="sp-right"><div class="sp-price">~$188</div><div class="sp-chg chg-up">+1.50%</div></div>
+      </div>
+      <div class="stock-pill">
+        <div class="sp-left"><div class="sp-ticker">ARM</div><div class="sp-name">Arm Holdings</div></div>
+        <div class="sp-right"><div class="sp-price">~$138</div><div class="sp-chg chg-up">+3.50%</div></div>
+      </div>
+      <div class="stock-pill">
+        <div class="sp-left"><div class="sp-ticker">SNDK</div><div class="sp-name">SanDisk</div></div>
+        <div class="sp-right"><div class="sp-price">~$52</div><div class="sp-chg chg-up">+2.10%</div></div>
+      </div>
+    </div>
+
+    <!-- CHART 2: Semi Stars Bar Chart -->
+    <div class="chart-wrap">
+      <div class="chart-title">Semiconductor Movers — Weekly % Gain (Top Performers)</div>
+      <canvas id="semiChart" height="140"></canvas>
+    </div>
+
+    <div class="shield-box">
+      <div class="shield-title">📊 Tech Sector Insight This Week</div>
+      <div class="shield-body">
+        <strong>MU (+15.5%), INTC (+14%), AMD (+11.4%)</strong> — the memory and legacy chip names had a huge week. This is a rotation signal: money is moving from the already-expensive AI leaders (NVDA, TSM) into laggards that are catching up. The semiconductor sector as a whole is pricing in a chip capex supercycle driven by AI data centre demand.<br><br>
+        <strong>AMAT earnings Thursday</strong> are the key moment this week. Applied Materials supplies equipment to virtually every chip factory in the world. If AMAT beats estimates, it confirms the supercycle is real — and KLAC, LRCX, and ASML will all follow higher. A miss would cast doubt on the entire equipment chain.<br><br>
+        <strong>MSFT (–1.4%)</strong> dipped after revealing $190 billion in projected annual capex for AI infrastructure. Investors asked: will this ever generate a return? This question is the central tension for mega-cap tech in 2026. MSFT remains a quality core hold — the dip is not a sell signal, but a reminder that valuations matter.
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── SECTION 3: OTHER TOP-100 NAMES ── -->
+  <div class="section">
+    <div class="sec-head"><div class="sec-head-bar"></div><div class="sec-head-text">03 — Other Notable Top-100 Names</div></div>
+    <p class="note mb16">Only companies with a meaningful story this week are included. If it's quiet, it's not listed.</p>
+
+    <div class="stock-grid">
+      <div class="stock-pill">
+        <div class="sp-left"><div class="sp-ticker">AMZN</div><div class="sp-name">Amazon</div></div>
+        <div class="sp-right"><div class="sp-price">~$198</div><div class="sp-chg chg-up">AWS boom</div></div>
+      </div>
+      <div class="stock-pill">
+        <div class="sp-left"><div class="sp-ticker">GOOGL</div><div class="sp-name">Alphabet</div></div>
+        <div class="sp-right"><div class="sp-price">~$178</div><div class="sp-chg chg-up">$3.89T cap</div></div>
+      </div>
+      <div class="stock-pill cool">
+        <div class="sp-left"><div class="sp-ticker">META</div><div class="sp-name">Meta Platforms</div></div>
+        <div class="sp-right"><div class="sp-price">~$520</div><div class="sp-chg chg-dn">−8% post-earnings</div></div>
+      </div>
+      <div class="stock-pill">
+        <div class="sp-left"><div class="sp-ticker">TSLA</div><div class="sp-name">Tesla</div></div>
+        <div class="sp-right"><div class="sp-price">~$295</div><div class="sp-chg chg-up">Optimus pivot</div></div>
+      </div>
+      <div class="stock-pill hot">
+        <div class="sp-left"><div class="sp-ticker">BABA</div><div class="sp-name">Alibaba</div></div>
+        <div class="sp-right"><div class="sp-price">~$124</div><div class="sp-chg chg-up">Reporting Wed</div></div>
+      </div>
+      <div class="stock-pill">
+        <div class="sp-left"><div class="sp-ticker">BRK.B</div><div class="sp-name">Berkshire</div></div>
+        <div class="sp-right"><div class="sp-price">~$475</div><div class="sp-chg chg-up">$1T fortress</div></div>
+      </div>
+    </div>
+
+    <div class="em-card">
+      <p><strong>META (–8%):</strong> Meta beat earnings but CEO Zuckerberg announced even higher AI spending for 2026–2027. Investors punished the stock despite strong ad revenue. This is a classic "good results, scary guidance" sell-off. For premium clients: Meta at $520 is now meaningfully cheaper than 2 weeks ago — quality on sale if you believe in AI advertising monetisation.</p>
+      <p><strong>TSLA — Optimus Robot Pivot:</strong> Tesla discontinued Model S and X production to focus entirely on the Optimus humanoid robot. Bold bet. If it works, TSLA could re-rate massively. If it doesn't, core auto revenue shrinks. This is high-conviction / high-risk. Not for starter accounts.</p>
+      <p><strong>AMZN / GOOGL:</strong> Both benefiting from the AI cloud supercycle. AWS and Google Cloud revenues are growing 30%+ year-over-year as corporations race to build AI infrastructure. Both remain solid core holdings for the 6-month horizon.</p>
+      <p><strong>BABA — Alibaba (Reporting Wednesday):</strong> Consensus revenue near $36 billion. China's economy is showing signs of stabilisation. If Alibaba beats and raises guidance, it could spark a broader China tech rally — watch for moves in BABA, JD, and PDD.</p>
+    </div>
+
+    <!-- CHART 3: Market Cap Comparison -->
+    <div class="chart-wrap">
+      <div class="chart-title">Top 7 Companies by Market Cap — May 2026 (Trillions USD)</div>
+      <canvas id="mktCapChart" height="120"></canvas>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── SECTION 4: TIER 1 STARTER ── -->
+  <div class="section">
+    <div class="tier-banner">
+      <div class="tier-tag">Tier 1 — Starter</div>
+      <div class="tier-title">Starter Client Playbook</div>
+      <div class="tier-sub">Accounts trading $1,000 – $3,000 per position</div>
+    </div>
+
+    <div class="sec-head"><div class="sec-head-bar"></div><div class="sec-head-text">Trade Ideas — Plain English</div></div>
+
+    <!-- TRADE 1: GOLD -->
+    <div class="trade-card">
+      <div class="trade-head">
+        <div class="trade-asset">Gold (XAU/USD)</div>
+        <div class="trade-dir dir-buy">BUY / LONG</div>
+      </div>
+      <div class="analogy">💡 Think of Gold like a fire extinguisher. You hope you never need it — but when the world gets scary (war, inflation, panic), it becomes the most valuable thing you own. Right now there's a lot of fire risk.</div>
+      <div class="levels">
+        <div class="level"><div class="lv-label">Entry</div><div class="lv-val lv-entry">~$4,720</div></div>
+        <div class="level"><div class="lv-label">Target</div><div class="lv-val lv-target">$4,850</div></div>
+        <div class="level"><div class="lv-label">Stop Loss</div><div class="lv-val lv-stop">$4,660</div></div>
+      </div>
+      <span class="risk-tag r-low">Low–Medium Risk</span>
+      <p class="note">Central banks worldwide are buying Gold at record rates. US–Iran tension and persistent inflation fears support higher prices. A dip to $4,720 on a peace rumour is your best entry.</p>
+      <table style="margin-top:12px">
+        <thead><tr><th>Account</th><th>Suggested Size</th><th>Max Loss (stop hit)</th></tr></thead>
+        <tbody>
+          <tr><td>$1,000</td><td>0.05 lot CFD</td><td>~$60</td></tr>
+          <tr><td>$2,000</td><td>0.10 lot CFD</td><td>~$120</td></tr>
+          <tr><td>$3,000</td><td>0.15 lot CFD</td><td>~$180</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- TRADE 2: S&P 500 -->
+    <div class="trade-card">
+      <div class="trade-head">
+        <div class="trade-asset">S&P 500 Index (US500)</div>
+        <div class="trade-dir dir-buy">BUY on Dip</div>
+      </div>
+      <div class="analogy">💡 Buying the S&P 500 is like buying a tiny slice of 500 US businesses at once — Apple, Amazon, Microsoft, and 497 more. If America prospers, you prosper.</div>
+      <div class="levels">
+        <div class="level"><div class="lv-label">Entry Zone</div><div class="lv-val lv-entry">7,300–7,350</div></div>
+        <div class="level"><div class="lv-label">Target</div><div class="lv-val lv-target">7,550</div></div>
+        <div class="level"><div class="lv-label">Stop Loss</div><div class="lv-val lv-stop">7,220</div></div>
+      </div>
+      <span class="risk-tag r-med">Medium Risk</span>
+      <p class="note">Near record highs — so don't chase. <strong>Wait for a dip after Tuesday's CPI data.</strong> If inflation surprises high, the market could dip to 7,200–7,300 — that is your entry, not a panic signal.</p>
+      <table style="margin-top:12px">
+        <thead><tr><th>Account</th><th>Suggested Size</th><th>Max Loss (stop hit)</th></tr></thead>
+        <tbody>
+          <tr><td>$1,000</td><td>0.10 lot CFD</td><td>~$80</td></tr>
+          <tr><td>$2,000</td><td>0.20 lot CFD</td><td>~$160</td></tr>
+          <tr><td>$3,000</td><td>0.30 lot CFD</td><td>~$240</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- TRADE 3: OIL WARNING -->
+    <div class="trade-card">
+      <div class="trade-head">
+        <div class="trade-asset">Brent Crude Oil (UKOIL)</div>
+        <div class="trade-dir dir-watch">OBSERVE ONLY</div>
+      </div>
+      <div class="analogy">💡 Oil right now is like driving in fog — prices can change 5% in one news headline. Starter clients: watch, don't trade this week.</div>
+      <div class="levels">
+        <div class="level"><div class="lv-label">Watch Level</div><div class="lv-val lv-entry">$94–$96</div></div>
+        <div class="level"><div class="lv-label">If Buying Target</div><div class="lv-val lv-target">$105</div></div>
+        <div class="level"><div class="lv-label">Stop</div><div class="lv-val lv-stop">$90</div></div>
+      </div>
+      <span class="risk-tag r-high">High Risk This Week</span>
+      <p class="note">The US–Iran situation means oil can swing wildly. Let the situation clarify — peace deal confirmed or escalation confirmed — before entering. Patience is a strategy.</p>
+    </div>
+
+    <div class="callout box-amber" style="margin-top:16px">
+      <div class="callout-icon">🚨</div>
+      <div>
+        <div class="callout-label">Earnings Warning for Starter Clients</div>
+        <div class="callout-body"><strong>Cisco, Alibaba, and Applied Materials report earnings Wed–Thu.</strong> If you hold or plan to trade any tech names, wait until after results are announced. Earnings can move stocks 10–20% in minutes. Not a risk worth taking with $1,000–$3,000. Waiting is free. Losing is not.</div>
+      </div>
+    </div>
+
+    <div class="shield-box">
+      <div class="shield-title">🛡️ The Seatbelt Rule — How Stop Losses Work</div>
+      <div class="shield-body">A stop loss is your automatic seatbelt. You set it before you enter the trade — and if the market moves against you by a set amount, it closes your position automatically. You don't have to watch the screen all day. <strong>Rule of thumb: never risk more than 5–8% of your account on one trade.</strong> On a $2,000 account, that means a maximum loss of $100–$160. Set it before you enter. Never move it further away once the trade is open. If you feel tempted to remove your stop loss, that is the exact moment you should keep it in place.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── SECTION 5: TIER 2 PREMIUM ── -->
+  <div class="section">
+    <div class="tier-banner">
+      <div class="tier-tag">Tier 2 — Premium</div>
+      <div class="tier-title">Premium Client Portfolio Playbook</div>
+      <div class="tier-sub">Clients with $50,000+ capital · 3–6 month strategic positioning</div>
+    </div>
+
+    <div class="sec-head"><div class="sec-head-bar"></div><div class="sec-head-text">Safety Bucket — 50–60% of Portfolio</div></div>
+
+    <div class="trade-card">
+      <div class="trade-head"><div class="trade-asset">Gold (XAU/USD)</div><div class="trade-dir dir-buy">LONG — Core</div></div>
+      <div class="levels">
+        <div class="level"><div class="lv-label">Accumulate</div><div class="lv-val lv-entry">$4,650–$4,750</div></div>
+        <div class="level"><div class="lv-label">6-Month Target</div><div class="lv-val lv-target">$5,100</div></div>
+        <div class="level"><div class="lv-label">Strategic Stop</div><div class="lv-val lv-stop">$4,400</div></div>
+      </div>
+      <span class="risk-tag r-low">Core / Low Risk</span>
+      <p class="note">Structural thesis: central bank de-dollarisation + geopolitical uncertainty + inflation persistence. Scale in — buy one-third now, add on any dip. Suggested allocation: 25–30%.</p>
+    </div>
+
+    <div class="trade-card">
+      <div class="trade-head"><div class="trade-asset">S&P 500 Broad Index (US500)</div><div class="trade-dir dir-hold">HOLD / Add on Dip</div></div>
+      <div class="levels">
+        <div class="level"><div class="lv-label">Add Zone</div><div class="lv-val lv-entry">7,200–7,350</div></div>
+        <div class="level"><div class="lv-label">6-Month Target</div><div class="lv-val lv-target">7,900</div></div>
+        <div class="level"><div class="lv-label">Strategic Stop</div><div class="lv-val lv-stop">6,900</div></div>
+      </div>
+      <span class="risk-tag r-low">Core / Medium Risk</span>
+      <p class="note">Record earnings, 15.1% blended Q1 growth. A hot CPI Tuesday is your best dip-buying opportunity of the week. Suggested allocation: 25–30%.</p>
+    </div>
+
+    <div class="sec-head mt16"><div class="sec-head-bar"></div><div class="sec-head-text">Growth Bucket — 30–40% of Portfolio</div></div>
+
+    <div class="trade-card">
+      <div class="trade-head"><div class="trade-asset">Nasdaq 100 / Semiconductor ETF</div><div class="trade-dir dir-buy">LONG — Overweight Tech</div></div>
+      <div class="levels">
+        <div class="level"><div class="lv-label">Entry Zone</div><div class="lv-val lv-entry">25,800–26,000</div></div>
+        <div class="level"><div class="lv-label">3-Month Target</div><div class="lv-val lv-target">27,500</div></div>
+        <div class="level"><div class="lv-label">Risk Stop</div><div class="lv-val lv-stop">25,000</div></div>
+      </div>
+      <span class="risk-tag r-med">Medium Risk</span>
+      <p class="note">AI infrastructure remains the dominant macro theme of 2026. If AMAT beats Thursday, add to semiconductor exposure immediately. MU and INTC's week proves the rotation into value semis is alive. Allocation: 10–15%.</p>
+    </div>
+
+    <div class="trade-card">
+      <div class="trade-head"><div class="trade-asset">Brent Crude Oil — Scenario Play</div><div class="trade-dir dir-scen">BINARY SCENARIO</div></div>
+      <div class="levels">
+        <div class="level"><div class="lv-label">Entry (Escalation)</div><div class="lv-val lv-entry">Oil &gt;$103</div></div>
+        <div class="level"><div class="lv-label">Target (Conflict)</div><div class="lv-val lv-target">$115–$120</div></div>
+        <div class="level"><div class="lv-label">Stop</div><div class="lv-val lv-stop">$97</div></div>
+      </div>
+      <span class="risk-tag r-high">High Risk — Active Management</span>
+      <div class="callout box-amber" style="margin-top:12px; margin-bottom:0">
+        <div class="callout-icon">⚡</div>
+        <div>
+          <div class="callout-label">CPI Binary This Tuesday — Your Playbook</div>
+          <div class="callout-body">
+            <strong>If CPI &lt; 3.7% (cool):</strong> Markets rally 1.5–2%. S&P target 7,550+. Add to Nasdaq. Gold dips $30–50 briefly — buy that dip, don't sell it.<br>
+            <strong>If CPI &gt; 3.9% (hot):</strong> S&P drops 1.5–3% to ~7,150–7,200. Gold spikes. Bitcoin falls to $75–77K. Strategy: hold Gold, trim Nasdaq 30–50%, re-enter S&P at 7,200 support. This is a buying opportunity — not a crisis.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="trade-card">
+      <div class="trade-head"><div class="trade-asset">Bitcoin (BTC/USD)</div><div class="trade-dir dir-hold">HOLD / Add on Weakness</div></div>
+      <div class="levels">
+        <div class="level"><div class="lv-label">Accumulate</div><div class="lv-val lv-entry">$76–$79K</div></div>
+        <div class="level"><div class="lv-label">Target</div><div class="lv-val lv-target">$95,000</div></div>
+        <div class="level"><div class="lv-label">Stop</div><div class="lv-val lv-stop">$70,000</div></div>
+      </div>
+      <span class="risk-tag r-med">Medium–High Risk</span>
+      <p class="note">Bitcoin holding $79–82K range. Institutional demand firm. A hot CPI Tuesday could push to $76K — that is your add zone. Cap exposure at 5–8% of portfolio.</p>
+    </div>
+
+    <!-- CHART 4: Allocation Donut -->
+    <div class="chart-wrap">
+      <div class="chart-title">Premium Portfolio — Suggested Allocation Model</div>
+      <canvas id="allocChart" height="130"></canvas>
+    </div>
+
+    <table style="margin-bottom:8px">
+      <thead><tr><th>Asset</th><th>Bucket</th><th>Allocation %</th><th>Key Rationale</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Gold</strong></td><td>Safety</td><td>25–30%</td><td>CB de-dollarisation + inflation buffer</td></tr>
+        <tr><td><strong>S&P 500</strong></td><td>Safety</td><td>25–30%</td><td>Record earnings, structural bull market</td></tr>
+        <tr><td><strong>Nasdaq / Semis</strong></td><td>Growth</td><td>10–15%</td><td>AI capex supercycle — AMAT earnings key signal</td></tr>
+        <tr><td><strong>Oil / Energy</strong></td><td>Growth (Tactical)</td><td>5–8%</td><td>Binary geopolitical play — manage actively</td></tr>
+        <tr><td><strong>Bitcoin</strong></td><td>Growth</td><td>5–8%</td><td>Institutional demand + digital gold narrative</td></tr>
+        <tr><td><strong>Cash Reserve</strong></td><td>Reserve</td><td>10–15%</td><td>Deploy on CPI dip or post-earnings clarity</td></tr>
+      </tbody>
+    </table>
+    <div class="tbl-note">Percentages are guidelines, not guarantees. Adjust to your personal risk profile and in consultation with your account manager.</div>
+
+    <div class="shield-box" style="margin-top:20px">
+      <div class="shield-title">✦ Premium Client Mindset This Week</div>
+      <div class="shield-body">Markets at all-time highs always feel uncomfortable — it seems like "too high." But record profits justify record prices. The clients who outperform are not those who call the top perfectly; they are those who stay positioned in quality assets through short-term noise and add discipline when others panic. The clients who sold Gold at $3,000 because it "felt too high" are watching it trade at $4,731. <strong>Stay in your process. Trust your allocation. Let the market come to your orders. This week's noise is Tuesday's CPI — your job is to have your bids ready before it arrives, not to react after it lands.</strong></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── SECTION 6: RISK ── -->
+  <div class="section">
+    <div class="sec-head"><div class="sec-head-bar"></div><div class="sec-head-text">06 — Risk Radar This Week</div></div>
+
+    <div class="risk-events">
+      <div class="chip chip-red">🔴 Tue: US CPI Data — Most Important (8:30 AM ET)</div>
+      <div class="chip chip-red">🔴 US–Iran Headlines — Any Day, Any Time</div>
+      <div class="chip chip-gold">🟡 Wed: Cisco + Alibaba Earnings</div>
+      <div class="chip chip-gold">🟡 Thu: Applied Materials Earnings (AMAT)</div>
+      <div class="chip chip-blue">⬜ Wed–Thu: Fed Speaker Appearances</div>
+    </div>
+
+    <div class="em-card">
+      <p><strong>Why Risk Management Matters Most Near All-Time Highs:</strong> When markets are at records, the upside from here is a percentage point or two. But a sharp fall — surprise inflation, Gulf escalation, earnings disaster — can erase weeks of gains in one session. The VIX at 17.19 says markets aren't pricing in extreme fear yet. But conditions can shift in one headline. Every open position needs a clear stop loss and a clear reason for being there. Size your trades as if you could be wrong — because sometimes you will be — and you will always live to trade another day.</p>
+    </div>
+
+    <!-- CHART 5: VIX Context -->
+    <div class="chart-wrap">
+      <div class="chart-title">VIX Fear Index — Context Zones (Reference Guide)</div>
+      <canvas id="vixChart" height="80"></canvas>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── SECTION 7: EM ANGLE ── -->
+  <div class="section">
+    <div class="sec-head"><div class="sec-head-bar"></div><div class="sec-head-text">07 — Emerging Market Angle (IDR / MYR)</div></div>
+
+    <div class="em-card">
+      <p><strong>IHSG (Indonesia) — ~7,174 pts:</strong> Indonesian equities benefited from last week's global risk-on mood and improved US jobs data. However, the IHSG is oil-sensitive — as a net oil exporter, Indonesia's market and the Rupiah react sharply to Middle East news. If oil surges past $105–$110 on conflict escalation, expect short-term support for energy stocks on the IDX, but pressure on import costs broadly. Watch the US–Iran headline risk this week more than any local data.</p>
+      <p><strong>IDR (Indonesian Rupiah):</strong> Under moderate pressure from a strong US Dollar driven by "higher for longer" rate expectations. A hot CPI Tuesday would push IDR weaker against USD. For IDR-based clients converting CFD profits to Rupiah: consider executing conversions on USD weakness days — i.e., after a cooler-than-expected CPI reading.</p>
+      <p><strong>MYR (Malaysian Ringgit):</strong> Rate near MYR/IDR 4,329. Malaysia is a net oil exporter — benefits when oil holds above $90–95. Key client talking point: <strong>Gold in MYR terms has been one of the best-performing assets of the past 24 months.</strong> This is a powerful conversation for wealth preservation discussions with high-net-worth Malaysian clients.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+  <p>All prices are indicative and based on data available at time of writing (11 May 2026). CFD trading involves significant risk of loss and may not be suitable for all investors. Past performance is not indicative of future results. Leverage can amplify both profits and losses. Please ensure you fully understand the risks before trading. For registered clients of an FSCA-regulated CFD broker only. Never invest more than you can afford to lose.</p>
+  <p style="margin-top:8px; opacity:0.5;">Generated: Monday 11 May 2026 · Market Intelligence Briefing · Internal Distribution Only</p>
+</div>
+
+<!-- ═══ CHARTS (Chart.js) ═══ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+Chart.defaults.color = '#888888';
+Chart.defaults.borderColor = '#222222';
+Chart.defaults.font.family = "'Inter', sans-serif";
+Chart.defaults.font.size = 11;
+
+const gold = '#c9913d';
+const goldBright = '#e8a94a';
+const goldLight = '#f2c96e';
+const green = '#5dba7e';
+const red = '#e05050';
+const white = '#f5f5f0';
+const dim = '#555555';
+
+// ── CHART 1: Index Week Performance ──
+new Chart(document.getElementById('indexChart'), {
+  type: 'bar',
+  data: {
+    labels: ['S&P 500', 'Nasdaq 100', 'Dow Jones', 'Russell 2000'],
+    datasets: [{
+      label: 'Weekly % Change',
+      data: [0.84, 1.71, 0.02, 1.50],
+      backgroundColor: [goldBright, gold, dim, goldLight],
+      borderRadius: 5,
+      borderSkipped: false,
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => `  ${ctx.raw > 0 ? '+' : ''}${ctx.raw}%`
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: '#1e1e1e' },
+        ticks: { callback: v => v + '%' },
+        border: { color: '#222' }
+      },
+      y: {
+        grid: { display: false },
+        ticks: { color: white },
+        border: { color: '#222' }
+      }
+    }
+  }
+});
+
+// ── CHART 2: Semiconductor Movers ──
+new Chart(document.getElementById('semiChart'), {
+  type: 'bar',
+  data: {
+    labels: ['MU', 'INTC', 'AMD', 'AMAT', 'KLAC', 'AVGO', 'LRCX', 'NVDA', 'TSM', 'MSFT'],
+    datasets: [{
+      label: 'Weekly % Change',
+      data: [15.52, 13.96, 11.44, 6.07, 6.01, 5.00, 4.20, 1.76, -0.60, -1.39],
+      backgroundColor: ctx => ctx.parsed.y >= 0 ? goldBright : red,
+      borderRadius: 4,
+      borderSkipped: false,
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => `  ${ctx.raw > 0 ? '+' : ''}${ctx.raw}%`
+        }
+      }
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { color: white }, border: { color: '#222' } },
+      y: {
+        grid: { color: '#1e1e1e' },
+        ticks: { callback: v => v + '%', color: '#888' },
+        border: { color: '#222' }
+      }
+    }
+  }
+});
+
+// ── CHART 3: Market Cap ──
+new Chart(document.getElementById('mktCapChart'), {
+  type: 'bar',
+  data: {
+    labels: ['NVDA', 'Alphabet', 'Apple', 'Microsoft', 'Amazon', 'TSMC', 'Broadcom'],
+    datasets: [{
+      label: 'Market Cap ($T)',
+      data: [5.23, 3.89, 3.81, 2.85, 2.58, 2.00, 1.90],
+      backgroundColor: [goldLight, gold, goldBright, '#b07a28', '#8a5e1a', dim, '#3a3a3a'],
+      borderRadius: 5,
+      borderSkipped: false,
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: { label: ctx => `  $${ctx.raw}T` }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: '#1e1e1e' },
+        ticks: { callback: v => '$' + v + 'T' },
+        border: { color: '#222' }
+      },
+      y: {
+        grid: { display: false },
+        ticks: { color: white },
+        border: { color: '#222' }
+      }
+    }
+  }
+});
+
+// ── CHART 4: Allocation Doughnut ──
+new Chart(document.getElementById('allocChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Gold (Safety)', 'S&P 500 (Safety)', 'Nasdaq/Semis', 'Oil (Tactical)', 'Bitcoin', 'Cash Reserve'],
+    datasets: [{
+      data: [27, 27, 12, 6, 6, 12],
+      backgroundColor: [goldLight, gold, goldBright, '#8a5e1a', '#b07a28', '#2a2a2a'],
+      borderColor: '#0a0a0a',
+      borderWidth: 3,
+      hoverOffset: 8
+    }]
+  },
+  options: {
+    responsive: true,
+    cutout: '58%',
+    plugins: {
+      legend: {
+        position: 'right',
+        labels: { color: '#aaaaaa', padding: 14, font: { size: 11 }, usePointStyle: true }
+      },
+      tooltip: {
+        callbacks: { label: ctx => `  ${ctx.label}: ${ctx.raw}%` }
+      }
+    }
+  }
+});
+
+// ── CHART 5: VIX Gauge ──
+new Chart(document.getElementById('vixChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Extreme Calm\n(<12)', 'Calm\n(12–15)', 'Normal\n(15–20)', 'Elevated\n(20–30)', 'Fear\n(30–40)', 'Panic\n(>40)'],
+    datasets: [
+      {
+        label: 'Zone Width',
+        data: [12, 3, 5, 10, 10, 20],
+        backgroundColor: [
+          'rgba(93,186,126,0.18)',
+          'rgba(93,186,126,0.35)',
+          'rgba(201,145,61,0.35)',
+          'rgba(212,96,26,0.35)',
+          'rgba(224,80,80,0.35)',
+          'rgba(224,80,80,0.55)',
+        ],
+        borderRadius: 4,
+        borderSkipped: false,
+      },
+      {
+        label: 'Current VIX',
+        data: [null, null, 17.19, null, null, null],
+        backgroundColor: goldBright,
+        borderRadius: 4,
+        borderSkipped: false,
+      }
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    plugins: {
+      legend: {
+        display: true,
+        labels: { color: '#888', font: { size: 10 }, usePointStyle: true }
+      },
+      tooltip: { callbacks: { label: ctx => ctx.datasetIndex === 1 ? '  Current VIX: 17.19' : '  Zone range' } }
+    },
+    scales: {
+      x: { grid: { color: '#1e1e1e' }, ticks: { color: '#555' }, border: { color: '#222' }, stacked: false },
+      y: { grid: { display: false }, ticks: { color: '#aaa', font: { size: 10 } }, border: { color: '#222' } }
+    }
+  }
+});
+</script>
+
+</body>
+</html>

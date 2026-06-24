@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Market Update Harian Premium — 23 Mei 2026</title>
+<style>
+  :root{
+    --ivory:#FBF8F1; --beige:#F1EADB; --grey:#E6E4DF; --ink:#1B2A41;
+    --navy:#0E2347; --gold:#B8893B; --soft:#5C6675; --line:#D9D2C2;
+    --pos:#1E6B3A; --neg:#9B2C2C;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Georgia','Times New Roman',serif;background:var(--ivory);color:var(--ink);}
+  .page{max-width:920px;margin:0 auto;padding:48px 56px;background:var(--ivory);}
+  .header{border-bottom:2px solid var(--navy);padding-bottom:18px;margin-bottom:28px;display:flex;justify-content:space-between;align-items:flex-end;}
+  .brand{font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:6px;}
+  h1{font-size:28px;margin:0;color:var(--navy);letter-spacing:.5px;}
+  .sub{font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;color:var(--soft);margin-top:4px;}
+  .date{text-align:right;font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;color:var(--soft);}
+  .date .big{display:block;font-size:18px;color:var(--navy);font-family:Georgia,serif;letter-spacing:1px;}
+
+  .summary{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);padding:18px 22px;margin-bottom:28px;}
+  .summary h2{margin:0 0 8px;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-family:'Helvetica Neue',Arial,sans-serif;}
+  .summary p{margin:6px 0;font-size:14px;line-height:1.55;}
+
+  .sentiment{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:28px;}
+  .sent{background:#fff;border:1px solid var(--line);padding:12px 10px;text-align:center;font-family:'Helvetica Neue',Arial,sans-serif;}
+  .sent .lbl{font-size:10px;letter-spacing:2px;color:var(--soft);text-transform:uppercase;}
+  .sent .val{font-size:13px;font-weight:600;margin-top:6px;}
+  .pos{color:var(--pos)} .neg{color:var(--neg)} .neu{color:var(--soft)}
+
+  section{margin-bottom:26px;}
+  .sec-h{display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:14px;}
+  .sec-h .num{font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;color:var(--gold);letter-spacing:3px;}
+  .sec-h h3{margin:0;font-size:18px;color:var(--navy);letter-spacing:.5px;}
+  .sec-h .tag{margin-left:auto;font-family:'Helvetica Neue',Arial,sans-serif;font-size:10px;letter-spacing:2px;padding:3px 10px;border:1px solid var(--line);border-radius:2px;color:var(--soft);text-transform:uppercase;}
+  .sec-h .tag.bull{color:var(--pos);border-color:var(--pos);}
+  .sec-h .tag.bear{color:var(--neg);border-color:var(--neg);}
+
+  table{width:100%;border-collapse:collapse;font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;margin:8px 0 12px;}
+  th{text-align:left;background:var(--beige);color:var(--navy);padding:8px 10px;font-weight:600;letter-spacing:1px;font-size:10px;text-transform:uppercase;border-bottom:1px solid var(--line);}
+  td{padding:8px 10px;border-bottom:1px solid var(--line);}
+  td.r{text-align:right;font-variant-numeric:tabular-nums;}
+
+  ul.points{margin:8px 0 0;padding-left:18px;}
+  ul.points li{font-size:13.5px;line-height:1.6;margin-bottom:4px;}
+
+  .opportunity{background:linear-gradient(180deg,#fff 0%,var(--beige) 100%);border:1px solid var(--gold);padding:22px 26px;margin-bottom:26px;}
+  .opportunity h3{margin:0 0 10px;color:var(--gold);font-size:16px;letter-spacing:3px;text-transform:uppercase;font-family:'Helvetica Neue',Arial,sans-serif;}
+  .opp-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px;}
+  .opp{background:#fff;border:1px solid var(--line);padding:14px 16px;}
+  .opp .t{font-size:11px;letter-spacing:2px;color:var(--navy);text-transform:uppercase;font-family:'Helvetica Neue',Arial,sans-serif;margin-bottom:6px;}
+  .opp .b{font-size:13px;line-height:1.55;}
+
+  .bars{display:flex;flex-direction:column;gap:6px;margin:10px 0 4px;}
+  .bar{display:grid;grid-template-columns:90px 1fr 60px;align-items:center;gap:10px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;}
+  .bar .track{height:10px;background:var(--grey);position:relative;}
+  .bar .fill{height:100%;background:var(--navy);}
+  .bar .fill.gold{background:var(--gold)} .bar .fill.pos{background:var(--pos)} .bar .fill.neg{background:var(--neg)}
+
+  .donut-wrap{display:flex;align-items:center;gap:24px;background:#fff;border:1px solid var(--line);padding:18px;margin-bottom:26px;}
+  .donut{width:140px;height:140px;border-radius:50%;
+    background:conic-gradient(#1E6B3A 0 30%, #2E7D55 30% 55%, #B8893B 55% 75%, #5C6675 75% 90%, #9B2C2C 90% 100%);
+    position:relative;flex:none;}
+  .donut::after{content:"";position:absolute;inset:18px;background:#fff;border-radius:50%;}
+  .donut .center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;font-family:'Helvetica Neue',Arial,sans-serif;z-index:1;}
+  .donut .center .l{font-size:9px;letter-spacing:2px;color:var(--soft);text-transform:uppercase;}
+  .donut .center .v{font-size:14px;color:var(--navy);font-weight:600;margin-top:2px;}
+  .legend{display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;}
+  .legend .row{display:flex;align-items:center;gap:8px;}
+  .sw{width:10px;height:10px;display:inline-block;}
+
+  .footer{margin-top:34px;border-top:2px solid var(--navy);padding-top:18px;display:flex;justify-content:space-between;align-items:flex-end;}
+  .sig .l{font-family:'Helvetica Neue',Arial,sans-serif;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:4px;}
+  .sig .n{font-size:18px;color:var(--navy);font-family:Georgia,serif;}
+  .sig .r{font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;color:var(--soft);margin-top:2px;}
+  .sig .e{font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;color:var(--navy);margin-top:2px;}
+  .disclaim{font-family:'Helvetica Neue',Arial,sans-serif;font-size:9px;color:var(--soft);text-align:right;max-width:300px;line-height:1.4;}
+
+  .cite{font-family:'Helvetica Neue',Arial,sans-serif;font-size:9px;color:var(--soft);letter-spacing:.5px;}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div>
+      <div class="brand">Private Client Research</div>
+      <h1>Market Update Harian Premium</h1>
+      <div class="sub">Institutional Brief &middot; Global Markets &middot; Indonesia Watch</div>
+    </div>
+    <div class="date">
+      Edisi
+      <span class="big">23 Mei 2026</span>
+      Sabtu &middot; Penutupan 22 Mei
+    </div>
+  </div>
+
+  <div class="summary">
+    <h2>Ringkasan Eksekutif</h2>
+    <p>Pasar global ditutup dengan nada <strong>risk-on</strong>: ekuitas AS memperpanjang reli mingguan, emas bertahan di area rekor, sementara optimisme terhadap perundingan damai Timur Tengah menambah daya dorong sentimen. Di sisi domestik, tekanan terhadap rupiah dan IHSG berlanjut, menguji level psikologis penting.</p>
+    <p>Strategi hari ini: <strong>memanfaatkan momentum global</strong> pada ekuitas AS, emas, dan pasangan mata uang utama, sambil bersikap defensif terhadap eksposur aset domestik.</p>
+  </div>
+
+  <div class="sentiment">
+    <div class="sent"><div class="lbl">US Equity</div><div class="val pos">Bullish &#9650;</div></div>
+    <div class="sent"><div class="lbl">Forex (USD)</div><div class="val pos">Konstruktif &#9650;</div></div>
+    <div class="sent"><div class="lbl">Crypto</div><div class="val pos">Risk-On &#9650;</div></div>
+    <div class="sent"><div class="lbl">Komoditas</div><div class="val pos">Bullish &#9650;</div></div>
+    <div class="sent"><div class="lbl">Indonesia</div><div class="val neg">Tertekan &#9660;</div></div>
+  </div>
+
+  <section>
+    <div class="sec-h">
+      <span class="num">01</span>
+      <h3>US Stock Market</h3>
+      <span class="tag bull">Positive Momentum</span>
+    </div>
+    <table>
+      <thead><tr><th>Indeks</th><th class="r">Penutupan</th><th class="r">Perubahan</th><th>Catatan</th></tr></thead>
+      <tbody>
+        <tr><td>Dow Jones</td><td class="r">50,580</td><td class="r pos">+0.58%</td><td>Reli kembali ke atas 50,000</td></tr>
+        <tr><td>S&amp;P 500</td><td class="r">&gt; 7,500</td><td class="r pos">+0.40%</td><td>8 minggu kenaikan beruntun</td></tr>
+        <tr><td>Nasdaq</td><td class="r">n/a</td><td class="r pos">+0.20%</td><td>7 dari 8 minggu menguat</td></tr>
+      </tbody>
+    </table>
+    <ul class="points">
+      <li>Sentimen risk-on didukung <strong>kemajuan negosiasi damai Timur Tengah</strong> dan musim laporan keuangan korporasi yang kuat.</li>
+      <li>Rotasi positif berlanjut ke sektor teknologi, AI, dan semikonduktor; ekspektasi pelonggaran moneter The Fed tetap menjadi penopang.</li>
+    </ul>
+    <div class="cite">Sumber: CNBC Market Update (13 Mei 2026); Schwab Stock Market Open (22 Mei 2026).</div>
+  </section>
+
+  <section>
+    <div class="sec-h">
+      <span class="num">02</span>
+      <h3>Forex Market</h3>
+      <span class="tag bull">USD Konstruktif</span>
+    </div>
+    <ul class="points">
+      <li><strong>USD menguat</strong> seiring naiknya harga minyak dan ekspektasi sikap hawkish lanjutan The Fed &mdash; membuka peluang strategi long USD vs mata uang Asia.</li>
+      <li>Volatilitas meningkat menjelang rilis data ekonomi AS pekan depan; pasangan utama (EUR/USD, GBP/USD, USD/JPY) menawarkan rentang trading yang menarik.</li>
+      <li>Rupiah berada di sisi lemah &mdash; peluang directional bagi pelaku pasar yang fokus pada USD/IDR.</li>
+    </ul>
+    <div class="cite">Sumber: Schwab Stock Market Update (22 Mei 2026); Fortune Gold Update (22 Mei 2026).</div>
+  </section>
+
+  <section>
+    <div class="sec-h">
+      <span class="num">03</span>
+      <h3>Crypto Market</h3>
+      <span class="tag bull">Institusional Aktif</span>
+    </div>
+    <table>
+      <thead><tr><th>Aset</th><th class="r">Harga Acuan</th><th>Tema Pendukung</th></tr></thead>
+      <tbody>
+        <tr><td>Bitcoin (BTC)</td><td class="r">~ US$ 80,836 <span class="cite">(4 Mei 2026)</span></td><td>Stabil di area tinggi, partisipasi institusional</td></tr>
+        <tr><td>Ethereum (ETH)</td><td class="r">~ US$ 2,272 <span class="cite">(akhir Mei 2026)</span></td><td>Arus ETF spot ETH tetap relevan</td></tr>
+      </tbody>
+    </table>
+    <ul class="points">
+      <li>Bitcoin bertahan dekat level psikologis tinggi; struktur pasar mendukung skenario <em>breakout</em> lanjutan jika arus ETF kembali positif.</li>
+      <li>Sentimen institusional masih terlihat melalui keterlibatan emiten ETF besar seperti <strong>BlackRock (IBIT)</strong> dan <strong>Fidelity (FBTC)</strong>.</li>
+    </ul>
+    <div class="cite">Sumber: CoinDesk Daybook (4 Mei 2026); laporan arus ETF Mei 2026.</div>
+  </section>
+
+  <section>
+    <div class="sec-h">
+      <span class="num">04</span>
+      <h3>Commodities Market</h3>
+      <span class="tag bull">Safe-Haven Demand</span>
+    </div>
+    <table>
+      <thead><tr><th>Komoditas</th><th class="r">Harga</th><th class="r">Perubahan</th><th>Driver</th></tr></thead>
+      <tbody>
+        <tr><td>Emas (Spot)</td><td class="r">US$ 4,501.90 / oz</td><td class="r pos">+0.01%</td><td>Bertahan di area rekor ~US$ 4,546</td></tr>
+        <tr><td>Perak (Spot)</td><td class="r">US$ 76.24 / oz</td><td class="r pos">+2.41%</td><td>Momentum kuat, volatilitas tinggi</td></tr>
+        <tr><td>Minyak (Crude)</td><td class="r">Dekat 4-year high</td><td class="r pos">&#9650;</td><td>Ketegangan geopolitik AS&ndash;Iran</td></tr>
+      </tbody>
+    </table>
+    <div class="bars">
+      <div class="bar"><span>Emas</span><div class="track"><div class="fill gold" style="width:92%"></div></div><span class="pos">Bullish</span></div>
+      <div class="bar"><span>Perak</span><div class="track"><div class="fill gold" style="width:80%"></div></div><span class="pos">Bullish</span></div>
+      <div class="bar"><span>Minyak</span><div class="track"><div class="fill" style="width:78%"></div></div><span class="pos">Bullish</span></div>
+    </div>
+    <ul class="points">
+      <li>Emas tetap menjadi <strong>safe-haven utama</strong>; permintaan didukung pelemahan mata uang regional, kekhawatiran inflasi, dan ketegangan geopolitik.</li>
+      <li>Perak memimpin pergerakan logam mulia secara persentase &mdash; peluang untuk eksposur tambahan dengan beta lebih tinggi terhadap emas.</li>
+    </ul>
+    <div class="cite">Sumber: Fortune Current Price of Gold (22 Mei 2026); FX Daily Report (22 Mei 2026).</div>
+  </section>
+
+  <section>
+    <div class="sec-h">
+      <span class="num">05</span>
+      <h3>Indonesia Economic Update</h3>
+      <span class="tag bear">Tekanan Domestik</span>
+    </div>
+    <table>
+      <thead><tr><th>Indikator</th><th class="r">Level</th><th class="r">Perubahan</th><th>Catatan</th></tr></thead>
+      <tbody>
+        <tr><td>IHSG</td><td class="r">6,037.41</td><td class="r neg">&minus;0.94%</td><td>Sempat menyentuh 5,966 &mdash; uji level 6,000</td></tr>
+        <tr><td>USD/IDR</td><td class="r">Rp 17,706</td><td class="r neg">+0.22%</td><td>Rupiah melemah, area rekor terlemah</td></tr>
+        <tr><td>YTD IHSG</td><td class="r">&minus;22%</td><td class="r neg">&#9660;</td><td>Per laporan 16 Mei 2026</td></tr>
+      </tbody>
+    </table>
+    <ul class="points">
+      <li><strong>Tekanan jual asing berlanjut</strong>: 406 saham melemah vs 198 saham menguat pada sesi 22 Mei.</li>
+      <li>Rupiah menyentuh area rekor terlemah, memberi tekanan pada inflasi impor, daya beli, dan biaya pendanaan korporasi.</li>
+      <li>Risiko: jika rupiah dan arus modal asing tidak stabil, IHSG berpotensi menguji <strong>support psikologis 6,000</strong>.</li>
+    </ul>
+    <div class="cite">Sumber: Media Indonesia (22 Mei 2026); Babel Insight (22 Mei 2026); Radar Cirebon TV (16 Mei 2026).</div>
+  </section>
+
+  <div class="donut-wrap">
+    <div class="donut"><div class="center"><div class="l">Sentimen Global</div><div class="v">Risk-On</div></div></div>
+    <div style="flex:1">
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:2px;color:#B8893B;text-transform:uppercase;margin-bottom:8px;">Bobot Tema Hari Ini (Ilustratif)</div>
+      <div class="legend">
+        <div class="row"><span class="sw" style="background:#1E6B3A"></span>US Equities &mdash; 30%</div>
+        <div class="row"><span class="sw" style="background:#2E7D55"></span>Emas &amp; Perak &mdash; 25%</div>
+        <div class="row"><span class="sw" style="background:#B8893B"></span>USD Strength &mdash; 20%</div>
+        <div class="row"><span class="sw" style="background:#5C6675"></span>Crypto Selektif &mdash; 15%</div>
+        <div class="row"><span class="sw" style="background:#9B2C2C"></span>Indonesia (Defensif) &mdash; 10%</div>
+      </div>
+      <div class="cite" style="margin-top:10px;">Bobot bersifat ilustratif untuk menggambarkan distribusi tema, bukan rekomendasi alokasi portofolio.</div>
+    </div>
+  </div>
+
+  <div class="opportunity">
+    <h3>&#9733; Potensi Keuntungan / Profit Opportunity</h3>
+    <p style="font-size:13px;margin:0 0 6px;">Empat tema dengan rasio peluang terkuat hari ini, disusun untuk klien yang mencari posisi terarah dengan disiplin manajemen risiko.</p>
+    <div class="opp-grid">
+      <div class="opp">
+        <div class="t">01 &middot; US Equities Momentum</div>
+        <div class="b">Reli 8 minggu beruntun di S&amp;P 500 dan pemulihan Dow ke atas 50,000 mengindikasikan tren primer yang sehat. Eksposur tematik pada AI, semikonduktor, dan <em>mega-cap tech</em> tetap menarik secara <em>risk-adjusted</em>.</div>
+      </div>
+      <div class="opp">
+        <div class="t">02 &middot; Emas &amp; Perak (Safe-Haven+)</div>
+        <div class="b">Emas bertahan di area rekor ~US$ 4,500/oz; perak melonjak +2.41% dalam satu sesi. Kombinasi geopolitik, pelemahan mata uang regional, dan permintaan institusional menopang prospek lanjutan.</div>
+      </div>
+      <div class="opp">
+        <div class="t">03 &middot; USD Strength Plays</div>
+        <div class="b">Pasangan USD vs mata uang Asia (termasuk USD/IDR) menawarkan momentum yang jelas. Cocok untuk klien yang mencari peluang directional dengan likuiditas tinggi.</div>
+      </div>
+      <div class="opp">
+        <div class="t">04 &middot; Bitcoin Strategis</div>
+        <div class="b">BTC bertahan dekat US$ 80,000 dengan partisipasi institusi via ETF spot. Strategi <em>core-satellite</em> berbasis akumulasi disiplin dapat dipertimbangkan sebagai diversifier.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="sig">
+      <div class="l">Exclusively Prepared by</div>
+      <div class="n">Revan Ashford</div>
+      <div class="r">Senior Investment Consultant &amp; Portfolio Manager</div>
+      <div class="e">revan@onetwomarkets.co.za</div>
+    </div>
+    <div class="disclaim">
+      Dokumen ini disusun untuk klien profesional sebagai bahan kajian pasar. Bukan merupakan ajakan investasi. Keputusan investasi tetap berada pada klien dengan mempertimbangkan profil risiko masing-masing.
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

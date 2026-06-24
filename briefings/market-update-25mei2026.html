@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Market Update Harian Premium — 25 Mei 2026</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: #FAFAF7;
+    color: #2D2D2D;
+    min-height: 100vh;
+  }
+  .page { max-width: 920px; margin: 0 auto; padding-bottom: 0; }
+
+  /* HEADER */
+  .header {
+    background: #1B2A4A;
+    padding: 36px 52px 28px;
+  }
+  .gold-line { height: 3px; background: #C9A84C; }
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 22px 0;
+  }
+  .header-label {
+    color: #C9A84C;
+    font-size: 10px;
+    letter-spacing: 4px;
+    font-family: Arial, sans-serif;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .header-title {
+    color: #FFFFFF;
+    font-size: 27px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .header-date {
+    color: #A8B8D4;
+    font-size: 13px;
+    font-family: Arial, sans-serif;
+  }
+  .badges { display: flex; flex-direction: column; gap: 8px; text-align: right; }
+  .badge {
+    color: #FFF;
+    font-size: 11px;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    padding: 7px 18px;
+    border-radius: 2px;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+  }
+  .badge-green { background: #2E7D5A; }
+  .badge-red { background: #8B2020; }
+
+  /* BODY */
+  .body { padding: 32px 52px; }
+
+  /* SECTION */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .section-flag { font-size: 20px; }
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1B2A4A;
+    letter-spacing: 2.5px;
+    font-family: Arial, sans-serif;
+    white-space: nowrap;
+  }
+  .section-line { flex: 1; height: 1px; background: #E0DDD6; }
+  .section-badge {
+    color: #FFF;
+    font-size: 10px;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    padding: 4px 13px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  .divider { height: 1px; background: #E8E4DC; margin: 26px 0; }
+
+  /* BODY TEXT */
+  .body-text {
+    font-size: 13px;
+    font-family: Arial, sans-serif;
+    line-height: 1.75;
+    color: #444;
+    margin: 0;
+  }
+
+  /* US MARKET GRID */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .metric-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 7px 0;
+    border-bottom: 1px solid #F0EDE8;
+  }
+  .metric-label { font-size: 13px; font-family: Arial, sans-serif; color: #444; }
+  .metric-value { text-align: right; }
+  .metric-num {
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Courier New', monospace;
+  }
+  .green { color: #2E7D5A; }
+  .red { color: #8B2020; }
+  .metric-sub { font-size: 10px; color: #888; font-family: Arial, sans-serif; }
+
+  .gainers-box {
+    margin-top: 14px;
+    padding: 10px 14px;
+    background: #F0F4F0;
+    border-left: 3px solid #C9A84C;
+  }
+  .gainers-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: #555;
+    font-family: Arial, sans-serif;
+    margin-bottom: 6px;
+  }
+  .gainers-values { font-size: 13px; font-family: Arial, sans-serif; }
+  .source-note { font-size: 10px; color: #bbb; font-family: Arial, sans-serif; margin-top: 4px; }
+
+  /* CHART */
+  .chart-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: #888;
+    font-family: Arial, sans-serif;
+    margin-bottom: 12px;
+  }
+
+  /* FOREX GRID */
+  .four-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+  .forex-card {
+    padding: 13px 15px;
+    border-radius: 3px;
+  }
+  .forex-row { display: flex; justify-content: space-between; align-items: center; }
+  .forex-pair { font-family: Arial, sans-serif; font-weight: 700; font-size: 13px; color: #1B2A4A; }
+  .forex-rate { font-family: 'Courier New', monospace; font-size: 15px; font-weight: 700; }
+  .forex-sentiment { font-size: 11px; font-family: Arial, sans-serif; color: #777; margin-top: 3px; }
+
+  /* CRYPTO */
+  .crypto-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 20px; }
+  .crypto-ibit {
+    padding: 18px;
+    background: #F5F2FF;
+    border: 1px solid #C8B8E0;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .ibit-label { font-size: 10px; letter-spacing: 2px; color: #7B5EA7; font-family: Arial, sans-serif; font-weight: 700; margin-bottom: 10px; }
+  .ibit-num { font-size: 26px; font-weight: 700; color: #1B2A4A; }
+  .ibit-sub { font-size: 12px; color: #666; font-family: Arial, sans-serif; }
+  .ibit-pct { font-size: 14px; color: #7B5EA7; font-weight: 700; margin-top: 8px; }
+
+  /* COMMODITIES */
+  .comm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .comm-card { padding: 18px; border-radius: 4px; }
+  .comm-label { font-size: 10px; letter-spacing: 2px; font-family: Arial, sans-serif; font-weight: 700; }
+  .comm-price { font-size: 28px; font-weight: 700; color: #1B2A4A; margin-top: 6px; }
+  .comm-unit { font-size: 14px; color: #888; }
+  .comm-desc { font-size: 12px; font-family: Arial, sans-serif; color: #555; margin-top: 10px; line-height: 1.6; }
+
+  /* INDONESIA */
+  .risk-box {
+    background: #FFF8F8;
+    border: 1px solid #E8C4C4;
+    border-radius: 4px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+  }
+  .risk-title { font-size: 10px; letter-spacing: 2px; color: #8B2020; font-family: Arial, sans-serif; font-weight: 700; margin-bottom: 12px; }
+  .risk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .risk-card { padding: 10px 12px; background: #FFF; border: 1px solid #F0D0D0; border-radius: 3px; }
+  .risk-card-label { font-size: 10px; font-family: Arial, sans-serif; color: #999; letter-spacing: 1px; }
+  .risk-card-val { font-size: 18px; font-weight: 700; color: #8B2020; margin-top: 2px; }
+  .risk-card-note { font-size: 11px; font-family: Arial, sans-serif; color: #777; margin-top: 2px; }
+
+  /* PROFIT OPPORTUNITY */
+  .opp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .opp-card { padding: 14px 16px; border-radius: 4px; }
+  .opp-title { font-size: 13px; font-family: Arial, sans-serif; font-weight: 700; color: #1B2A4A; }
+  .opp-desc { font-size: 12px; font-family: Arial, sans-serif; color: #555; line-height: 1.65; margin: 6px 0 0 0; }
+
+  /* FOOTER */
+  .footer { background: #1B2A4A; }
+  .footer-inner {
+    padding: 22px 52px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-prepared { color: #C9A84C; font-size: 10px; letter-spacing: 3px; font-family: Arial, sans-serif; margin-bottom: 5px; }
+  .footer-name { color: #FFF; font-size: 18px; font-weight: 700; letter-spacing: 0.5px; }
+  .footer-role { color: #A8B8D4; font-size: 12px; font-family: Arial, sans-serif; margin-top: 3px; }
+  .footer-email { color: #C9A84C; font-size: 12px; font-family: Arial, sans-serif; margin-top: 2px; }
+  .footer-disclaimer { text-align: right; max-width: 260px; color: #5A6D8A; font-size: 10px; font-family: Arial, sans-serif; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="gold-line"></div>
+    <div class="header-inner">
+      <div>
+        <div class="header-label">LAPORAN PASAR INSTITUSIONAL &nbsp;·&nbsp; EDISI EKSKLUSIF</div>
+        <div class="header-title">MARKET UPDATE HARIAN PREMIUM</div>
+        <div class="header-date">Minggu, 25 Mei 2026</div>
+      </div>
+      <div class="badges">
+        <div class="badge badge-green">🟢 &nbsp;GLOBAL: RISK-ON MODERAT</div>
+        <div class="badge badge-red">🔴 &nbsp;INDONESIA: CAUTIOUS</div>
+      </div>
+    </div>
+    <div class="gold-line"></div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- US STOCK MARKET -->
+    <div class="section-header">
+      <span class="section-flag">🇺🇸</span>
+      <span class="section-title">US STOCK MARKET</span>
+      <div class="section-line"></div>
+      <span class="section-badge" style="background:#2E7D5A;">POSITIF ↑</span>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <p class="body-text">
+          Wall Street menutup pekan terakhir dengan penguatan solid. <strong>S&amp;P 500 mencatat 8 minggu berturut-turut menguat</strong> — terpanjang sejak Desember 2023. Momentum positif didorong kemajuan perundingan damai Timur Tengah dan musim <em>earnings</em> yang melampaui ekspektasi analis.
+        </p>
+        <div style="margin-top:14px;">
+          <div class="metric-row">
+            <span class="metric-label">Dow Jones Industrial</span>
+            <div class="metric-value">
+              <span class="metric-num green">+0.58% (+294 pts)</span>
+              <div class="metric-sub">Ditutup di 50,580 <span style="color:#bbb">[pencarian web, CNBC]</span></div>
+            </div>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">S&amp;P 500</span>
+            <div class="metric-value">
+              <span class="metric-num green">+0.40%</span>
+              <div class="metric-sub">8 minggu <em>winning streak</em> <span style="color:#bbb">[pencarian web]</span></div>
+            </div>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Nasdaq Composite</span>
+            <div class="metric-value">
+              <span class="metric-num green">+0.20%</span>
+              <div class="metric-sub">7 dari 8 minggu terakhir positif <span style="color:#bbb">[pencarian web]</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="gainers-box">
+          <div class="gainers-label">TOP GAINERS — 22 MEI 2026</div>
+          <div class="gainers-values">
+            <span class="green" style="font-weight:700;">MRK +5.64%</span>
+            <span style="color:#ccc;margin:0 8px;">·</span>
+            <span class="green" style="font-weight:700;">CRM +2.23%</span>
+            <span style="color:#ccc;margin:0 8px;">·</span>
+            <span class="green" style="font-weight:700;">CSCO +2.01%</span>
+          </div>
+          <div class="source-note">[Sumber: CNBC, pencarian web]</div>
+        </div>
+      </div>
+      <div>
+        <div class="chart-label">KINERJA INDEKS UTAMA — % GAIN</div>
+        <canvas id="indicesChart" height="160"></canvas>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- FOREX -->
+    <div class="section-header">
+      <span class="section-flag">💱</span>
+      <span class="section-title">FOREX MARKET</span>
+      <div class="section-line"></div>
+      <span class="section-badge" style="background:#1B2A4A;">PELUANG TERPILIH</span>
+    </div>
+    <p class="body-text">USD/JPY menjadi penggerak utama dolar global minggu ini. EUR dan GBP menunjukkan ketahanan relatif, sementara rupiah tetap dalam tekanan berat dan menjadi area pantau ketat bagi investor domestik.</p>
+    <div class="four-grid">
+      <div class="forex-card" style="background:#F8F8F5;border:1px solid #E8E4DC;">
+        <div class="forex-row">
+          <span class="forex-pair">EUR / USD</span>
+          <span class="forex-rate" style="color:#1B2A4A;">1.1700</span>
+        </div>
+        <div class="forex-sentiment">Moderat Bullish — ECB cautious</div>
+        <div class="source-note">[Sumber: pencarian web, NBC Economics]</div>
+      </div>
+      <div class="forex-card" style="background:#F8F8F5;border:1px solid #E8E4DC;">
+        <div class="forex-row">
+          <span class="forex-pair">GBP / USD</span>
+          <span class="forex-rate" style="color:#1B2A4A;">1.3600</span>
+        </div>
+        <div class="forex-sentiment">Poundsterling relatif kuat</div>
+        <div class="source-note">[Sumber: pencarian web, Forex.com]</div>
+      </div>
+      <div class="forex-card" style="background:#F8F8F5;border:1px solid #E8E4DC;">
+        <div class="forex-row">
+          <span class="forex-pair">USD / JPY</span>
+          <span class="forex-rate" style="color:#1B2A4A;">157.00</span>
+        </div>
+        <div class="forex-sentiment">Yen tertekan — carry trade dominan</div>
+        <div class="source-note">[Sumber: pencarian web, FXStreet]</div>
+      </div>
+      <div class="forex-card" style="background:#FFF8F8;border:1px solid #E8C4C4;">
+        <div class="forex-row">
+          <span class="forex-pair">USD / IDR</span>
+          <span class="forex-rate" style="color:#8B2020;">17,740</span>
+        </div>
+        <div class="forex-sentiment">Rupiah melemah signifikan ⚠️</div>
+        <div class="source-note">[Sumber: pencarian web, Kontan]</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- CRYPTO -->
+    <div class="section-header">
+      <span class="section-flag">₿</span>
+      <span class="section-title">CRYPTO MARKET</span>
+      <div class="section-line"></div>
+      <span class="section-badge" style="background:#7B5EA7;">RISK-ON</span>
+    </div>
+    <div class="crypto-grid">
+      <div>
+        <p class="body-text">Bitcoin berkonsolidasi di atas zona support $74K–$76K dengan fondasi institusional yang semakin kokoh. Total aset bersih spot Bitcoin ETF Amerika Serikat telah melampaui $100 miliar, dipimpin BlackRock IBIT sebagai pemegang terbesar.</p>
+        <div style="margin-top:13px;">
+          <div class="metric-row">
+            <span class="metric-label">Bitcoin (BTC)</span>
+            <div class="metric-value">
+              <span class="metric-num green">~$76,400</span>
+              <div class="metric-sub">Konsolidasi di atas $74K support <span style="color:#bbb">[pencarian web]</span></div>
+            </div>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Spot ETF Total AUM (AS)</span>
+            <div class="metric-value">
+              <span class="metric-num green">&gt;$100 Miliar</span>
+              <div class="metric-sub">Total aset bersih <span style="color:#bbb">[pencarian web]</span></div>
+            </div>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Cumulative ETF Inflows</span>
+            <div class="metric-value">
+              <span class="metric-num green">$58.72 Miliar</span>
+              <div class="metric-sub">Sejak Januari 2024 <span style="color:#bbb">[pencarian web]</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="crypto-ibit">
+        <div class="ibit-label">BLACKROCK IBIT</div>
+        <div class="ibit-num">809,870</div>
+        <div class="ibit-sub">BTC dimiliki</div>
+        <div class="ibit-pct">~7% Total Supply BTC</div>
+        <div class="source-note" style="margin-top:8px;">[Sumber: pencarian web, CoinGlass]</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- COMMODITIES -->
+    <div class="section-header">
+      <span class="section-flag">🏅</span>
+      <span class="section-title">COMMODITIES MARKET</span>
+      <div class="section-line"></div>
+      <span class="section-badge" style="background:#B8860B;">SAFE HAVEN &amp; ENERGI</span>
+    </div>
+    <div class="comm-grid">
+      <div class="comm-card" style="background:#FFFBF0;border:1px solid #E8D98A;">
+        <div class="comm-label" style="color:#B8860B;">EMAS (GOLD)</div>
+        <div class="comm-price">~$4,500<span class="comm-unit">/oz</span></div>
+        <div class="comm-desc">Tekanan dari kenaikan yield riil AS dan penguatan USD, namun tetap menjadi aset safe haven utama di tengah geopolitik Timur Tengah yang memanas.</div>
+        <div class="source-note" style="margin-top:8px;">[Sumber: CNBC, pencarian web]</div>
+      </div>
+      <div class="comm-card" style="background:#F5F0FF;border:1px solid #C8B8E0;">
+        <div class="comm-label" style="color:#5B4A8A;">MINYAK BRENT & WTI</div>
+        <div class="comm-price" style="font-size:24px;">Brent $94 | WTI $90<span class="comm-unit">/bbl</span></div>
+        <div class="comm-desc">Turun (-5%) hingga (-9%) sejak berita damai Iran. Gangguan aliran ~20 juta barel/hari via Selat Hormuz mulai berkurang. Normalisasi geopolitik Timur Tengah menurunkan premium risiko. Infrastruktur pengiriman menunjukkan tanda-tanda pemulihan.</div>
+        <div class="source-note" style="margin-top:8px;">[Sumber: Westpac IQ, pencarian web, 25 Mei 2026]</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- INDONESIA -->
+    <div class="section-header">
+      <span class="section-flag">🇮🇩</span>
+      <span class="section-title">INDONESIA ECONOMIC UPDATE</span>
+      <div class="section-line"></div>
+      <span class="section-badge" style="background:#8B2020;">⚠️ WASPADA</span>
+    </div>
+    <div class="risk-box">
+      <div class="risk-title">INDIKATOR RISIKO DOMESTIK — MEI 2026</div>
+      <div class="risk-grid">
+        <div class="risk-card">
+          <div class="risk-card-label">IHSG</div>
+          <div class="risk-card-val">~6,000</div>
+          <div class="risk-card-note">Level psikologis kritis terancam</div>
+        </div>
+        <div class="risk-card">
+          <div class="risk-card-label">USD / IDR</div>
+          <div class="risk-card-val">~17,740</div>
+          <div class="risk-card-note">Risiko menembus Rp18,000</div>
+        </div>
+        <div class="risk-card">
+          <div class="risk-card-label">IHSG April 2026</div>
+          <div class="risk-card-val">-19.55%</div>
+          <div class="risk-card-note">Pelemahan terbesar tahun ini</div>
+        </div>
+        <div class="risk-card">
+          <div class="risk-card-label">CDS Indonesia</div>
+          <div class="risk-card-val">↑ Naik</div>
+          <div class="risk-card-note">Persepsi risiko investor meningkat</div>
+        </div>
+      </div>
+    </div>
+    <p class="body-text" style="color:#555;">
+      Pelemahan rupiah mendekati Rp17,740/USD disertai aksi jual bersih investor asing yang masif dari aset berdenominasi rupiah. Kenaikan Credit Default Swap (CDS) mencerminkan meningkatnya persepsi risiko global terhadap Indonesia. Target IHSG 2026 telah diturunkan oleh analis akibat kombinasi rupiah lemah, menyusulnya harga energi dari perkembangan damai Iran, dan tekanan fiskal yang mempersempit ruang gerak kebijakan.
+    </p>
+    <div class="source-note" style="margin-top:6px;">[Sumber: Kontan, Media Indonesia, Universitas Andalas — pencarian web, 25 Mei 2026]</div>
+
+    <div class="divider"></div>
+
+    <!-- PROFIT OPPORTUNITY -->
+    <div class="section-header">
+      <span class="section-flag">💡</span>
+      <span class="section-title">PROFIT OPPORTUNITY</span>
+      <div class="section-line"></div>
+      <span class="section-badge" style="background:#C9A84C;">PILIHAN TERKUAT</span>
+    </div>
+    <div class="opp-grid">
+      <div class="opp-card" style="background:#E8F5EE;border:1px solid #A8D8B8;">
+        <div>🇺🇸 <span class="opp-title">US Equities</span></div>
+        <p class="opp-desc">Saham defensif unggulan (MRK, CSCO) dan sektor teknologi AI tetap menarik di tengah momentum 8-minggu berturut-turut positif. Pertimbangkan diversifikasi ke sektor <em>earnings-driven</em>.</p>
+      </div>
+      <div class="opp-card" style="background:#FFFBF0;border:1px solid #E8D98A;">
+        <div>🏅 <span class="opp-title">Gold / Emas</span></div>
+        <p class="opp-desc">Akumulasi bertahap sebagai <em>hedge</em> inflasi dan risiko geopolitik. Level $4,500 masih menarik untuk posisi jangka menengah dengan profil risk-reward yang terukur.</p>
+      </div>
+      <div class="opp-card" style="background:#F0F4FF;border:1px solid #B8C8E8;">
+        <div>💱 <span class="opp-title">Forex: USD/JPY</span></div>
+        <p class="opp-desc">Pantau potensi <em>carry trade reversal</em> jika Bank of Japan memberikan sinyal intervensi. Volatilitas membuka peluang entry yang kalkulatif dengan manajemen risiko ketat.</p>
+      </div>
+      <div class="opp-card" style="background:#F5F2FF;border:1px solid #C8B8E0;">
+        <div>₿ <span class="opp-title">Bitcoin / Crypto</span></div>
+        <p class="opp-desc">Fondasi institusional ETF dengan AUM &gt;$100 miliar memberikan support kuat di zona $74K–$76K. Risk-reward menarik bagi investor berpengalaman yang memahami volatilitas aset digital.</p>
+      </div>
+    </div>
+
+  </div><!-- end body -->
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="gold-line"></div>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-prepared">EXCLUSIVELY PREPARED BY</div>
+        <div class="footer-name">Revan Ashford</div>
+        <div class="footer-role">Senior Investment Consultant &amp; Portfolio Manager</div>
+        <div class="footer-email">revan@onetwomarkets.co.za</div>
+      </div>
+      <div class="footer-disclaimer">
+        Laporan ini bersifat informatif. Bukan merupakan rekomendasi investasi. Past performance is not indicative of future results.
+      </div>
+    </div>
+    <div class="gold-line"></div>
+  </div>
+
+</div><!-- end page -->
+
+<script>
+  const ctx = document.getElementById('indicesChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['S&P 500', 'Dow Jones', 'Nasdaq'],
+      datasets: [{
+        data: [0.40, 0.58, 0.20],
+        backgroundColor: ['#2E7D5A', '#2E7D5A', '#2E7D5A'],
+        borderRadius: 4,
+        borderSkipped: false,
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => ` +${ctx.raw}%`
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: { font: { family: 'Arial', size: 11 }, color: '#555' },
+          border: { display: false }
+        },
+        y: {
+          beginAtZero: true,
+          max: 0.8,
+          grid: { color: '#F0EDE8' },
+          ticks: {
+            font: { family: 'Arial', size: 10 },
+            color: '#bbb',
+            callback: v => v + '%'
+          },
+          border: { display: false }
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>

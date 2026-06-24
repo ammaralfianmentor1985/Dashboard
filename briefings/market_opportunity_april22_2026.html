@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Opportunity — 22 April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --cream:#faf8f3;
+    --white:#ffffff;
+    --ink:#1c1917;
+    --muted:#6b6560;
+    --border:#e8e4dc;
+    --green:#1a6b3a;
+    --green-bg:#edf6f0;
+    --green-light:#d1ead9;
+    --red:#b91c1c;
+    --red-bg:#fef2f2;
+    --gold:#92600a;
+    --gold-bg:#fef9ec;
+    --gold-light:#fde68a;
+    --blue:#1e3a6e;
+    --blue-bg:#eff4fc;
+    --blue-light:#bfd0ee;
+    --accent:#c8893a;
+  }
+  body{background:var(--cream);font-family:'DM Sans',sans-serif;color:var(--ink);min-height:100vh}
+
+  /* HEADER */
+  .page-header{background:var(--white);border-bottom:1px solid var(--border);padding:2rem 2.5rem 1.5rem;text-align:center}
+  .page-header .eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+  .page-header h1{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--ink);line-height:1.2}
+  .page-header .subtitle{font-size:14px;color:var(--muted);margin-top:.4rem}
+  .date-badge{display:inline-block;margin-top:.75rem;font-size:12px;font-weight:500;padding:4px 14px;border-radius:20px;background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-light)}
+
+  .container{max-width:820px;margin:0 auto;padding:1.5rem 1.25rem 3rem}
+
+  /* MARKET SNAPSHOT */
+  .snapshot-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:1.5rem 0 .6rem}
+  .ticker-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.25rem}
+  .ticker{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:10px 14px;flex:1;min-width:110px}
+  .t-name{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+  .t-val{font-size:18px;font-weight:500;color:var(--ink);margin:2px 0}
+  .t-chg{font-size:11px;font-weight:500}
+  .up{color:var(--green)} .dn{color:var(--red)} .fl{color:var(--muted)}
+
+  /* WHAT HAPPENED */
+  .card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.25rem 1.5rem;margin-bottom:1rem}
+  .card-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:.75rem}
+  .card p{font-size:14px;line-height:1.8;color:#3a3530}
+  .highlight-box{margin:.75rem 0;padding:.7rem 1rem;border-radius:8px;font-size:13px;line-height:1.6}
+  .hb-green{background:var(--green-bg);border-left:3px solid var(--green);color:#134d2a}
+  .hb-amber{background:var(--gold-bg);border-left:3px solid var(--accent);color:#6b3f0a}
+  .hb-blue{background:var(--blue-bg);border-left:3px solid var(--blue);color:#162d55}
+  .hb-red{background:var(--red-bg);border-left:3px solid var(--red);color:#7f1d1d}
+  strong{font-weight:500}
+
+  /* DIVIDER */
+  .tier-divider{display:flex;align-items:center;gap:12px;margin:2rem 0 1rem}
+  .tier-divider::before,.tier-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+  .tier-label{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+
+  /* TIER CARDS */
+  .tier{border-radius:16px;overflow:hidden;margin-bottom:1.5rem;border:1px solid var(--border)}
+  .tier-header{padding:1.25rem 1.5rem}
+  .tier-header .badge{display:inline-block;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;margin-bottom:.5rem}
+  .tier-header h2{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700}
+  .tier-header .tagline{font-size:13px;margin-top:.2rem;opacity:.75}
+  .tier-body{padding:1.25rem 1.5rem;background:var(--white)}
+
+  /* TIER 1 — STARTER */
+  .tier-starter .tier-header{background:linear-gradient(135deg,#e8f5ee,#d1ead9)}
+  .tier-starter .tier-header .badge{background:var(--green-light);color:var(--green)}
+  .tier-starter .tier-header h2{color:var(--green)}
+
+  /* TIER 2 — PREMIUM */
+  .tier-premium .tier-header{background:linear-gradient(135deg,#e8eef8,#c8d8f0)}
+  .tier-premium .tier-header .badge{background:var(--blue-light);color:var(--blue)}
+  .tier-premium .tier-header h2{color:var(--blue)}
+
+  /* TRADE IDEA ROWS */
+  .trade-list{display:flex;flex-direction:column;gap:10px;margin:.75rem 0}
+  .trade-item{background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem}
+  .trade-top{display:flex;align-items:center;gap:10px;margin-bottom:.4rem;flex-wrap:wrap}
+  .trade-ticker{font-size:15px;font-weight:500;color:var(--ink)}
+  .trade-dir{font-size:11px;font-weight:500;padding:2px 9px;border-radius:20px}
+  .dir-buy{background:var(--green-bg);color:var(--green)}
+  .dir-hold{background:var(--gold-bg);color:var(--gold)}
+  .trade-why{font-size:13px;color:#4a453f;line-height:1.6}
+  .trade-levels{display:flex;gap:6px;flex-wrap:wrap;margin-top:.5rem}
+  .lvl-chip{font-size:11px;padding:2px 8px;border-radius:6px;background:var(--white);border:1px solid var(--border);color:var(--muted)}
+  .lvl-chip span{font-weight:500;color:var(--ink)}
+
+  /* SIZE GUIDE */
+  .size-table{width:100%;border-collapse:collapse;margin:.75rem 0;font-size:13px}
+  .size-table th{text-align:left;padding:7px 10px;background:var(--cream);color:var(--muted);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.05em}
+  .size-table td{padding:8px 10px;border-top:1px solid var(--border);color:var(--ink)}
+  .size-table tr:hover td{background:#faf7f2}
+
+  /* SAFETY BOX */
+  .safety-box{background:var(--gold-bg);border:1px solid var(--gold-light);border-radius:10px;padding:1rem 1.25rem;margin-top:.75rem}
+  .safety-title{font-size:12px;font-weight:500;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.4rem}
+  .safety-text{font-size:13px;color:#5a3d0a;line-height:1.7}
+
+  /* TESLA SPECIAL */
+  .tesla-box{background:#f0f4ff;border:1px solid #c0cfe8;border-radius:10px;padding:1rem 1.25rem;margin:.75rem 0}
+  .tesla-title{font-size:12px;font-weight:500;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.4rem}
+  .tesla-text{font-size:13px;color:#1e3a6e;line-height:1.7}
+
+  /* WATCH OUT */
+  .risk-row{display:flex;gap:8px;flex-wrap:wrap;margin:.75rem 0}
+  .risk-chip{font-size:12px;padding:4px 12px;border-radius:20px;background:var(--red-bg);border:1px solid #fecaca;color:var(--red)}
+
+  /* DISCLAIMER */
+  .disclaimer{margin-top:2rem;padding:1rem 1.25rem;background:var(--white);border:1px solid var(--border);border-radius:10px;font-size:11px;color:var(--muted);line-height:1.7;text-align:center}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="eyebrow">Your Broker · Market Opportunity Brief</div>
+  <h1>What's Happening &amp; Where to Put Your Money</h1>
+  <div class="subtitle">Simple. Clear. Actionable.</div>
+  <div class="date-badge">Wednesday, 22 April 2026</div>
+</div>
+
+<div class="container">
+
+  <!-- MARKET SNAPSHOT -->
+  <div class="snapshot-label">Markets Right Now</div>
+  <div class="ticker-row">
+    <div class="ticker"><div class="t-name">S&amp;P 500</div><div class="t-val">7,089</div><div class="t-chg dn">−0.28% today</div></div>
+    <div class="ticker"><div class="t-name">Nasdaq</div><div class="t-val">24,364</div><div class="t-chg dn">−0.16% today</div></div>
+    <div class="ticker"><div class="t-name">Gold</div><div class="t-val">$4,764</div><div class="t-chg dn">−1.32% today</div></div>
+    <div class="ticker"><div class="t-name">Oil (WTI)</div><div class="t-val">$89.75</div><div class="t-chg up">+2.67% today</div></div>
+    <div class="ticker"><div class="t-name">Bitcoin</div><div class="t-val">$75,731</div><div class="t-chg fl">Steady</div></div>
+    <div class="ticker"><div class="t-name">TESLA</div><div class="t-val">$392</div><div class="t-chg dn">−20% YTD · Reports TODAY</div></div>
+  </div>
+
+  <!-- WHAT HAPPENED -->
+  <div class="card">
+    <div class="card-title">What Happened This Week — In Plain English</div>
+    <p>Last week was one of the best weeks in years. Stocks hit <strong>all-time highs</strong>. The Nasdaq went up 13 days in a row — a record not seen since 1992. Why? Because people hoped the war between the US and Iran was nearly over.</p>
+    <div class="highlight-box hb-green">
+      <strong>The good news:</strong> Stocks are near all-time highs. Earnings season is strong. Most big banks beat expectations. The economy is resilient.
+    </div>
+    <div class="highlight-box hb-amber">
+      <strong>The caution:</strong> Oil went back up today (+2.7%) because the Iran ceasefire ends tomorrow and talks are uncertain. When oil goes up, stocks feel pressure. The market is a bit nervous today — which is normal after a big rally.
+    </div>
+    <div class="highlight-box hb-blue">
+      <strong>Tonight's big event:</strong> Tesla reports earnings after the US market closes. This is the most-watched event of the week. Tesla is down 20% this year and the market wants to know — is it still a great company, or just a struggling car company?
+    </div>
+  </div>
+
+  <!-- TIER DIVIDER -->
+  <div class="tier-divider"><span class="tier-label">Choose Your Level</span></div>
+
+  <!-- ===== TIER 1: STARTER ===== -->
+  <div class="tier tier-starter">
+    <div class="tier-header">
+      <span class="badge">Starter Tier</span>
+      <h2>For Those Starting Out</h2>
+      <div class="tagline">Small capital · Simple ideas · Minimum $1,000 – $3,000 per trade</div>
+    </div>
+    <div class="tier-body">
+
+      <p style="font-size:14px;color:#3a3530;line-height:1.8;margin-bottom:1rem">
+        You don't need a lot of money to participate in the markets. With CFDs, even $1,000 can give you exposure to global assets. Here are <strong>3 simple ideas</strong> for this week — each explained in plain language.
+      </p>
+
+      <div class="trade-list">
+
+        <div class="trade-item">
+          <div class="trade-top">
+            <span class="trade-ticker">GOLD (XAU/USD)</span>
+            <span class="trade-dir dir-buy">BUY on dip</span>
+          </div>
+          <div class="trade-why">
+            Gold dropped today because stocks went up and people felt less scared. But the Iran situation is still not resolved — and gold is the world's favourite "safe" asset. When fear returns, gold goes up. Think of it like buying an umbrella when the sky looks clear but clouds are coming.
+          </div>
+          <div class="trade-levels">
+            <div class="lvl-chip">Enter around <span>$4,700–4,750</span></div>
+            <div class="lvl-chip">Target <span>$5,000+</span></div>
+            <div class="lvl-chip">Stop loss <span>$4,550</span></div>
+            <div class="lvl-chip">Risk <span>Medium</span></div>
+          </div>
+        </div>
+
+        <div class="trade-item">
+          <div class="trade-top">
+            <span class="trade-ticker">S&amp;P 500 (US500)</span>
+            <span class="trade-dir dir-buy">BUY on dip</span>
+          </div>
+          <div class="trade-why">
+            The US stock market is at all-time highs. It pulled back slightly today — that is normal and healthy. The long-term trend is still up. Earnings from big companies are beating expectations. Think of today's small dip as a brief sale at the market.
+          </div>
+          <div class="trade-levels">
+            <div class="lvl-chip">Enter around <span>7,050–7,100</span></div>
+            <div class="lvl-chip">Target <span>7,300–7,500</span></div>
+            <div class="lvl-chip">Stop loss <span>6,900</span></div>
+            <div class="lvl-chip">Risk <span>Medium</span></div>
+          </div>
+        </div>
+
+        <div class="tesla-box">
+          <div class="tesla-title">TESLA (TSLA) — Reports Tonight · Special Situation</div>
+          <div class="tesla-text">
+            Tesla reports earnings after US market close today. It is down 20% this year, but last week it jumped 7% on AI chip news. Tonight, if Musk talks positively about robotaxis and AI — the stock could bounce 10–15%. If results disappoint, it could fall 5–10%.<br><br>
+            <strong>Simple approach for starters:</strong> Wait until after the earnings are released before entering. Do not guess the result. React to what actually happens. A confirmed bounce above $420 is a cleaner entry than guessing tonight.
+          </div>
+        </div>
+
+      </div>
+
+      <div class="snapshot-label" style="margin-top:1rem">How Much to Invest — Starter Guide</div>
+      <table class="size-table">
+        <thead><tr><th>Starting Capital</th><th>Suggested Trade Size</th><th>What You Get</th></tr></thead>
+        <tbody>
+          <tr><td>$1,000</td><td>$500–800 per position</td><td>1–2 positions, tight risk control</td></tr>
+          <tr><td>$2,000</td><td>$700–1,000 per position</td><td>2 positions, some diversification</td></tr>
+          <tr><td>$3,000</td><td>$1,000–1,200 per position</td><td>2–3 positions, comfortable sizing</td></tr>
+        </tbody>
+      </table>
+
+      <div class="safety-box">
+        <div class="safety-title">Simple Rule to Protect Yourself</div>
+        <div class="safety-text">
+          <strong>Never risk more than 2–3% of your total account on one trade.</strong> If you have $2,000, risk only $40–60 per trade. Always use a stop-loss. Think of a stop-loss like a seatbelt — you hope you never need it, but you always wear it.
+        </div>
+      </div>
+
+      <div class="risk-row" style="margin-top:1rem">
+        <span style="font-size:12px;color:var(--muted);align-self:center">Watch out for:</span>
+        <span class="risk-chip">Iran ceasefire deadline tomorrow</span>
+        <span class="risk-chip">Tesla earnings volatility tonight</span>
+        <span class="risk-chip">Oil price spikes</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TIER 2: PREMIUM ===== -->
+  <div class="tier tier-premium">
+    <div class="tier-header">
+      <span class="badge">Premium Tier</span>
+      <h2>For Established Investors</h2>
+      <div class="tagline">Larger capital · Strategic positioning · Safety &amp; growth balanced</div>
+    </div>
+    <div class="tier-body">
+
+      <p style="font-size:14px;color:#3a3530;line-height:1.8;margin-bottom:1rem">
+        You have more capital and want a smarter, more structured approach. This tier balances <strong>capital preservation with strategic opportunity</strong>. We split your thinking into two buckets: Safety (protect what you have) and Growth (make it work harder).
+      </p>
+
+      <!-- SAFETY BUCKET -->
+      <div class="highlight-box hb-blue" style="margin-bottom:1rem">
+        <strong style="display:block;margin-bottom:.3rem">BUCKET 1 — SAFETY (50–60% of capital)</strong>
+        These are for clients who want steady, lower-risk returns. Lower excitement, higher sleep quality.
+      </div>
+
+      <div class="trade-list">
+        <div class="trade-item">
+          <div class="trade-top">
+            <span class="trade-ticker">GOLD (XAU/USD)</span>
+            <span class="trade-dir dir-buy">Core Long Hold</span>
+          </div>
+          <div class="trade-why">
+            Gold is in a structural bull market driven by central banks buying, US deficit spending, and geopolitical uncertainty. The Iran conflict adds an additional tailwind. Even with today's pullback, the year-end target from top institutions is $4,750–$5,500. This is not a trade — it is a position to hold for 3–6 months.
+          </div>
+          <div class="trade-levels">
+            <div class="lvl-chip">Accumulate <span>$4,650–4,800</span></div>
+            <div class="lvl-chip">12-month target <span>$5,000–5,500</span></div>
+            <div class="lvl-chip">Hard stop <span>$4,300</span></div>
+            <div class="lvl-chip">Allocation <span>20–30% of capital</span></div>
+          </div>
+        </div>
+
+        <div class="trade-item">
+          <div class="trade-top">
+            <span class="trade-ticker">S&amp;P 500 (US500)</span>
+            <span class="trade-dir dir-buy">Long-Term Long</span>
+          </div>
+          <div class="trade-why">
+            S&amp;P 500 at all-time highs with Q1 earnings growing 16% year-on-year. AI infrastructure spending is still accelerating. The market is slightly overbought short-term (RSI was 73 last week) — ideal for scaling in on any 3–5% pullback rather than chasing. Strong Q1 earnings season gives the fundamental support.
+          </div>
+          <div class="trade-levels">
+            <div class="lvl-chip">Ideal entry <span>6,900–7,050</span></div>
+            <div class="lvl-chip">Yardeni year-end <span>7,700</span></div>
+            <div class="lvl-chip">Stop <span>6,650</span></div>
+            <div class="lvl-chip">Allocation <span>20–30% of capital</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GROWTH BUCKET -->
+      <div class="highlight-box hb-green" style="margin:.75rem 0">
+        <strong style="display:block;margin-bottom:.3rem">BUCKET 2 — GROWTH (30–40% of capital)</strong>
+        Higher conviction, higher return potential. These ideas require more monitoring but reward patience.
+      </div>
+
+      <div class="trade-list">
+        <div class="trade-item">
+          <div class="trade-top">
+            <span class="trade-ticker">NASDAQ 100 (NAS100)</span>
+            <span class="trade-dir dir-buy">Buy the Dip</span>
+          </div>
+          <div class="trade-why">
+            Tech is the engine of this bull market. TSMC confirmed AI chip demand is surging (+35% revenue). Microsoft, Meta, Amazon collectively spending $635 billion on AI in 2026. After a 13-day winning streak, a pullback is healthy — use it to enter. The structural AI spending supercycle does not reverse on one ceasefire headline.
+          </div>
+          <div class="trade-levels">
+            <div class="lvl-chip">Enter on dip <span>24,000–24,200</span></div>
+            <div class="lvl-chip">Target <span>26,000</span></div>
+            <div class="lvl-chip">Stop <span>23,000</span></div>
+            <div class="lvl-chip">Allocation <span>15–20% of capital</span></div>
+          </div>
+        </div>
+
+        <div class="trade-item">
+          <div class="trade-top">
+            <span class="trade-ticker">OIL (WTI) — Short</span>
+            <span class="trade-dir dir-hold">Tactical Short if Deal Confirmed</span>
+          </div>
+          <div class="trade-why">
+            If the US and Iran reach a confirmed peace deal, oil will fall 10–15% in a single session. Oil was at $117 during the war peak and dropped to $88 on peace hopes. A signed deal is not yet in the price. This is an event-driven opportunity — only enter when news confirms negotiations are progressing with a clear timeline.
+          </div>
+          <div class="trade-levels">
+            <div class="lvl-chip">Entry on confirmed deal news <span>$88–92</span></div>
+            <div class="lvl-chip">Target <span>$78–82</span></div>
+            <div class="lvl-chip">Stop <span>$96</span></div>
+            <div class="lvl-chip">Allocation <span>10–15% of capital</span></div>
+          </div>
+        </div>
+
+        <div class="tesla-box">
+          <div class="tesla-title">TESLA (TSLA) — Tonight's Earnings Play · Premium Strategy</div>
+          <div class="tesla-text">
+            Tesla reports tonight. Down 20% this year, but up 7% last week on AI chip news. The setup: stock is technically oversold and the market wants a reason to believe in the robotaxi/AI story.<br><br>
+            <strong>If Musk delivers credible Robotaxi timelines + gross margin above 17% →</strong> TSLA could sprint to $430–450 within 2 weeks. Enter tomorrow morning if confirmed.<br><br>
+            <strong>If margins disappoint and delivery miss is emphasised →</strong> TSLA tests $350–360. That becomes your cheaper entry point for a longer-term position.<br><br>
+            Allocation: 10% of growth bucket. High volatility — size accordingly.
+          </div>
+        </div>
+      </div>
+
+      <!-- ALLOCATION SUMMARY -->
+      <div class="snapshot-label" style="margin-top:1.25rem">Suggested Portfolio Allocation — Premium Client</div>
+      <table class="size-table">
+        <thead><tr><th>Asset</th><th>Bucket</th><th>Suggested %</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Gold (XAU/USD)</td><td>Safety</td><td>25%</td><td>Inflation hedge, structural bull</td></tr>
+          <tr><td>S&amp;P 500 (US500)</td><td>Safety</td><td>25%</td><td>Earnings growth, all-time highs</td></tr>
+          <tr><td>Nasdaq 100</td><td>Growth</td><td>20%</td><td>AI supercycle, tech leadership</td></tr>
+          <tr><td>Oil (short on deal)</td><td>Growth</td><td>15%</td><td>Event-driven, peace deal catalyst</td></tr>
+          <tr><td>Tesla (post-earnings)</td><td>Growth</td><td>10%</td><td>High conviction, high volatility</td></tr>
+          <tr><td>Cash / Reserve</td><td>Safety</td><td>5%</td><td>React to surprises, headlines</td></tr>
+        </tbody>
+      </table>
+
+      <div class="safety-box">
+        <div class="safety-title">The Premium Client Mindset</div>
+        <div class="safety-text">
+          Wealthy investors do not chase. They position early, size correctly, and wait with patience. The Iran peace deal is the single biggest macro catalyst of 2026. Being early in Gold and short Oil before the deal is confirmed — not after — is where the premium return lives. <strong>The best trades are boring until they are not.</strong>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- WATCH OUT -->
+  <div class="card">
+    <div class="card-title">This Week — What to Watch</div>
+    <div class="risk-row">
+      <span class="risk-chip">Iran ceasefire expires tomorrow</span>
+      <span class="risk-chip">Tesla earnings tonight</span>
+      <span class="risk-chip">Oil could spike if talks fail</span>
+      <span class="risk-chip">VIX rising — more volatility ahead</span>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin-top:.75rem;line-height:1.7">The market is at all-time highs but the world is still uncertain. That combination — high prices + real risk — is exactly when good risk management separates average investors from smart ones. Know your entry. Know your exit. Size correctly. Do not panic on headlines.</p>
+  </div>
+
+  <div class="disclaimer">
+    This document is for educational and informational purposes only. It does not constitute financial advice. All CFD trading involves risk and you may lose more than your initial investment. Past performance does not guarantee future results. Please consult with your licensed financial advisor before making any investment decisions. Prices sourced from Yahoo Finance, Trading Economics, and Investing.com as of 22 April 2026.
+  </div>
+
+</div>
+</body>
+</html>

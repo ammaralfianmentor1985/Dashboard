@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Update Harian Premium — 24 Juni 2026</title>
+<script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-ticker-tape.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:wght@300;400;600&family=Source+Sans+3:wght@300;400;600;700&display=swap');
+
+  :root {
+    --bg-page:    #060e08;
+    --bg-card:    #0d1f12;
+    --bg-section: #112417;
+    --bg-panel:   #163020;
+    --bg-panel2:  #1a3a26;
+    --gold:       #d4a843;
+    --gold-light: #eacc7a;
+    --gold-dim:   rgba(212,168,67,0.15);
+    --gold-border:rgba(212,168,67,0.22);
+    --green:      #3ecf82;
+    --green-dim:  rgba(62,207,130,0.12);
+    --red:        #e05c5c;
+    --red-dim:    rgba(224,92,92,0.11);
+    --amber:      #e8a030;
+    --text:       #e8f5ec;
+    --text-2:     #8ab89a;
+    --text-3:     #557060;
+    --border:     rgba(212,168,67,0.18);
+    --border-2:   rgba(212,168,67,0.09);
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--bg-page);
+    font-family: 'Source Sans 3', Georgia, sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 28px auto 48px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    box-shadow: 0 16px 80px rgba(0,0,0,0.55);
+    border-radius: 2px;
+  }
+
+  /* ── LANGUAGE TOGGLE ── */
+  .lang-en, .lang-en-row { display:none; }
+  body.lang-en-active .lang-en, body.lang-en-active .lang-en-row { display:block; }
+  body.lang-en-active .lang-id, body.lang-en-active .lang-id-row { display:none; }
+  .lang-toggle-wrap { display:flex; gap:6px; margin-top:14px; }
+  .lang-btn {
+    font-size:8.5px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+    padding:5px 12px; border-radius:11px; border:1px solid rgba(212,168,67,0.35);
+    background:rgba(212,168,67,0.07); color:var(--text-2); cursor:pointer;
+    transition: all 0.2s; font-family:'Source Sans 3', sans-serif;
+  }
+  .lang-btn.active { background:var(--gold); color:#0c1a10; border-color:var(--gold); }
+
+  /* ── HEADER ── */
+  .header {
+    background: linear-gradient(150deg, #071509 0%, #0d1f12 55%, #071509 100%);
+    padding: 40px 54px 30px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .header::before {
+    content:'';
+    position:absolute; top:0; left:0; right:0; height:3px;
+    background: linear-gradient(90deg, transparent 0%, var(--gold) 25%, var(--gold-light) 50%, var(--gold) 75%, transparent 100%);
+  }
+  .header::after {
+    content:'';
+    position:absolute; top:-80px; right:-80px;
+    width:260px; height:260px;
+    background: radial-gradient(circle, rgba(212,168,67,0.07) 0%, transparent 65%);
+    pointer-events:none;
+  }
+  .header-row {
+    display:flex; justify-content:space-between; align-items:flex-start;
+    margin-bottom:20px;
+  }
+  .brand-label {
+    font-size:9px; font-weight:400; letter-spacing:3.8px;
+    text-transform:uppercase; color:var(--gold); opacity:0.8;
+    margin-bottom:8px;
+  }
+  .header h1 {
+    font-family:'Playfair Display', Georgia, serif;
+    font-size:28px; font-weight:700; color:var(--text);
+    line-height:1.22; letter-spacing:0.2px;
+  }
+  .header h1 em { font-style:normal; color:var(--gold); }
+  .header-date { text-align:right; flex-shrink:0; }
+  .date-num {
+    font-family:'Playfair Display', serif;
+    font-size:48px; font-weight:600; color:var(--gold); line-height:1;
+  }
+  .date-rest {
+    font-size:10.5px; font-weight:400; letter-spacing:2.5px;
+    text-transform:uppercase; color:var(--text-2); margin-top:4px;
+  }
+  .date-sub {
+    font-size:9.5px; font-weight:300; color:var(--text-3);
+    letter-spacing:1.2px; margin-top:2px;
+  }
+  .header-tagline {
+    font-size:12px; font-weight:300; color:var(--text-2);
+    letter-spacing:0.4px; font-style:italic;
+    border-top:1px solid rgba(212,168,67,0.15); padding-top:14px;
+    line-height:1.5;
+  }
+
+  /* ── SENTIMENT BAR ── */
+  .sentiment-bar {
+    background: var(--bg-section);
+    border-bottom: 1px solid var(--border-2);
+    padding: 13px 54px;
+    display: flex; align-items:center; gap:16px;
+  }
+  .sbar-label {
+    font-size:9px; letter-spacing:2.2px; text-transform:uppercase;
+    color:var(--text-3); font-weight:600; white-space:nowrap;
+  }
+  .sbar-track {
+    flex:1; height:6px;
+    background: linear-gradient(90deg, #c0392b 0%, #e67e22 30%, #f1c40f 50%, #27ae60 75%, #1abc9c 100%);
+    border-radius:3px; position:relative;
+  }
+  .sbar-needle {
+    position:absolute; top:-5px;
+    left:48%;
+    width:16px; height:16px;
+    background:var(--bg-card);
+    border:2px solid var(--gold); border-radius:50%;
+    transform:translateX(-50%);
+    box-shadow: 0 0 10px rgba(212,168,67,0.45);
+  }
+  .sbar-val { font-size:11px; font-weight:700; color:var(--amber); white-space:nowrap; }
+  .sbar-note { font-size:9.5px; color:var(--text-3); white-space:nowrap; }
+
+  /* ── LIVE TICKER ── */
+  .live-ticker {
+    background: var(--bg-section);
+    border-bottom: 1px solid var(--border-2);
+    padding: 12px 54px 14px;
+  }
+  .live-ticker-head { display:flex; align-items:center; gap:8px; margin-bottom:9px; }
+  .live-dot {
+    width:7px; height:7px; border-radius:50%;
+    background: var(--green);
+    box-shadow: 0 0 8px rgba(62,207,130,0.7);
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%, 100% { opacity:1; } 50% { opacity:0.35; } }
+  .live-ticker-label {
+    font-size:9px; letter-spacing:2.2px; text-transform:uppercase;
+    color:var(--text-3); font-weight:600;
+  }
+  .live-ticker-label strong { color:var(--green); }
+  .live-ticker-body {
+    border:1px solid var(--border-2); border-radius:8px;
+    overflow:hidden; background:rgba(0,0,0,0.25);
+  }
+  .live-ticker tv-ticker-tape { width:100% !important; display:block; }
+
+  /* ── BODY ── */
+  .body { padding: 0 54px 52px; }
+
+  /* ── SECTION ── */
+  .section { margin-top:36px; }
+  .sec-head {
+    display:flex; align-items:center; gap:12px;
+    margin-bottom:18px; padding-bottom:11px;
+    border-bottom:1px solid var(--border);
+  }
+  .sec-icon {
+    width:34px; height:34px;
+    background:var(--bg-panel); border:1px solid var(--border);
+    border-radius:7px; display:flex; align-items:center; justify-content:center;
+    font-size:17px; flex-shrink:0;
+  }
+  .sec-title {
+    font-family:'Playfair Display', serif;
+    font-size:16.5px; font-weight:600; color:var(--text); letter-spacing:0.3px;
+  }
+  .badge {
+    margin-left:auto; font-size:8.5px; font-weight:700;
+    letter-spacing:1.5px; text-transform:uppercase;
+    padding:3px 10px; border-radius:12px; white-space:nowrap;
+  }
+  .badge-pos { background:var(--green-dim); color:var(--green);  border:1px solid rgba(62,207,130,0.28); }
+  .badge-neg { background:var(--red-dim);   color:var(--red);    border:1px solid rgba(224,92,92,0.28); }
+  .badge-cau { background:rgba(232,160,48,0.1); color:var(--amber); border:1px solid rgba(232,160,48,0.28); }
+  .badge-neu { background:rgba(255,255,255,0.04); color:var(--text-2); border:1px solid rgba(255,255,255,0.1); }
+
+  /* ── STAT CARDS ── */
+  .stat-grid { display:grid; gap:12px; margin-bottom:18px; }
+  .sg3 { grid-template-columns:repeat(3,1fr); }
+  .sg4 { grid-template-columns:repeat(4,1fr); }
+  .sg2 { grid-template-columns:repeat(2,1fr); }
+  .stat-card {
+    background:var(--bg-section); border:1px solid var(--border-2);
+    border-radius:8px; padding:14px 16px; text-align:center;
+  }
+  .s-name { font-size:9px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; color:var(--text-3); margin-bottom:6px; }
+  .s-val { font-family:'Playfair Display', serif; font-size:19px; font-weight:700; color:var(--text); line-height:1; }
+  .s-val.sm { font-size:15px; }
+  .s-chg { font-size:10.5px; font-weight:700; margin-top:5px; }
+  .up   { color:var(--green); }
+  .dn   { color:var(--red); }
+  .neu  { color:var(--text-2); }
+  .amb  { color:var(--amber); }
+
+  /* ── BULLET LIST ── */
+  .blist { list-style:none; }
+  .blist li {
+    font-size:13.5px; line-height:1.68;
+    padding:7px 0 7px 22px;
+    border-bottom:1px solid rgba(255,255,255,0.038);
+    position:relative; color:var(--text);
+  }
+  .blist li:last-child { border-bottom:none; }
+  .blist li::before {
+    content:'▸'; position:absolute; left:0; top:9px;
+    color:var(--gold); font-size:11px;
+  }
+  .blist li strong { color:var(--gold-light); font-weight:600; }
+  .src { font-size:10px; color:var(--text-3); font-style:italic; }
+
+  /* ── HIGHLIGHT BOX ── */
+  .hl-box {
+    background:var(--bg-panel); border:1px solid var(--border);
+    border-left:3px solid var(--gold);
+    border-radius:0 8px 8px 0; padding:16px 20px; margin-bottom:16px;
+  }
+  .hl-box h4 {
+    font-size:9px; letter-spacing:2.2px; text-transform:uppercase;
+    color:var(--gold); margin-bottom:8px; font-weight:600;
+  }
+  .hl-box p { font-size:13.5px; color:var(--text); line-height:1.65; }
+  .hl-box p strong { color:var(--gold-light); }
+
+  /* ── WARNING BOX ── */
+  .warn-box {
+    background:rgba(224,92,92,0.07); border:1px solid rgba(224,92,92,0.2);
+    border-left:3px solid var(--red);
+    border-radius:0 8px 8px 0; padding:16px 20px; margin-top:14px;
+  }
+  .warn-box h4 {
+    font-size:9px; letter-spacing:2.2px; text-transform:uppercase;
+    color:var(--red); margin-bottom:8px; font-weight:600;
+  }
+  .warn-box p { font-size:13px; color:#e8b4b4; line-height:1.65; }
+  .warn-box p strong { color:var(--red); }
+
+  .cau-box {
+    background:rgba(232,160,48,0.06); border:1px solid rgba(232,160,48,0.22);
+    border-left:3px solid var(--amber);
+    border-radius:0 8px 8px 0; padding:16px 20px; margin-top:14px;
+  }
+  .cau-box h4 {
+    font-size:9px; letter-spacing:2.2px; text-transform:uppercase;
+    color:var(--amber); margin-bottom:8px; font-weight:600;
+  }
+  .cau-box p { font-size:13px; color:#f0d9b0; line-height:1.65; }
+  .cau-box p strong { color:var(--amber); }
+
+  /* ── CHART WRAP ── */
+  .chart-wrap {
+    background:var(--bg-section); border:1px solid var(--border-2);
+    border-radius:8px; padding:18px 22px; margin-bottom:18px;
+  }
+  .chart-ttl {
+    font-size:9px; letter-spacing:2px; text-transform:uppercase;
+    color:var(--text-3); margin-bottom:14px; font-weight:600;
+  }
+
+  /* ── DIVIDER ── */
+  .divider { height:1px; background:var(--border-2); margin:32px 0; }
+
+  /* ── SUMMARY BOX ── */
+  .sum-box {
+    background:var(--bg-panel); border:1px solid var(--border);
+    border-radius:10px; padding:26px 30px; margin-top:36px;
+    position:relative; overflow:hidden;
+  }
+  .sum-box::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:2px;
+    background:linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+  }
+  .sum-box h3 {
+    font-family:'Playfair Display', serif; font-size:12px; font-weight:600;
+    color:var(--gold); letter-spacing:2.5px; text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  .sum-list { list-style:none; }
+  .sum-list li {
+    font-size:13px; line-height:1.6; padding:5px 0;
+    color:var(--text); display:flex; align-items:flex-start; gap:10px;
+  }
+  .sum-ico { color:var(--gold); font-size:11px; flex-shrink:0; margin-top:4px; }
+
+  /* ── PROFIT SECTION ── */
+  .profit {
+    background:linear-gradient(145deg, #183524 0%, #112517 100%);
+    border:1.5px solid var(--gold); border-radius:12px;
+    padding:30px 34px; margin-top:36px;
+    position:relative; overflow:hidden;
+  }
+  .profit::after {
+    content:''; position:absolute; top:-100px; right:-100px;
+    width:300px; height:300px;
+    background:radial-gradient(circle, rgba(212,168,67,0.06) 0%, transparent 65%);
+    pointer-events:none;
+  }
+  .profit-head {
+    display:flex; align-items:center; gap:12px;
+    margin-bottom:24px; padding-bottom:16px;
+    border-bottom:1px solid rgba(212,168,67,0.22);
+  }
+  .profit-head-ico { font-size:22px; }
+  .profit-head h2 {
+    font-family:'Playfair Display', serif;
+    font-size:19px; font-weight:700; color:var(--text);
+  }
+  .profit-head h2 em { font-style:normal; color:var(--gold); }
+  .profit-head-badge {
+    margin-left:auto; background:var(--gold-dim);
+    border:1px solid rgba(212,168,67,0.32); color:var(--gold);
+    font-size:8.5px; letter-spacing:1.5px; text-transform:uppercase;
+    font-weight:700; padding:4px 12px; border-radius:12px;
+  }
+  .profit-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .p-card {
+    background:rgba(255,255,255,0.035); border:1px solid rgba(212,168,67,0.16);
+    border-radius:9px; padding:18px 20px;
+  }
+  .p-card.full { grid-column: 1 / -1; }
+  .p-card-head { display:flex; align-items:center; gap:9px; margin-bottom:11px; }
+  .p-card-ico { font-size:20px; }
+  .p-card-title {
+    font-size:10.5px; font-weight:700; letter-spacing:1.2px;
+    text-transform:uppercase; color:var(--gold);
+  }
+  .p-card-type {
+    margin-left:auto; font-size:8.5px; letter-spacing:0.8px;
+    text-transform:uppercase; color:var(--text-3);
+    background:rgba(255,255,255,0.04); padding:2px 8px;
+    border-radius:8px; border:1px solid rgba(255,255,255,0.07);
+  }
+  .p-card-desc { font-size:13px; color:var(--text); line-height:1.62; margin-bottom:13px; }
+  .p-card-desc strong { color:var(--gold-light); }
+  .p-levels {
+    display:grid; grid-template-columns:1fr 1fr; gap:8px;
+    border-top:1px solid rgba(212,168,67,0.11); padding-top:12px;
+  }
+  .p-level { font-size:10px; color:var(--text-2); }
+  .p-level strong { color:var(--green); font-size:12px; font-weight:700; display:block; margin-top:2px; }
+  .p-level.neg strong { color:var(--amber); }
+
+  /* ── FOOTER ── */
+  .footer {
+    background:var(--bg-section); border-top:1px solid var(--border);
+    padding:28px 54px 32px;
+  }
+  .sig { margin-bottom:20px; padding-bottom:18px; border-bottom:1px solid var(--border-2); }
+  .sig-label { font-size:8px; letter-spacing:2.8px; text-transform:uppercase; color:var(--text-3); margin-bottom:6px; }
+  .sig-name { font-family:'Playfair Display', serif; font-size:17px; font-weight:600; color:var(--gold); }
+  .sig-role { font-size:11px; color:var(--text-2); margin-top:3px; }
+  .sig-email { font-size:10.5px; color:var(--text-3); margin-top:2px; font-style:italic; }
+  .sources-label { font-size:8px; letter-spacing:2.2px; text-transform:uppercase; color:var(--text-3); margin-bottom:7px; font-weight:600; }
+  .sources-text { font-size:9.5px; color:var(--text-3); line-height:1.75; margin-bottom:16px; }
+  .disclaimer { font-size:9px; color:var(--text-3); line-height:1.7; font-style:italic; opacity:0.72; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ══════════ HEADER ══════════ -->
+  <div class="header">
+    <div class="header-row">
+      <div>
+        <div class="brand-label">Premium Market Intelligence · Institutional Report</div>
+        <h1 class="lang-id">Market Update <em>Harian</em><br>Indonesia &amp; Global</h1>
+        <h1 class="lang-en">Daily <em>Market Update</em><br>Indonesia &amp; Global Markets</h1>
+        <div class="lang-toggle-wrap">
+          <button class="lang-btn active" id="btn-id" onclick="setLang('id')">Bahasa Indonesia</button>
+          <button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button>
+        </div>
+      </div>
+      <div class="header-date">
+        <div class="date-num">24</div>
+        <div class="date-rest lang-id">Juni 2026</div>
+        <div class="date-rest lang-en">June 2026</div>
+        <div class="date-sub lang-id">Rabu · Sesi Asia / Eropa</div>
+        <div class="date-sub lang-en">Wednesday · Asia / Europe Session</div>
+      </div>
+    </div>
+    <div class="header-tagline lang-id">
+      Laporan pasar eksklusif untuk investor profesional — analisis peluang dan risiko terkini di pasar global &amp; domestik, disajikan dalam gaya institutional-grade.
+    </div>
+    <div class="header-tagline lang-en">
+      An exclusive market report for professional investors — timely analysis of opportunity and risk across global and domestic markets, presented in an institutional-grade format.
+    </div>
+  </div>
+
+  <!-- ══════════ SENTIMENT BAR ══════════ -->
+  <div class="sentiment-bar">
+    <div class="sbar-label lang-id-row" style="display:block">Sentimen Pasar Global</div>
+    <div class="sbar-label lang-en">Global Market Sentiment</div>
+    <div class="sbar-track"><div class="sbar-needle"></div></div>
+    <div class="sbar-val lang-id-row" style="display:block">Hati-Hati</div>
+    <div class="sbar-val lang-en">Cautious</div>
+    <div class="sbar-note">· ~48 / 100</div>
+  </div>
+
+  <!-- ══════════ LIVE MARKET TICKER ══════════ -->
+  <div class="live-ticker">
+    <div class="live-ticker-head">
+      <div class="live-dot"></div>
+      <div class="live-ticker-label lang-id-row" style="display:block"><strong>LIVE</strong> · Harga Pasar Real-Time — Widget TradingView (Ter-update Otomatis Saat Laporan Dibuka)</div>
+      <div class="live-ticker-label lang-en"><strong>LIVE</strong> · Real-Time Market Prices — TradingView Widget (Auto-Updates When Report Opens)</div>
+    </div>
+    <div class="live-ticker-body">
+      <tv-ticker-tape symbols="CMCMARKETS:GOLD,CMCMARKETS:SILVER,TVC:DXY,FX:EURUSD,FX_IDC:USDIDR,FX_IDC:USDMYR,BITSTAMP:BTCUSD" hide-chart style="width: 100%"></tv-ticker-tape>
+    </div>
+  </div>
+
+  <!-- ══════════ BODY ══════════ -->
+  <div class="body">
+
+    <!-- ── 1. COMMODITIES ── -->
+    <div class="section">
+      <div class="sec-head">
+        <div class="sec-icon">🥈</div>
+        <div class="sec-title">Commodities Market</div>
+        <div class="badge badge-pos lang-id-row" style="display:inline-block">Silver Melonjak · Emas Buka Entry Lebih Baik</div>
+        <div class="badge badge-pos lang-en">Silver Surges · Gold Opens a Better Entry</div>
+      </div>
+
+      <div class="stat-grid sg3">
+        <div class="stat-card">
+          <div class="s-name">Perak (XAG/USD)</div>
+          <div class="s-val">$69,71</div>
+          <div class="s-chg up">▲ +2,65% · 24 Jun</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-name">Emas (XAU/USD)</div>
+          <div class="s-val">$4.063</div>
+          <div class="s-chg amb">▼ Koreksi Lanjutan</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-name">Target JPM Perak (2026)</div>
+          <div class="s-val">$81</div>
+          <div class="s-chg up">▲ Rata-Rata Tahunan</div>
+        </div>
+      </div>
+
+      <div class="hl-box lang-id">
+        <h4>Tema Dominan — Silver Squeeze Berlanjut, Emas Tetap Murah Secara Relatif</h4>
+        <p>Perak melonjak <strong>+2,65% ke $69,71/oz</strong> pada 24 Juni, melanjutkan rally struktural 2026 yang ditopang defisit pasokan global memasuki tahun kelima, pengetatan lisensi ekspor Tiongkok, serta permintaan industrial (elektronik, panel surya, semikonduktor) yang mencakup ~60% konsumsi tahunan. J.P. Morgan Global Research memproyeksikan rata-rata harga perak <strong>$81/oz sepanjang 2026</strong> — lebih dari dua kali lipat rata-rata 2025. Sementara itu, emas terkoreksi lebih dalam ke <strong>$4.063/oz</strong> (dari penutupan $4.110), namun J.P. Morgan tetap mempertahankan target year-end 2026 di <strong>$6.000/oz</strong>, menjadikan koreksi ini titik masuk yang semakin menarik bagi investor jangka menengah. <span class="src">[Investing.com, 24 Jun 2026; J.P. Morgan Global Research; CarbonCredits/DiscoveryAlert, 2026]</span></p>
+      </div>
+      <div class="hl-box lang-en">
+        <h4>Dominant Theme — The Silver Squeeze Continues, Gold Looks Relatively Cheap</h4>
+        <p>Silver surged <strong>+2.65% to $69.71/oz</strong> on 24 June, extending its structural 2026 rally driven by a global supply deficit entering its fifth year, tightening Chinese export licences, and industrial demand (electronics, solar panels, semiconductors) that accounts for roughly 60% of annual consumption. J.P. Morgan Global Research projects an average silver price of <strong>$81/oz through 2026</strong> — more than double the 2025 average. Meanwhile, gold extended its pullback to <strong>$4,063/oz</strong> (from a $4,110 close), though J.P. Morgan still holds its year-end 2026 target at <strong>$6,000/oz</strong>, making this correction an increasingly attractive entry point for medium-term investors. <span class="src">[Investing.com, 24 Jun 2026; J.P. Morgan Global Research; CarbonCredits/DiscoveryAlert, 2026]</span></p>
+      </div>
+
+      <!-- SVG Chart -->
+      <div class="chart-wrap">
+        <div class="chart-ttl lang-id-row" style="display:block">Pergerakan Pasar Utama — 24 Juni 2026 (% Harian/Sesi, Data Terverifikasi)</div>
+        <div class="chart-ttl lang-en">Key Market Moves — 24 June 2026 (% Daily/Session, Verified Data)</div>
+        <svg width="100%" viewBox="0 0 720 165" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#3ecf82;stop-opacity:0.85"/>
+              <stop offset="100%" style="stop-color:#3ecf82;stop-opacity:0.5"/>
+            </linearGradient>
+            <linearGradient id="gAmber" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#e8a030;stop-opacity:0.5"/>
+              <stop offset="100%" style="stop-color:#e8a030;stop-opacity:0.85"/>
+            </linearGradient>
+            <linearGradient id="gRed" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#e05c5c;stop-opacity:0.5"/>
+              <stop offset="100%" style="stop-color:#e05c5c;stop-opacity:0.85"/>
+            </linearGradient>
+          </defs>
+          <text x="6" y="32"  font-size="11.5" fill="#8ab89a" font-family="Source Sans 3">Perak (XAG)</text>
+          <text x="6" y="69"  font-size="11.5" fill="#8ab89a" font-family="Source Sans 3">DXY Index</text>
+          <text x="6" y="106" font-size="11.5" fill="#8ab89a" font-family="Source Sans 3">Emas (XAU)</text>
+          <text x="6" y="143" font-size="11.5" fill="#8ab89a" font-family="Source Sans 3">IHSG (JCI)</text>
+          <line x1="150" y1="12" x2="150" y2="155" stroke="rgba(212,168,67,0.22)" stroke-width="1"/>
+          <text x="150" y="160" font-size="8.5" fill="#557060" font-family="Source Sans 3" text-anchor="middle">0%</text>
+          <!-- Silver +2.65% -->
+          <rect x="150" y="22" width="239" height="20" rx="3" fill="url(#gGreen)"/>
+          <text x="397" y="36" font-size="11" fill="#3ecf82" font-weight="bold" font-family="Source Sans 3">▲ +2,65%</text>
+          <!-- DXY +0.38% -->
+          <rect x="150" y="59" width="34" height="20" rx="3" fill="url(#gGreen)" opacity="0.8"/>
+          <text x="192" y="73" font-size="11" fill="#3ecf82" font-weight="bold" font-family="Source Sans 3">▲ +0,38%</text>
+          <!-- Gold -1.15% -->
+          <rect x="46" y="96" width="104" height="20" rx="3" fill="url(#gAmber)"/>
+          <text x="40" y="110" font-size="11" fill="#e8a030" font-weight="bold" font-family="Source Sans 3" text-anchor="end">▼ -1,15%</text>
+          <!-- IHSG -0.25% (23 Jun close) -->
+          <rect x="127" y="133" width="23" height="20" rx="3" fill="url(#gRed)" opacity="0.75"/>
+          <text x="121" y="147" font-size="11" fill="#e05c5c" font-weight="bold" font-family="Source Sans 3" text-anchor="end">▼ -0,25%</text>
+        </svg>
+      </div>
+
+      <ul class="blist lang-id">
+        <li><strong>Perak melesat ke $69,71/oz (+2,65%)</strong> pada 24 Juni — momentum berlanjut dari rally 2026 yang sempat menembus $90/oz awal tahun, didorong defisit pasokan struktural, pengetatan ekspor Tiongkok, akumulasi bank sentral, dan permintaan dari sektor energi nuklir/AI/clean energy. <span class="src">[Investing.com, 24 Jun 2026; TradingKey/CarbonCredits, 2026]</span></li>
+        <li><strong>J.P. Morgan memproyeksikan perak rata-rata $81/oz</strong> sepanjang 2026 setelah lonjakan +130% di 2025 — permintaan industrial (elektronik, panel surya, semikonduktor) menyumbang sekitar 60% konsumsi tahunan. <span class="src">[J.P. Morgan Global Research, 2026]</span></li>
+        <li><strong>Emas turun ke $4.050–$4.115/oz (-1,15% dari $4.110)</strong> — koreksi hari ketiga berturut-turut, namun J.P. Morgan tetap dipertahankan di target year-end $6.000/oz meski rata-rata tahunan dipangkas ke $5.243 dari $5.708 akibat permintaan yang diperkirakan baru re-akselerasi di paruh kedua 2026. <span class="src">[LiteFinance/Investing.com, 24 Jun 2026; TheStreet/Kitco, 2026]</span></li>
+        <li><strong>Brent Crude bertahan dekat $77/barel</strong> — terendah dalam ~3 bulan — tertekan kemajuan perundingan damai AS–Iran, meredakan sebagian premi geopolitik di pasar energi. <span class="src">[Fortune, 22–23 Jun 2026]</span></li>
+      </ul>
+      <ul class="blist lang-en">
+        <li><strong>Silver surged to $69.71/oz (+2.65%)</strong> on 24 June — continuing momentum from a 2026 rally that briefly topped $90/oz earlier in the year, driven by a structural supply deficit, tightening Chinese export controls, central bank accumulation, and demand from the nuclear/AI/clean-energy power sector. <span class="src">[Investing.com, 24 Jun 2026; TradingKey/CarbonCredits, 2026]</span></li>
+        <li><strong>J.P. Morgan projects an average silver price of $81/oz</strong> through 2026, following a +130% surge in 2025 — industrial demand (electronics, solar panels, semiconductors) accounts for roughly 60% of annual consumption. <span class="src">[J.P. Morgan Global Research, 2026]</span></li>
+        <li><strong>Gold slipped to the $4,050–$4,115/oz range (-1.15% from $4,110)</strong> — a third straight day of correction, though J.P. Morgan still holds its year-end target at $6,000/oz even after trimming its full-year average forecast to $5,243 from $5,708, with demand expected to re-accelerate only in H2 2026. <span class="src">[LiteFinance/Investing.com, 24 Jun 2026; TheStreet/Kitco, 2026]</span></li>
+        <li><strong>Brent Crude held near $77/barrel</strong> — its lowest in roughly three months — pressured by progress in US–Iran peace talks, easing part of the geopolitical premium in energy markets. <span class="src">[Fortune, 22–23 Jun 2026]</span></li>
+      </ul>
+    </div>
+
+    <!-- ── 2. FOREX ── -->
+    <div class="section">
+      <div class="sec-head">
+        <div class="sec-icon">💱</div>
+        <div class="sec-title">Forex Market</div>
+        <div class="badge badge-pos lang-id-row" style="display:inline-block">Peluang · Dolar AS di Level Tertinggi 14 Bulan</div>
+        <div class="badge badge-pos lang-en">Opportunity · US Dollar at 14-Month High</div>
+      </div>
+
+      <div class="stat-grid sg4">
+        <div class="stat-card">
+          <div class="s-name">DXY Index</div>
+          <div class="s-val sm">101,39</div>
+          <div class="s-chg up">▲ Tertinggi sejak Mei 2025</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-name">US 10Y Yield</div>
+          <div class="s-val sm">~4,45%</div>
+          <div class="s-chg up">Sticky · Fed Hawkish</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-name">EUR / USD</div>
+          <div class="s-val">1,143</div>
+          <div class="s-chg amb">Tertekan Dolar AS</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-name">USD / IDR · MYR</div>
+          <div class="s-val sm">17.931 · 4,140</div>
+          <div class="s-chg up">▲ USD Menguat</div>
+        </div>
+      </div>
+
+      <div class="hl-box lang-id">
+        <h4>Tema Dominan — Pergeseran Hawkish Fed Mengangkat Dolar ke Puncak 14 Bulan</h4>
+        <p>Indeks Dolar (DXY) naik <strong>+0,38% ke 101,39</strong> — level tertinggi sejak Mei 2025 — setelah pasar menyesuaikan ekspektasi terhadap sikap calon Ketua Fed baru, Kevin Warsh, yang dilaporkan menghilangkan bias pelonggaran dari pernyataan kebijakan terakhir. Pasar kini memperhitungkan <strong>~50,5% probabilitas kenaikan suku bunga</strong> di 2026 — pembalikan tajam dari ekspektasi pemangkasan sebelumnya. Yield Treasury 10-tahun bertahan tinggi di ~4,45%, menambah daya tarik dolar sebagai aset berimbal hasil. Bagi trader, divergensi kebijakan ini membuka peluang directional yang jelas terhadap EUR, rupiah, dan ringgit. <span class="src">[TradingEconomics/Reuters, 24 Jun 2026; Crypto.news/AnalyticsInsight, 23–24 Jun 2026]</span></p>
+      </div>
+      <div class="hl-box lang-en">
+        <h4>Dominant Theme — A Hawkish Fed Shift Lifts the Dollar to a 14-Month High</h4>
+        <p>The Dollar Index (DXY) rose <strong>+0.38% to 101.39</strong> — its highest level since May 2025 — as markets recalibrated to incoming Fed Chair Kevin Warsh, reportedly stripping the easing bias out of the latest policy statement. Markets now price in <strong>roughly 50.5% odds of a rate hike</strong> in 2026 — a sharp reversal from prior cut expectations. The 10-year Treasury yield holds high near 4.45%, adding to the dollar's yield appeal. For traders, this policy divergence opens a clear directional opportunity against the EUR, rupiah, and ringgit. <span class="src">[TradingEconomics/Reuters, 24 Jun 2026; Crypto.news/AnalyticsInsight, 23–24 Jun 2026]</span></p>
+      </div>
+
+      <ul class="blist lang-id">
+        <li><strong>DXY naik ke 101,39</strong> (24 Jun) setelah mencapai puncak 52-minggu di 101,42 — kenaikan empat sesi berturut-turut yang mencerminkan ekspektasi suku bunga AS lebih tinggi lebih lama. <span class="src">[TradingEconomics/Reuters, 24 Jun 2026]</span></li>
+        <li><strong>Kevin Warsh dilaporkan menghilangkan bias pelonggaran</strong> dari komunikasi Fed terbaru — pasar kini memperhitungkan kemungkinan hike, bukan cut, sepanjang 2026, mendorong opportunity cost memegang aset non-yield seperti emas &amp; kripto naik tajam. <span class="src">[Crypto.news/AnalyticsInsight, 23–24 Jun 2026]</span></li>
+        <li><strong>EUR/USD tertekan di ~1,143</strong> — euro yang menyumbang 57,6% bobot DXY menjadi penentu utama arah indeks dolar secara keseluruhan. <span class="src">[TradingEconomics, 23 Jun 2026]</span></li>
+        <li><strong>USD/IDR di ~Rp17.931</strong> dan <strong>USD/MYR di ~RM4,140</strong> — dolar yang superior membuka peluang directional jelas bagi trader berpengalaman terhadap mata uang Asia Tenggara. <span class="src">[Investor.id/Bisnis.com, 24 Jun 2026; Xe/TradingEconomics, 24 Jun 2026]</span></li>
+      </ul>
+      <ul class="blist lang-en">
+        <li><strong>DXY rose to 101.39</strong> (24 Jun) after reaching a 52-week high of 101.42 — a fourth consecutive session of gains reflecting expectations of higher-for-longer US rates. <span class="src">[TradingEconomics/Reuters, 24 Jun 2026]</span></li>
+        <li><strong>Kevin Warsh reportedly stripped the easing bias</strong> out of the Fed's latest communication — markets are now pricing a possible hike rather than a cut through 2026, sharply lifting the opportunity cost of holding non-yielding assets like gold and crypto. <span class="src">[Crypto.news/AnalyticsInsight, 23–24 Jun 2026]</span></li>
+        <li><strong>EUR/USD is pinned near ~1.143</strong> — the euro, at 57.6% of the DXY basket weight, remains the single largest driver of the overall dollar index direction. <span class="src">[TradingEconomics, 23 Jun 2026]</span></li>
+        <li><strong>USD/IDR near Rp17,931</strong> and <strong>USD/MYR near RM4.140</strong> — a dominant dollar opens a clear directional opportunity for experienced traders against Southeast Asian currencies. <span class="src">[Investor.id/Bisnis.com, 24 Jun 2026; Xe/TradingEconomics, 24 Jun 2026]</span></li>
+      </ul>
+    </div>
+
+    <!-- ── DIVIDER ── -->
+    <div class="divider"></div>
+
+    <!-- ── 3. INDONESIA ECONOMIC UPDATE ── -->
+    <div class="section">
+      <div class="sec-head">
+        <div class="sec-icon">🇮🇩</div>
+        <div class="sec-title">Indonesia Economic Update</div>
+        <div class="badge badge-neg lang-id-row" style="display:inline-block">Waspada · Rupiah Mendekati Rp18.000 Lagi</div>
+        <div class="badge badge-neg lang-en">Caution · Rupiah Nears Rp18,000 Again</div>
+      </div>
+
+      <div class="stat-grid sg4">
+        <div class="stat-card">
+          <div class="s-name">USD / IDR</div>
+          <div class="s-val">17.931</div>
+          <div class="s-chg dn">▼ -0,40% Pagi · Mendekati 18.000</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-name">IHSG / JCI</div>
+          <div class="s-val">6.101</div>
+          <div class="s-chg dn">▼ -0,25% · Tutup 23 Jun</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-name">BI Rate</div>
+          <div class="s-val">5,75%</div>
+          <div class="s-chg dn">▲ Kenaikan ke-3 · 2026</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-name">Risiko PHK Otomotif</div>
+          <div class="s-val sm">~4.000</div>
+          <div class="s-chg dn">▼ Relokasi ke Vietnam</div>
+        </div>
+      </div>
+
+      <div class="warn-box lang-id">
+        <h4>⚠ Peringatan Kritis — Tekanan Berlapis: Rupiah, Transparansi MSCI, &amp; Daya Saing Industri</h4>
+        <p>Rupiah melemah lagi ke <strong>~Rp17.931–17.945/USD</strong> pada pembukaan 24 Juni, kembali mendekati ambang psikologis Rp18.000 — dipicu dolar AS yang melonjak ke level tertinggi 14 bulan pasca pergeseran hawkish Fed, ditambah sentimen domestik yang memburuk. MSCI mengumumkan hasil <strong>Market Classification Review 2026</strong> dini hari WIB: Indonesia tetap berstatus Emerging Market, namun MSCI secara eksplisit menyatakan kekhawatiran mendalam atas dugaan <strong>perdagangan terkoordinasi</strong> dan opasitas struktur kepemilikan saham, dengan keputusan final ditunda ke <strong>November 2026</strong> — opsi reklasifikasi ke Frontier Market tetap terbuka jika reformasi (termasuk peningkatan free float minimum 15%) dinilai tidak konsisten. Di sisi industri, <strong>dua pabrik komponen otomotif Jepang</strong> di Pasuruan &amp; Mojokerto dilaporkan berencana memindahkan sebagian lini produksi ke Vietnam dalam 1–2 tahun ke depan, mengancam ~4.000 pekerja — sinyal erosi daya saing manufaktur domestik di tengah ekosistem EV yang masih kalah kompetitif dari Vietnam (Kementerian Perindustrian membantah adanya bukti relokasi). <span class="src">[Investor.id/Mediaindonesia, 24 Jun 2026; CNBC/Bloomberg/Tempo, 23–24 Jun 2026; Kompas Otomotif/Tribunnews, 22–24 Jun 2026]</span></p>
+      </div>
+      <div class="warn-box lang-en">
+        <h4>⚠ Critical Warning — Layered Pressure: the Rupiah, MSCI Transparency, &amp; Industrial Competitiveness</h4>
+        <p>The rupiah weakened again to <strong>~Rp17,931–17,945/USD</strong> at the 24 June open, once more approaching the psychological Rp18,000 threshold — driven by a US dollar surge to a 14-month high following the Fed's hawkish pivot, compounded by deteriorating domestic sentiment. MSCI announced the results of its <strong>2026 Market Classification Review</strong> in the early hours WIB: Indonesia retains its Emerging Market status, but MSCI explicitly flagged deep concerns over suspected <strong>coordinated trading</strong> and opacity in shareholding structures, with a final verdict deferred to <strong>November 2026</strong> — a reclassification to Frontier Market remains on the table if reforms (including raising minimum free float to 15%) are judged inconsistent. On the industrial front, <strong>two Japanese auto-component plants</strong> in Pasuruan and Mojokerto are reportedly planning to shift part of their production lines to Vietnam over the next 1–2 years, threatening roughly 4,000 jobs — a signal of eroding domestic manufacturing competitiveness amid an EV ecosystem still trailing Vietnam's (the Ministry of Industry denies finding evidence of relocation). <span class="src">[Investor.id/Mediaindonesia, 24 Jun 2026; CNBC/Bloomberg/Tempo, 23–24 Jun 2026; Kompas Otomotif/Tribunnews, 22–24 Jun 2026]</span></p>
+      </div>
+
+      <ul class="blist lang-id">
+        <li><strong>Rupiah dibuka melemah 72–83 poin (-0,40% s/d -0,46%) ke Rp17.931–17.945/USD</strong> pada 24 Juni — dipicu dolar AS yang menguat ke puncak 14 bulan serta kekhawatiran pasar terhadap kebijakan moneter ketat Fed yang diperkirakan bertahan sepanjang 2026. <span class="src">[Investor.id/Mediaindonesia/Bisnis.com, 24 Jun 2026]</span></li>
+        <li><strong>IHSG ditutup -0,25% (-15,35 poin) ke 6.101,33</strong> pada 23 Juni, setelah sempat terkoreksi tajam -1,29% ke 5.993,04 di sesi I akibat kecemasan menjelang putusan MSCI dan ketegangan Timur Tengah; nilai transaksi tergolong ramai di Rp32,94 triliun. <span class="src">[Kompas, 23 Jun 2026]</span></li>
+        <li><strong>MSCI mempertahankan status Emerging Market</strong> namun menunda keputusan final ke November 2026 dan menyoroti kekhawatiran investor institusional global atas dugaan perdagangan terkoordinasi serta sulitnya melacak kepemilikan mayoritas saham — risiko downgrade ke Frontier Market tetap berlaku jika reformasi dinilai belum konsisten. <span class="src">[CNBC, Bloomberg/Fortune, Tempo, 23–24 Jun 2026]</span></li>
+        <li><strong>Bank Indonesia menaikkan BI-Rate ke 5,75%</strong> (efektif 18 Jun, kenaikan ketiga di 2026, kumulatif +75bps dalam ~2 minggu) — langkah defensif untuk menstabilkan rupiah di tengah gejolak global, namun menambah beban biaya dana domestik. <span class="src">[Bank Indonesia, 18 Jun 2026]</span></li>
+        <li><strong>Dua pabrik komponen otomotif Jepang (PT JAI &amp; PT SAI)</strong> di Pasuruan &amp; Mojokerto berpotensi memindahkan lini produksi ke Vietnam dalam 1–2 tahun, mengancam ~4.000 pekerja — KSPI menyebut daya saing ekosistem EV Indonesia masih di bawah Vietnam, meski Kemenperin membantah ada bukti relokasi. <span class="src">[Kompas Otomotif/Tribunnews/CNBC Indonesia, 22–24 Jun 2026]</span></li>
+        <li><strong>Net sell asing &amp; outlook rating</strong> tetap menjadi beban struktural: arus keluar modal mencapai Rp68,25 triliun YTD per 22 Juni, sementara Moody's dan Fitch terus mempertahankan outlook NEGATIF atas peringkat kredit Indonesia. <span class="src">[Bareksa, 22 Jun 2026; CNBC Indonesia, 2026]</span></li>
+      </ul>
+      <ul class="blist lang-en">
+        <li><strong>The rupiah opened 72–83 points weaker (-0.40% to -0.46%) at Rp17,931–17,945/USD</strong> on 24 June — driven by a dollar surge to a 14-month peak and market anxiety over tight Fed policy expected to persist through 2026. <span class="src">[Investor.id/Mediaindonesia/Bisnis.com, 24 Jun 2026]</span></li>
+        <li><strong>The IHSG closed -0.25% (-15.35 pts) at 6,101.33</strong> on 23 June, after a sharp intraday plunge of -1.29% to 5,993.04 in session I on anxiety ahead of the MSCI verdict and Middle East tension; turnover was brisk at Rp32.94 trillion. <span class="src">[Kompas, 23 Jun 2026]</span></li>
+        <li><strong>MSCI retained Indonesia's Emerging Market status</strong> but deferred its final verdict to November 2026 and flagged deep global institutional investor concern over suspected coordinated trading and difficulty tracking majority shareholdings — downgrade risk to Frontier Market remains live if reforms are judged inconsistent. <span class="src">[CNBC, Bloomberg/Fortune, Tempo, 23–24 Jun 2026]</span></li>
+        <li><strong>Bank Indonesia raised the BI-Rate to 5.75%</strong> (effective 18 Jun, the third hike of 2026, cumulatively +75bps in roughly two weeks) — a defensive move to stabilize the rupiah amid global turbulence, though it adds to domestic funding costs. <span class="src">[Bank Indonesia, 18 Jun 2026]</span></li>
+        <li><strong>Two Japanese auto-component plants (PT JAI &amp; PT SAI)</strong> in Pasuruan and Mojokerto may shift production lines to Vietnam within 1–2 years, threatening roughly 4,000 jobs — labor group KSPI says Indonesia's EV ecosystem still lags Vietnam's, though the Ministry of Industry denies finding evidence of relocation. <span class="src">[Kompas Otomotif/Tribunnews/CNBC Indonesia, 22–24 Jun 2026]</span></li>
+        <li><strong>Foreign net-selling and rating outlooks</strong> remain a structural drag: capital outflows reached Rp68.25 trillion YTD as of 22 June, while Moody's and Fitch continue to hold a NEGATIVE outlook on Indonesia's sovereign credit rating. <span class="src">[Bareksa, 22 Jun 2026; CNBC Indonesia, 2026]</span></li>
+      </ul>
+    </div>
+
+    <!-- ── 4. MALAYSIA ECONOMIC UPDATE ── -->
+    <div class="section">
+      <div class="sec-head">
+        <div class="sec-icon">🇲🇾</div>
+        <div class="sec-title">Malaysia Economic Update</div>
+        <div class="badge badge-cau lang-id-row" style="display:inline-block">Waspada · Outflow Melambat, Ringgit Tertekan Dolar</div>
+        <div class="badge badge-cau lang-en">Watch · Outflows Easing, Ringgit Pressured by Dollar</div>
+      </div>
+
+      <div class="stat-grid sg4">
+        <div class="stat-card">
+          <div class="s-name">USD / MYR</div>
+          <div class="s-val">4,140</div>
+          <div class="s-chg amb">Kisaran Pekan: 4,061–4,154</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-name">FBM KLCI</div>
+          <div class="s-val sm">~1.700</div>
+          <div class="s-chg neu">Bergerak Mendatar · 23 Jun</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-name">BNM OPR</div>
+          <div class="s-val">2,75%</div>
+          <div class="s-chg neu">Ditahan sejak Jul 2025</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-name">Outflow Asing/Pekan</div>
+          <div class="s-val sm">-RM10,7 Jt</div>
+          <div class="s-chg dn">Pekan ke-6 Berturut</div>
+        </div>
+      </div>
+
+      <div class="cau-box lang-id">
+        <h4>⚑ Catatan Kewaspadaan — Streak Outflow Memanjang Meski Mengecil, Inflasi Naik Bertahap</h4>
+        <p>Investor asing memperpanjang <strong>streak net selling di Bursa Malaysia ke pekan ke-6 berturut-turut</strong>, meski besaran outflow mengecil tajam menjadi hanya -RM10,7 juta (pekan hingga 22 Jun) dari -RM2,53 miliar di awal Juni — sektor Healthcare (-RM108,8 juta) dan Telekomunikasi (-RM106 juta) memimpin outflow, sementara Technology justru mencatat inflow +RM128,2 juta. FBM KLCI bergerak mendatar di kisaran 1.700, tertahan oleh ketidakpastian global menjelang perundingan damai AS–Iran. Ringgit tertekan ke ~RM4,14/USD sejalan kekokohan dolar AS yang luas, sementara Bank Negara Malaysia menahan OPR di 2,75% sejak Juli 2025. Inflasi Mei naik ke 2,0% (dari 1,9%) — tertinggi sejak Juli 2024 — dan berisiko bertambah jika rencana pencabutan subsidi RON95 untuk kelompok T20 direalisasikan. Tekanan ini jauh lebih moderat dibanding Indonesia, namun tetap layak dipantau. <span class="src">[BusinessToday, 22 Jun 2026; The Star, 23 Jun &amp; 7 Mei 2026; TradingEconomics, 2026]</span></p>
+      </div>
+      <div class="cau-box lang-en">
+        <h4>⚑ Watch Note — Outflow Streak Extends but Shrinks, Inflation Edges Higher</h4>
+        <p>Foreign investors extended their <strong>net-selling streak on Bursa Malaysia to a sixth consecutive week</strong>, though the outflow size shrank sharply to just -RM10.7 million (week to 22 Jun) from -RM2.53 billion in early June — Healthcare (-RM108.8 million) and Telecommunications (-RM106 million) led outflows, while Technology posted a +RM128.2 million inflow. The FBM KLCI traded flat near the 1,700 level, held back by global uncertainty ahead of US–Iran peace talks. The ringgit eased to ~RM4.14/USD in line with broad US dollar strength, while Bank Negara Malaysia kept the OPR at 2.75% since July 2025. May inflation rose to 2.0% (from 1.9%) — the highest since July 2024 — with further upside risk if the planned removal of RON95 subsidies for T20 households goes ahead. This pressure is far more moderate than Indonesia's, but still warrants monitoring. <span class="src">[BusinessToday, 22 Jun 2026; The Star, 23 Jun &amp; 7 May 2026; TradingEconomics, 2026]</span></p>
+      </div>
+
+      <ul class="blist lang-id">
+        <li><strong>Outflow asing mengecil ke -RM10,7 juta</strong> (pekan hingga 22 Jun) — perlambatan tajam dari -RM2,53 miliar di awal Juni, sinyal tekanan jual yang mulai mereda meski belum berbalik ke net buy. <span class="src">[BusinessToday, 22 Jun 2026]</span></li>
+        <li><strong>FBM KLCI hovering di kisaran 1.700</strong> pada 23 Juni, tertahan investor yang menunggu kejelasan perundingan damai AS–Iran sebelum mengambil posisi baru. <span class="src">[The Star, 23 Jun 2026]</span></li>
+        <li><strong>USD/MYR di ~4,140</strong>, bergerak dalam rentang mingguan 4,061–4,154 — ringgit tertekan kekokohan dolar AS yang luas pasca pergeseran hawkish Fed. <span class="src">[Xe/TradingEconomics, 24 Jun 2026]</span></li>
+        <li><strong>Inflasi Mei 2026 naik ke 2,0%</strong> (dari 1,9% April) — tertinggi sejak Juli 2024 — sementara BNM menahan OPR di 2,75% sejak Juli 2025, menyeimbangkan pertumbuhan dan tekanan harga. <span class="src">[TradingEconomics; The Star, 7 Mei 2026]</span></li>
+      </ul>
+      <ul class="blist lang-en">
+        <li><strong>Foreign outflows shrank to -RM10.7 million</strong> (week to 22 Jun) — a sharp slowdown from -RM2.53 billion in early June, signalling selling pressure is easing even if not yet reversed into net buying. <span class="src">[BusinessToday, 22 Jun 2026]</span></li>
+        <li><strong>The FBM KLCI hovered near 1,700</strong> on 23 June, with investors holding back ahead of clarity on US–Iran peace talks before taking fresh positions. <span class="src">[The Star, 23 Jun 2026]</span></li>
+        <li><strong>USD/MYR trades near 4.140</strong>, within a weekly range of 4.061–4.154 — the ringgit pressured by broad US dollar strength following the Fed's hawkish pivot. <span class="src">[Xe/TradingEconomics, 24 Jun 2026]</span></li>
+        <li><strong>May 2026 inflation rose to 2.0%</strong> (from 1.9% in April) — the highest since July 2024 — while BNM held the OPR at 2.75% since July 2025, balancing growth against price pressure. <span class="src">[TradingEconomics; The Star, 7 May 2026]</span></li>
+      </ul>
+    </div>
+
+    <!-- ══════════ PROFIT OPPORTUNITY ══════════ -->
+    <div class="profit">
+      <div class="profit-head">
+        <div class="profit-head-ico">💡</div>
+        <h2 class="lang-id-row" style="display:block">Potensi <em>Keuntungan</em> — Peluang Terkuat Hari Ini</h2>
+        <h2 class="lang-en"><em>Profit</em> Opportunity — Today's Strongest Plays</h2>
+        <div class="profit-head-badge">24 Jun 2026</div>
+      </div>
+
+      <div class="profit-grid">
+
+        <!-- Card 1: Silver -->
+        <div class="p-card">
+          <div class="p-card-head">
+            <div class="p-card-ico">🥈</div>
+            <div class="p-card-title">Perak · XAG/USD</div>
+            <div class="p-card-type">Komoditas</div>
+          </div>
+          <div class="p-card-desc lang-id">
+            Perak naik +2,65% ke <strong>$69,71/oz</strong>, melanjutkan rally struktural 2026 yang ditopang defisit pasokan tahun kelima &amp; permintaan industrial (elektronik, surya, AI/nuklir). J.P. Morgan memproyeksikan rata-rata <strong>$81/oz</strong> sepanjang 2026 — momentum yang masih relevan bagi investor toleran volatilitas tinggi.
+          </div>
+          <div class="p-card-desc lang-en">
+            Silver rose +2.65% to <strong>$69.71/oz</strong>, extending a structural 2026 rally underpinned by a fifth straight year of supply deficit and industrial demand (electronics, solar, AI/nuclear). J.P. Morgan projects a <strong>$81/oz</strong> average through 2026 — momentum still relevant for investors comfortable with high volatility.
+          </div>
+          <div class="p-levels">
+            <div class="p-level">
+              <span class="lang-id-row" style="display:block">Level Saat Ini</span><span class="lang-en">Current Level</span>
+              <strong>$69,71</strong>
+            </div>
+            <div class="p-level">
+              <span class="lang-id-row" style="display:block">Target JPM (Rata² 2026)</span><span class="lang-en">JPM Target (2026 Avg)</span>
+              <strong>$81</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Gold -->
+        <div class="p-card">
+          <div class="p-card-head">
+            <div class="p-card-ico">🥇</div>
+            <div class="p-card-title">Emas · XAU/USD</div>
+            <div class="p-card-type">Komoditas</div>
+          </div>
+          <div class="p-card-desc lang-id">
+            Koreksi hari ketiga ke <strong>$4.050–$4.115/oz</strong> membuka titik masuk yang semakin menarik, dengan target J.P. Morgan year-end 2026 tetap di <strong>$6.000/oz</strong> — implikasi potensi penguatan &gt;+45% bila tercapai. Permintaan bank sentral struktural (585 ton/kuartal) menopang tesis jangka menengah.
+          </div>
+          <div class="p-card-desc lang-en">
+            A third straight day of correction to <strong>$4,050–$4,115/oz</strong> opens an increasingly attractive entry point, with J.P. Morgan's year-end 2026 target holding at <strong>$6,000/oz</strong> — implying &gt;45% potential upside if reached. Structural central bank demand (585 tonnes/quarter) supports the medium-term thesis.
+          </div>
+          <div class="p-levels">
+            <div class="p-level">
+              <span class="lang-id-row" style="display:block">Entry Ideal</span><span class="lang-en">Ideal Entry</span>
+              <strong>$4.000 – $4.100</strong>
+            </div>
+            <div class="p-level">
+              <span class="lang-id-row" style="display:block">Target JPM (YE 2026)</span><span class="lang-en">JPM Target (YE 2026)</span>
+              <strong>$6.000</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: USD dominance vs IDR/MYR (full width) -->
+        <div class="p-card full">
+          <div class="p-card-head">
+            <div class="p-card-ico">💵</div>
+            <div class="p-card-title">Dolar AS · USD/IDR &amp; USD/MYR</div>
+            <div class="p-card-type">Forex</div>
+          </div>
+          <div class="p-card-desc lang-id">
+            Pergeseran hawkish Fed di bawah calon Ketua Kevin Warsh mendorong DXY ke puncak 14 bulan (101,39), menjaga dolar tetap superior terhadap rupiah (~Rp17.931, mendekati Rp18.000) maupun ringgit (~RM4,14), di tengah tekanan domestik (ketidakpastian MSCI, outflow modal) yang masih membayangi Asia Tenggara. Posisi panjang dolar AS terhadap kedua mata uang ini tetap relevan selama divergensi kebijakan berlanjut.
+          </div>
+          <div class="p-card-desc lang-en">
+            The Fed's hawkish pivot under incoming Chair Kevin Warsh has pushed the DXY to a 14-month peak (101.39), keeping the dollar dominant over both the rupiah (~Rp17,931, nearing Rp18,000) and ringgit (~RM4.14), amid domestic pressure (MSCI uncertainty, capital outflows) still overhanging Southeast Asia. A long-USD stance against both currencies remains relevant while this policy divergence persists.
+          </div>
+          <div class="p-levels">
+            <div class="p-level">
+              <span class="lang-id-row" style="display:block">Level Saat Ini</span><span class="lang-en">Current Level</span>
+              <strong>Rp17.931 / RM4,14</strong>
+            </div>
+            <div class="p-level">
+              <span class="lang-id-row" style="display:block">Potensi Lanjutan</span><span class="lang-en">Continuation Potential</span>
+              <strong>Rp18.000–18.300 / RM4,18–4,25</strong>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══════════ SUMMARY BOX ══════════ -->
+    <div class="sum-box">
+      <h3 class="lang-id-row" style="display:block">Ringkasan Eksekutif — 24 Juni 2026</h3>
+      <h3 class="lang-en">Executive Summary — 24 June 2026</h3>
+      <ul class="sum-list lang-id">
+        <li><span class="sum-ico">▸</span><span><strong style="color:var(--gold-light)">Perak</strong> melonjak +2,65% ke $69,71/oz, melanjutkan rally struktural 2026 — target JPM $81/oz (rata-rata 2026) menjaga momentum tetap relevan.</span></li>
+        <li><span class="sum-ico">▸</span><span><strong style="color:var(--gold-light)">Emas</strong> terkoreksi hari ketiga ke $4.050–$4.115/oz, namun target JPM $6.000 (YE 2026) tetap utuh — koreksi membuka entry yang semakin menarik.</span></li>
+        <li><span class="sum-ico">▸</span><span><strong style="color:var(--gold-light)">Forex</strong>: dolar AS di puncak 14 bulan (DXY 101,39) ditopang pergeseran hawkish Fed — peluang directional jelas terhadap EUR, rupiah &amp; ringgit.</span></li>
+        <li><span class="sum-ico">▸</span><span><strong style="color:var(--red)">IHSG &amp; Rupiah</strong>: rupiah mendekati Rp18.000 lagi, MSCI menunda keputusan final ke November dengan kekhawatiran transparansi, &amp; risiko relokasi industri otomotif ke Vietnam menegaskan tekanan struktural belum mereda.</span></li>
+        <li><span class="sum-ico">▸</span><span><strong style="color:var(--amber)">KLCI &amp; Ringgit</strong>: outflow asing mengecil tajam (pekan ke-6, -RM10,7 juta) — sinyal tekanan mereda, meski ringgit masih tertekan dolar AS &amp; inflasi domestik perlahan naik.</span></li>
+      </ul>
+      <ul class="sum-list lang-en">
+        <li><span class="sum-ico">▸</span><span><strong style="color:var(--gold-light)">Silver</strong> surged +2.65% to $69.71/oz, extending its structural 2026 rally — JPM's $81/oz 2026-average target keeps the momentum relevant.</span></li>
+        <li><span class="sum-ico">▸</span><span><strong style="color:var(--gold-light)">Gold</strong> corrected for a third day to $4,050–$4,115/oz, but JPM's $6,000 (YE 2026) target stands intact — the pullback opens an increasingly attractive entry.</span></li>
+        <li><span class="sum-ico">▸</span><span><strong style="color:var(--gold-light)">Forex</strong>: the US dollar sits at a 14-month high (DXY 101.39) on the Fed's hawkish pivot — a clear directional opportunity against the EUR, rupiah, and ringgit.</span></li>
+        <li><span class="sum-ico">▸</span><span><strong style="color:var(--red)">IHSG &amp; Rupiah</strong>: the rupiah is nearing Rp18,000 again, MSCI deferred its final verdict to November amid transparency concerns, and auto-industry relocation risk to Vietnam confirms structural pressure has yet to ease.</span></li>
+        <li><span class="sum-ico">▸</span><span><strong style="color:var(--amber)">KLCI &amp; Ringgit</strong>: foreign outflows shrank sharply (6th week, -RM10.7 million) — a sign pressure is easing, though the ringgit remains pressured by the dollar and domestic inflation is edging higher.</span></li>
+      </ul>
+    </div>
+
+  </div><!-- end .body -->
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <div class="footer">
+    <div class="sig">
+      <div class="sig-label">Exclusively Prepared by</div>
+      <div class="sig-name">Revan Ashford</div>
+      <div class="sig-role">Senior Investment Consultant &amp; Portfolio Manager</div>
+      <div class="sig-email">revan@onetwomarkets.co.za</div>
+    </div>
+
+    <div class="sources-label lang-id-row" style="display:block">Sumber Data — Diverifikasi via Web Search · 24 Juni 2026</div>
+    <div class="sources-label lang-en">Data Sources — Verified via Web Search · 24 June 2026</div>
+    <div class="sources-text lang-id">
+      <strong style="color:var(--green)">Catatan provenance:</strong> Ticker LIVE di bagian atas ditenagai widget web TradingView (menampilkan harga pasar aktual saat laporan dibuka). Angka statis di dalam laporan bersumber dari web search terverifikasi per tanggal di bawah — jembatan data TradingView Desktop (CDP port 9222) tidak aktif saat penyusunan laporan ini (proses TradingView pengguna tidak dihentikan demi menjaga sesi tetap utuh), sehingga level snapshot diambil dari sumber publik dan dapat berbeda dari harga live. Bagian <strong>US Stock Market</strong> tidak ditampilkan hari ini karena penutupan terakhir yang terverifikasi (S&amp;P 500 -1,44%, NASDAQ -2,21%, 23 Jun, dipicu selloff sektor semikonduktor) tidak memenuhi kriteria sentimen positif laporan ini. Bagian <strong>Crypto</strong> juga tidak ditampilkan karena Bitcoin sempat jatuh di bawah support kunci $63.000 ke ~$62.600–62.800 di tengah outflow ETF rekor &amp; kekhawatiran kenaikan suku bunga Fed — tidak ada angle positif yang dapat dipertanggungjawabkan untuk laporan ini hari ini.
+    </div>
+    <div class="sources-text lang-en">
+      <strong style="color:var(--green)">Provenance note:</strong> The LIVE ticker above is powered by the TradingView web widget (shows actual market prices when the report is opened). Static figures in this report are sourced from verified web search per the dates below — the TradingView Desktop data bridge (CDP port 9222) was inactive while this report was prepared (the user's TradingView session was not terminated in order to preserve it), so snapshot levels were taken from public sources and may differ from live prices. The <strong>US Stock Market</strong> section is omitted today because the latest verified close (S&amp;P 500 -1.44%, NASDAQ -2.21%, 23 Jun, driven by a semiconductor-sector selloff) did not meet this report's positive-sentiment threshold. The <strong>Crypto</strong> section is also omitted because Bitcoin briefly broke below the key $63,000 support to ~$62,600–62,800 amid record ETF outflows and Fed rate-hike concerns — no defensible positive angle was available for this report today.
+    </div>
+    <div class="sources-text">
+      Silver, Gold &amp; Brent (24 Jun): Investing.com, LiteFinance, Fortune · J.P. Morgan gold/silver targets: InvestingLive (18 Mei/May), TheStreet/Kitco, J.P. Morgan Global Research (2026) · DXY, US 10Y, Fed/Warsh: TradingEconomics, Reuters, Crypto.news, AnalyticsInsight (23–24 Jun 2026) · EUR/USD: TradingEconomics (23 Jun 2026) · USD/IDR: Investor.id, Mediaindonesia, Bisnis.com (24 Jun 2026) · USD/MYR: Xe, TradingEconomics (24 Jun 2026) · IHSG (23 Jun): Kompas · MSCI Indonesia review: CNBC, Bloomberg/Fortune, Tempo, IDNFinancials (23–24 Jun 2026) · BI-Rate: Bank Indonesia (18 Jun 2026) · Relokasi otomotif/Vietnam: Kompas Otomotif, Tribunnews, CNBC Indonesia, Liputan6 (22–24 Jun 2026) · Net sell asing/rating outlook: Bareksa (22 Jun 2026), CNBC Indonesia (2026) · FBM KLCI: The Star (23 Jun 2026) · Malaysia foreign flows: BusinessToday (22 Jun 2026) · BNM OPR &amp; inflasi/inflation: The Star (7 Mei/May 2026), TradingEconomics (2026) · Bitcoin/crypto omission basis: Yahoo Finance, AnalyticsInsight, Investing.com (23–24 Jun 2026).
+    </div>
+
+    <div class="disclaimer lang-id">
+      Laporan ini disusun semata-mata untuk tujuan informasi dan edukasi bagi investor profesional. Tidak merupakan rekomendasi investasi, nasihat keuangan, atau ajakan untuk membeli maupun menjual instrumen keuangan apa pun. Semua investasi mengandung risiko, termasuk risiko kehilangan pokok investasi. Kinerja masa lalu tidak menjamin atau mengindikasikan hasil di masa depan. Data bersumber dari sumber publik terpercaya dan telah diverifikasi pada tanggal penerbitan — namun demikian, akurasi tidak dapat dijamin sepenuhnya. Pastikan Anda memahami risiko sepenuhnya dan, jika perlu, konsultasikan dengan penasihat keuangan independen sebelum mengambil keputusan investasi.
+    </div>
+    <div class="disclaimer lang-en">
+      This report is prepared solely for the informational and educational purposes of professional investors. It does not constitute investment advice, financial advice, or a solicitation to buy or sell any financial instrument. All investments carry risk, including the risk of loss of principal. Past performance does not guarantee or indicate future results. Data is sourced from trusted public sources and verified as of the publication date — however, full accuracy cannot be guaranteed. Please ensure you fully understand the risks and, where necessary, consult an independent financial adviser before making any investment decision.
+    </div>
+  </div>
+
+</div><!-- end .page -->
+
+<script>
+  function setLang(lang) {
+    document.body.classList.toggle('lang-en-active', lang === 'en');
+    document.getElementById('btn-id').classList.toggle('active', lang === 'id');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  }
+</script>
+
+</body>
+</html>

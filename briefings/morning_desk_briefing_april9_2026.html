@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Desk Briefing — April 9, 2026</title>
+<style>
+  :root {
+    --bg: #0a0b0d;
+    --bg2: #111316;
+    --bg3: #181b1f;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.14);
+    --text: #e8eaed;
+    --text2: #8a8f9a;
+    --text3: #555b66;
+    --green: #00d68f;
+    --green-bg: rgba(0,214,143,0.08);
+    --red: #ff4d4d;
+    --red-bg: rgba(255,77,77,0.08);
+    --amber: #f0a500;
+    --amber-bg: rgba(240,165,0,0.08);
+    --blue: #4d9fff;
+    --blue-bg: rgba(77,159,255,0.09);
+    --accent: #c8a96e;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Georgia', serif; font-size: 15px; line-height: 1.7; min-height: 100vh; }
+  .page { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .masthead { border-bottom: 1px solid var(--accent); padding-bottom: 1.25rem; margin-bottom: 1.5rem; }
+  .masthead-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: .5rem; }
+  .firm-label { font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: .2em; color: var(--accent); text-transform: uppercase; }
+  .date-label { font-family: 'Courier New', monospace; font-size: 11px; color: var(--text3); letter-spacing: .08em; }
+  h1 { font-size: 26px; font-weight: normal; color: var(--text); letter-spacing: .02em; }
+  .subhead { font-family: 'Courier New', monospace; font-size: 12px; color: var(--text2); margin-top: 4px; }
+  .sentiment-pill { display: inline-block; background: var(--green-bg); color: var(--green); border: 0.5px solid var(--green); border-radius: 3px; font-family: 'Courier New', monospace; font-size: 11px; padding: 2px 10px; letter-spacing: .08em; margin-top: 8px; }
+  .ticker-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 6px; margin-bottom: 1.5rem; }
+  .tick { background: var(--bg2); border: 0.5px solid var(--border); border-radius: 4px; padding: 10px 12px; }
+  .tick-name { font-family: 'Courier New', monospace; font-size: 10px; color: var(--text3); letter-spacing: .1em; margin-bottom: 3px; }
+  .tick-val { font-size: 17px; font-weight: normal; color: var(--text); font-family: 'Courier New', monospace; }
+  .tick-chg { font-family: 'Courier New', monospace; font-size: 11px; margin-top: 2px; }
+  .up { color: var(--green); } .dn { color: var(--red); } .flat { color: var(--text3); }
+  .section { border: 0.5px solid var(--border); border-radius: 4px; margin-bottom: .85rem; overflow: hidden; }
+  .sec-head { display: flex; align-items: center; gap: 10px; padding: .75rem 1rem; background: var(--bg2); cursor: pointer; border-bottom: 0.5px solid var(--border); user-select: none; }
+  .sec-head:hover { background: var(--bg3); }
+  .sec-num { font-family: 'Courier New', monospace; font-size: 10px; color: var(--text3); width: 18px; }
+  .sec-title { font-family: 'Courier New', monospace; font-size: 12px; letter-spacing: .1em; color: var(--accent); flex: 1; text-transform: uppercase; }
+  .sec-badge { font-family: 'Courier New', monospace; font-size: 10px; padding: 2px 8px; border-radius: 2px; letter-spacing: .06em; }
+  .bull { background: var(--green-bg); color: var(--green); border: 0.5px solid rgba(0,214,143,0.3); }
+  .bear { background: var(--red-bg); color: var(--red); border: 0.5px solid rgba(255,77,77,0.3); }
+  .neut { background: var(--amber-bg); color: var(--amber); border: 0.5px solid rgba(240,165,0,0.3); }
+  .caret { font-size: 10px; color: var(--text3); transition: transform .2s; font-family: 'Courier New', monospace; }
+  .caret.open { transform: rotate(90deg); }
+  .sec-body { padding: 1.1rem 1.25rem; font-size: 14px; line-height: 1.8; color: var(--text); }
+  .sec-body.hidden { display: none; }
+  .pain-box { margin: .75rem 0; padding: .65rem 1rem; background: var(--red-bg); border-left: 2px solid var(--red); border-radius: 0 3px 3px 0; font-family: 'Courier New', monospace; font-size: 12px; color: var(--red); line-height: 1.6; }
+  .pain-label { font-size: 10px; letter-spacing: .12em; margin-bottom: 4px; opacity: .7; }
+  .level-row { display: flex; flex-wrap: wrap; gap: 6px; margin: .6rem 0; }
+  .lvl { background: var(--bg3); border: 0.5px solid var(--border2); border-radius: 3px; padding: 3px 10px; font-family: 'Courier New', monospace; font-size: 12px; color: var(--text2); }
+  .lvl span { color: var(--text); }
+  .trade-box { margin-top: .85rem; background: var(--blue-bg); border-left: 2px solid var(--blue); border-radius: 0 3px 3px 0; padding: .75rem 1rem; }
+  .trade-label { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: .15em; color: var(--blue); margin-bottom: 5px; text-transform: uppercase; }
+  .trade-text { font-size: 13px; color: var(--text); line-height: 1.65; }
+  .cat-grid { display: flex; flex-wrap: wrap; gap: 6px; margin: .6rem 0; }
+  .cat-item { background: var(--bg3); border: 0.5px solid var(--border2); border-radius: 3px; padding: 4px 10px; font-family: 'Courier New', monospace; font-size: 11px; color: var(--amber); }
+  .footer { margin-top: 2rem; padding-top: 1rem; border-top: 0.5px solid var(--border); font-family: 'Courier New', monospace; font-size: 11px; color: var(--text3); line-height: 1.6; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  strong { color: var(--text); font-weight: bold; }
+  em { color: var(--text2); font-style: italic; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="masthead">
+    <div class="masthead-top">
+      <div class="firm-label">Global Macro — Proprietary Desk</div>
+      <div class="date-label">THU 09 APR 2026 // PRE-MARKET</div>
+    </div>
+    <h1>Morning Desk Briefing</h1>
+    <div class="subhead">Iran Ceasefire // PCE Day // Hormuz Reopening // Relief Rally Watch</div>
+    <div class="sentiment-pill">RELIEF RALLY MODE — CAUTIOUS BULL</div>
+  </div>
+
+  <div class="ticker-strip">
+    <div class="tick"><div class="tick-name">S&P 500</div><div class="tick-val">6,782</div><div class="tick-chg up">+2.51% yest.</div></div>
+    <div class="tick"><div class="tick-name">NASDAQ</div><div class="tick-val">22,635</div><div class="tick-chg up">+2.80% yest.</div></div>
+    <div class="tick"><div class="tick-name">WTI CRUDE</div><div class="tick-val">$94.41</div><div class="tick-chg dn">−16.0% yest.</div></div>
+    <div class="tick"><div class="tick-name">GOLD XAU</div><div class="tick-val">$4,672</div><div class="tick-chg flat">Consolidating</div></div>
+    <div class="tick"><div class="tick-name">DXY</div><div class="tick-val">98.76</div><div class="tick-chg dn">−0.05% soft</div></div>
+    <div class="tick"><div class="tick-name">10Y UST</div><div class="tick-val">4.30%</div><div class="tick-chg dn">−10bps yest.</div></div>
+  </div>
+
+  <div class="section">
+    <div class="sec-head" onclick="toggle(this)">
+      <div class="sec-num">01</div>
+      <div class="sec-title">The Morning Squawk</div>
+      <span class="sec-badge neut">Cautious bull</span>
+      <span class="caret open">▶</span>
+    </div>
+    <div class="sec-body">
+      Yesterday was a monster. Trump announced a two-week ceasefire with Iran, Hormuz reopens (partially), WTI dumps $18 in a single session — biggest one-day drop since April 2020. The knee-jerk was textbook: unwind the geopolitical risk premium NOW. Dow ripped 1,325 points. Best day in a year.<br><br>
+      But here's the thing — <strong>this is a ceasefire, not a peace deal.</strong> The tape is pricing in resolution. The real world is still figuring out shipping routes, tanker insurance, and inventory refills. Iran already stated the US violated the agreement. That headline risk is still live.<br><br>
+      <div class="pain-box">
+        <div class="pain-label">▌ PAIN TRADE</div>
+        The crowd is short oil, long tech. A ceasefire breakdown obliterates both sides simultaneously. Snapback to $110 crude while NVDA gives back 8%. Watch your stops.
+      </div>
+      FOMC minutes flagged stagflation risk. GDP 3rd estimate + PCE print <strong>TODAY at 08:30 ET</strong>. That's the next tape mover. Don't let yesterday's euphoria make you sloppy.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-head" onclick="toggle(this)">
+      <div class="sec-num">02</div>
+      <div class="sec-title">Equities — Setup &amp; Trade</div>
+      <span class="sec-badge bull">Tactical long</span>
+      <span class="caret open">▶</span>
+    </div>
+    <div class="sec-body">
+      S&P 500 closed 6,782. 200-day MA at 6,655 — index is now above it. Regime change signal. Algo systems flip defensive-to-neutral, momentum funds chase. Next resistance: 50-day at 6,771 (already cleared). Clean air toward 6,900–7,000.<br><br>
+      RSI at 46 — not overbought. Volume on the rip solid across cyclicals. Death cross (50d crossed below 200d late March) still technically in place but losing teeth fast. AI names ripped 4–10%. Industrials led all sectors at +3.5%. UBS year-end cut to 7,500. Morgan Stanley says buy. Debate is pace, not direction — <em>if ceasefire holds.</em>
+      <div class="level-row">
+        <div class="lvl">Hard stop <span>6,580</span></div>
+        <div class="lvl">200d MA <span>6,655</span></div>
+        <div class="lvl">Now <span>6,782</span></div>
+        <div class="lvl">Target <span>6,950–7,000</span></div>
+      </div>
+      <div class="trade-box">
+        <div class="trade-label">The Trade</div>
+        <div class="trade-text">Long S&P on dips to 6,655 (200d), hard stop 6,580, target 6,950 in 2–3 weeks. Overweight Industrials + AI mega-caps. Reduce Energy — oil risk premium unwinding fast, that trade is crowded.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-head" onclick="toggle(this)">
+      <div class="sec-num">03</div>
+      <div class="sec-title">The Commodities Pit</div>
+      <span class="sec-badge bear">Crude short-term bear</span>
+      <span class="caret open">▶</span>
+    </div>
+    <div class="sec-body">
+      <strong>WTI:</strong> $94.41. Was $118 end of March. Down ~20% in 10 days on ceasefire euphoria. "Partial" Hormuz reopening means tanker normalization takes weeks, not hours. Floor: $88–92 if ceasefire holds. Breakdown in talks = snap back to $110 instantly.<br><br>
+      <strong>Gold:</strong> $4,672/oz. Off January ATH of $5,595. Risk-off unwind pressuring gold as equities melt up — classic rotation. But stagflation + China central bank buying (15 consecutive months) keeps the structural floor firm.
+      <div class="level-row">
+        <div class="lvl">WTI floor <span>$88–92</span></div>
+        <div class="lvl">WTI break target <span>$110+</span></div>
+        <div class="lvl">Gold support <span>$4,400</span></div>
+        <div class="lvl">Gold ceiling <span>$5,000</span></div>
+      </div>
+      <div class="trade-box">
+        <div class="trade-label">The Trade</div>
+        <div class="trade-text">Fade WTI bounces to $98+ — supply normalization not instant, ceasefire already priced. Gold: range-trade $4,500–$5,000, buy dips to $4,400, don't short it — stagflation backdrop structurally bullish.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-head" onclick="toggle(this)">
+      <div class="sec-num">04</div>
+      <div class="sec-title">FX Dealing Room</div>
+      <span class="sec-badge bear">USD structurally soft</span>
+      <span class="caret open">▶</span>
+    </div>
+    <div class="sec-body">
+      DXY at 98.76. Down from 108 a year ago. US fiscal deficit 6.5% of GDP, $2T+ projected. Guns &amp; butter playing out in real time — slow-motion dollar headwind all year.<br><br>
+      <strong>USD/JPY carry risk:</strong> BOJ tightening while Fed holds at 3.50–3.75%. If equities falter on bad PCE, yen carry unwind = vol spike across the board. Watch 140 as the line in the sand.<br><br>
+      <strong>EM/IDR:</strong> Ceasefire net positive. Oil import relief for Indonesia. But hot PCE today = Fed hawkish = DXY bounce = EM pain trade reversal within hours.
+      <div class="level-row">
+        <div class="lvl">DXY support <span>97.50</span></div>
+        <div class="lvl">DXY resistance <span>101</span></div>
+        <div class="lvl">Fed funds <span>3.50–3.75%</span></div>
+      </div>
+      <div class="trade-box">
+        <div class="trade-label">The Trade</div>
+        <div class="trade-text">Short DXY on bounces toward 101. If PCE comes in hot, tactical DXY long — size small, quick trade. EM currencies (IDR, BRL) tactically bid if WTI stays below $100.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-head" onclick="toggle(this)">
+      <div class="sec-num">05</div>
+      <div class="sec-title">Today's Catalysts — Moves the Tape</div>
+      <span class="sec-badge neut">HIGH IMPACT</span>
+      <span class="caret open">▶</span>
+    </div>
+    <div class="sec-body">
+      <div class="cat-grid">
+        <div class="cat-item">08:30 ET — Q4 GDP 3rd estimate</div>
+        <div class="cat-item">08:30 ET — Feb Core PCE</div>
+        <div class="cat-item">08:30 ET — Initial Jobless Claims</div>
+        <div class="cat-item">After close — Constellation Brands (STZ)</div>
+        <div class="cat-item">FRI 10 APR — March CPI (the big one)</div>
+        <div class="cat-item">MON 13 APR — Goldman Sachs (GS) earnings</div>
+      </div>
+      <strong>PCE (primary mover):</strong> Consensus core ~2.5% YoY. Hot print (2.8%+) = Fed higher for longer, stagflation wins, rates spike, sell the news. Cool print = rate cut hopes back, melt-up continues. This decides the week's tone.<br><br>
+      <strong>GDP Q4:</strong> Expected ~1.4% annualized. Miss = stagflation confirmed = gold bid, equity chop.<br><br>
+      <strong>Friday March CPI</strong> is the headline risk event of the week. Set vol exposure before today's close.
+      <div class="trade-box">
+        <div class="trade-label">The Trade</div>
+        <div class="trade-text">Into PCE: buy S&P put protection at 6,600 strike. Post cool print → add equity longs, cut vol hedges. Post hot print → trim equities, add gold, short DXY, buy yen. Don't go into data naked — the ceasefire gave you a 2.5% gift. Protect the book.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>Generated: 09 Apr 2026 // Global Macro Proprietary Desk</div>
+    <div>Not financial advice. Informational purposes only.</div>
+  </div>
+</div>
+
+<script>
+function toggle(head) {
+  var body = head.nextElementSibling;
+  var caret = head.querySelector('.caret');
+  if (body.classList.contains('hidden')) { body.classList.remove('hidden'); caret.classList.add('open'); }
+  else { body.classList.add('hidden'); caret.classList.remove('open'); }
+}
+</script>
+</body>
+</html>

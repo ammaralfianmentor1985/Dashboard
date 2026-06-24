@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Update Harian Premium — 1 Juni 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;600;700&display=swap');
+
+  :root {
+    --navy: #1a2744;
+    --navy-light: #2d3f6b;
+    --gold: #c9a84c;
+    --gold-light: #e8cc7e;
+    --ivory: #fdfaf4;
+    --cream: #f5f0e8;
+    --grey-light: #f0eee9;
+    --grey-mid: #e2ddd6;
+    --grey-text: #6b6560;
+    --body-text: #2c2a27;
+    --red-soft: #c0392b;
+    --green-soft: #1e7e52;
+    --border: #ddd8cf;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #ede9e0;
+    font-family: 'Source Sans 3', 'Georgia', serif;
+    color: var(--body-text);
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 860px;
+    margin: 32px auto;
+    background: var(--ivory);
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 40px rgba(26,39,68,0.12);
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--navy);
+    padding: 36px 48px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 18px;
+  }
+  .brand-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 6px;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.3px;
+    line-height: 1.2;
+  }
+  .header h1 span {
+    color: var(--gold);
+  }
+  .header-date {
+    text-align: right;
+  }
+  .date-day {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .date-full {
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-top: 3px;
+  }
+  .header-sub {
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.8px;
+    border-top: 1px solid rgba(201,168,76,0.25);
+    padding-top: 14px;
+  }
+
+  /* ── SENTIMENT BAR ── */
+  .sentiment-bar {
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 48px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .sentiment-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--grey-text);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .sentiment-track {
+    flex: 1;
+    height: 6px;
+    background: linear-gradient(90deg, #c0392b 0%, #e67e22 35%, #f1c40f 50%, #27ae60 100%);
+    border-radius: 3px;
+    position: relative;
+  }
+  .sentiment-needle {
+    position: absolute;
+    top: -5px;
+    left: 68%;
+    width: 16px; height: 16px;
+    background: var(--navy);
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+  }
+  .sentiment-value {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--green-soft);
+    letter-spacing: 0.5px;
+  }
+
+  /* ── BODY ── */
+  .body {
+    padding: 0 48px 40px;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    margin-top: 32px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1.5px solid var(--gold);
+  }
+  .section-icon {
+    width: 32px; height: 32px;
+    background: var(--navy);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+    letter-spacing: 0.3px;
+  }
+  .section-badge {
+    margin-left: auto;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 12px;
+  }
+  .badge-positive { background: #e8f5ee; color: var(--green-soft); border: 1px solid #b2dfcc; }
+  .badge-negative { background: #fdecea; color: var(--red-soft); border: 1px solid #f5c0bb; }
+  .badge-neutral  { background: #f0f0f0; color: #666; border: 1px solid #ddd; }
+
+  /* ── STAT CARDS ── */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .stat-grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .stat-grid-4 { grid-template-columns: repeat(4, 1fr); }
+  .stat-card {
+    background: var(--grey-light);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    text-align: center;
+  }
+  .stat-name { font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--grey-text); margin-bottom: 5px; }
+  .stat-value { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--navy); line-height: 1; }
+  .stat-change { font-size: 11px; font-weight: 700; margin-top: 4px; }
+  .up { color: var(--green-soft); }
+  .down { color: var(--red-soft); }
+
+  /* ── BULLET POINTS ── */
+  .bullet-list { list-style: none; }
+  .bullet-list li {
+    font-size: 13.5px;
+    line-height: 1.65;
+    padding: 7px 0 7px 20px;
+    border-bottom: 1px solid var(--grey-mid);
+    position: relative;
+    color: var(--body-text);
+  }
+  .bullet-list li:last-child { border-bottom: none; }
+  .bullet-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 12px;
+  }
+  .bullet-list li strong { color: var(--navy); font-weight: 600; }
+
+  /* ── BAR CHART SVG ── */
+  .chart-wrap {
+    background: var(--grey-light);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+  }
+  .chart-title {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--grey-text);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-box {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .highlight-box::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--gold);
+  }
+  .highlight-box h4 {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .highlight-box p {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.6;
+  }
+  .highlight-box p strong { color: #fff; }
+
+  /* ── INSIGHT BOX ── */
+  .insight-box {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--grey-text);
+    line-height: 1.6;
+    font-style: italic;
+  }
+  .insight-box strong { color: var(--navy); font-style: normal; }
+
+  /* ── WARNING BOX ── */
+  .warning-box {
+    background: #fff9f8;
+    border: 1px solid #f5c0bb;
+    border-left: 3px solid var(--red-soft);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin-top: 12px;
+    font-size: 13px;
+    color: #7a3030;
+    line-height: 1.6;
+  }
+  .warning-box strong { color: var(--red-soft); }
+
+  /* ── PROFIT SECTION ── */
+  .profit-section {
+    background: linear-gradient(135deg, #fdf8ee 0%, #f5edd8 100%);
+    border: 1.5px solid var(--gold);
+    border-radius: 12px;
+    padding: 26px 28px;
+    margin-top: 32px;
+  }
+  .profit-header {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--gold-light);
+  }
+  .profit-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--navy);
+  }
+  .profit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .profit-card {
+    background: #fff;
+    border: 1px solid var(--gold-light);
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+  .profit-card-header {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 8px;
+  }
+  .profit-card-icon { font-size: 18px; }
+  .profit-card-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--navy);
+  }
+  .profit-card-rating {
+    margin-left: auto;
+    font-size: 14px;
+  }
+  .profit-card p {
+    font-size: 12.5px;
+    color: var(--grey-text);
+    line-height: 1.6;
+  }
+  .profit-card p strong { color: var(--navy); }
+
+  /* ── DIVIDER ── */
+  .gold-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+    margin: 28px 0;
+  }
+
+  /* ── TABLE ── */
+  .mini-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  .mini-table th {
+    background: var(--navy); color: var(--gold);
+    font-size: 9.5px; letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 8px 12px; text-align: left; font-weight: 600;
+  }
+  .mini-table td { padding: 9px 12px; border-bottom: 1px solid var(--border); }
+  .mini-table tr:last-child td { border-bottom: none; }
+  .mini-table tr:nth-child(even) td { background: var(--grey-light); }
+
+  /* ── SOURCE NOTE ── */
+  .source-note {
+    font-size: 10px;
+    color: #aaa5a0;
+    margin-top: 10px;
+    font-style: italic;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--navy);
+    padding: 22px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .footer-brand {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+  .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 3px;
+  }
+  .footer-title {
+    font-size: 11px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+  }
+  .footer-email {
+    font-size: 11px;
+    color: var(--gold-light);
+    font-weight: 300;
+    margin-top: 3px;
+  }
+  .footer-disclaimer {
+    font-size: 9px;
+    color: rgba(255,255,255,0.3);
+    text-align: right;
+    max-width: 220px;
+    line-height: 1.5;
+  }
+  .footer-line {
+    width: 1px;
+    background: rgba(201,168,76,0.3);
+    align-self: stretch;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ══════════════════════════════════════════════════════ HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div>
+        <div class="brand-label">Premium Market Intelligence Report</div>
+        <h1>Market Update <span>Harian</span></h1>
+      </div>
+      <div class="header-date">
+        <div class="date-day">01</div>
+        <div class="date-full">Juni 2026 &nbsp;·&nbsp; Senin</div>
+      </div>
+    </div>
+    <div class="header-sub">
+      Laporan Pasar Modal Global &amp; Ekonomi Domestik &nbsp;|&nbsp; Institutional Grade Analysis &nbsp;|&nbsp; Confidential
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ SENTIMENT BAR -->
+  <div class="sentiment-bar">
+    <div class="sentiment-label">Market Sentiment</div>
+    <div class="sentiment-track">
+      <div class="sentiment-needle"></div>
+    </div>
+    <div class="sentiment-value">RISK-ON &nbsp;▲&nbsp; 68/100</div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ BODY -->
+  <div class="body">
+
+    <!-- ── 1. US STOCK MARKET ── -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">🇺🇸</div>
+        <div class="section-title">US Stock Market</div>
+        <span class="section-badge badge-positive">✦ BULLISH</span>
+      </div>
+
+      <div class="stat-grid stat-grid-4">
+        <div class="stat-card">
+          <div class="stat-name">S&amp;P 500</div>
+          <div class="stat-value">ATH</div>
+          <div class="stat-change up">▲ +5.0% (Mei)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-name">NASDAQ</div>
+          <div class="stat-value">ATH</div>
+          <div class="stat-change up">▲ +8.0% (Mei)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-name">SOXX ETF</div>
+          <div class="stat-value">+54.7%</div>
+          <div class="stat-change up">▲ YTD 2026</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-name">S&amp;P YoY</div>
+          <div class="stat-value">+28.2%</div>
+          <div class="stat-change up">▲ 12 Bulan</div>
+        </div>
+      </div>
+
+      <!-- SVG Bar Chart: Sector Performance YTD -->
+      <div class="chart-wrap">
+        <div class="chart-title">Performa Sektor Terpilih — YTD 2026</div>
+        <svg width="100%" height="130" viewBox="0 0 700 130">
+          <!-- bars -->
+          <rect x="30"  y="20" width="88" height="85" rx="4" fill="#1a2744"/>
+          <rect x="148" y="42" width="88" height="63" rx="4" fill="#2d3f6b"/>
+          <rect x="266" y="55" width="88" height="50" rx="4" fill="#2d3f6b"/>
+          <rect x="384" y="68" width="88" height="37" rx="4" fill="#4a607f"/>
+          <rect x="502" y="78" width="88" height="27" rx="4" fill="#6a80a0"/>
+          <!-- labels -->
+          <text x="74"  y="15" text-anchor="middle" font-size="10" fill="#c9a84c" font-weight="600">+54.7%</text>
+          <text x="192" y="37" text-anchor="middle" font-size="10" fill="#c9a84c" font-weight="600">+67%</text>
+          <text x="310" y="50" text-anchor="middle" font-size="10" fill="#c9a84c" font-weight="600">+47%</text>
+          <text x="428" y="63" text-anchor="middle" font-size="10" fill="#c9a84c" font-weight="600">+28.2%</text>
+          <text x="546" y="73" text-anchor="middle" font-size="10" fill="#c9a84c" font-weight="600">+8.0%</text>
+          <!-- x-axis labels -->
+          <text x="74"  y="118" text-anchor="middle" font-size="9" fill="#6b6560">Semikonduktor</text>
+          <text x="192" y="118" text-anchor="middle" font-size="9" fill="#6b6560">Applied Mat.</text>
+          <text x="310" y="118" text-anchor="middle" font-size="9" fill="#6b6560">Broadcom*</text>
+          <text x="428" y="118" text-anchor="middle" font-size="9" fill="#6b6560">S&amp;P 500 YoY</text>
+          <text x="546" y="118" text-anchor="middle" font-size="9" fill="#6b6560">NASDAQ Mei</text>
+          <!-- baseline -->
+          <line x1="10" y1="105" x2="690" y2="105" stroke="#ddd8cf" stroke-width="1"/>
+          <text x="690" y="128" text-anchor="end" font-size="8" fill="#aaa">*Proyeksi Rev. +47% YoY</text>
+        </svg>
+      </div>
+
+      <ul class="bullet-list">
+        <li><strong>All-Time High Berlanjut.</strong> S&P 500 dan NASDAQ menutup Mei 2026 di level tertinggi sepanjang sejarah, didorong ekspansi laba korporasi dan momentum AI yang tak terbendung. [Sumber: Trading Economics, Advisor Perspectives, web search]</li>
+        <li><strong>AI &amp; Semikonduktor Memimpin.</strong> iShares Semiconductor ETF (SOXX) telah naik <strong>+54.7%</strong> sepanjang tahun 2026 — menjadikan sektor chip sebagai mesin utama kenaikan Wall Street. [Sumber: marketshost.com, web search]</li>
+        <li><strong>Broadcom (AVGO) Earnings Preview.</strong> Dijadwalkan rilis 3 Juni 2026 — konsensus pendapatan ~US$22 miliar (+47% YoY), dengan segmen AI chip diproyeksikan <strong>+140% YoY</strong> hingga US$10.7 miliar. [Sumber: tradingkey.com, web search]</li>
+        <li><strong>ON Semiconductor Lampaui Ekspektasi.</strong> EPS aktual US$0.64 vs estimasi US$0.61; pendapatan US$1.51 miliar vs estimasi US$1.49 miliar. Bisnis AI data center tumbuh <strong>+30% secara kuartalan</strong>. [Sumber: Yahoo Finance, web search]</li>
+        <li><strong>Lumentum &amp; Applied Materials.</strong> Masing-masing naik <strong>+121%</strong> dan <strong>+67%</strong> YTD 2026, ditopang investasi masif infrastruktur AI global. [Sumber: Motley Fool, web search]</li>
+      </ul>
+      <div class="insight-box">
+        <strong>Key Insight:</strong> Siklus AI capex memasuki fase percepatan — Google dilaporkan berencana investasi infrastruktur AI senilai <strong>US$190 miliar</strong>, yang secara langsung menguntungkan 3–5 saham semikonduktor pilihan. Momentum ini belum menunjukkan tanda pembalikan.
+      </div>
+      <p class="source-note">Data bersumber dari web search (Trading Economics, FRED, Advisor Perspectives, marketshost.com, Yahoo Finance, Motley Fool, Schwab, NASDAQ.com) — diakses 1 Juni 2026.</p>
+    </div>
+
+    <div class="gold-divider"></div>
+
+    <!-- ── 2. COMMODITIES ── -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">🥇</div>
+        <div class="section-title">Commodities Market</div>
+        <span class="section-badge badge-positive">✦ GOLD BULLISH</span>
+      </div>
+
+      <div class="stat-grid stat-grid-4">
+        <div class="stat-card">
+          <div class="stat-name">Gold (XAU)</div>
+          <div class="stat-value">$4,580</div>
+          <div class="stat-change up">▲ Safe Haven</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-name">WTI Crude</div>
+          <div class="stat-value">Volatile</div>
+          <div class="stat-change down">▼ −1.0% Jumat</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-name">Komoditas</div>
+          <div class="stat-value">+16%</div>
+          <div class="stat-change up">▲ Outlook 2026</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-name">Energi</div>
+          <div class="stat-value">+24%</div>
+          <div class="stat-change up">▲ Proyeksi 2026</div>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <h4>⭐ Sorotan Utama — Emas di US$4,580/oz</h4>
+        <p>Harga emas naik ke <strong>US$4,580/troy ounce</strong> pada Jumat 30 Mei 2026, dipicu laporan perpanjangan gencatan senjata AS–Iran yang memperkuat permintaan safe-haven. Emas tetap menjadi aset lindung nilai pilihan di tengah ketidakpastian geopolitik Timur Tengah. [Sumber: CNBC, web search]</p>
+      </div>
+
+      <ul class="bullet-list">
+        <li><strong>Geopolitik Menyokong Emas.</strong> Negosiasi AS–Iran yang masih berlangsung terus mengalirkan permintaan safe-haven ke emas dan perak — faktor struktural yang tidak bersifat sementara. [Sumber: CNBC.com, web search]</li>
+        <li><strong>Outlook Komoditas 2026 Positif.</strong> Bank Dunia memproyeksikan harga komoditas global naik rata-rata <strong>+16%</strong> tahun 2026, dengan harga energi melonjak hingga <strong>+24%</strong> — tertinggi sejak invasi Rusia ke Ukraina. [Sumber: ig.com / World Bank, web search]</li>
+        <li><strong>Minyak Volatile, Peluang Taktis.</strong> WTI turun ke terendah 5 minggu pada Jumat lalu, namun volatilitas membuka peluang bagi trader yang mencermati dinamika Selat Hormuz. [Sumber: CNBC, web search]</li>
+      </ul>
+
+      <!-- Mini Pie Chart: Asset Allocation Context -->
+      <div class="chart-wrap" style="margin-top:14px">
+        <div class="chart-title">Komoditas: Pendorong Utama Kenaikan Harga 2026</div>
+        <svg width="100%" height="140" viewBox="0 0 700 140">
+          <!-- Pie -->
+          <circle cx="100" cy="70" r="55" fill="#1a2744"/>
+          <!-- Segments - using stroke-dasharray trick -->
+          <circle cx="100" cy="70" r="40" fill="none" stroke="#c9a84c" stroke-width="30"
+            stroke-dasharray="75.4 176.6" stroke-dashoffset="0" transform="rotate(-90 100 70)"/>
+          <circle cx="100" cy="70" r="40" fill="none" stroke="#2d3f6b" stroke-width="30"
+            stroke-dasharray="50.3 201.7" stroke-dashoffset="-75.4" transform="rotate(-90 100 70)"/>
+          <circle cx="100" cy="70" r="40" fill="none" stroke="#4a607f" stroke-width="30"
+            stroke-dasharray="37.7 214.3" stroke-dashoffset="-125.7" transform="rotate(-90 100 70)"/>
+          <circle cx="100" cy="70" r="40" fill="none" stroke="#6a80a0" stroke-width="30"
+            stroke-dasharray="88.7 163.3" stroke-dashoffset="-163.4" transform="rotate(-90 100 70)"/>
+          <!-- Labels -->
+          <rect x="175" y="20" width="12" height="12" rx="2" fill="#c9a84c"/>
+          <text x="195" y="31" font-size="12" fill="#2c2a27">Geopolitik Timur Tengah — 30%</text>
+          <rect x="175" y="43" width="12" height="12" rx="2" fill="#2d3f6b"/>
+          <text x="195" y="54" font-size="12" fill="#2c2a27">Inflasi Persisten — 20%</text>
+          <rect x="175" y="66" width="12" height="12" rx="2" fill="#4a607f"/>
+          <text x="195" y="77" font-size="12" fill="#2c2a27">Pelemahan USD — 15%</text>
+          <rect x="175" y="89" width="12" height="12" rx="2" fill="#6a80a0"/>
+          <text x="195" y="100" font-size="12" fill="#2c2a27">Permintaan Global &amp; Lainnya — 35%</text>
+          <text x="695" y="135" text-anchor="end" font-size="8" fill="#aaa">*Estimasi ilustratif berdasarkan tren pasar</text>
+        </svg>
+      </div>
+      <p class="source-note">Data harga emas dari CNBC.com (11 Mei 2026), outlook dari ig.com &amp; World Bank — diakses via web search 1 Juni 2026.</p>
+    </div>
+
+    <div class="gold-divider"></div>
+
+    <!-- ── 3. CRYPTO ── -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">₿</div>
+        <div class="section-title">Crypto Market</div>
+        <span class="section-badge badge-neutral">⬡ WATCH</span>
+      </div>
+
+      <div class="stat-grid stat-grid-2">
+        <div class="stat-card">
+          <div class="stat-name">Bitcoin (BTC)</div>
+          <div class="stat-value">~$76,900</div>
+          <div class="stat-change up">▲ Late May Level</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-name">Ethereum (ETH)</div>
+          <div class="stat-value">~$2,100</div>
+          <div class="stat-change up">▲ Target Juni: $2,275</div>
+        </div>
+      </div>
+
+      <ul class="bullet-list">
+        <li><strong>Bitcoin Bertahan di Area $76K.</strong> BTC diperdagangkan di atas US$76.900 menjelang akhir Mei 2026. Sentimen institusional tetap konstruktif ditopang arus masuk ETF Bitcoin spot yang masih berlanjut. [Sumber: Yahoo Finance, web search]</li>
+        <li><strong>Ethereum Target Pemulihan.</strong> Analis memproyeksikan ETH dapat mencapai <strong>US$2,275</strong> pada Juni 2026, dengan level support kritis di US$1,964. Momentum risk-on dari pasar saham memberi tailwind. [Sumber: beincrypto.com, web search]</li>
+        <li><strong>Korelasi dengan Risk-On Global.</strong> Penguatan NASDAQ +8% di Mei dan sentimen AI yang positif secara historis berkorelasi positif dengan kenaikan aset kripto berkapitalisasi besar.</li>
+      </ul>
+      <div class="insight-box">
+        <strong>Catatan Analis:</strong> Angka harga BTC dan ETH di atas merupakan data akhir Mei 2026 dari sumber web search (Yahoo Finance, beincrypto.com). Kondisi kripto dapat berubah signifikan dalam hitungan jam — <em>konfirmasi harga real-time sebelum mengambil keputusan investasi.</em>
+      </div>
+    </div>
+
+    <div class="gold-divider"></div>
+
+    <!-- ── 4. INDONESIA ECONOMIC UPDATE ── -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">🇮🇩</div>
+        <div class="section-title">Indonesia Economic Update</div>
+        <span class="section-badge badge-negative">⚠ CAUTIOUS</span>
+      </div>
+
+      <div class="stat-grid stat-grid-4">
+        <div class="stat-card">
+          <div class="stat-name">IHSG (Level)</div>
+          <div class="stat-value">6,127</div>
+          <div class="stat-change down">▼ −30% YTD 2026</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-name">USD/IDR</div>
+          <div class="stat-value">17,870</div>
+          <div class="stat-change down">▼ −6.6% YTD</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-name">BI Rate</div>
+          <div class="stat-value">5.25%</div>
+          <div class="stat-change down">▲ +50bps Darurat</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-name">Net Sell Asing</div>
+          <div class="stat-value">Rp53.9T</div>
+          <div class="stat-change down">▼ 5 Bulan YTD</div>
+        </div>
+      </div>
+
+      <!-- Indonesia warning boxes -->
+      <div class="warning-box" style="margin-bottom:10px">
+        <strong>🔴 IHSG: Terburuk di Dunia 2026.</strong> IHSG ditutup di level <strong>6,127</strong> pada akhir Mei — mencatatkan penurunan hampir <strong>30%</strong> dalam 5 bulan pertama 2026, menjadikannya indeks dengan performa terburuk secara global tahun ini. [Sumber: CNBC Indonesia, web search]
+      </div>
+      <div class="warning-box" style="margin-bottom:10px">
+        <strong>🔴 Rupiah Terdepresiasi Tajam.</strong> USD/IDR berada di Rp 17,870 — melemah <strong>3.23%</strong> sepanjang Mei dan <strong>6.6%</strong> sepanjang tahun 2026. Rupiah sempat menyentuh rekor terendah Rp 17,970/USD. Bank Indonesia terpaksa menaikkan suku bunga <strong>50bps darurat</strong> ke 5.25% namun efeknya terbatas. [Sumber: Kompas.id, BEI, web search]
+      </div>
+
+      <ul class="bullet-list">
+        <li><strong>Arus Modal Asing Keluar Masif.</strong> Investor asing mencatatkan net sell senilai <strong>Rp 53.97 triliun</strong> di pasar reguler BEI sepanjang 5 bulan pertama 2026 — tekanan jual yang belum pernah terjadi dalam skala ini. [Sumber: BEI via Kompas.id, web search]</li>
+        <li><strong>Risiko Rebalancing MSCI &amp; FTSE.</strong> Penurunan bobot Indonesia di indeks FTSE Russell berpotensi memicu tambahan outflow hingga <strong>US$297 juta</strong>. Tekanan jual diperkirakan berlanjut hingga <strong>22 Juni 2026</strong> (tanggal efektif rebalancing). [Sumber: Beritasatu.com, Cetro Trading, web search]</li>
+        <li><strong>Kapitalisasi Pasar Terpangkas Rp1.000 Triliun.</strong> Market cap IHSG menyusut signifikan — S&P memberikan sinyal peringatan terhadap stabilitas keuangan Indonesia. [Sumber: Suara.com, web search]</li>
+        <li><strong>Defisit Transaksi Berjalan Terlebar 6 Tahun.</strong> Defisit current account Q1 2026 menjadi yang terlebar dalam lebih dari enam tahun, memperburuk tekanan terhadap rupiah dan cadangan devisa. [Sumber: Tradersunion.com, web search]</li>
+        <li><strong>Tekanan Fiskal &amp; Daya Beli.</strong> Kenaikan suku bunga BI yang agresif menekan kredit konsumsi dan daya beli rumah tangga, sementara kenaikan biaya impor akibat pelemahan rupiah memperparah tekanan inflasi domestik.</li>
+      </ul>
+
+      <!-- IDR Chart -->
+      <div class="chart-wrap" style="margin-top:14px">
+        <div class="chart-title">Tren Pelemahan USD/IDR — Jan hingga Mei 2026 (Ilustratif)</div>
+        <svg width="100%" height="100" viewBox="0 0 700 100">
+          <defs>
+            <linearGradient id="redGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#c0392b" stop-opacity="0.15"/>
+              <stop offset="100%" stop-color="#c0392b" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <polyline
+            points="30,80 170,72 310,58 450,46 590,28 660,22"
+            fill="none" stroke="#c0392b" stroke-width="2.5" stroke-linejoin="round"/>
+          <polygon
+            points="30,80 170,72 310,58 450,46 590,28 660,22 660,90 30,90"
+            fill="url(#redGrad)"/>
+          <!-- dots -->
+          <circle cx="30"  cy="80" r="4" fill="#c0392b"/>
+          <circle cx="170" cy="72" r="4" fill="#c0392b"/>
+          <circle cx="310" cy="58" r="4" fill="#c0392b"/>
+          <circle cx="450" cy="46" r="4" fill="#c0392b"/>
+          <circle cx="590" cy="28" r="4" fill="#c0392b"/>
+          <circle cx="660" cy="22" r="5" fill="#1a2744" stroke="#c0392b" stroke-width="2"/>
+          <!-- labels -->
+          <text x="30"  y="94" text-anchor="middle" font-size="9" fill="#6b6560">Jan</text>
+          <text x="170" y="94" text-anchor="middle" font-size="9" fill="#6b6560">Feb</text>
+          <text x="310" y="94" text-anchor="middle" font-size="9" fill="#6b6560">Mar</text>
+          <text x="450" y="94" text-anchor="middle" font-size="9" fill="#6b6560">Apr</text>
+          <text x="590" y="94" text-anchor="middle" font-size="9" fill="#6b6560">Mei</text>
+          <text x="660" y="18" text-anchor="middle" font-size="9" fill="#c0392b" font-weight="bold">17,870</text>
+          <text x="30"  y="76" text-anchor="middle" font-size="9" fill="#6b6560">16,700</text>
+          <!-- baseline -->
+          <line x1="10" y1="88" x2="690" y2="88" stroke="#ddd8cf" stroke-width="1"/>
+          <text x="695" y="100" text-anchor="end" font-size="8" fill="#aaa">*Ilustrasi tren berdasarkan data web search</text>
+        </svg>
+      </div>
+
+      <p class="source-note">Data dari CNBC Indonesia, BEI, Kompas.id, Bisnis.com, Suara.com, Beritasatu.com — diakses via web search 1 Juni 2026.</p>
+    </div>
+
+    <div class="gold-divider"></div>
+
+    <!-- ── 5. PROFIT OPPORTUNITY ── -->
+    <div class="profit-section">
+      <div class="profit-header">
+        <div style="width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">💡</div>
+        <h2>Potensi Keuntungan &amp; Profit Opportunity</h2>
+        <span class="section-badge badge-positive" style="margin-left:auto">Edisi 1 Juni 2026</span>
+      </div>
+
+      <div class="profit-grid">
+
+        <div class="profit-card">
+          <div class="profit-card-header">
+            <div class="profit-card-icon">🇺🇸</div>
+            <div class="profit-card-title">US Tech / AI Stocks</div>
+            <div class="profit-card-rating">⭐⭐⭐⭐⭐</div>
+          </div>
+          <p>
+            <strong>Peluang Terkuat.</strong> Broadcom (AVGO) merilis laporan keuangan 3 Juni — konsensus sangat positif dengan proyeksi pendapatan AI chip <strong>+140% YoY</strong>. Saham semikonduktor &amp; AI infrastructure telah terbukti menjadi penggerak utama Wall Street di 2026. SOXX ETF +54.7% YTD memberikan konfirmasi momentum yang kuat.
+          </p>
+        </div>
+
+        <div class="profit-card">
+          <div class="profit-card-header">
+            <div class="profit-card-icon">🥇</div>
+            <div class="profit-card-title">Emas (XAU/USD)</div>
+            <div class="profit-card-rating">⭐⭐⭐⭐⭐</div>
+          </div>
+          <p>
+            <strong>Safe Haven Premium.</strong> Emas di <strong>US$4,580/oz</strong> dengan dukungan ganda: geopolitik Timur Tengah yang memanas + pelemahan rupiah yang mendorong investor Indonesia beralih ke aset hard currency. Tren harga komoditas global outlook <strong>+16%</strong> untuk 2026 memperkuat posisi long emas.
+          </p>
+        </div>
+
+        <div class="profit-card">
+          <div class="profit-card-header">
+            <div class="profit-card-icon">₿</div>
+            <div class="profit-card-title">Bitcoin / Crypto</div>
+            <div class="profit-card-rating">⭐⭐⭐</div>
+          </div>
+          <p>
+            <strong>Peluang Taktis.</strong> BTC di ~US$76,900 — jika sentimen risk-on dari NASDAQ berlanjut dan arus masuk ETF BTC tetap positif, potensi konsolidasi ke atas masih terbuka. ETH dengan target analis di <strong>US$2,275</strong> untuk Juni menawarkan asymmetric risk/reward bagi trader aktif.
+          </p>
+        </div>
+
+        <div class="profit-card">
+          <div class="profit-card-header">
+            <div class="profit-card-icon">💱</div>
+            <div class="profit-card-title">Forex: USD/IDR</div>
+            <div class="profit-card-rating">⭐⭐⭐⭐</div>
+          </div>
+          <p>
+            <strong>Momentum USD Kuat.</strong> Dengan rupiah terdepresiasi <strong>6.6%</strong> YTD dan tekanan outflow MSCI berlanjut hingga 22 Juni, posisi long USD terhadap IDR tetap relevan. Investor yang terekspos aset USD mendapat keuntungan konversi yang signifikan.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="highlight-box" style="margin-top:16px">
+        <h4>📊 Ringkasan Prioritas Alokasi — 1 Juni 2026</h4>
+        <p>
+          Prioritas utama: <strong>US Tech / AI (5★)</strong> dan <strong>Emas (5★)</strong> — keduanya memiliki katalis fundamental yang kuat dan terkonfirmasi oleh data aktual. Posisi <strong>USD/IDR (4★)</strong> relevan untuk lindung nilai aset domestik. Kripto <strong>(3★)</strong> sebagai posisi taktis dengan manajemen risiko ketat. <em>Hindari penambahan eksposur IHSG dalam jangka pendek — tekanan outflow MSCI belum berakhir.</em>
+        </p>
+      </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <div style="margin-top:20px; padding:14px 18px; background:#f7f4ef; border:1px solid var(--border); border-radius:6px; font-size:10.5px; color:#9a9590; line-height:1.6;">
+      <strong style="color:var(--grey-text)">Disclaimer:</strong> Laporan ini disusun untuk tujuan informasi dan edukasi semata. Tidak ada bagian dari laporan ini yang merupakan rekomendasi investasi atau nasihat keuangan. Semua angka dan data bersumber dari hasil pencarian web (web search) yang dilakukan pada 1 Juni 2026. Kondisi pasar dapat berubah sewaktu-waktu. Investor disarankan untuk melakukan due diligence mandiri sebelum mengambil keputusan investasi.
+    </div>
+
+  </div><!-- /body -->
+
+  <!-- ══════════════════════════════════════════════════════ FOOTER -->
+  <div class="footer">
+    <div>
+      <div class="footer-brand">Exclusively Prepared by</div>
+      <div class="footer-name">Revan Ashford</div>
+      <div class="footer-title">Senior Investment Consultant &amp; Portfolio Manager</div>
+      <div class="footer-email">revan@onetwomarkets.co.za</div>
+    </div>
+    <div class="footer-line"></div>
+    <div class="footer-disclaimer">
+      Market Update Harian Premium<br>
+      1 Juni 2026 &nbsp;|&nbsp; Institutional Grade<br><br>
+      © 2026 OneTwoMarkets<br>
+      Confidential — For Client Use Only
+    </div>
+  </div>
+
+</div><!-- /page -->
+</body>
+</html>

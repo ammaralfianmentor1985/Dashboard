@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Market Update Harian Premium — 13 Mei 2026</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: #f5f1ea;
+    color: #1a2236;
+    padding: 40px 20px;
+  }
+  .poster {
+    max-width: 960px;
+    margin: 0 auto;
+    background: linear-gradient(180deg, #ffffff 0%, #fbf8f2 100%);
+    border: 1px solid #d9cfb8;
+    box-shadow: 0 8px 32px rgba(26, 34, 54, 0.08);
+    padding: 48px 56px;
+  }
+  .header {
+    border-bottom: 2px solid #b8964a;
+    padding-bottom: 20px;
+    margin-bottom: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .header .brand {
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: #b8964a;
+    text-transform: uppercase;
+    font-family: 'Helvetica', sans-serif;
+  }
+  .header h1 {
+    font-size: 28px;
+    color: #1a2236;
+    margin-top: 6px;
+    letter-spacing: 0.5px;
+  }
+  .header .date {
+    font-size: 13px;
+    color: #6b6b6b;
+    font-family: 'Helvetica', sans-serif;
+    text-align: right;
+  }
+  .summary-box {
+    background: #1a2236;
+    color: #f5f1ea;
+    padding: 22px 28px;
+    margin-bottom: 32px;
+    border-left: 4px solid #b8964a;
+  }
+  .summary-box h2 {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #b8964a;
+    text-transform: uppercase;
+    font-family: 'Helvetica', sans-serif;
+    margin-bottom: 10px;
+  }
+  .summary-box p {
+    font-size: 15px;
+    line-height: 1.6;
+    font-family: 'Helvetica', sans-serif;
+  }
+  .sentiment-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    background: #ffffff;
+    border: 1px solid #e5dcc6;
+    padding: 16px;
+  }
+  .sentiment-item {
+    flex: 1;
+    text-align: center;
+    border-right: 1px solid #ece4d0;
+    padding: 0 8px;
+  }
+  .sentiment-item:last-child { border-right: none; }
+  .sentiment-item .label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #6b6b6b;
+    text-transform: uppercase;
+    font-family: 'Helvetica', sans-serif;
+    margin-bottom: 6px;
+  }
+  .sentiment-item .value {
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Helvetica', sans-serif;
+  }
+  .pos { color: #1f7a4d; }
+  .neg { color: #a02828; }
+  .neutral { color: #b8964a; }
+
+  section {
+    margin-bottom: 28px;
+    page-break-inside: avoid;
+  }
+  section h3 {
+    font-size: 16px;
+    color: #1a2236;
+    border-bottom: 1px solid #d9cfb8;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+    letter-spacing: 0.5px;
+  }
+  section h3 .icon {
+    color: #b8964a;
+    margin-right: 8px;
+  }
+  section ul {
+    list-style: none;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 14px;
+    line-height: 1.75;
+  }
+  section ul li {
+    padding-left: 18px;
+    position: relative;
+    margin-bottom: 6px;
+    color: #333;
+  }
+  section ul li::before {
+    content: '◆';
+    color: #b8964a;
+    position: absolute;
+    left: 0;
+    font-size: 10px;
+    top: 4px;
+  }
+  .highlight {
+    background: #fdf6e5;
+    border-left: 3px solid #b8964a;
+    padding: 12px 16px;
+    margin-top: 12px;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 13px;
+    font-style: italic;
+    color: #5a4a1f;
+  }
+  .indo-section h3 {
+    color: #a02828;
+    border-bottom-color: #d9b8b8;
+  }
+  .indo-section h3 .icon { color: #a02828; }
+  .indo-section ul li::before { color: #a02828; }
+
+  .charts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 32px 0;
+  }
+  .chart-card {
+    background: #ffffff;
+    border: 1px solid #e5dcc6;
+    padding: 18px;
+  }
+  .chart-card h4 {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #6b6b6b;
+    text-transform: uppercase;
+    font-family: 'Helvetica', sans-serif;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
+  .opportunity {
+    background: linear-gradient(135deg, #1a2236 0%, #2a3550 100%);
+    color: #f5f1ea;
+    padding: 28px 32px;
+    margin: 32px 0;
+    border-top: 3px solid #b8964a;
+    border-bottom: 3px solid #b8964a;
+  }
+  .opportunity h3 {
+    color: #b8964a;
+    border: none;
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  .opp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    font-family: 'Helvetica', sans-serif;
+  }
+  .opp-card {
+    border: 1px solid #b8964a;
+    padding: 14px 16px;
+  }
+  .opp-card .title {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #b8964a;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  .opp-card .text { font-size: 13px; line-height: 1.6; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 13px;
+    margin-top: 12px;
+  }
+  table th, table td {
+    text-align: left;
+    padding: 9px 12px;
+    border-bottom: 1px solid #ece4d0;
+  }
+  table th {
+    background: #f5f1ea;
+    color: #1a2236;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .footer {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 2px solid #b8964a;
+    text-align: center;
+    font-family: 'Helvetica', sans-serif;
+  }
+  .footer .prepared {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #6b6b6b;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .footer .name {
+    font-size: 18px;
+    color: #1a2236;
+    font-family: 'Georgia', serif;
+    font-style: italic;
+  }
+  .footer .role {
+    font-size: 12px;
+    color: #b8964a;
+    margin-top: 4px;
+    letter-spacing: 1px;
+  }
+  .footer .contact {
+    font-size: 12px;
+    color: #6b6b6b;
+    margin-top: 6px;
+  }
+  .disclaimer {
+    font-size: 9px;
+    color: #999;
+    margin-top: 20px;
+    font-family: 'Helvetica', sans-serif;
+    text-align: center;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <div class="header">
+    <div>
+      <div class="brand">◆ Premium Market Intelligence</div>
+      <h1>Market Update Harian</h1>
+    </div>
+    <div class="date">
+      Rabu, 13 Mei 2026<br>
+      Edisi Pagi · Asia Session
+    </div>
+  </div>
+
+  <div class="summary-box">
+    <h2>Ringkasan Eksekutif</h2>
+    <p>Sentimen risk-on kembali menguat di pasar global, dipimpin oleh reli sektor teknologi AS dan momentum kripto institusional. Emas dan minyak menguat di tengah ketegangan geopolitik. Sebaliknya, ekonomi domestik Indonesia menghadapi tekanan dari pelemahan rupiah, arus modal asing keluar, dan koreksi IHSG.</p>
+  </div>
+
+  <div class="sentiment-bar">
+    <div class="sentiment-item"><div class="label">US Equities</div><div class="value pos">▲ Bullish</div></div>
+    <div class="sentiment-item"><div class="label">Forex (USD)</div><div class="value pos">▲ Kuat</div></div>
+    <div class="sentiment-item"><div class="label">Crypto</div><div class="value pos">▲ Risk-On</div></div>
+    <div class="sentiment-item"><div class="label">Komoditas</div><div class="value pos">▲ Positif</div></div>
+    <div class="sentiment-item"><div class="label">Indonesia</div><div class="value neg">▼ Tertekan</div></div>
+  </div>
+
+  <section>
+    <h3><span class="icon">▲</span>US Stock Market — Momentum Teknologi Berlanjut</h3>
+    <ul>
+      <li><strong>S&amp;P 500</strong> dan <strong>Nasdaq</strong> mencatat penguatan beruntun, didorong reli sektor semikonduktor dan AI.</li>
+      <li>Earnings Q1 dari perusahaan teknologi besar melampaui ekspektasi konsensus, mengangkat sentimen investor institusional.</li>
+      <li>Ekspektasi <strong>pemangkasan suku bunga The Fed</strong> pada paruh kedua 2026 semakin solid menyusul data inflasi inti yang melandai.</li>
+      <li>Aliran dana masuk ke ETF berbasis teknologi mencapai level tertinggi dalam 6 bulan terakhir.</li>
+    </ul>
+    <div class="highlight">Insight: Narasi <em>"AI super-cycle"</em> dan ekspektasi pelonggaran moneter menjadi dua pilar utama yang menopang momentum bullish pasar saham AS.</div>
+  </section>
+
+  <section>
+    <h3><span class="icon">◆</span>Forex Market — USD Menguat, Peluang Pair Mayor</h3>
+    <table>
+      <tr><th>Pair</th><th>Sentimen</th><th>Pemicu Utama</th></tr>
+      <tr><td>DXY (USD Index)</td><td class="pos">Bullish</td><td>Data tenaga kerja AS solid, yield Treasury naik</td></tr>
+      <tr><td>EUR/USD</td><td class="neutral">Range-Bound</td><td>ECB cenderung dovish, divergensi kebijakan</td></tr>
+      <tr><td>USD/JPY</td><td class="pos">Bullish</td><td>BoJ pertahankan kebijakan akomodatif</td></tr>
+      <tr><td>GBP/USD</td><td class="pos">Volatil</td><td>Peluang dari rilis CPI Inggris pekan ini</td></tr>
+    </table>
+    <div class="highlight">Volatilitas terkendali membuka peluang trading terstruktur di pair mayor, khususnya USD/JPY dan GBP/USD.</div>
+  </section>
+
+  <section>
+    <h3><span class="icon">●</span>Crypto Market — Bitcoin Pimpin Reli Institusional</h3>
+    <ul>
+      <li><strong>Bitcoin (BTC)</strong> kembali menguji area resistance kunci dengan dukungan inflow ETF spot yang konsisten positif.</li>
+      <li><strong>Ethereum (ETH)</strong> menguat seiring meningkatnya aktivitas staking dan adopsi Layer-2.</li>
+      <li>Arus dana institusional ke produk kripto melampaui USD 1,2 miliar dalam sepekan terakhir.</li>
+      <li>Sentimen risk-on global mendukung perpanjangan tren naik di aset digital utama.</li>
+    </ul>
+  </section>
+
+  <div class="charts">
+    <div class="chart-card">
+      <h4>Distribusi Sentimen Pasar Global</h4>
+      <canvas id="pieChart" height="200"></canvas>
+    </div>
+    <div class="chart-card">
+      <h4>Performa Harian (Indikatif %)</h4>
+      <canvas id="barChart" height="200"></canvas>
+    </div>
+  </div>
+
+  <section>
+    <h3><span class="icon">★</span>Commodities — Emas &amp; Minyak Menguat</h3>
+    <ul>
+      <li><strong>Emas (XAU/USD)</strong> melanjutkan reli sebagai safe-haven di tengah ketegangan geopolitik dan ekspektasi pelemahan USD jangka menengah.</li>
+      <li><strong>Minyak (Brent &amp; WTI)</strong> naik didorong ketatnya pasokan global dan permintaan musim panas.</li>
+      <li><strong>Perak (XAG/USD)</strong> mencatat momentum kuat sebagai pelengkap portfolio safe-haven dengan upside industrial demand.</li>
+      <li>Permintaan emas dari bank sentral global tetap kuat — penopang struktural harga jangka panjang.</li>
+    </ul>
+    <div class="highlight">Insight: Kombinasi <em>safe-haven demand</em>, inflasi, dan pelemahan USD jangka menengah menjadikan emas dan perak instrumen lindung nilai premium.</div>
+  </section>
+
+  <section class="indo-section">
+    <h3><span class="icon">▼</span>Indonesia Economic Update — Tekanan Domestik Berlanjut</h3>
+    <ul>
+      <li><strong>IHSG</strong> mengalami koreksi seiring aksi jual investor asing yang konsisten dalam sepekan terakhir.</li>
+      <li><strong>Rupiah</strong> melemah terhadap USD menembus level psikologis kunci, terimbas penguatan dolar global.</li>
+      <li>Arus modal asing keluar (<em>capital outflow</em>) dari pasar obligasi dan saham domestik meningkat signifikan.</li>
+      <li>Risiko inflasi inti dan tekanan daya beli kelas menengah menjadi sorotan utama analis.</li>
+      <li>Sektor keuangan dan perbankan domestik menghadapi tekanan margin akibat ketidakpastian suku bunga BI.</li>
+      <li>Sentimen investor domestik melemah di tengah ketidakpastian kebijakan fiskal dan defisit transaksi berjalan.</li>
+    </ul>
+    <div class="highlight" style="background:#fbeaea;border-left-color:#a02828;color:#5a1f1f;">
+      Catatan: Investor disarankan meningkatkan kewaspadaan terhadap eksposur aset domestik dan mempertimbangkan diversifikasi ke pasar global.
+    </div>
+  </section>
+
+  <div class="opportunity">
+    <h3>◆ Potensi Keuntungan · Profit Opportunity ◆</h3>
+    <div class="opp-grid">
+      <div class="opp-card">
+        <div class="title">US Equities</div>
+        <div class="text">Peluang akumulasi sektor teknologi &amp; semikonduktor pada koreksi sehat. Momentum AI &amp; ekspektasi pemangkasan suku bunga menjadi katalis kuat hingga akhir tahun.</div>
+      </div>
+      <div class="opp-card">
+        <div class="title">Emas (XAU/USD)</div>
+        <div class="text">Tren bullish jangka menengah didukung permintaan safe-haven, pembelian bank sentral, dan potensi pelemahan USD pasca pemangkasan suku bunga.</div>
+      </div>
+      <div class="opp-card">
+        <div class="title">Bitcoin &amp; ETH</div>
+        <div class="text">Arus institusional yang konsisten melalui ETF spot membuka peluang strategi <em>buy-on-dip</em> bagi investor dengan horizon menengah.</div>
+      </div>
+      <div class="opp-card">
+        <div class="title">USD/JPY</div>
+        <div class="text">Divergensi kebijakan The Fed dan BoJ memberi peluang struktural pada pair USD/JPY dengan manajemen risiko yang disiplin.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="prepared">Exclusively Prepared by</div>
+    <div class="name">Revan Ashford</div>
+    <div class="role">Senior Investment Consultant &amp; Portfolio Manager</div>
+    <div class="contact">revan@onetwomarkets.co.za</div>
+    <div class="disclaimer">
+      Laporan ini disusun untuk tujuan informasi dan edukasi. Bukan rekomendasi membeli atau menjual instrumen keuangan tertentu.<br>
+      Setiap keputusan investasi adalah tanggung jawab pribadi investor. Past performance is not indicative of future results.
+    </div>
+  </div>
+</div>
+
+<script>
+  new Chart(document.getElementById('pieChart'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Bullish (Global)', 'Netral', 'Bearish (Indonesia)'],
+      datasets: [{
+        data: [62, 20, 18],
+        backgroundColor: ['#1f7a4d', '#b8964a', '#a02828'],
+        borderColor: '#fbf8f2',
+        borderWidth: 2
+      }]
+    },
+    options: {
+      plugins: { legend: { position: 'bottom', labels: { font: { size: 11, family: 'Helvetica' } } } }
+    }
+  });
+  new Chart(document.getElementById('barChart'), {
+    type: 'bar',
+    data: {
+      labels: ['S&P 500', 'Nasdaq', 'BTC', 'Emas', 'Brent', 'IHSG'],
+      datasets: [{
+        data: [0.8, 1.2, 2.4, 0.9, 1.1, -1.3],
+        backgroundColor: ['#1f7a4d','#1f7a4d','#1f7a4d','#b8964a','#b8964a','#a02828']
+      }]
+    },
+    options: {
+      plugins: { legend: { display: false } },
+      scales: { y: { ticks: { font: { size: 10 } } }, x: { ticks: { font: { size: 10 } } } }
+    }
+  });
+</script>
+</body>
+</html>
