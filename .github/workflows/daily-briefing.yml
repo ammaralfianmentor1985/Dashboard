@@ -1,0 +1,40 @@
+name: Daily Market Briefing
+
+on:
+  schedule:
+    # 22:00 UTC = 05:00 WIB (Jakarta, UTC+7) / 06:00 MYT (Kuala Lumpur, UTC+8)
+    - cron: '0 22 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Generate today's briefing
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: npm run generate-briefing
+
+      - name: Commit and push
+        run: |
+          git config user.name "daily-briefing-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add briefings/ briefings-data.js
+          git diff --cached --quiet && echo "No changes to commit" && exit 0
+          git commit -m "Daily market briefing $(date -u +%Y-%m-%d)"
+          git push
