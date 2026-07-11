@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Update Harian Premium — Minggu, 12 Juli 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;600;700&display=swap');
+  :root{
+    --bg-page:#f4f1ea; --bg-card:#ffffff; --bg-section:#faf8f3; --bg-panel:#f1ece0;
+    --navy:#1c2a3a; --navy-light:#2c3e54; --gold:#a9812f; --gold-light:#c9a24d;
+    --text:#1c2333; --text-2:#5b6572; --text-3:#8a94a0; --border:rgba(169,129,47,0.28);
+    --green:#1f7a4d; --red:#b0392c; --amber:#a9722f;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg-page);font-family:'Source Sans 3',Georgia,sans-serif;color:var(--text);}
+  .page{max-width:900px;margin:28px auto 48px;background:var(--bg-card);border:1px solid var(--border);box-shadow:0 16px 60px rgba(28,42,58,0.12);}
+  .header{background:linear-gradient(150deg,var(--navy) 0%,var(--navy-light) 100%);padding:38px 50px 26px;border-bottom:3px solid var(--gold);color:#f4f1ea;}
+  .header-row{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:16px;}
+  .lang-toggle{display:flex;gap:6px;}
+  .lang-btn{background:transparent;border:1px solid rgba(244,241,234,0.4);color:#f4f1ea;font-size:11px;padding:4px 10px;border-radius:4px;cursor:pointer;letter-spacing:1px;}
+  .lang-btn.active{background:var(--gold);border-color:var(--gold);color:#1c2a3a;font-weight:700;}
+  .brand-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-light);margin-bottom:8px;}
+  h1{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;line-height:1.25;}
+  .date-line{font-size:12px;color:#cdd6e0;margin-top:10px;letter-spacing:0.5px;}
+  .tagline{font-size:12px;color:#cdd6e0;font-style:italic;border-top:1px solid rgba(244,241,234,0.2);padding-top:12px;margin-top:14px;line-height:1.5;}
+  .body{padding:0 50px 48px;}
+  .section{margin-top:32px;}
+  .sec-head{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+  .sec-icon{width:32px;height:32px;background:var(--bg-panel);border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:16px;}
+  .sec-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;}
+  .badge{margin-left:auto;font-size:8.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;padding:3px 10px;border-radius:12px;}
+  .badge-pos{background:rgba(31,122,77,0.1);color:var(--green);border:1px solid rgba(31,122,77,0.3);}
+  .badge-neg{background:rgba(176,57,44,0.1);color:var(--red);border:1px solid rgba(176,57,44,0.3);}
+  .badge-cau{background:rgba(169,114,47,0.1);color:var(--amber);border:1px solid rgba(169,114,47,0.3);}
+  .stat-grid{display:grid;gap:10px;margin-bottom:16px;}
+  .sg2{grid-template-columns:repeat(2,1fr);} .sg3{grid-template-columns:repeat(3,1fr);} .sg4{grid-template-columns:repeat(4,1fr);}
+  .stat-card{background:var(--bg-section);border:1px solid var(--border);border-radius:6px;padding:12px 14px;text-align:center;}
+  .s-name{font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-3);margin-bottom:5px;}
+  .s-val{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;}
+  .s-chg{font-size:10px;font-weight:700;margin-top:4px;}
+  .up{color:var(--green);} .dn{color:var(--red);} .neu{color:var(--text-3);}
+  .blist{list-style:none;}
+  .blist li{font-size:13px;line-height:1.6;padding:7px 0 7px 20px;border-bottom:1px solid rgba(28,42,58,0.06);position:relative;}
+  .blist li:last-child{border-bottom:none;}
+  .blist li::before{content:'▸';position:absolute;left:0;top:8px;color:var(--gold);font-size:10px;}
+  .src{font-size:10px;color:var(--text-3);font-style:italic;}
+  .profit{background:var(--bg-panel);border:1.5px solid var(--gold);border-radius:10px;padding:26px 28px;margin-top:32px;}
+  .profit h2{font-family:'Playfair Display',serif;font-size:17px;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+  .profit-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .p-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:16px 18px;}
+  .p-card-head{display:flex;align-items:center;gap:8px;margin-bottom:9px;}
+  .p-card-title{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);}
+  .p-card-desc{font-size:12.5px;line-height:1.55;margin-bottom:8px;}
+  .p-level{font-size:9.5px;color:var(--text-3);font-style:italic;}
+  .sum-box{background:var(--bg-panel);border:1px solid var(--border);border-radius:8px;padding:22px 26px;margin-top:32px;}
+  .sum-box h3{font-family:'Playfair Display',serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+  .sum-list{list-style:none;}
+  .sum-list li{font-size:12.5px;line-height:1.55;padding:5px 0;display:flex;gap:8px;}
+  .sum-ico{color:var(--gold);}
+  .footer{background:var(--bg-section);border-top:1px solid var(--border);padding:24px 50px 28px;}
+  .sig{margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border);}
+  .sig-name{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--gold);}
+  .sig-role,.sig-email{font-size:10.5px;color:var(--text-2);}
+  .sources-text,.disclaimer{font-size:9px;color:var(--text-3);line-height:1.6;}
+  .disclaimer{font-style:italic;margin-top:12px;}
+  .lang-block{display:none;}
+  .lang-block.active{display:block;}
+  .lang-header-text{padding:38px 50px 0;}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-row">
+      <div class="lang-toggle-spacer"></div>
+      <div class="lang-toggle"><button class="lang-btn active" data-lang="id">ID</button><button class="lang-btn" data-lang="en">EN</button><button class="lang-btn" data-lang="my">MY</button></div>
+    </div>
+  </div>
+  <div class="lang-block active" data-lang-block="id">
+    <div class="lang-header-text">
+      <div class="brand-label">Premium Market Intelligence · Institutional Report</div>
+      <h1>Market Update Harian Premium</h1>
+      <div class="date-line">Minggu, 12 Juli 2026</div>
+      <div class="tagline">Laporan pasar eksklusif untuk investor profesional — analisis peluang dan risiko terkini, disajikan dalam gaya institutional-grade.</div>
+    </div>
+    <div class="body">
+      
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-icon">🇺🇸</div>
+      <div class="sec-title">US Stock Market</div>
+      <div class="badge badge-pos">Positif</div>
+    </div>
+    <ul class="blist"><li>S&amp;P 500 ditutup naik 0,42% ke 7.575,39 pada Jumat, melengkapi kenaikan mingguan lebih dari 1%; Dow Jones naik 0,29% (149,60 poin) ke 52.637,01 dan Nasdaq Composite naik 0,29% ke 26.281,61. <span class="src">[The Motley Fool, 10 Jul 2026]</span></li><li>Saham chip memimpin penguatan — Nvidia melonjak sekitar 4% dan Meta Platforms naik sekitar 6% — sementara debut IPO SK Hynix di Nasdaq melonjak 13% dari harga penawaran $149 menjadi $168, menghimpun dana $26,5 miliar, IPO terbesar oleh perusahaan asing di AS. <span class="src">[CNBC, 10 Jul 2026]</span></li><li>Penguatan pekan ini terjadi setelah rebound saham teknologi pasca aksi militer AS-Iran awal pekan, menandakan investor kembali fokus pada permintaan chip AI ketimbang risiko geopolitik jangka pendek. <span class="src">[Yahoo Finance, 9 Jul 2026]</span></li></ul>
+  </div>
+      <div class="stat-grid sg3">
+    <div class="stat-card"><div class="s-name">S&amp;P 500</div><div class="s-val">7,575.39</div>
+    <div class="s-chg up">▲ 0.42%</div></div>
+    <div class="stat-card"><div class="s-name">Dow Jones</div><div class="s-val">52,637.01</div>
+    <div class="s-chg up">▲ 0.29%</div></div>
+    <div class="stat-card"><div class="s-name">NASDAQ</div><div class="s-val">26,281.61</div>
+    <div class="s-chg up">▲ 0.29%</div></div>
+  </div>
+      
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-icon">💱</div>
+      <div class="sec-title">Forex Market</div>
+      <div class="badge badge-cau">Netral</div>
+    </div>
+    <ul class="blist"><li>Indeks dolar AS (DXY) melemah untuk sesi ketiga berturut-turut ke kisaran 100,5-100,9 pada Jumat, sementara EUR/USD naik ke sekitar 1,143-1,144. <span class="src">[FXStreet, 10 Jul 2026]</span></li><li>The Fed di bawah Ketua baru Kevin Warsh mempertahankan suku bunga di 3,50%-3,75% pada pertemuan 17 Juni dengan nada hawkish; pasar kini memperkirakan sekitar 64% peluang kenaikan suku bunga pada September. <span class="src">[FXStreet, 10 Jul 2026]</span></li><li>Rupiah sempat melemah ke Rp18.066/USD pada Kamis pagi sebelum menguat kembali ke Rp18.050/USD saat penutupan akhir pekan. <span class="src">[Viva.co.id, 10 Jul 2026]</span></li><li>Ringgit Malaysia melemah ke kisaran RM4,06-4,15/USD, level terlemah dalam tujuh bulan. <span class="src">[The Star, 2 Jul 2026]</span></li></ul>
+  </div>
+      <div class="stat-grid sg4">
+    <div class="stat-card"><div class="s-name">EUR/USD</div><div class="s-val">1.1430</div>
+    <div class="s-chg neu"> </div></div>
+    <div class="stat-card"><div class="s-name">GBP/USD</div><div class="s-val">1.3423</div>
+    <div class="s-chg neu"> </div></div>
+    <div class="stat-card"><div class="s-name">USD/IDR</div><div class="s-val">18,077</div>
+    <div class="s-chg neu"> </div></div>
+    <div class="stat-card"><div class="s-name">USD/MYR</div><div class="s-val">4.0700</div>
+    <div class="s-chg neu"> </div></div>
+  </div>
+      
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-icon">₿</div>
+      <div class="sec-title">Crypto Market</div>
+      <div class="badge badge-pos">Positif</div>
+    </div>
+    <ul class="blist"><li>Bitcoin diperdagangkan di sekitar $64.164, naik 1,39% dalam 24 jam, dengan kapitalisasi pasar kripto global mencapai $2,28 triliun (+1,2%) dan volume perdagangan harian $62,8 miliar. <span class="src">[CoinGabbar, 11 Jul 2026]</span></li><li>Bitcoin dan Ethereum naik hampir 3% dibanding Jumat pekan lalu; Indeks Fear &amp; Greed membaik dari 23 ke 26, menandakan tekanan panic mereda meski sentimen investor masih berhati-hati. <span class="src">[Yahoo Finance, 10 Jul 2026]</span></li><li>Dominasi Bitcoin bertahan di 56,4% dan Ethereum di 9,49%, dengan sentimen turut terdorong perkembangan tokenisasi — termasuk saham SK Hynix yang ditokenisasi dan tersedia lewat Telegram Wallet, Backpack, dan Ondo Finance. <span class="src">[CoinGabbar, 11 Jul 2026]</span></li></ul>
+  </div>
+      <div class="stat-grid sg2">
+    <div class="stat-card"><div class="s-name">Bitcoin (BTC/USD)</div><div class="s-val">64,333</div>
+    <div class="s-chg up">▲ 0.57%</div></div>
+    <div class="stat-card"><div class="s-name">Ethereum (ETH/USD)</div><div class="s-val">1,824</div>
+    <div class="s-chg up">▲ 1.70%</div></div>
+  </div>
+      
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-icon">🥇</div>
+      <div class="sec-title">Commodities Market</div>
+      <div class="badge badge-neg">Waspada</div>
+    </div>
+    <ul class="blist"><li>Harga minyak melonjak ke sekitar $77 per barel pada Kamis setelah AS dan Iran kembali baku tembak dan pelayaran di Selat Hormuz nyaris lumpuh — sekitar 6.000 pelaut terdampar di ratusan kapal di jalur yang memasok seperlima pasokan minyak-gas dunia. <span class="src">[UN News, 9 Jul 2026]</span></li><li>Emas melemah ke sekitar $4.100/oz pada Jumat, turun sekitar 1,2% dalam sepekan, sementara perak tergelincir di bawah $60/oz, turun sekitar 4% dalam sepekan, seiring investor mengalihkan fokus ke ekspektasi suku bunga The Fed yang lebih hawkish. <span class="src">[Yahoo Finance, 10 Jul 2026]</span></li><li>Volatilitas komoditas mencerminkan tarik-menarik antara premi risiko geopolitik di Timur Tengah dan penguatan ekspektasi kebijakan moneter AS yang &quot;higher for longer&quot;. <span class="src">[Yahoo Finance, 10 Jul 2026]</span></li></ul>
+  </div>
+      <div class="stat-grid sg3">
+    <div class="stat-card"><div class="s-name">Gold (XAU/USD)</div><div class="s-val">4,115.10</div>
+    <div class="s-chg neu"> </div></div>
+    <div class="stat-card"><div class="s-name">Brent Crude</div><div class="s-val">76.80</div>
+    <div class="s-chg dn">▼ -3.09%</div></div>
+    <div class="stat-card"><div class="s-name">Silver (XAG/USD)</div><div class="s-val">60.41</div>
+    <div class="s-chg dn">▼ -0.50%</div></div>
+  </div>
+      
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-icon">🇮🇩</div>
+      <div class="sec-title">Indonesia Economic Update</div>
+      <div class="badge badge-neg">Waspada</div>
+    </div>
+    <ul class="blist"><li>IHSG ditutup menguat 0,20% ke level 5.924,36 pada perdagangan Jumat (10/7), sementara rupiah ikut menguat ke Rp18.050/USD di akhir pekan setelah sempat tertekan ke Rp18.066 pada Kamis. <span class="src">[Viva.co.id, 10 Jul 2026]</span></li><li>Inflasi tahunan Juni naik ke 3,34% dari 3,08% di Mei — level tertinggi sejak Maret 2026 dan mendekati batas atas target BI 1,5%-3,5% — didorong tekanan harga transportasi, perumahan, kesehatan, dan pendidikan. <span class="src">[Samuel Sekuritas, 1 Jul 2026]</span></li><li>Bank Indonesia menaikkan BI-Rate 25bps ke 5,75% pada pertemuan 18 Juni, total kenaikan 100bps sejak Mei — level tertinggi sejak April 2025 — sebagai respons atas tekanan inflasi dan volatilitas rupiah. <span class="src">[Bank Indonesia, 18 Jun 2026]</span></li></ul>
+  </div>
+      <div class="stat-grid sg2">
+    <div class="stat-card"><div class="s-name">IHSG / JCI</div><div class="s-val">5,924.36</div>
+    <div class="s-chg up">▲ 0.20%</div></div>
+    <div class="stat-card"><div class="s-name">USD/IDR</div><div class="s-val">18,077</div>
+    <div class="s-chg neu"> </div></div>
+  </div>
+      
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-icon">🇲🇾</div>
+      <div class="sec-title">Malaysia Economic Update</div>
+      <div class="badge badge-cau">Netral</div>
+    </div>
+    <ul class="blist"><li>FBM KLCI ditutup naik 0,83% ke 1.691,49 pada Jumat (10/7), membalikkan pelemahan 0,35% sehari sebelumnya. <span class="src">[The Edge Malaysia, 10 Jul 2026]</span></li><li>Bank Negara Malaysia mempertahankan OPR di 2,75% untuk ketujuh kalinya berturut-turut pada 9 Juli, sambil mempertahankan proyeksi pertumbuhan ekonomi 4%-5% untuk 2026 didukung permintaan domestik dan ekspor yang solid. <span class="src">[The Star, 9 Jul 2026]</span></li><li>Ringgit melemah ke kisaran RM4,06-4,15/USD, terendah dalam tujuh bulan, namun dipandang sebagai angin segar bagi sektor ekspor dan teknologi Malaysia. <span class="src">[The Star, 2 Jul 2026]</span></li></ul>
+  </div>
+      <div class="stat-grid sg2">
+    <div class="stat-card"><div class="s-name">FBM KLCI</div><div class="s-val">1,691.49</div>
+    <div class="s-chg up">▲ 0.83%</div></div>
+    <div class="stat-card"><div class="s-name">USD/MYR</div><div class="s-val">4.0700</div>
+    <div class="s-chg neu"> </div></div>
+  </div>
+      <div class="profit">
+        <h2>Potensi Keuntungan — Peluang Terkuat Hari Ini</h2>
+        <div class="profit-grid"><div class="p-card">
+        <div class="p-card-head"><div class="p-card-ico">💾</div><div class="p-card-title">Saham Memori/AI (SK Hynix, Micron, Samsung)</div></div>
+        <div class="p-card-desc">Kelangkaan struktural chip HBM untuk AI diperkirakan berlanjut hingga 2027 — kapasitas SK Hynix, Micron, dan Samsung untuk 2026 nyaris terjual habis, mendukung margin dan valuasi jangka panjang produsen memori.</div>
+        <div class="p-level">Tom&#39;s Hardware, Jul 2026</div>
+      </div><div class="p-card">
+        <div class="p-card-head"><div class="p-card-ico">🪙</div><div class="p-card-title">Emas — Akumulasi saat Koreksi</div></div>
+        <div class="p-card-desc">Koreksi emas ke $4.100/oz (-1,2% sepekan) membuka peluang akumulasi bertahap bagi investor jangka menengah, mengingat risiko geopolitik Timur Tengah yang belum reda berpotensi memicu kembali permintaan safe-haven.</div>
+        <div class="p-level">Yahoo Finance, 10 Jul 2026</div>
+      </div><div class="p-card">
+        <div class="p-card-head"><div class="p-card-ico">🏭</div><div class="p-card-title">Ekspor &amp; Teknologi Malaysia</div></div>
+        <div class="p-card-desc">Ringgit yang melemah ke RM4,06-4,15/USD menjadi tailwind bagi emiten berorientasi ekspor dan manufaktur elektronik Malaysia menjelang musim historis kuat Juli-September.</div>
+        <div class="p-level">The Star, 2 Jul 2026</div>
+      </div><div class="p-card">
+        <div class="p-card-head"><div class="p-card-ico">🛢️</div><div class="p-card-title">Energi — Premi Risiko Selat Hormuz</div></div>
+        <div class="p-card-desc">Kemacetan pelayaran di Selat Hormuz yang memasok seperlima pasokan minyak-gas dunia mendorong harga minyak ke sekitar $77/barel; eksposur ke saham energi dapat memanfaatkan premi risiko selama konflik AS-Iran berlanjut.</div>
+        <div class="p-level">UN News, 9 Jul 2026</div>
+      </div></div>
+      </div>
+      <div class="sum-box">
+        <h3>Ringkasan Eksekutif</h3>
+        <ul class="sum-list"><li><span class="sum-ico">▸</span><span>Wall Street ditutup menguat sepekan (S&amp;P 500 +0,42% ke 7.575,39, naik lebih dari 1% dalam sepekan), dipimpin saham chip AI dan debut IPO SK Hynix yang melonjak 13%. (The Motley Fool/CNBC, 10 Jul 2026)</span></li><li><span class="sum-ico">▸</span><span>Ketegangan AS-Iran melumpuhkan pelayaran di Selat Hormuz, mendorong harga minyak ke sekitar $77/barel dan menambah premi risiko geopolitik global. (UN News, 9 Jul 2026)</span></li><li><span class="sum-ico">▸</span><span>Dolar AS melemah tiga sesi beruntun meski The Fed tetap hawkish di bawah Ketua Kevin Warsh; peluang kenaikan suku bunga September naik ke sekitar 64%. (FXStreet, 10 Jul 2026)</span></li><li><span class="sum-ico">▸</span><span>IHSG dan rupiah menguat di akhir pekan (5.924,36; Rp18.050/USD), namun inflasi Juni naik ke 3,34% mendekati batas atas target BI usai kenaikan BI-Rate 100bps sejak Mei. (Viva.co.id/Bank Indonesia, 10 Jul &amp; 18 Jun 2026)</span></li><li><span class="sum-ico">▸</span><span>Kripto melanjutkan pemulihan (BTC sekitar $64.164, +1,39%) dengan sentimen membaik, sementara KLCI Malaysia naik 0,83% usai BNM menahan OPR di 2,75% untuk ketujuh kalinya. (CoinGabbar/The Edge Malaysia, 11 &amp; 10 Jul 2026)</span></li></ul>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="sig">
+        <div class="sig-name">Revan Ashford</div>
+        <div class="sig-role">Senior Investment Consultant &amp; Portfolio Manager</div>
+        <div class="sig-email">revan@onetwomarkets.co.za</div>
+      </div>
+      <div class="sources-text"><strong>Sumber Data:</strong> stooq.com · CoinGecko · Frankfurter (ECB rates) · The Motley Fool, 10 Jul 2026 · CNBC, 10 Jul 2026 · Yahoo Finance, 9 Jul 2026 · FXStreet, 10 Jul 2026 · Viva.co.id, 10 Jul 2026 · The Star, 2 Jul 2026 · CoinGabbar, 11 Jul 2026 · Yahoo Finance, 10 Jul 2026 · UN News, 9 Jul 2026 · Samuel Sekuritas, 1 Jul 2026 · Bank Indonesia, 18 Jun 2026 · The Edge Malaysia, 10 Jul 2026 · The Star, 9 Jul 2026 — fetched 2026-07-11T21:53:18.251Z</div>
+      <div class="disclaimer">Laporan ini disusun semata-mata untuk tujuan informasi dan edukasi bagi investor profesional. Bukan rekomendasi investasi. Semua investasi mengandung risiko. Data bersumber dari sumber publik yang telah diverifikasi pada tanggal penerbitan.</div>
+    </div>
+  </div>
+<div class="lang-block" data-lang-block="en">
+    <div class="lang-header-text">
+      <div class="brand-label">Premium Market Intelligence · Institutional Report</div>
+      <h1>Premium Daily Market Update</h1>
+      <div class="date-line">Sunday, July 12, 2026</div>
+      <div class="tagline">An exclusive market briefing for professional investors — current opportunities and risks, presented institutional-grade.</div>
+    </div>
+    <div class="body">
+      
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-icon">🇺🇸</div>
+      <div class="sec-title">US Stock Market</div>
+      <div class="badge badge-pos">Positif</div>
+    </div>
+    <ul class="blist"><li>S&amp;P 500 ditutup naik 0,42% ke 7.575,39 pada Jumat, melengkapi kenaikan mingguan lebih dari 1%; Dow Jones naik 0,29% (149,60 poin) ke 52.637,01 dan Nasdaq Composite naik 0,29% ke 26.281,61. <span class="src">[The Motley Fool, 10 Jul 2026]</span></li><li>Saham chip memimpin penguatan — Nvidia melonjak sekitar 4% dan Meta Platforms naik sekitar 6% — sementara debut IPO SK Hynix di Nasdaq melonjak 13% dari harga penawaran $149 menjadi $168, menghimpun dana $26,5 miliar, IPO terbesar oleh perusahaan asing di AS. <span class="src">[CNBC, 10 Jul 2026]</span></li><li>Penguatan pekan ini terjadi setelah rebound saham teknologi pasca aksi militer AS-Iran awal pekan, menandakan investor kembali fokus pada permintaan chip AI ketimbang risiko geopolitik jangka pendek. <span class="src">[Yahoo Finance, 9 Jul 2026]</span></li></ul>
+  </div>
+      <div class="stat-grid sg3">
+    <div class="stat-card"><div class="s-name">S&amp;P 500</div><div class="s-val">7,575.39</div>
+    <div class="s-chg up">▲ 0.42%</div></div>
+    <div class="stat-card"><div class="s-name">Dow Jones</div><div class="s-val">52,637.01</div>
+    <div class="s-chg up">▲ 0.29%</div></div>
+    <div class="stat-card"><div class="s-name">NASDAQ</div><div class="s-val">26,281.61</div>
+    <div class="s-chg up">▲ 0.29%</div></div>
+  </div>
+      
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-icon">💱</div>
+      <div class="sec-title">Forex Market</div>
+      <div class="badge badge-cau">Netral</div>
+    </div>
+    <ul class="blist"><li>Indeks dolar AS (DXY) melemah untuk sesi ketiga berturut-turut ke kisaran 100,5-100,9 pada Jumat, sementara EUR/USD naik ke sekitar 1,143-1,144. <span class="src">[FXStreet, 10 Jul 2026]</span></li><li>The Fed di bawah Ketua baru Kevin Warsh mempertahankan suku bunga di 3,50%-3,75% pada pertemuan 17 Juni dengan nada hawkish; pasar kini memperkirakan sekitar 64% peluang kenaikan suku bunga pada September. <span class="src">[FXStreet, 10 Jul 2026]</span></li><li>Rupiah sempat melemah ke Rp18.066/USD pada Kamis pagi sebelum menguat kembali ke Rp18.050/USD saat penutupan akhir pekan. <span class="src">[Viva.co.id, 10 Jul 2026]</span></li><li>Ringgit Malaysia melemah ke kisaran RM4,06-4,15/USD, level terlemah dalam tujuh bulan. <span class="src">[The Star, 2 Jul 2026]</span></li></ul>
+  </div>
+      <div class="stat-grid sg4">
+    <div class="stat-card"><div class="s-name">EUR/USD</div><div class="s-val">1.1430</div>
+    <div class="s-chg neu"> </div></div>
+    <div class="stat-card"><div class="s-name">GBP/USD</div><div class="s-val">1.3423</div>
+    <div class="s-chg neu"> </div></div>
+    <div class="stat-card"><div class="s-name">USD/IDR</div><div class="s-val">18,077</div>
+    <div class="s-chg neu"> </div></div>
+    <div class="stat-card"><div class="s-name">USD/MYR</div><div class="s-val">4.0700</div>
+    <div class="s-chg neu"> </div></div>
+  </div>
+      
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-icon">₿</div>
+      <div class="sec-title">Crypto Market</div>
+      <div class="badge badge-pos">Positif</div>
+    </div>
+    <ul class="blist"><li>Bitcoin diperdagangkan di sekitar $64.164, naik 1,39% dalam 24 jam, dengan kapitalisasi pasar kripto global mencapai $2,28 triliun (+1,2%) dan volume perdagangan harian $62,8 miliar. <span class="src">[CoinGabbar, 11 Jul 2026]</span></li><li>Bitcoin dan Ethereum naik hampir 3% dibanding Jumat pekan lalu; Indeks Fear &amp; Greed membaik dari 23 ke 26, menandakan tekanan panic mereda meski sentimen investor masih berhati-hati. <span class="src">[Yahoo Finance, 10 Jul 2026]</span></li><li>Dominasi Bitcoin bertahan di 56,4% dan Ethereum di 9,49%, dengan sentimen turut terdorong perkembangan tokenisasi — termasuk saham SK Hynix yang ditokenisasi dan tersedia lewat Telegram Wallet, Backpack, dan Ondo Finance. <span class="src">[CoinGabbar, 11 Jul 2026]</span></li></ul>
+  </div>
+      <div class="stat-grid sg2">
+    <div class="stat-card"><div class="s-name">Bitcoin (BTC/USD)</div><div class="s-val">64,333</div>
+    <div class="s-chg up">▲ 0.57%</div></div>
+    <div class="stat-card"><div class="s-name">Ethereum (ETH/USD)</div><div class="s-val">1,824</div>
+    <div class="s-chg up">▲ 1.70%</div></div>
+  </div>
+      
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-icon">🥇</div>
+      <div class="sec-title">Commodities Market</div>
+      <div class="badge badge-neg">Waspada</div>
+    </div>
+    <ul class="blist"><li>Harga minyak melonjak ke sekitar $77 per barel pada Kamis setelah AS dan Iran kembali baku tembak dan pelayaran di Selat Hormuz nyaris lumpuh — sekitar 6.000 pelaut terdampar di ratusan kapal di jalur yang memasok seperlima pasokan minyak-gas dunia. <span class="src">[UN News, 9 Jul 2026]</span></li><li>Emas melemah ke sekitar $4.100/oz pada Jumat, turun sekitar 1,2% dalam sepekan, sementara perak tergelincir di bawah $60/oz, turun sekitar 4% dalam sepekan, seiring investor mengalihkan fokus ke ekspektasi suku bunga The Fed yang lebih hawkish. <span class="src">[Yahoo Finance, 10 Jul 2026]</span></li><li>Volatilitas komoditas mencerminkan tarik-menarik antara premi risiko geopolitik di Timur Tengah dan penguatan ekspektasi kebijakan moneter AS yang &quot;higher for longer&quot;. <span class="src">[Yahoo Finance, 10 Jul 2026]</span></li></ul>
+  </div>
+      <div class="stat-grid sg3">
+    <div class="stat-card"><div class="s-name">Gold (XAU/USD)</div><div class="s-val">4,115.10</div>
+    <div class="s-chg neu"> </div></div>
+    <div class="stat-card"><div class="s-name">Brent Crude</div><div class="s-val">76.80</div>
+    <div class="s-chg dn">▼ -3.09%</div></div>
+    <div class="stat-card"><div class="s-name">Silver (XAG/USD)</div><div class="s-val">60.41</div>
+    <div class="s-chg dn">▼ -0.50%</div></div>
+  </div>
+      
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-icon">🇮🇩</div>
+      <div class="sec-title">Indonesia Economic Update</div>
+      <div class="badge badge-neg">Waspada</div>
+    </div>
+    <ul class="blist"><li>IHSG ditutup menguat 0,20% ke level 5.924,36 pada perdagangan Jumat (10/7), sementara rupiah ikut menguat ke Rp18.050/USD di akhir pekan setelah sempat tertekan ke Rp18.066 pada Kamis. <span class="src">[Viva.co.id, 10 Jul 2026]</span></li><li>Inflasi tahunan Juni naik ke 3,34% dari 3,08% di Mei — level tertinggi sejak Maret 2026 dan mendekati batas atas target BI 1,5%-3,5% — didorong tekanan harga transportasi, perumahan, kesehatan, dan pendidikan. <span class="src">[Samuel Sekuritas, 1 Jul 2026]</span></li><li>Bank Indonesia menaikkan BI-Rate 25bps ke 5,75% pada pertemuan 18 Juni, total kenaikan 100bps sejak Mei — level tertinggi sejak April 2025 — sebagai respons atas tekanan inflasi dan volatilitas rupiah. <span class="src">[Bank Indonesia, 18 Jun 2026]</span></li></ul>
+  </div>
+      <div class="stat-grid sg2">
+    <div class="stat-card"><div class="s-name">IHSG / JCI</div><div class="s-val">5,924.36</div>
+    <div class="s-chg up">▲ 0.20%</div></div>
+    <div class="stat-card"><div class="s-name">USD/IDR</div><div class="s-val">18,077</div>
+    <div class="s-chg neu"> </div></div>
+  </div>
+      
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-icon">🇲🇾</div>
+      <div class="sec-title">Malaysia Economic Update</div>
+      <div class="badge badge-cau">Netral</div>
+    </div>
+    <ul class="blist"><li>FBM KLCI ditutup naik 0,83% ke 1.691,49 pada Jumat (10/7), membalikkan pelemahan 0,35% sehari sebelumnya. <span class="src">[The Edge Malaysia, 10 Jul 2026]</span></li><li>Bank Negara Malaysia mempertahankan OPR di 2,75% untuk ketujuh kalinya berturut-turut pada 9 Juli, sambil mempertahankan proyeksi pertumbuhan ekonomi 4%-5% untuk 2026 didukung permintaan domestik dan ekspor yang solid. <span class="src">[The Star, 9 Jul 2026]</span></li><li>Ringgit melemah ke kisaran RM4,06-4,15/USD, terendah dalam tujuh bulan, namun dipandang sebagai angin segar bagi sektor ekspor dan teknologi Malaysia. <span class="src">[The Star, 2 Jul 2026]</span></li></ul>
+  </div>
+      <div class="stat-grid sg2">
+    <div class="stat-card"><div class="s-name">FBM KLCI</div><div class="s-val">1,691.49</div>
+    <div class="s-chg up">▲ 0.83%</div></div>
+    <div class="stat-card"><div class="s-name">USD/MYR</div><div class="s-val">4.0700</div>
+    <div class="s-chg neu"> </div></div>
+  </div>
+      <div class="profit">
+        <h2>Profit Opportunity — Today’s Strongest Setups</h2>
+        <div class="profit-grid"><div class="p-card">
+        <div class="p-card-head"><div class="p-card-ico">💾</div><div class="p-card-title">Saham Memori/AI (SK Hynix, Micron, Samsung)</div></div>
+        <div class="p-card-desc">Kelangkaan struktural chip HBM untuk AI diperkirakan berlanjut hingga 2027 — kapasitas SK Hynix, Micron, dan Samsung untuk 2026 nyaris terjual habis, mendukung margin dan valuasi jangka panjang produsen memori.</div>
+        <div class="p-level">Tom&#39;s Hardware, Jul 2026</div>
+      </div><div class="p-card">
+        <div class="p-card-head"><div class="p-card-ico">🪙</div><div class="p-card-title">Emas — Akumulasi saat Koreksi</div></div>
+        <div class="p-card-desc">Koreksi emas ke $4.100/oz (-1,2% sepekan) membuka peluang akumulasi bertahap bagi investor jangka menengah, mengingat risiko geopolitik Timur Tengah yang belum reda berpotensi memicu kembali permintaan safe-haven.</div>
+        <div class="p-level">Yahoo Finance, 10 Jul 2026</div>
+      </div><div class="p-card">
+        <div class="p-card-head"><div class="p-card-ico">🏭</div><div class="p-card-title">Ekspor &amp; Teknologi Malaysia</div></div>
+        <div class="p-card-desc">Ringgit yang melemah ke RM4,06-4,15/USD menjadi tailwind bagi emiten berorientasi ekspor dan manufaktur elektronik Malaysia menjelang musim historis kuat Juli-September.</div>
+        <div class="p-level">The Star, 2 Jul 2026</div>
+      </div><div class="p-card">
+        <div class="p-card-head"><div class="p-card-ico">🛢️</div><div class="p-card-title">Energi — Premi Risiko Selat Hormuz</div></div>
+        <div class="p-card-desc">Kemacetan pelayaran di Selat Hormuz yang memasok seperlima pasokan minyak-gas dunia mendorong harga minyak ke sekitar $77/barel; eksposur ke saham energi dapat memanfaatkan premi risiko selama konflik AS-Iran berlanjut.</div>
+        <div class="p-level">UN News, 9 Jul 2026</div>
+      </div></div>
+      </div>
+      <div class="sum-box">
+        <h3>Executive Summary</h3>
+        <ul class="sum-list"><li><span class="sum-ico">▸</span><span>Wall Street ditutup menguat sepekan (S&amp;P 500 +0,42% ke 7.575,39, naik lebih dari 1% dalam sepekan), dipimpin saham chip AI dan debut IPO SK Hynix yang melonjak 13%. (The Motley Fool/CNBC, 10 Jul 2026)</span></li><li><span class="sum-ico">▸</span><span>Ketegangan AS-Iran melumpuhkan pelayaran di Selat Hormuz, mendorong harga minyak ke sekitar $77/barel dan menambah premi risiko geopolitik global. (UN News, 9 Jul 2026)</span></li><li><span class="sum-ico">▸</span><span>Dolar AS melemah tiga sesi beruntun meski The Fed tetap hawkish di bawah Ketua Kevin Warsh; peluang kenaikan suku bunga September naik ke sekitar 64%. (FXStreet, 10 Jul 2026)</span></li><li><span class="sum-ico">▸</span><span>IHSG dan rupiah menguat di akhir pekan (5.924,36; Rp18.050/USD), namun inflasi Juni naik ke 3,34% mendekati batas atas target BI usai kenaikan BI-Rate 100bps sejak Mei. (Viva.co.id/Bank Indonesia, 10 Jul &amp; 18 Jun 2026)</span></li><li><span class="sum-ico">▸</span><span>Kripto melanjutkan pemulihan (BTC sekitar $64.164, +1,39%) dengan sentimen membaik, sementara KLCI Malaysia naik 0,83% usai BNM menahan OPR di 2,75% untuk ketujuh kalinya. (CoinGabbar/The Edge Malaysia, 11 &amp; 10 Jul 2026)</span></li></ul>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="sig">
+        <div class="sig-name">Revan Ashford</div>
+        <div class="sig-role">Senior Investment Consultant &amp; Portfolio Manager</div>
+        <div class="sig-email">revan@onetwomarkets.co.za</div>
+      </div>
+      <div class="sources-text"><strong>Data Sources:</strong> stooq.com · CoinGecko · Frankfurter (ECB rates) · The Motley Fool, 10 Jul 2026 · CNBC, 10 Jul 2026 · Yahoo Finance, 9 Jul 2026 · FXStreet, 10 Jul 2026 · Viva.co.id, 10 Jul 2026 · The Star, 2 Jul 2026 · CoinGabbar, 11 Jul 2026 · Yahoo Finance, 10 Jul 2026 · UN News, 9 Jul 2026 · Samuel Sekuritas, 1 Jul 2026 · Bank Indonesia, 18 Jun 2026 · The Edge Malaysia, 10 Jul 2026 · The Star, 9 Jul 2026 — fetched 2026-07-11T21:53:18.251Z</div>
+      <div class="disclaimer">This report is prepared solely for informational and educational purposes for professional investors. It is not investment advice. All investments carry risk. Data is sourced from verified public sources as of the publication date.</div>
+    </div>
+  </div>
+<div class="lang-block" data-lang-block="my">
+    <div class="lang-header-text">
+      <div class="brand-label">Premium Market Intelligence · Institutional Report</div>
+      <h1>Kemas Kini Pasaran Harian Premium</h1>
+      <div class="date-line">Ahad, 12 Julai 2026</div>
+      <div class="tagline">Laporan pasaran eksklusif untuk pelabur profesional — peluang dan risiko terkini, disampaikan bergaya institusi.</div>
+    </div>
+    <div class="body">
+      
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-icon">🇺🇸</div>
+      <div class="sec-title">Pasaran Saham AS</div>
+      <div class="badge badge-pos">Positif</div>
+    </div>
+    <ul class="blist"><li>S&amp;P 500 ditutup naik 0,42% ke 7.575,39 pada Jumat, melengkapi kenaikan mingguan lebih dari 1%; Dow Jones naik 0,29% (149,60 poin) ke 52.637,01 dan Nasdaq Composite naik 0,29% ke 26.281,61. <span class="src">[The Motley Fool, 10 Jul 2026]</span></li><li>Saham chip memimpin penguatan — Nvidia melonjak sekitar 4% dan Meta Platforms naik sekitar 6% — sementara debut IPO SK Hynix di Nasdaq melonjak 13% dari harga penawaran $149 menjadi $168, menghimpun dana $26,5 miliar, IPO terbesar oleh perusahaan asing di AS. <span class="src">[CNBC, 10 Jul 2026]</span></li><li>Penguatan pekan ini terjadi setelah rebound saham teknologi pasca aksi militer AS-Iran awal pekan, menandakan investor kembali fokus pada permintaan chip AI ketimbang risiko geopolitik jangka pendek. <span class="src">[Yahoo Finance, 9 Jul 2026]</span></li></ul>
+  </div>
+      <div class="stat-grid sg3">
+    <div class="stat-card"><div class="s-name">S&amp;P 500</div><div class="s-val">7,575.39</div>
+    <div class="s-chg up">▲ 0.42%</div></div>
+    <div class="stat-card"><div class="s-name">Dow Jones</div><div class="s-val">52,637.01</div>
+    <div class="s-chg up">▲ 0.29%</div></div>
+    <div class="stat-card"><div class="s-name">NASDAQ</div><div class="s-val">26,281.61</div>
+    <div class="s-chg up">▲ 0.29%</div></div>
+  </div>
+      
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-icon">💱</div>
+      <div class="sec-title">Pasaran Forex</div>
+      <div class="badge badge-cau">Netral</div>
+    </div>
+    <ul class="blist"><li>Indeks dolar AS (DXY) melemah untuk sesi ketiga berturut-turut ke kisaran 100,5-100,9 pada Jumat, sementara EUR/USD naik ke sekitar 1,143-1,144. <span class="src">[FXStreet, 10 Jul 2026]</span></li><li>The Fed di bawah Ketua baru Kevin Warsh mempertahankan suku bunga di 3,50%-3,75% pada pertemuan 17 Juni dengan nada hawkish; pasar kini memperkirakan sekitar 64% peluang kenaikan suku bunga pada September. <span class="src">[FXStreet, 10 Jul 2026]</span></li><li>Rupiah sempat melemah ke Rp18.066/USD pada Kamis pagi sebelum menguat kembali ke Rp18.050/USD saat penutupan akhir pekan. <span class="src">[Viva.co.id, 10 Jul 2026]</span></li><li>Ringgit Malaysia melemah ke kisaran RM4,06-4,15/USD, level terlemah dalam tujuh bulan. <span class="src">[The Star, 2 Jul 2026]</span></li></ul>
+  </div>
+      <div class="stat-grid sg4">
+    <div class="stat-card"><div class="s-name">EUR/USD</div><div class="s-val">1.1430</div>
+    <div class="s-chg neu"> </div></div>
+    <div class="stat-card"><div class="s-name">GBP/USD</div><div class="s-val">1.3423</div>
+    <div class="s-chg neu"> </div></div>
+    <div class="stat-card"><div class="s-name">USD/IDR</div><div class="s-val">18,077</div>
+    <div class="s-chg neu"> </div></div>
+    <div class="stat-card"><div class="s-name">USD/MYR</div><div class="s-val">4.0700</div>
+    <div class="s-chg neu"> </div></div>
+  </div>
+      
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-icon">₿</div>
+      <div class="sec-title">Pasaran Kripto</div>
+      <div class="badge badge-pos">Positif</div>
+    </div>
+    <ul class="blist"><li>Bitcoin diperdagangkan di sekitar $64.164, naik 1,39% dalam 24 jam, dengan kapitalisasi pasar kripto global mencapai $2,28 triliun (+1,2%) dan volume perdagangan harian $62,8 miliar. <span class="src">[CoinGabbar, 11 Jul 2026]</span></li><li>Bitcoin dan Ethereum naik hampir 3% dibanding Jumat pekan lalu; Indeks Fear &amp; Greed membaik dari 23 ke 26, menandakan tekanan panic mereda meski sentimen investor masih berhati-hati. <span class="src">[Yahoo Finance, 10 Jul 2026]</span></li><li>Dominasi Bitcoin bertahan di 56,4% dan Ethereum di 9,49%, dengan sentimen turut terdorong perkembangan tokenisasi — termasuk saham SK Hynix yang ditokenisasi dan tersedia lewat Telegram Wallet, Backpack, dan Ondo Finance. <span class="src">[CoinGabbar, 11 Jul 2026]</span></li></ul>
+  </div>
+      <div class="stat-grid sg2">
+    <div class="stat-card"><div class="s-name">Bitcoin (BTC/USD)</div><div class="s-val">64,333</div>
+    <div class="s-chg up">▲ 0.57%</div></div>
+    <div class="stat-card"><div class="s-name">Ethereum (ETH/USD)</div><div class="s-val">1,824</div>
+    <div class="s-chg up">▲ 1.70%</div></div>
+  </div>
+      
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-icon">🥇</div>
+      <div class="sec-title">Pasaran Komoditi</div>
+      <div class="badge badge-neg">Waspada</div>
+    </div>
+    <ul class="blist"><li>Harga minyak melonjak ke sekitar $77 per barel pada Kamis setelah AS dan Iran kembali baku tembak dan pelayaran di Selat Hormuz nyaris lumpuh — sekitar 6.000 pelaut terdampar di ratusan kapal di jalur yang memasok seperlima pasokan minyak-gas dunia. <span class="src">[UN News, 9 Jul 2026]</span></li><li>Emas melemah ke sekitar $4.100/oz pada Jumat, turun sekitar 1,2% dalam sepekan, sementara perak tergelincir di bawah $60/oz, turun sekitar 4% dalam sepekan, seiring investor mengalihkan fokus ke ekspektasi suku bunga The Fed yang lebih hawkish. <span class="src">[Yahoo Finance, 10 Jul 2026]</span></li><li>Volatilitas komoditas mencerminkan tarik-menarik antara premi risiko geopolitik di Timur Tengah dan penguatan ekspektasi kebijakan moneter AS yang &quot;higher for longer&quot;. <span class="src">[Yahoo Finance, 10 Jul 2026]</span></li></ul>
+  </div>
+      <div class="stat-grid sg3">
+    <div class="stat-card"><div class="s-name">Gold (XAU/USD)</div><div class="s-val">4,115.10</div>
+    <div class="s-chg neu"> </div></div>
+    <div class="stat-card"><div class="s-name">Brent Crude</div><div class="s-val">76.80</div>
+    <div class="s-chg dn">▼ -3.09%</div></div>
+    <div class="stat-card"><div class="s-name">Silver (XAG/USD)</div><div class="s-val">60.41</div>
+    <div class="s-chg dn">▼ -0.50%</div></div>
+  </div>
+      
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-icon">🇮🇩</div>
+      <div class="sec-title">Kemas Kini Ekonomi Indonesia</div>
+      <div class="badge badge-neg">Waspada</div>
+    </div>
+    <ul class="blist"><li>IHSG ditutup menguat 0,20% ke level 5.924,36 pada perdagangan Jumat (10/7), sementara rupiah ikut menguat ke Rp18.050/USD di akhir pekan setelah sempat tertekan ke Rp18.066 pada Kamis. <span class="src">[Viva.co.id, 10 Jul 2026]</span></li><li>Inflasi tahunan Juni naik ke 3,34% dari 3,08% di Mei — level tertinggi sejak Maret 2026 dan mendekati batas atas target BI 1,5%-3,5% — didorong tekanan harga transportasi, perumahan, kesehatan, dan pendidikan. <span class="src">[Samuel Sekuritas, 1 Jul 2026]</span></li><li>Bank Indonesia menaikkan BI-Rate 25bps ke 5,75% pada pertemuan 18 Juni, total kenaikan 100bps sejak Mei — level tertinggi sejak April 2025 — sebagai respons atas tekanan inflasi dan volatilitas rupiah. <span class="src">[Bank Indonesia, 18 Jun 2026]</span></li></ul>
+  </div>
+      <div class="stat-grid sg2">
+    <div class="stat-card"><div class="s-name">IHSG / JCI</div><div class="s-val">5,924.36</div>
+    <div class="s-chg up">▲ 0.20%</div></div>
+    <div class="stat-card"><div class="s-name">USD/IDR</div><div class="s-val">18,077</div>
+    <div class="s-chg neu"> </div></div>
+  </div>
+      
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-icon">🇲🇾</div>
+      <div class="sec-title">Kemas Kini Ekonomi Malaysia</div>
+      <div class="badge badge-cau">Netral</div>
+    </div>
+    <ul class="blist"><li>FBM KLCI ditutup naik 0,83% ke 1.691,49 pada Jumat (10/7), membalikkan pelemahan 0,35% sehari sebelumnya. <span class="src">[The Edge Malaysia, 10 Jul 2026]</span></li><li>Bank Negara Malaysia mempertahankan OPR di 2,75% untuk ketujuh kalinya berturut-turut pada 9 Juli, sambil mempertahankan proyeksi pertumbuhan ekonomi 4%-5% untuk 2026 didukung permintaan domestik dan ekspor yang solid. <span class="src">[The Star, 9 Jul 2026]</span></li><li>Ringgit melemah ke kisaran RM4,06-4,15/USD, terendah dalam tujuh bulan, namun dipandang sebagai angin segar bagi sektor ekspor dan teknologi Malaysia. <span class="src">[The Star, 2 Jul 2026]</span></li></ul>
+  </div>
+      <div class="stat-grid sg2">
+    <div class="stat-card"><div class="s-name">FBM KLCI</div><div class="s-val">1,691.49</div>
+    <div class="s-chg up">▲ 0.83%</div></div>
+    <div class="stat-card"><div class="s-name">USD/MYR</div><div class="s-val">4.0700</div>
+    <div class="s-chg neu"> </div></div>
+  </div>
+      <div class="profit">
+        <h2>Potensi Keuntungan — Peluang Terkuat Hari Ini</h2>
+        <div class="profit-grid"><div class="p-card">
+        <div class="p-card-head"><div class="p-card-ico">💾</div><div class="p-card-title">Saham Memori/AI (SK Hynix, Micron, Samsung)</div></div>
+        <div class="p-card-desc">Kelangkaan struktural chip HBM untuk AI diperkirakan berlanjut hingga 2027 — kapasitas SK Hynix, Micron, dan Samsung untuk 2026 nyaris terjual habis, mendukung margin dan valuasi jangka panjang produsen memori.</div>
+        <div class="p-level">Tom&#39;s Hardware, Jul 2026</div>
+      </div><div class="p-card">
+        <div class="p-card-head"><div class="p-card-ico">🪙</div><div class="p-card-title">Emas — Akumulasi saat Koreksi</div></div>
+        <div class="p-card-desc">Koreksi emas ke $4.100/oz (-1,2% sepekan) membuka peluang akumulasi bertahap bagi investor jangka menengah, mengingat risiko geopolitik Timur Tengah yang belum reda berpotensi memicu kembali permintaan safe-haven.</div>
+        <div class="p-level">Yahoo Finance, 10 Jul 2026</div>
+      </div><div class="p-card">
+        <div class="p-card-head"><div class="p-card-ico">🏭</div><div class="p-card-title">Ekspor &amp; Teknologi Malaysia</div></div>
+        <div class="p-card-desc">Ringgit yang melemah ke RM4,06-4,15/USD menjadi tailwind bagi emiten berorientasi ekspor dan manufaktur elektronik Malaysia menjelang musim historis kuat Juli-September.</div>
+        <div class="p-level">The Star, 2 Jul 2026</div>
+      </div><div class="p-card">
+        <div class="p-card-head"><div class="p-card-ico">🛢️</div><div class="p-card-title">Energi — Premi Risiko Selat Hormuz</div></div>
+        <div class="p-card-desc">Kemacetan pelayaran di Selat Hormuz yang memasok seperlima pasokan minyak-gas dunia mendorong harga minyak ke sekitar $77/barel; eksposur ke saham energi dapat memanfaatkan premi risiko selama konflik AS-Iran berlanjut.</div>
+        <div class="p-level">UN News, 9 Jul 2026</div>
+      </div></div>
+      </div>
+      <div class="sum-box">
+        <h3>Ringkasan Eksekutif</h3>
+        <ul class="sum-list"><li><span class="sum-ico">▸</span><span>Wall Street ditutup menguat sepekan (S&amp;P 500 +0,42% ke 7.575,39, naik lebih dari 1% dalam sepekan), dipimpin saham chip AI dan debut IPO SK Hynix yang melonjak 13%. (The Motley Fool/CNBC, 10 Jul 2026)</span></li><li><span class="sum-ico">▸</span><span>Ketegangan AS-Iran melumpuhkan pelayaran di Selat Hormuz, mendorong harga minyak ke sekitar $77/barel dan menambah premi risiko geopolitik global. (UN News, 9 Jul 2026)</span></li><li><span class="sum-ico">▸</span><span>Dolar AS melemah tiga sesi beruntun meski The Fed tetap hawkish di bawah Ketua Kevin Warsh; peluang kenaikan suku bunga September naik ke sekitar 64%. (FXStreet, 10 Jul 2026)</span></li><li><span class="sum-ico">▸</span><span>IHSG dan rupiah menguat di akhir pekan (5.924,36; Rp18.050/USD), namun inflasi Juni naik ke 3,34% mendekati batas atas target BI usai kenaikan BI-Rate 100bps sejak Mei. (Viva.co.id/Bank Indonesia, 10 Jul &amp; 18 Jun 2026)</span></li><li><span class="sum-ico">▸</span><span>Kripto melanjutkan pemulihan (BTC sekitar $64.164, +1,39%) dengan sentimen membaik, sementara KLCI Malaysia naik 0,83% usai BNM menahan OPR di 2,75% untuk ketujuh kalinya. (CoinGabbar/The Edge Malaysia, 11 &amp; 10 Jul 2026)</span></li></ul>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="sig">
+        <div class="sig-name">Revan Ashford</div>
+        <div class="sig-role">Senior Investment Consultant &amp; Portfolio Manager</div>
+        <div class="sig-email">revan@onetwomarkets.co.za</div>
+      </div>
+      <div class="sources-text"><strong>Sumber Data:</strong> stooq.com · CoinGecko · Frankfurter (ECB rates) · The Motley Fool, 10 Jul 2026 · CNBC, 10 Jul 2026 · Yahoo Finance, 9 Jul 2026 · FXStreet, 10 Jul 2026 · Viva.co.id, 10 Jul 2026 · The Star, 2 Jul 2026 · CoinGabbar, 11 Jul 2026 · Yahoo Finance, 10 Jul 2026 · UN News, 9 Jul 2026 · Samuel Sekuritas, 1 Jul 2026 · Bank Indonesia, 18 Jun 2026 · The Edge Malaysia, 10 Jul 2026 · The Star, 9 Jul 2026 — fetched 2026-07-11T21:53:18.251Z</div>
+      <div class="disclaimer">Laporan ini disediakan semata-mata untuk tujuan maklumat dan pendidikan bagi pelabur profesional. Ini bukan nasihat pelaburan. Semua pelaburan membawa risiko. Data diperoleh daripada sumber awam yang disahkan pada tarikh penerbitan.</div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  document.querySelectorAll('.lang-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var lang = btn.getAttribute('data-lang');
+      document.querySelectorAll('.lang-btn').forEach(function(b){ b.classList.toggle('active', b === btn); });
+      document.querySelectorAll('.lang-block').forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-lang-block') === lang); });
+      document.documentElement.setAttribute('lang', lang);
+    });
+  });
+})();
+</script>
+</body>
+</html>
