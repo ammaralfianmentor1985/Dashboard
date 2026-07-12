@@ -1,6 +1,16 @@
-// Auto-generated 2026-07-11 21:53 — 23 briefing(s)
-window.MARKET_BRIEFINGS_BUILT = "2026-07-11T21:53:33.640Z";
+// Auto-generated 2026-07-12 21:52 — 24 briefing(s)
+window.MARKET_BRIEFINGS_BUILT = "2026-07-12T21:52:59.910Z";
 window.MARKET_BRIEFINGS = [
+  {
+    "iso": "2026-07-13",
+    "label": "13 Jul 2026",
+    "full": "Monday, 13 July 2026",
+    "type": "pdf",
+    "formats": {
+      "html": "/briefings/market-update-2026-07-13.html",
+      "pdf": "/briefings/market-update-2026-07-13.pdf"
+    }
+  },
   {
     "iso": "2026-07-12",
     "label": "12 Jul 2026",
