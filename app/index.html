@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Mentor Markets</title>
+  <style>
+    body { background: #0b0e14; color: #e6e6e6; font-family: system-ui, sans-serif; padding: 2rem 1rem; }
+    pre { background: #131722; padding: 1rem; border-radius: 8px; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>Mentor Markets — M0 skeleton</h1>
+  <p>Data pipeline smoke test:</p>
+  <pre id="out">loading…</pre>
+  <script type="module">
+    const out = document.getElementById("out");
+    try {
+      const r = await fetch("/api/yahoo?op=chart&symbol=AAPL&range=5d&interval=1d");
+      const j = await r.json();
+      out.textContent = j.ok
+        ? `OK  src=${j.src}\nAAPL ${j.data.meta.regularMarketPrice} ${j.data.meta.currency}  (bars: ${j.data.timestamp?.length ?? 0})`
+        : "FUNCTION ERROR: " + JSON.stringify(j);
+    } catch (e) {
+      out.textContent = "FETCH ERROR: " + e.message;
+    }
+  </script>
+</body>
+</html>
