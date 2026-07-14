@@ -86,3 +86,12 @@ html, body {
 .mm-signal { padding: 2px 0; border-bottom: 1px solid var(--border); }
 .mm-signal.mm-up { color: var(--up); }
 .mm-signal.mm-down { color: var(--down); }
+
+/* Invest tab */
+.mm-fund-table { border-collapse: collapse; font-size: 11px; width: 100%; overflow-x: auto; display: block; }
+.mm-fund-table th, .mm-fund-table td { padding: 3px 8px; border-bottom: 1px solid var(--border); text-align: right; white-space: nowrap; }
+.mm-fund-table th:first-child, .mm-fund-table td:first-child { text-align: left; }
+.mm-score-big { font-size: 28px; font-weight: 700; }
+.mm-dcf-form { display: flex; flex-direction: column; gap: 6px; margin-bottom: 8px; }
+.mm-dcf-input { font-size: 12px; display: flex; justify-content: space-between; gap: 8px; }
+.mm-dcf-input input { width: 70px; background: var(--panel); color: var(--text); border: 1px solid var(--border); border-radius: 4px; padding: 3px 6px; }

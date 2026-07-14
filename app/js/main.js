@@ -1,6 +1,7 @@
 import * as router from "./router.js";
 import * as chartTab from "./tabs/chart.js";
 import * as flowTab from "./tabs/flow.js";
+import * as investTab from "./tabs/invest.js";
 import { makePlaceholder } from "./tabs/placeholder.js";
 import { el } from "./util.js";
 import * as store from "./store.js";
@@ -11,7 +12,7 @@ window.__mm = { get: store.get, set: store.set };
 const TABS = [
   ["chart", "Chart", chartTab],
   ["flow", "Flow", flowTab],
-  ["invest", "Invest", makePlaceholder("Invest — Buffett scorecard & DCF", "M5")],
+  ["invest", "Invest", investTab],
   ["screen", "Screen", makePlaceholder("Screen — screener", "M6")],
   ["chat", "Chat", makePlaceholder("Chat — quant analyst", "M7")],
   ["more", "More", makePlaceholder("More — journal, sizer, learn", "M8")],
