@@ -4,6 +4,7 @@ import { buffettScorecard, financialSectorAssessment } from "../invest/score.js"
 import { twoStageDCF } from "../invest/dcf.js";
 import { batchQuotes, applyPreset, PRESETS } from "../screen/screener.js";
 import { t } from "../i18n.js";
+import { findLesson, lessonSummary } from "../learn/lessons.js";
 import { fmtPrice, fmtPct, fmtCompact } from "../util.js";
 
 const WATCHLIST_KEY = "mm.watchlist.local";
@@ -73,8 +74,11 @@ export async function respond(intent, lang = "en") {
     }
 
     case "lesson_question":
-    case "learn":
-      return `Learn module (topic: ${intent.topic || "overview"}) lands in M8 — not wired yet.`;
+    case "learn": {
+      const lesson = findLesson(intent.topic);
+      if (!lesson) return lang === "id" ? `Belum ada pelajaran untuk "${intent.topic}". Coba: absorption, delta, volume profile, imbalance, exhaustion, VSA.` : `No lesson found for "${intent.topic}". Try: absorption, delta, volume profile, imbalance, exhaustion, VSA.`;
+      return lessonSummary(lesson, lang);
+    }
 
     case "news": {
       if (!intent.symbol) return t("not_found", lang);

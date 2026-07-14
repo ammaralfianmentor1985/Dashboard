@@ -7,6 +7,7 @@ import * as vsa from "../flow/vsa.js";
 import { supportResistance, atr } from "../chart/indicators.js";
 import { sessionProfile } from "../chart/profile.js";
 import { get, on } from "../store.js";
+import { findLesson, lessonSummary } from "../learn/lessons.js";
 import { el, fmtPrice, fmtCompact } from "../util.js";
 
 const CRYPTO_MAP = { "BTC-USD": "btcusdt", "ETH-USD": "ethusdt", "BTC-USDT": "btcusdt", "ETH-USDT": "ethusdt" };
@@ -26,8 +27,23 @@ function gradeBanner(grade, note) {
   return el("div", { class: "mm-grade-banner", style: `border-color:${color};color:${color}` }, `${grade} — ${note}`);
 }
 
-function section(title, body) {
-  return el("div", { class: "mm-flow-section" }, [el("h3", {}, title), body]);
+function section(title, body, lessonKey) {
+  const header = [el("span", {}, title)];
+  if (lessonKey) {
+    const help = el("div", { class: "mm-lesson-popup", style: "display:none" });
+    const btn = el("button", {
+      class: "mm-help-btn",
+      onclick: () => {
+        if (help.style.display === "none") {
+          const lesson = findLesson(lessonKey);
+          help.textContent = lessonSummary(lesson, get("lang")) || "No lesson found.";
+          help.style.display = "block";
+        } else help.style.display = "none";
+      },
+    }, "?");
+    header.push(btn, help);
+  }
+  return el("div", { class: "mm-flow-section" }, [el("h3", {}, header), body]);
 }
 
 function list(items, render) {
@@ -49,10 +65,10 @@ function mountCrypto(root, symbol, pair) {
   const sessionEl = el("div", { class: "mm-flow-status" }, "");
   root.append(
     banner, status,
-    section("Time & Sales", tapeEl),
-    section("Delta / CVD", cvdEl),
-    section("Footprint (bid/ask by price)", footprintEl),
-    section("Signals — Valentini checklist", signalsEl),
+    section("Time & Sales", tapeEl, "tape-reading"),
+    section("Delta / CVD", cvdEl, "delta-cvd"),
+    section("Footprint (bid/ask by price)", footprintEl, "imbalances-stacked-zones"),
+    section("Signals — Valentini checklist", signalsEl, "playbook"),
     section("Order book", bookEl),
     section("Session", sessionEl)
   );
@@ -190,7 +206,7 @@ async function mountDelayed(root, symbol) {
   const status = el("div", { class: "mm-flow-status" }, "Loading…");
   const profileEl = el("div");
   const vsaEl = el("div");
-  root.append(banner, status, section("Volume profile (session)", profileEl), section("Wyckoff/VSA signals", vsaEl));
+  root.append(banner, status, section("Volume profile (session)", profileEl, "volume-profile"), section("Wyckoff/VSA signals", vsaEl, "vsa-basics"));
 
   try {
     const r = await fetchChart(symbol, "5d", "15m");

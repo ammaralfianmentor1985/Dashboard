@@ -71,7 +71,9 @@ html, body {
 .mm-grade-banner { border: 1px solid; border-radius: 6px; padding: 4px 8px; font-size: 11px; font-weight: 600; margin-bottom: 6px; }
 .mm-flow-status { font-size: 12px; margin: 4px 0; display: flex; gap: 6px; flex-wrap: wrap; }
 .mm-flow-section { margin: 14px 0; }
-.mm-flow-section h3 { font-size: 13px; margin: 0 0 6px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.03em; }
+.mm-flow-section h3 { font-size: 13px; margin: 0 0 6px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.03em; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.mm-help-btn { width: 16px; height: 16px; border-radius: 50%; border: 1px solid var(--muted); background: none; color: var(--muted); font-size: 10px; line-height: 1; padding: 0; }
+.mm-lesson-popup { flex-basis: 100%; font-size: 11px; text-transform: none; letter-spacing: normal; white-space: pre-wrap; background: var(--panel); border: 1px solid var(--border); border-radius: 6px; padding: 8px; margin-top: 4px; }
 .mm-muted { color: var(--muted); font-size: 12px; }
 .mm-tape { max-height: 160px; overflow-y: auto; font-family: ui-monospace, monospace; font-size: 11px; }
 .mm-tape-row { display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 1px 4px; }
