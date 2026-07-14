@@ -95,3 +95,10 @@ html, body {
 .mm-dcf-form { display: flex; flex-direction: column; gap: 6px; margin-bottom: 8px; }
 .mm-dcf-input { font-size: 12px; display: flex; justify-content: space-between; gap: 8px; }
 .mm-dcf-input input { width: 70px; background: var(--panel); color: var(--text); border: 1px solid var(--border); border-radius: 4px; padding: 3px 6px; }
+
+/* Screen tab */
+.mm-screen-controls { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
+.mm-select { background: var(--panel); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: 6px 8px; font-size: 12px; }
+.mm-screen-table { font-size: 12px; }
+.mm-screen-row { cursor: pointer; }
+.mm-screen-row:active { background: rgba(255,255,255,0.06); }
