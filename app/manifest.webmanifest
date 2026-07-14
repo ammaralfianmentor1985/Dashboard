@@ -1,0 +1,14 @@
+{
+  "name": "Mentor Markets",
+  "short_name": "Mentor Mkts",
+  "description": "Buffett-style investing + order-flow trading analysis, live where possible.",
+  "start_url": "/app/",
+  "scope": "/app/",
+  "display": "standalone",
+  "background_color": "#0b0e14",
+  "theme_color": "#0b0e14",
+  "icons": [
+    { "src": "/app/assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/app/assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
