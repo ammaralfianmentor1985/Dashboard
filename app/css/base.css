@@ -66,3 +66,23 @@ html, body {
 .mm-chart-host canvas { position: absolute; inset: 0; }
 .mm-chart-main { z-index: 1; }
 .mm-chart-overlay { z-index: 2; }
+
+/* Flow tab */
+.mm-grade-banner { border: 1px solid; border-radius: 6px; padding: 4px 8px; font-size: 11px; font-weight: 600; margin-bottom: 6px; }
+.mm-flow-status { font-size: 12px; margin: 4px 0; display: flex; gap: 6px; flex-wrap: wrap; }
+.mm-flow-section { margin: 14px 0; }
+.mm-flow-section h3 { font-size: 13px; margin: 0 0 6px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.03em; }
+.mm-muted { color: var(--muted); font-size: 12px; }
+.mm-tape { max-height: 160px; overflow-y: auto; font-family: ui-monospace, monospace; font-size: 11px; }
+.mm-tape-row { display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 1px 4px; }
+.mm-tape-row.mm-buy { color: var(--up); }
+.mm-tape-row.mm-sell { color: var(--down); }
+.mm-tape-row.mm-big-print { background: rgba(255,255,255,0.08); font-weight: 700; }
+.mm-fp-row { display: grid; grid-template-columns: 70px 1fr 50px; align-items: center; gap: 4px; font-size: 11px; padding: 1px 0; }
+.mm-fp-bar-wrap { display: flex; height: 10px; background: rgba(255,255,255,0.04); }
+.mm-fp-bar-sell { background: var(--down); height: 100%; }
+.mm-fp-bar-buy { background: var(--up); height: 100%; }
+.mm-flow-list { font-size: 11px; max-height: 140px; overflow-y: auto; }
+.mm-signal { padding: 2px 0; border-bottom: 1px solid var(--border); }
+.mm-signal.mm-up { color: var(--up); }
+.mm-signal.mm-down { color: var(--down); }
