@@ -137,9 +137,22 @@ export class ChartEngine {
 
     this.overlay.addEventListener("pointerdown", (e) => {
       this.overlay.setPointerCapture(e.pointerId);
-      pointers.set(e.pointerId, toLocal(e));
+      const p0 = toLocal(e);
+      if (this.drawMode && this.onDrawPoint) {
+        const visible = this._visible();
+        if (visible.length) {
+          const s = this._scales(visible);
+          const relIdx = this.indexAtX(p0.x);
+          const absIdx = this.visStart + relIdx;
+          const bar = this.bars[absIdx];
+          const price = s.lo + (1 - (p0.y - PAD.top) / s.priceH) * (s.hi - s.lo);
+          if (bar) this.onDrawPoint({ t: bar.t, price });
+        }
+        return;
+      }
+      pointers.set(e.pointerId, p0);
       dragging = true;
-      lastX = toLocal(e).x;
+      lastX = p0.x;
       if (pointers.size === 2) {
         const [a, b] = [...pointers.values()];
         lastDist = Math.hypot(a.x - b.x, a.y - b.y);
