@@ -102,3 +102,11 @@ html, body {
 .mm-screen-table { font-size: 12px; }
 .mm-screen-row { cursor: pointer; }
 .mm-screen-row:active { background: rgba(255,255,255,0.06); }
+
+/* Chat tab */
+.mm-chat-log { display: flex; flex-direction: column; gap: 8px; height: 55vh; overflow-y: auto; margin: 8px 0; }
+.mm-chat-msg { padding: 8px 10px; border-radius: 10px; max-width: 85%; white-space: pre-wrap; font-size: 13px; }
+.mm-chat-user { align-self: flex-end; background: var(--accent); color: #04101f; }
+.mm-chat-bot { align-self: flex-start; background: var(--panel); border: 1px solid var(--border); }
+.mm-chat-input-row { display: flex; gap: 6px; }
+.mm-chat-input-row input { flex: 1; }

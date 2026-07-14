@@ -3,6 +3,7 @@ import * as chartTab from "./tabs/chart.js";
 import * as flowTab from "./tabs/flow.js";
 import * as investTab from "./tabs/invest.js";
 import * as screenTab from "./tabs/screen.js";
+import * as chatTabModule from "./tabs/chat.js";
 import { makePlaceholder } from "./tabs/placeholder.js";
 import { el } from "./util.js";
 import * as store from "./store.js";
@@ -15,7 +16,7 @@ const TABS = [
   ["flow", "Flow", flowTab],
   ["invest", "Invest", investTab],
   ["screen", "Screen", screenTab],
-  ["chat", "Chat", makePlaceholder("Chat — quant analyst", "M7")],
+  ["chat", "Chat", chatTabModule],
   ["more", "More", makePlaceholder("More — journal, sizer, learn", "M8")],
 ];
 
