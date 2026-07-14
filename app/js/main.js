@@ -5,7 +5,6 @@ import * as investTab from "./tabs/invest.js";
 import * as screenTab from "./tabs/screen.js";
 import * as chatTabModule from "./tabs/chat.js";
 import * as moreTab from "./tabs/more.js";
-import { makePlaceholder } from "./tabs/placeholder.js";
 import { el } from "./util.js";
 import * as store from "./store.js";
 
@@ -56,4 +55,34 @@ if (new URLSearchParams(location.search).get("fps") === "1") {
     requestAnimationFrame(tick);
   };
   requestAnimationFrame(tick);
+}
+
+// ---------- PWA: service worker + update toast ----------
+if ("serviceWorker" in navigator && new URLSearchParams(location.search).get("nosw") !== "1") {
+  window.addEventListener("load", async () => {
+    try {
+      const reg = await navigator.serviceWorker.register("/app/sw.js");
+      const showUpdateToast = (waitingWorker) => {
+        const toast = el("div", { class: "mm-update-toast" }, [
+          "Update available.",
+          el("button", { class: "mm-tf-btn active", onclick: () => {
+            waitingWorker.postMessage("SKIP_WAITING");
+            navigator.serviceWorker.addEventListener("controllerchange", () => location.reload(), { once: true });
+          } }, "Reload"),
+        ]);
+        document.body.append(toast);
+      };
+      if (reg.waiting) showUpdateToast(reg.waiting);
+      reg.addEventListener("updatefound", () => {
+        const nw = reg.installing;
+        nw?.addEventListener("statechange", () => {
+          if (nw.state === "installed" && navigator.serviceWorker.controller) showUpdateToast(reg.waiting || nw);
+        });
+      });
+    } catch {
+      // SW registration failing (e.g. dev over http on a non-localhost host) shouldn't break the app.
+    }
+  });
+} else if (new URLSearchParams(location.search).get("nosw") === "1" && "serviceWorker" in navigator) {
+  navigator.serviceWorker.getRegistrations().then((regs) => regs.forEach((r) => r.unregister()));
 }
