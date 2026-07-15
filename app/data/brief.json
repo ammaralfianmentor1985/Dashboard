@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-14T00:00:00Z",
+  "lang": "id",
+  "degraded": true,
+  "headline": "Brief harian belum tersedia — routine Claude akan menulis brief pertama pukul 05:30 WIB.",
+  "regime": { "risk": "mixed", "note": "Menunggu run pertama routine harian." },
+  "sections": [],
+  "watchlist": [],
+  "calendar": [],
+  "risks": [],
+  "oneThing": "Buka kembali tab ini setelah 05:30 WIB untuk brief pertama yang ditulis Claude.",
+  "sources": []
+}

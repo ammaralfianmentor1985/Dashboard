@@ -1,0 +1,18 @@
+{
+  "v": 1,
+  "note": "Seed watchlist — the daily-trading-brief routine reads this file. Edit via More tab → copy JSON, or ask Claude.",
+  "symbols": [
+    "AAPL",
+    "MSFT",
+    "NVDA",
+    "BBCA.JK",
+    "BBRI.JK",
+    "TLKM.JK",
+    "BTC-USD",
+    "ETH-USD",
+    "GC=F",
+    "^GSPC",
+    "^JKSE",
+    "IDR=X"
+  ]
+}
