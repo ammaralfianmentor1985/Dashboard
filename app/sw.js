@@ -1,7 +1,7 @@
 // Service worker — offline shell for /app/. Auto-stamped by tools/release.mjs
 // on every release that ships app/ files (hash of app/ contents -> version
 // string), so a forgotten manual bump can't brick the cache.
-const SW_VERSION = "v20260715062748-689e0fd5";
+const SW_VERSION = "v20260715062944-689e0fd5";
 const CACHE_NAME = `mm-shell-${SW_VERSION}`;
 const CORE_SHELL = [
   "/app/",

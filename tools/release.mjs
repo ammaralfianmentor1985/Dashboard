@@ -143,6 +143,34 @@ for (const p of inputs) {
 files = [...new Set(files.map((f) => f.split(sep).join(posix.sep)))].sort();
 if (!includeBrief) files = files.filter((f) => !SKIP_ALWAYS.has(f));
 
+// ---------- detect deletions ----------
+// Files that used to exist under a shipped directory root but no longer do
+// locally (e.g. a removed feature) must be explicitly deleted on the branch —
+// createCommitOnBranch only adds/overwrites; it never removes on its own.
+const dirRoots = inputs.filter((p) => existsSync(p) && statSync(p).isDirectory())
+  .map((p) => p.split(sep).join(posix.sep));
+
+async function listRemoteFiles(branchName) {
+  const oid = await headOid(branchName);
+  if (!oid) return [];
+  const tree = await rest("GET", `/repos/${OWNER}/${REPO}/git/trees/${oid}?recursive=1`);
+  if (tree.truncated) console.error("WARNING: remote tree listing truncated — deletion detection may miss files.");
+  return tree.tree.filter((t) => t.type === "blob").map((t) => t.path);
+}
+
+let deletions = [];
+if (dirRoots.length) {
+  const remoteFiles = await listRemoteFiles(branch);
+  const localSet = new Set(files);
+  deletions = remoteFiles.filter((f) => {
+    if (SKIP_ALWAYS.has(f) && !includeBrief) return false;
+    if (f.split(posix.sep).some((seg) => seg.startsWith(".") || seg === "node_modules")) return false;
+    const underRoot = dirRoots.some((root) => f === root || f.startsWith(root + "/"));
+    return underRoot && !localSet.has(f);
+  });
+  if (deletions.length) console.log(`Deletions detected: ${deletions.join(", ")}`);
+}
+
 // ---------- SW_VERSION stamping ----------
 const contents = new Map(); // path -> Buffer
 for (const f of files) contents.set(f, readFileSync(f));
@@ -218,5 +246,35 @@ for (let i = 0; i < chunks.length; i++) {
   console.log(`Commit${part}: ${d.createCommitOnBranch.commit.url}`);
   if (i < chunks.length - 1) await new Promise((r) => setTimeout(r, 2000));
 }
+
+// ---------- deletion commit(s) ----------
+if (deletions.length) {
+  const delChunks = [];
+  for (let i = 0; i < deletions.length; i += MAX_FILES_PER_COMMIT) delChunks.push(deletions.slice(i, i + MAX_FILES_PER_COMMIT));
+  for (let i = 0; i < delChunks.length; i++) {
+    const part = delChunks.length > 1 ? ` (${i + 1}/${delChunks.length})` : "";
+    const input = {
+      branch: { repositoryNameWithOwner: `${OWNER}/${REPO}`, branchName: branch },
+      message: { headline: (message ? `${message} — cleanup` : `app: remove stale files ${new Date().toISOString().slice(0, 16)}Z`) + part },
+      expectedHeadOid: head,
+      fileChanges: { deletions: delChunks[i].map((path) => ({ path })) },
+    };
+    let d;
+    try {
+      d = await gql(MUT, { input });
+    } catch (e) {
+      if (/expected|head|match/i.test(String(e.message))) {
+        head = await headOid(branch);
+        input.expectedHeadOid = head;
+        d = await gql(MUT, { input });
+      } else {
+        throw e;
+      }
+    }
+    head = d.createCommitOnBranch.commit.oid;
+    console.log(`Deletion commit${part}: ${d.createCommitOnBranch.commit.url}`);
+  }
+}
+
 console.log(`DONE. ${branch} @ ${head.slice(0, 7)}  (rollback pointer: previous main ${baselineMain?.slice(0, 7)})`);
 }
