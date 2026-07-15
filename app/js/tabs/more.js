@@ -1,5 +1,6 @@
 import { loadTrades, saveTrades, addTrade, stats } from "../more/journal.js";
 import { news as fetchNews } from "../data/yahoo.js";
+import { LESSONS, lessonSummary } from "../learn/lessons.js";
 import { get, set } from "../store.js";
 import { navigate } from "../router.js";
 import { el, fmtCompact, fmtPct } from "../util.js";
@@ -17,7 +18,7 @@ function watchlistSection() {
   const render = () => {
     const symbols = JSON.parse(localStorage.getItem(WATCHLIST_KEY) || "[]");
     list.innerHTML = "";
-    if (!symbols.length) { list.append(el("p", { class: "mm-muted" }, "Empty — add from Chat (\"watch AAPL\") or here.")); }
+    if (!symbols.length) { list.append(el("p", { class: "mm-muted" }, "Empty — add a symbol below.")); }
     symbols.forEach((s) => {
       list.append(el("div", { class: "mm-signal" }, [
         el("span", { onclick: () => { set("symbol", s); navigate("chart"); }, style: "cursor:pointer" }, s),
@@ -180,6 +181,47 @@ function settingsSection() {
   ]);
 }
 
+// ---------- daily brief ----------
+async function briefSection() {
+  try {
+    const r = await fetch("/app/data/brief.json", { cache: "no-store" });
+    const b = await r.json();
+    const ageMs = Date.now() - new Date(b.generatedAt).getTime();
+    const stale = ageMs > 36 * 3600 * 1000;
+    const wrap = el("div", {});
+    wrap.append(
+      el("div", { class: "mm-flow-status" }, [
+        el("b", {}, b.headline),
+        stale ? el("span", { class: "mm-down" }, "  (stale — over 36h old)") : null,
+      ].filter(Boolean)),
+      el("div", { class: "mm-muted" }, `Regime: ${b.regime?.risk || "n/a"} — ${b.regime?.note || ""}`)
+    );
+    (b.sections || []).forEach((s) => {
+      const sec = el("div", { style: "margin-top:6px" }, [el("b", {}, s.title)]);
+      (s.points || []).forEach((p) => sec.append(el("div", { class: "mm-signal" }, `${p.text} (${p.source})`)));
+      wrap.append(sec);
+    });
+    if (b.oneThing) wrap.append(el("div", { class: "mm-flow-status", style: "margin-top:6px" }, [el("b", {}, "Yang paling penting: "), b.oneThing]));
+    return wrap;
+  } catch {
+    return el("p", { class: "mm-muted" }, "Daily brief not available yet — first run lands ~05:30 WIB.");
+  }
+}
+
+// ---------- learn library ----------
+function learnSection() {
+  const wrap = el("div", { class: "mm-flow-list" });
+  LESSONS.forEach((lesson) => {
+    const body = el("div", { class: "mm-lesson-popup", style: "display:none" });
+    const row = el("div", { class: "mm-signal", style: "cursor:pointer", onclick: () => {
+      body.style.display = body.style.display === "none" ? "block" : "none";
+      if (body.style.display === "block") body.textContent = lessonSummary(lesson, get("lang"));
+    } }, lesson.title[get("lang")] || lesson.title.en);
+    wrap.append(row, body);
+  });
+  return wrap;
+}
+
 function disclaimer() {
   return el("p", { class: "mm-muted" },
     "Educational tool only — not financial advice. Prices for stocks/FX/commodities/indices are ~15min delayed (Yahoo Finance); crypto is live tick data (Binance). Verify anything before acting on it.");
@@ -193,12 +235,15 @@ export async function mount(root) {
     section("Journal", journalSection()),
     section("Position sizer", sizerSection()),
     section("News (current symbol)", newsSection()),
+    section("Learn", learnSection()),
     section("Settings", settingsSection()),
     section("Disclaimer", disclaimer())
   );
   root.append(wrap);
-  const calSection = section("Economic calendar (WIB)", await calendarSection());
-  wrap.insertBefore(calSection, wrap.children[wrap.children.length - 1]);
+  const briefSec = section("Daily brief", await briefSection());
+  const calSec = section("Economic calendar (WIB)", await calendarSection());
+  wrap.insertBefore(briefSec, wrap.firstChild);
+  wrap.insertBefore(calSec, wrap.children[wrap.children.length - 1]);
 }
 
 export function unmount() {}

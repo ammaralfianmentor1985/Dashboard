@@ -225,7 +225,7 @@ export class ChartEngine {
     ctx.lineTo(this.w - PAD.right, py);
     ctx.stroke();
     ctx.setLineDash([]);
-    ctx.fillStyle = "#e6e6e6";
+    ctx.fillStyle = "#d8dade";
     ctx.font = "11px system-ui, sans-serif";
     const d = new Date(bar.t * 1000);
     ctx.fillText(d.toISOString().slice(0, 16).replace("T", " "), 6, this.h - 6);
@@ -240,7 +240,7 @@ export class ChartEngine {
     ctx.save();
     ctx.scale(this.dpr, this.dpr);
     ctx.clearRect(0, 0, this.w, this.h);
-    ctx.fillStyle = "#0b0e14";
+    ctx.fillStyle = "#14161a";
     ctx.fillRect(0, 0, this.w, this.h);
     const visible = this._visible();
     if (!visible.length) { ctx.restore(); return; }
@@ -262,7 +262,7 @@ export class ChartEngine {
     }
 
     // volume
-    ctx.fillStyle = "rgba(120,140,180,0.35)";
+    ctx.fillStyle = "rgba(130,138,148,0.32)";
     visible.forEach((b, i) => {
       const bw = Math.max(1, s.slot * 0.7);
       const vy = s.yVol(b.v || 0);
@@ -271,7 +271,7 @@ export class ChartEngine {
 
     // price series
     if (this.chartType === "line") {
-      ctx.strokeStyle = "#4da3ff";
+      ctx.strokeStyle = "#7fa8cc";
       ctx.lineWidth = 1.5;
       ctx.beginPath();
       visible.forEach((b, i) => {
@@ -293,7 +293,7 @@ export class ChartEngine {
           prevHA = b;
         }
         const up = b.c >= b.o;
-        ctx.strokeStyle = ctx.fillStyle = up ? "#26a69a" : "#ef5350";
+        ctx.strokeStyle = ctx.fillStyle = up ? "#4c8c6e" : "#b8564f";
         const bw = Math.max(1, s.slot * 0.62);
         const px = s.x(i);
         ctx.beginPath();

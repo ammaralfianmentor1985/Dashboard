@@ -12,14 +12,15 @@ const RANGE_BY_TF = {
   "1D": ["6mo", "1d"], "1W": ["5y", "1wk"], "1M": ["max", "1mo"],
 };
 
+// Muted, low-saturation palette — a terminal reads numbers, not a rainbow.
 const INDICATOR_TOGGLES = [
-  ["ema20", "EMA20", "#4da3ff"],
-  ["ema50", "EMA50", "#f0b90b"],
-  ["sma200", "SMA200", "#c084fc"],
-  ["vwap", "VWAP", "#ff8a65"],
-  ["bb", "BB(20,2)", "#80cbc4"],
-  ["profile", "Vol Profile", "#9aa0a6"],
-  ["sr", "S/R", "#ef5350"],
+  ["ema20", "EMA20", "#7fa8cc"],
+  ["ema50", "EMA50", "#9a9578"],
+  ["sma200", "SMA200", "#a3a7ad"],
+  ["vwap", "VWAP", "#b08a5e"],
+  ["bb", "BB(20,2)", "#7d9a94"],
+  ["profile", "Vol Profile", "#8a8f96"],
+  ["sr", "S/R", "#b8564f"],
 ];
 
 const DRAW_TOOLS = [["none", "✥"], ["hline", "—"], ["trendline", "╱"], ["fib", "Fib"], ["rect", "▭"]];
@@ -120,15 +121,15 @@ function lineOverlay(series, color) {
 function buildOverlays(bars) {
   const overlays = [];
   const atrSeries = ind.atr(bars, 14);
-  if (activeIndicators.has("ema20")) overlays.push(lineOverlay(ind.ema(bars, 20), "#4da3ff"));
-  if (activeIndicators.has("ema50")) overlays.push(lineOverlay(ind.ema(bars, 50), "#f0b90b"));
-  if (activeIndicators.has("sma200")) overlays.push(lineOverlay(ind.sma(bars, 200), "#c084fc"));
-  if (activeIndicators.has("vwap")) overlays.push(lineOverlay(ind.vwap(bars), "#ff8a65"));
+  if (activeIndicators.has("ema20")) overlays.push(lineOverlay(ind.ema(bars, 20), "#7fa8cc"));
+  if (activeIndicators.has("ema50")) overlays.push(lineOverlay(ind.ema(bars, 50), "#9a9578"));
+  if (activeIndicators.has("sma200")) overlays.push(lineOverlay(ind.sma(bars, 200), "#a3a7ad"));
+  if (activeIndicators.has("vwap")) overlays.push(lineOverlay(ind.vwap(bars), "#b08a5e"));
   if (activeIndicators.has("bb")) {
     const bb = ind.bollinger(bars, 20, 2);
-    overlays.push(lineOverlay(bb.upper, "rgba(128,203,196,0.8)"));
-    overlays.push(lineOverlay(bb.lower, "rgba(128,203,196,0.8)"));
-    overlays.push(lineOverlay(bb.mid, "rgba(128,203,196,0.4)"));
+    overlays.push(lineOverlay(bb.upper, "rgba(125,154,148,0.8)"));
+    overlays.push(lineOverlay(bb.lower, "rgba(125,154,148,0.8)"));
+    overlays.push(lineOverlay(bb.mid, "rgba(125,154,148,0.4)"));
   }
   if (activeIndicators.has("sr")) {
     const { support, resistance } = ind.supportResistance(bars, atrSeries);
@@ -137,7 +138,7 @@ function buildOverlays(bars) {
       ctx.font = "9px system-ui, sans-serif";
       for (const lvl of [...support, ...resistance]) {
         const py = s.y(lvl.price);
-        ctx.strokeStyle = resistance.includes(lvl) ? "rgba(239,83,80,0.55)" : "rgba(38,166,154,0.55)";
+        ctx.strokeStyle = resistance.includes(lvl) ? "rgba(184,86,79,0.55)" : "rgba(76,140,110,0.55)";
         ctx.beginPath();
         ctx.moveTo(0, py);
         ctx.lineTo(engine.w, py);
