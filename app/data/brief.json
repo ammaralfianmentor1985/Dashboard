@@ -1,102 +1,98 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T09:00:00Z",
+  "generatedAt": "2026-07-16T22:36:39Z",
   "lang": "id",
   "degraded": false,
-  "headline": "Wall Street cetak momentum baru berkat inflasi AS yang melunak drastis, tapi minyak melonjak akibat baku hantam AS-Iran di Selat Hormuz jadi ancaman inflasi berikutnya.",
-  "regime": { "risk": "mixed", "note": "Saham dan kripto risk-on pasca data CPI lunak, tapi lonjakan minyak dan konflik Timur Tengah menahan optimisme penuh." },
+  "headline": "Wall Street rontok dipimpin rotasi keluar saham chip dan Alphabet yang ambruk 4% akibat kabar keterlambatan Gemini 3.5 Pro, sementara perang AS-Iran di Selat Hormuz memasuki hari keenam dan terus mendorong harga minyak naik.",
+  "regime": { "risk": "mixed", "note": "AS tertekan rotasi keluar teknologi/chip dan kekhawatiran geopolitik, tapi IHSG, Hang Seng, dan rupiah justru menguat hari ini — sentimen terpecah antar wilayah." },
   "sections": [
     {
       "key": "us",
       "title": "Wall Street & AS",
       "points": [
-        { "text": "CPI AS Juni turun 0,4% MoM (penurunan bulanan terbesar sejak 2020), membawa inflasi tahunan ke 3,5%, jauh di bawah ekspektasi 3,8%.", "source": "Yahoo Finance, 15 Jul 2026" },
-        { "text": "S&P 500 ditutup naik 0,38% ke 7.543,59 dan Nasdaq Composite naik 0,9% ke 26.107,01 pada 14 Juli, ditopang saham semikonduktor pasca data inflasi.", "source": "CNBC, 14 Jul 2026" },
-        { "text": "Dow Jones nyaris flat (+0,02% ke 52.508,27) karena saham IBM anjlok 25% setelah perusahaan memperingatkan laba kuartal kedua akan lebih rendah dari perkiraan.", "source": "TheStreet, 14 Jul 2026" },
-        { "text": "Apple naik 4% dan mencetak rekor tertinggi baru sepanjang masa pada 14 Juli.", "source": "Yahoo Finance, 14 Jul 2026" },
-        { "text": "Nvidia naik 3,53% menjadi penopang terbesar indeks S&P 500, didorong berita positif terkait China dan kekuatan sektor chip.", "source": "TradingKey, 14 Jul 2026" },
-        { "text": "Microsoft turun 1,81% dan menjadi pemberat terbesar Nasdaq-100, memangkas 21 poin dari indeks.", "source": "Yahoo Finance, 14 Jul 2026" },
-        { "text": "Ketua The Fed Kevin Warsh dijadwalkan memberikan testimoni pertamanya di hadapan Senate Banking Committee pada 15 Juli, setelah tampil di House Financial Services Committee sehari sebelumnya.", "source": "Kiplinger, 13 Jul 2026" }
+        { "text": "S&P 500 turun 0,51% ke 7.533,77, Nasdaq Composite anjlok 1,47% ke 25.881,95, dan Dow Jones turun 0,20% (105,67 poin) ke 52.552,97 pada 16 Juli, tertekan aksi jual saham teknologi dan chip meski laporan laba korporasi solid.", "source": "TheStreet/Yahoo Finance, 16 Jul 2026" },
+        { "text": "Saham Alphabet ambruk lebih dari 4% setelah Bloomberg melaporkan model AI andalannya, Gemini 3.5 Pro, molor dari jadwal peluncuran.", "source": "Bloomberg via CNBC, 16 Jul 2026" },
+        { "text": "Saham-saham chip rontok setelah TSMC menaikkan proyeksi belanja modal yang membayangi hasil kuartal II yang sebenarnya lebih baik dari perkiraan; Micron anjlok 8%, Lam Research dan AMD masing-masing turun 3%, dan Nvidia turun 2,4%.", "source": "CNBC/Yahoo Finance, 16 Jul 2026" },
+        { "text": "Netflix melaporkan laba kuartal II sebesar $0,80/saham (vs estimasi $0,79), pendapatan $12,56 miliar naik 13% YoY dengan margin operasi 33%, namun memangkas panduan pendapatan 2026 ke kisaran $51,0-51,4 miliar.", "source": "CNBC/StockTitan, 16 Jul 2026" },
+        { "text": "Microsoft naik 3,2% ke $397,26 setelah mengumumkan kemitraan strategis infrastruktur AI/data center dengan 3M.", "source": "TradingKey, 15 Jul 2026" },
+        { "text": "Apple ditutup naik 4,01% ke rekor $327,50 pada 15 Juli dan masih bertahan di area $330 pada 16 Juli.", "source": "Stockinvest.us, 16 Jul 2026" },
+        { "text": "Klaim pengangguran mingguan AS turun 8.000 menjadi 208.000 (lebih baik dari estimasi 217.000), sementara penjualan ritel naik 0,2% sesuai ekspektasi — data ini dirilis 16 Juli dan menunjukkan ekonomi AS masih tangguh.", "source": "U.S. News, 16 Jul 2026" }
       ]
     },
     {
       "key": "asia",
       "title": "Asia & Indonesia",
       "points": [
-        { "text": "Nikkei 225 naik 1,49% ke 68.751,51 dan Hang Seng naik 1,40% ke 24.681,10 pada 15 Juli, sementara Shanghai Composite turun tipis 0,29% ke 3.955,58.", "source": "Bloomberg/Yahoo Finance, 15 Jul 2026" },
-        { "text": "IHSG ditutup naik tipis 0,20% ke 6.051,62 pada 15 Juli, mencatat kenaikan 5 hari beruntun, meski sempat berbalik dari level tertinggi intraday 6.081,23 ke terendah 6.007,17.", "source": "Kompas, 15 Jul 2026" },
-        { "text": "Sektor terbaik IHSG hari ini adalah IDX Basic Materials (+1,40%), disusul IDX Property (+1,05%) dan IDX Infrastructures (+0,41%).", "source": "Kompas, 15 Jul 2026" },
-        { "text": "BBRI menjadi salah satu saham top gainer/leader IHSG hari ini, sementara TLKM tercatat sebagai salah satu top laggard.", "source": "Suara.com, 15 Jul 2026" },
-        { "text": "Bank Indonesia menaikkan BI-Rate ke 5,75% pada Juni 2026, kenaikan kumulatif 100 bps sejak Mei, level tertinggi sejak April 2025, untuk menjaga stabilitas rupiah dan inflasi.", "source": "Bank Indonesia, Jun 2026" },
-        { "text": "Inflasi CPI Indonesia naik ke 3,34% YoY pada Juni 2026 dari 3,08% pada Mei, dengan inflasi inti naik ke 2,76%, tertinggi dalam 38 bulan.", "source": "Samuel Sekuritas, Jul 2026" }
+        { "text": "Nikkei 225 anjlok 2,79% (turun 1.915 poin) ke 66.835 akibat kenaikan yield obligasi, sementara Hang Seng justru menguat 1,33% ke 25.008,60 dan TAIEX Taiwan naik 2,61% ditopang saham teknologi.", "source": "Bloomberg/Coinpedia, 16 Jul 2026" },
+        { "text": "IHSG ditutup melonjak 1,10% (+66,23 poin) ke 6.108,20 pada 16 Juli, dengan seluruh sektor saham menghijau dan sektor teknologi memimpin kenaikan (+1,94%); 372 saham naik berbanding 238 turun.", "source": "Kompas, 16 Jul 2026" },
+        { "text": "Kenaikan IHSG hari ini terjadi bersamaan dengan penguatan nilai tukar rupiah terhadap dolar AS.", "source": "Kompas, 16 Jul 2026" },
+        { "text": "BBRI naik sekitar 1,07% ke Rp2.830 dan masuk daftar rekomendasi analis, sementara TLKM justru anjlok 2,42% ke Rp2.420 dan menjadi salah satu saham yang paling banyak dilepas investor asing bersama BBCA dan ASII; BBCA sendiri stagnan di Rp6.125.", "source": "Fortune Indonesia/Liputan6, 16 Jul 2026" }
       ]
     },
     {
       "key": "crypto",
       "title": "Kripto",
       "points": [
-        { "text": "Bitcoin dibuka di $64.974,75 pada 15 Juli, naik 4,4% dari pembukaan hari sebelumnya, menyusul data inflasi AS yang lebih lunak dari perkiraan.", "source": "Yahoo Finance, 15 Jul 2026" },
-        { "text": "Ethereum dibuka di $1.889,97 pada 15 Juli, naik 6,6% dibanding pembukaan hari sebelumnya, mengungguli kenaikan Bitcoin.", "source": "Yahoo Finance, 15 Jul 2026" },
-        { "text": "Kapitalisasi pasar kripto global mencapai $2,3 triliun dengan kenaikan 3,2% dalam 24 jam terakhir dan volume perdagangan $70,6 miliar.", "source": "Yahoo Finance, 15 Jul 2026" }
+        { "text": "Bitcoin dibuka $64.720,36 pada 16 Juli (turun 0,4% dari pembukaan sehari sebelumnya) lalu tergelincir ke $64.065,98 pada pertengahan sesi AS.", "source": "Yahoo Finance, 16 Jul 2026" },
+        { "text": "Ethereum dibuka $1.917,05 (naik 1,5%) namun ikut melemah ke $1.877,39 pada pertengahan sesi.", "source": "Yahoo Finance, 16 Jul 2026" },
+        { "text": "Bitcoin dan ethereum disebut mengalami momentum positif pekan ini berkat data inflasi AS yang lunak, kontras dengan emas dan perak yang justru melemah ke level terendah 8 bulan.", "source": "Yahoo Finance, 16 Jul 2026" }
       ]
     },
     {
       "key": "fx",
       "title": "Valas, Emas & Komoditas",
       "points": [
-        { "text": "Indeks dolar AS (DXY) turun lebih dari 0,5% ke sekitar 100,7 setelah data inflasi lunak menurunkan ekspektasi kenaikan suku bunga The Fed.", "source": "Vantage Markets, 15 Jul 2026" },
-        { "text": "EUR/USD naik ke 1,1431, tertahan dari puncak sebulan karena investor mencermati eskalasi tensi Timur Tengah dan lonjakan harga minyak.", "source": "Trading Economics, 15 Jul 2026" },
-        { "text": "USD/IDR diperdagangkan di kisaran 18.075,9 pada 15 Juli, mendekati level terlemah dalam 52 minggu di 18.197,5.", "source": "Investing.com, 15 Jul 2026" },
-        { "text": "Harga emas spot turun 0,6% ke sekitar $4.028,43 per ons pada 15 Juli, tertekan oleh reli harga minyak yang memicu kekhawatiran inflasi.", "source": "Yahoo Finance, 15 Jul 2026" },
-        { "text": "Harga minyak naik lebih dari 9% dalam 5 hari terakhir dan bertahan di atas $80/barel selama tiga sesi berturut-turut akibat eskalasi konflik AS-Iran di Selat Hormuz.", "source": "Yahoo Finance/CNBC, 15 Jul 2026" },
-        { "text": "Iran menyerang kapal tanker asal Qatar dekat Selat Hormuz, memaksa banyak kapal memutar rute; lalu lintas kapal di selat itu turun tajam menjadi sekitar 6 kapal per hari dari 18-22 kapal sebelumnya.", "source": "Al Jazeera, 13 Jul 2026" }
+        { "text": "Harga emas spot turun ke kisaran $4.032-4.038 per ons, mendekati level terendah sejak November 2025, tertekan lonjakan harga minyak dan ekspektasi suku bunga The Fed yang tetap hawkish.", "source": "Yahoo Finance/BullionVault, 16 Jul 2026" },
+        { "text": "Harga minyak naik untuk hari keempat berturut-turut — Brent mendekati $84,64/barel dan WTI bertahan di atas $80 — setelah melonjak lebih dari 11% dalam tiga sesi terakhir akibat eskalasi konflik AS-Iran.", "source": "Bloomberg, 16 Jul 2026" },
+        { "text": "Indeks dolar AS (DXY) rebound dari level terendah sebulan ke kisaran 100,5-100,9.", "source": "Forex.com/DealPlexus, 16 Jul 2026" },
+        { "text": "EUR/USD turun 0,27% ke 1,1433.", "source": "Trading Economics, 16 Jul 2026" },
+        { "text": "USD/IDR bergerak di kisaran Rp18.005-18.060 pada 16 Juli, sedikit menguat dibanding level Rp18.075 sehari sebelumnya.", "source": "Akurat.co, 16 Jul 2026" },
+        { "text": "AS dan Iran baku serang untuk hari keenam berturut-turut; AS menyerang pusat komando dan lokasi rudal Iran serta sebuah kapal tanker yang mencoba menerobos blokade, sementara Iran menyerang pangkalan AS di kawasan Teluk — sengketa berpusat pada kendali atas Selat Hormuz yang dilalui sekitar 20% pasokan minyak-gas dunia.", "source": "NPR, 15 Jul 2026" }
       ]
     }
   ],
   "watchlist": [
-    { "symbol": "AAPL", "stance": "hindari", "note": "Melesat 4% ke rekor tertinggi baru pada 14 Juli — valuasi sudah mahal pasca lonjakan besar, tunggu koreksi.", "support": null, "resistance": null },
-    { "symbol": "MSFT", "stance": "pantau", "note": "Turun 1,81% dan jadi pemberat terbesar Nasdaq-100 pada 14 Juli — cek apakah ini sekadar profit taking atau pelemahan tren.", "support": null, "resistance": null },
-    { "symbol": "NVDA", "stance": "pantau", "note": "Naik 3,53% ditopang berita China dan sektor chip — momentum kuat tapi reli cepat rawan aksi ambil untung.", "support": null, "resistance": null },
-    { "symbol": "BBCA.JK", "stance": "pantau", "note": "Stagnan di Rp 6.125 saat IHSG menguat — belum ada katalis kuat, tunggu breakout arah jelas.", "support": null, "resistance": null },
-    { "symbol": "BBRI.JK", "stance": "menarik", "note": "Naik 1,07% dan jadi salah satu top gainer IHSG hari ini, momentum sektor perbankan masih hidup.", "support": null, "resistance": null },
-    { "symbol": "TLKM.JK", "stance": "hindari", "note": "Tercatat sebagai salah satu top laggard IHSG hari ini, underperform di tengah penguatan indeks.", "support": null, "resistance": null },
-    { "symbol": "BTC-USD", "stance": "pantau", "note": "Melonjak 4,4% pasca CPI lunak — reli tajam dalam waktu singkat rawan koreksi, tunggu konfirmasi arah.", "support": null, "resistance": null },
-    { "symbol": "ETH-USD", "stance": "menarik", "note": "Naik 6,6%, mengungguli Bitcoin — momentum altcoin sedang kuat pasca data inflasi AS.", "support": null, "resistance": null },
-    { "symbol": "GC=F", "stance": "pantau", "note": "Turun 0,6% karena reli minyak menekan permintaan safe haven jangka pendek, meski risiko geopolitik masih tinggi.", "support": null, "resistance": null },
-    { "symbol": "^GSPC", "stance": "pantau", "note": "Ditutup 7.543,59, dekat area rekor — arah minggu ini bergantung testimoni Warsh dan data retail sales.", "support": null, "resistance": null },
-    { "symbol": "^JKSE", "stance": "pantau", "note": "Menguat 5 hari beruntun ke 6.051,62 tapi momentum intraday melemah dari level tertinggi — waspada konsolidasi.", "support": null, "resistance": null },
-    { "symbol": "IDR=X", "stance": "hindari", "note": "Rupiah tertekan mendekati level terlemah 52 minggu di tengah BI-Rate tinggi dan sentimen dolar — risiko impor makin mahal.", "support": null, "resistance": null }
+    { "symbol": "AAPL", "stance": "hindari", "note": "Sudah melesat ke rekor $327,50 pada 15 Juli dan bertahan tinggi di area $330 — ruang upside jangka pendek terbatas pasca reli besar.", "support": null, "resistance": null },
+    { "symbol": "MSFT", "stance": "menarik", "note": "Naik 3,2% ke $397,26 berkat kemitraan AI/data center baru dengan 3M — katalis fundamental yang jelas.", "support": null, "resistance": null },
+    { "symbol": "NVDA", "stance": "pantau", "note": "Turun 2,4% dalam rotasi keluar saham chip pasca panduan belanja modal TSMC — tunggu apakah ini sekadar profit taking sektor.", "support": null, "resistance": null },
+    { "symbol": "BBCA.JK", "stance": "pantau", "note": "Stagnan di Rp6.125 dan termasuk saham yang paling banyak dilepas asing hari ini — waspada tekanan jual lanjutan.", "support": null, "resistance": null },
+    { "symbol": "BBRI.JK", "stance": "menarik", "note": "Naik sekitar 1,07% ke Rp2.830 dan masuk rekomendasi analis, momentum sektor perbankan masih hidup.", "support": null, "resistance": null },
+    { "symbol": "TLKM.JK", "stance": "hindari", "note": "Anjlok 2,42% ke Rp2.420 dan jadi salah satu saham paling banyak dilepas asing hari ini, underperform di tengah IHSG yang menghijau.", "support": null, "resistance": null },
+    { "symbol": "BTC-USD", "stance": "pantau", "note": "Dibuka turun tipis lalu makin melemah intraday ke $64.065 — momentum belum jelas meski sentimen makro masih mendukung.", "support": null, "resistance": null },
+    { "symbol": "ETH-USD", "stance": "pantau", "note": "Sempat dibuka naik 1,5% tapi ikut melemah ke $1.877 pada pertengahan sesi — belum ada konfirmasi arah kuat.", "support": null, "resistance": null },
+    { "symbol": "GC=F", "stance": "pantau", "note": "Mendekati level terendah 8 bulan akibat reli minyak dan ekspektasi The Fed hawkish — bisa jadi peluang entry jika stabil, tapi tren jangka pendek masih turun.", "support": null, "resistance": null },
+    { "symbol": "^GSPC", "stance": "pantau", "note": "Turun 0,51% ke 7.533,77, tertekan rotasi keluar saham chip dan Alphabet — perhatikan apakah pelemahan ini meluas ke sektor lain.", "support": null, "resistance": null },
+    { "symbol": "^JKSE", "stance": "menarik", "note": "Melonjak 1,10% ke 6.108,20 dengan seluruh sektor hijau dan rupiah menguat — momentum domestik sedang kuat.", "support": null, "resistance": null },
+    { "symbol": "IDR=X", "stance": "pantau", "note": "USD/IDR relatif stabil di kisaran Rp18.005-18.060, sedikit menguat dari hari sebelumnya di tengah tekanan dolar dan minyak yang masih ada.", "support": null, "resistance": null }
   ],
   "calendar": [
-    { "timeWIB": "21:00", "event": "Testimoni Ketua The Fed Kevin Warsh di hadapan Senate Banking Committee (hari ini, 15 Jul)", "country": "US" },
-    { "timeWIB": "19:30", "event": "Rilis Retail Sales dan Initial Jobless Claims AS (16 Jul)", "country": "US" },
-    { "timeWIB": "01:00", "event": "Laporan laba Q2 Taiwan Semiconductor (TSMC), dini hari 17 Jul WIB", "country": "TW" },
-    { "timeWIB": "03:00", "event": "Laporan laba Q2 Netflix, dini hari 17 Jul WIB", "country": "US" },
-    { "timeWIB": "21:00", "event": "Rilis awal University of Michigan Consumer Sentiment (17 Jul)", "country": "US" }
+    { "timeWIB": "19:30", "event": "Data neraca dagang (impor/ekspor) dan izin konstruksi rumah baru AS (17 Jul)", "country": "US" },
+    { "timeWIB": "20:15", "event": "Produksi Industri & Utilisasi Kapasitas AS (17 Jul)", "country": "US" },
+    { "timeWIB": "21:00", "event": "Sentimen Konsumen Michigan (awal, 17 Jul)", "country": "US" }
   ],
   "risks": [
-    "Eskalasi konflik AS-Iran di Selat Hormuz bisa memicu lonjakan harga minyak lebih lanjut dan mengganggu 20% perdagangan minyak-gas dunia.",
-    "Inflasi inti Indonesia naik ke level tertinggi 38 bulan (2,76%), berpotensi menahan ruang Bank Indonesia untuk melonggarkan kebijakan.",
-    "Testimoni Ketua The Fed Kevin Warsh berisiko menggeser ekspektasi arah suku bunga AS dan memicu volatilitas pasar global.",
-    "Musim laporan laba (TSMC, Netflix, bank-bank besar) minggu ini bisa memicu volatilitas tajam pada saham teknologi dan finansial."
+    "Konflik AS-Iran di Selat Hormuz memasuki hari keenam dan terus memanaskan harga minyak — jalur ini dilalui sekitar 20% pasokan minyak-gas dunia sehingga eskalasi lanjutan bisa memicu lonjakan inflasi baru.",
+    "Rotasi keluar dari saham chip/teknologi AS (Micron -8%, Alphabet -4%) berisiko meluas jika laporan laba raksasa teknologi lain mengecewakan musim ini.",
+    "Emas mendekati level terendah 8 bulan di tengah ekspektasi The Fed yang tetap hawkish — sentimen risk appetite bisa berbalik cepat jika data inflasi berikutnya mengejutkan ke atas.",
+    "Rupiah dan IHSG menguat hari ini, tapi keduanya tetap rentan terhadap sentimen dolar AS dan harga minyak yang masih bergejolak."
   ],
-  "oneThing": "Rally saham dan kripto hari ini murni didorong data inflasi AS yang jauh lebih lunak dari perkiraan — tapi lonjakan minyak >9% akibat konflik Selat Hormuz adalah risiko inflasi balik yang bisa membalikkan sentimen ini dengan cepat.",
+  "oneThing": "Pasar AS terpecah tajam hari ini — indeks utama merah dipimpin rotasi keluar saham chip dan kabar keterlambatan Gemini AI milik Alphabet — sementara IHSG dan rupiah justru menguat; investor tetap perlu waspada konflik Selat Hormuz yang terus mendorong harga minyak naik.",
   "sources": [
-    "CNBC, 14 Jul 2026",
-    "Yahoo Finance, 14 Jul 2026",
-    "Yahoo Finance, 15 Jul 2026",
-    "TheStreet, 14 Jul 2026",
-    "TradingKey, 14 Jul 2026",
-    "Kiplinger, 13 Jul 2026",
-    "Bloomberg/Yahoo Finance, 15 Jul 2026",
-    "Kompas, 15 Jul 2026",
-    "Suara.com, 15 Jul 2026",
-    "Bank Indonesia, Jun 2026",
-    "Samuel Sekuritas, Jul 2026",
-    "Vantage Markets, 15 Jul 2026",
-    "Trading Economics, 15 Jul 2026",
-    "Investing.com, 15 Jul 2026",
-    "Yahoo Finance/CNBC, 15 Jul 2026",
-    "Al Jazeera, 13 Jul 2026"
+    "TheStreet/Yahoo Finance, 16 Jul 2026",
+    "Bloomberg via CNBC, 16 Jul 2026",
+    "CNBC/Yahoo Finance, 16 Jul 2026",
+    "CNBC/StockTitan, 16 Jul 2026",
+    "TradingKey, 15 Jul 2026",
+    "Stockinvest.us, 16 Jul 2026",
+    "U.S. News, 16 Jul 2026",
+    "Bloomberg/Coinpedia, 16 Jul 2026",
+    "Kompas, 16 Jul 2026",
+    "Fortune Indonesia/Liputan6, 16 Jul 2026",
+    "Yahoo Finance, 16 Jul 2026",
+    "Yahoo Finance/BullionVault, 16 Jul 2026",
+    "Forex.com/DealPlexus, 16 Jul 2026",
+    "Trading Economics, 16 Jul 2026",
+    "Akurat.co, 16 Jul 2026",
+    "NPR, 15 Jul 2026"
   ]
 }
