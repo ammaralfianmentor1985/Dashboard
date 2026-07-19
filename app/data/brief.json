@@ -1,90 +1,98 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-18T05:00:00Z",
+  "generatedAt": "2026-07-19T05:00:00Z",
   "lang": "id",
   "degraded": false,
-  "headline": "Konflik AS-Iran meningkat tajam akhir pekan ini — dua tentara AS tewas dan satu hilang di Yordania, Iran mengklaim ledakan dua kapal tanker dekat Selat Hormuz — mendorong Brent ditutup di atas $88 dan naik lebih dari 14% sepekan, sementara bursa saham dunia libur menanti pembukaan Senin.",
-  "regime": { "risk": "risk-off", "note": "Eskalasi perang AS-Iran mendominasi sentimen global menjelang pekan depan meski IHSG sempat melawan arus dan ditutup menguat pada sesi terakhir Jumat; pasar kripto yang tetap buka akhir pekan menunjukkan pemulihan tipis dari level oversold." },
+  "headline": "Perang AS-Iran memasuki malam kedelapan serangan balasan dengan korban tewas militer AS bertambah dan Iran menangguhkan MoU dengan Washington, sementara saham semikonduktor global masih terjebak bear market dan bursa Asia-AS tetap libur menanti pembukaan Senin di tengah pekan padat keputusan suku bunga PBoC, Bank Indonesia, dan ECB.",
+  "regime": { "risk": "risk-off", "note": "Eskalasi tajam perang AS-Iran dan bear market saham chip mendominasi sentimen risk-off akhir pekan ini, namun kripto relatif tenang dan IHSG mengakhiri pekan lalu dengan penguatan 1,10% berkat rotasi ke sektor keuangan — pasar menunggu apakah gap risk benar-benar terwujud saat bursa dibuka Senin." },
   "sections": [
     {
       "key": "us",
       "title": "Wall Street & AS",
       "points": [
-        { "text": "Penutupan terakhir sebelum akhir pekan: S&P 500 turun 1,01% ke 7.457,69, Nasdaq Composite anjlok 1,4% ke 25.520,24, dan Dow Jones turun 406,55 poin (0,77%) ke 52.146,42 pada Jumat 17 Juli; bursa AS libur akhir pekan dan baru dibuka lagi Senin 20 Juli.", "source": "Yahoo Finance/TheStreet, 17 Jul 2026" },
-        { "text": "Saham semikonduktor global resmi masuk bear market: Philadelphia SE Semiconductor Index anjlok 11% dalam sepekan (penurunan mingguan terbesar sejak Maret 2025) dan turun hampir 24% dari puncak akhir Juni, dengan kapitalisasi pasar chip dunia tergerus $3,3 triliun sejak 22 Juni.", "source": "24/7 Wall St/Fortune, 17 Jul 2026" },
-        { "text": "Apple dan Nvidia silih berganti memegang status perusahaan paling bernilai di dunia sepanjang pekan ini di tengah gejolak valuasi saham AI — Apple sempat menembus $332 intraday pada 17 Juli, melesat sekitar 20% sejak akhir Juni.", "source": "CNBC/Bloomberg, 17 Jul 2026" },
-        { "text": "TSMC menaikkan panduan belanja modal 2026 meski proyeksi pendapatan kuartal III kuat, memicu kekhawatiran baru soal tekanan margin di seluruh rantai pasok chip.", "source": "Fortune, 17 Jul 2026" },
-        { "text": "Microsoft melaporkan run-rate pendapatan bisnis AI di atas $37 miliar dengan pertumbuhan 123% dan kursi berbayar Microsoft 365 Copilot sudah melampaui 20 juta, menjelang laporan kuartal keempat fiskal pada 29 Juli.", "source": "ForeignPolicyJournal/Motley Fool, 17 Jul 2026" }
+        { "text": "Penutupan terakhir sebelum akhir pekan: S&P 500 turun 1,01% ke 7.457,69, Nasdaq Composite anjlok 1,4% ke 25.520,24, dan Dow Jones turun 406,55 poin (0,77%) ke 52.146,42 pada Jumat 17 Juli; bursa AS libur akhir pekan dan baru dibuka lagi Senin 20 Juli.", "source": "Washington Post, 17 Jul 2026" },
+        { "text": "Indeks saham semikonduktor resmi jatuh ke bear market, ambles sekitar 20% dari rekor akhir Juni yang membalikkan sebagian rally 105% berbasis saham memori; ETF VanEck Semiconductor (SMH) turun lebih dari 4% pada Jumat.", "source": "Bloomberg, 17 Jul 2026" },
+        { "text": "Nvidia turun 3% ke $206,77 dan AMD turun 2,64% ke $543,14 pada Jumat di tengah kekhawatiran perlambatan belanja modal AI, meski pendapatan Data Center AMD masih tumbuh 57% YoY menurut CEO Lisa Su.", "source": "Motley Fool, 17 Jul 2026" },
+        { "text": "TSMC turun 3,64% Jumat meski laba kuartal II mengalahkan ekspektasi, karena menaikkan panduan belanja modal 2026 menjadi $60-64 miliar dari kisaran sebelumnya $52-56 miliar — memicu kekhawatiran baru soal tekanan margin di rantai pasok chip.", "source": "24/7 Wall St, 13 Jul 2026" },
+        { "text": "Sentimen sektor teknologi AS juga tertekan oleh debut model AI baru dari startup China Moonshot yang diklaim setara dengan model teratas OpenAI dan Anthropic, memicu kekhawatiran persaingan dan valuasi saham AI AS.", "source": "Bloomberg, 17 Jul 2026" }
       ]
     },
     {
       "key": "asia",
       "title": "Asia & Indonesia",
       "points": [
-        { "text": "IHSG melawan arus pelemahan bursa Asia dan ditutup naik 67,32 poin (1,10%) ke 6.175,53 pada Jumat 17 Juli — sektor keuangan melesat 2,34% menjadi penopang utama, sementara sektor teknologi melemah 0,25%; volume transaksi 28,39 miliar saham senilai Rp14,74 triliun dengan 349 saham naik berbanding 261 turun.", "source": "Kompas, 17 Jul 2026" },
-        { "text": "Investor asing memborong saham BBCA, BMRI, dan BBRI pada sesi I Jumat — BBCA naik 2,4% ke Rp6.375 dan BBRI naik 3,15% ke Rp2.950, sementara TLKM tercatat sebagai top gainer sesi I IHSG.", "source": "Suara.com/Kompas, 17 Jul 2026" },
-        { "text": "Bursa Asia dan Bursa Efek Indonesia sama-sama libur akhir pekan; sesi berikutnya dibuka Senin 20 Juli.", "source": "Kompas, 17 Jul 2026" },
-        { "text": "Bank Indonesia sudah menaikkan suku bunga kumulatif 100 bps pada Mei-Juni untuk menahan pelemahan rupiah; Rapat Dewan Gubernur (RDG) berikutnya dijadwalkan Selasa-Rabu, 21-22 Juli, dan akan jadi katalis besar bagi arah rupiah serta saham perbankan.", "source": "Infobanknews, 17 Jul 2026" }
+        { "text": "IHSG penutupan terakhir naik 67,32 poin (1,10%) ke 6.175,53 pada Jumat 17 Juli, dengan level tertinggi harian 6.192 dan terendah 6.079; sektor keuangan melesat 2,34% jadi penopang utama sementara sektor teknologi melemah 0,25%.", "source": "Kompas, 17 Jul 2026" },
+        { "text": "Investor asing mencatat beli bersih Rp725 miliar di pasar reguler Jumat, dengan total volume transaksi 28,39 miliar saham senilai Rp14,74 triliun dan 349 saham menguat berbanding 261 melemah; KLBF menjadi top gainer.", "source": "Kompas, 17 Jul 2026" },
+        { "text": "Pekan depan padat agenda bank sentral Asia: People's Bank of China mengumumkan Loan Prime Rate Senin 20 Juli (konsensus tetap 3% tenor 1 tahun dan 3,5% tenor 5 tahun), disusul Rapat Dewan Gubernur Bank Indonesia Selasa-Rabu 21-22 Juli dengan konsensus pasar memperkirakan BI-Rate tetap di 5,75%.", "source": "CNBC Indonesia, 19 Jul 2026" },
+        { "text": "Bank Indonesia telah menaikkan suku bunga kumulatif 100 bps sejak Mei, dengan kenaikan terakhir 25 bps pada 18 Juni — penguatan rupiah dan inflasi yang masih terjaga membuat BI dinilai tak punya urgensi menaikkan suku bunga lagi pekan ini.", "source": "Infobanknews, 19 Jul 2026" },
+        { "text": "Data inflasi Jepang untuk Juni dijadwalkan rilis Jumat 24 Juli pukul 06:30 WIB, dengan konsensus inflasi inti 1,7% YoY.", "source": "CNBC Indonesia, 19 Jul 2026" }
       ]
     },
     {
       "key": "crypto",
       "title": "Kripto",
       "points": [
-        { "text": "Bitcoin berada di $64.162,42 (naik 1,76%) dan Ethereum di $1.845,58 (naik 1,00%) menjelang akhir pekan, dengan indikator teknikal menunjukkan kondisi oversold setelah aksi jual pekan ini.", "source": "Yahoo Finance/CoinDesk, 18 Jul 2026" },
-        { "text": "Bitcoin sempat tertahan di sekitar $63.000 setelah tergelincir dari $65.000 yang disentuh pekan ini pasca data inflasi AS yang lunak — aksi jual saham chip dan eskalasi konflik AS-Iran menyeret sentimen risiko sepanjang pekan.", "source": "Yahoo Finance, 17-18 Jul 2026" }
+        { "text": "Bitcoin diperdagangkan sekitar $64.376 pada Minggu pagi waktu AS (19 Juli), relatif stabil dan masih tertahan di bawah $65.000 meski sentimen risk-off dari aksi jual saham chip dan eskalasi konflik AS-Iran masih membayangi.", "source": "CoinDesk, 19 Jul 2026" },
+        { "text": "Ethereum bergerak tipis di kisaran $1.835-$1.858 dalam 24 jam terakhir dengan kapitalisasi pasar $224,07 miliar — jauh lebih tenang dibanding volatilitas pasar saham dan komoditas akhir pekan ini.", "source": "CoinMarketCap, 19 Jul 2026" }
       ]
     },
     {
       "key": "fx",
       "title": "Valas, Emas & Komoditas",
       "points": [
-        { "text": "Brent crude ditutup naik 4,6% ke $88,10/barel dan WTI naik 4,5% ke $82,49/barel pada 17 Juli — harga minyak sudah naik lebih dari 14% sepanjang pekan ini seiring eskalasi konflik AS-Iran.", "source": "CNBC, 17 Jul 2026" },
-        { "text": "Harga emas naik 1,03% ke $4.016,95 per ons pada 17 Juli, ditopang permintaan aset aman di tengah memanasnya konflik Timur Tengah.", "source": "Trading Economics, 17 Jul 2026" },
-        { "text": "Indeks dolar AS (DXY) rebound ke kisaran 100,6-100,74 setelah dua sesi pelemahan beruntun, didukung data ekonomi AS yang masih solid.", "source": "Trading Economics, 17 Jul 2026" },
-        { "text": "USD/IDR berada di kisaran Rp17.885 (beli) - Rp17.995 (jual) per pukul 07:00 WIB 18 Juli menurut kurs BCA.", "source": "BCA, 18 Jul 2026" },
-        { "text": "Eskalasi tajam akhir pekan: dua tentara AS tewas dan satu hilang di Yordania akibat serangan rudal balistik dan drone Iran; Kementerian Kesehatan Iran menyebut serangan AS sejak 6 Juli menewaskan sedikitnya 50 orang dan melukai lebih dari 500; Kuwait Petroleum Corporation melaporkan kerusakan signifikan pada salah satu fasilitas minyaknya akibat serangan Iran berulang, dan Iran mengklaim dua kapal tanker meledak di dekat Selat Hormuz (dibantah oleh CENTCOM AS).", "source": "Al Jazeera/CNN/Times of Israel, 18 Jul 2026" }
+        { "text": "Brent crude ditutup naik 4,6% ke $88,10/barel dan WTI naik 4,5% ke $82,49/barel pada Jumat 17 Juli, mengakhiri pekan dengan kenaikan lebih dari 16% akibat eskalasi konflik AS-Iran; analis FX Leaders menyebut $90 sebagai target berikutnya jika ketegangan Timur Tengah terus memanas.", "source": "CNBC/FX Leaders, 19 Jul 2026" },
+        { "text": "Sekitar dua pertiga lalu lintas kapal tanker pra-konflik, atau sekitar 14 juta barel per hari, masih melintasi Selat Hormuz dengan pengawalan militer AS meski serangan Iran terhadap kapal terus berlanjut.", "source": "Al Jazeera, 19 Jul 2026" },
+        { "text": "Emas justru tertahan di bawah $4.000 per ons pada Jumat dan turun lebih dari 3% sepekan, karena lonjakan harga minyak memperkuat ekspektasi The Fed akan mempertahankan suku bunga tinggi lebih lama.", "source": "CNBC Select, 17 Jul 2026" },
+        { "text": "Indeks dolar AS (DXY) berada di kisaran 100,7-100,8, rebound dari level terendah sebulan di 100,5 yang sempat disentuh pada 16 Juli.", "source": "Trading Economics, 17 Jul 2026" },
+        { "text": "USD/IDR masih di kisaran Rp17.885 (beli)-Rp17.995 (jual) menurut kurs e-rate BCA, belum bergerak sejak akhir pekan karena pasar valas domestik libur hingga Senin.", "source": "BCA, 18 Jul 2026" },
+        { "text": "Korban militer AS bertambah: CENTCOM melaporkan 2 tentara tewas dan 1 hilang di Yordania pada 17 Juli akibat serangan rudal balistik dan drone Iran, membawa total korban tewas AS sejak konflik dimulai akhir Februari menjadi setidaknya 16 orang dengan lebih dari 400 luka-luka; satu tentara AS lagi dilaporkan tewas di Irak pada Sabtu 18 Juli.", "source": "CNN/Al Jazeera, 18-19 Jul 2026" }
       ]
     }
   ],
   "watchlist": [
-    { "symbol": "AAPL", "stance": "hindari", "note": "Sudah melesat sekitar 20% sejak akhir Juni dan sempat menjadi perusahaan paling bernilai dunia — ruang upside jangka pendek terbatas pasca reli sebesar ini.", "support": null, "resistance": null },
-    { "symbol": "MSFT", "stance": "pantau", "note": "Pertumbuhan bisnis AI masih sangat kuat (run-rate $37 miliar, +123%) menjelang laporan kuartalan 29 Juli, tapi ikut tertekan rotasi keluar saham teknologi pekan ini.", "support": null, "resistance": null },
-    { "symbol": "NVDA", "stance": "pantau", "note": "Ikut terseret bear market saham chip dan silih berganti dengan Apple sebagai perusahaan terbesar dunia — tunggu apakah aksi jual sektor ini sudah mereda pekan depan.", "support": null, "resistance": null },
-    { "symbol": "BBCA.JK", "stance": "menarik", "note": "Naik 2,4% ke Rp6.375 pada sesi I Jumat berkat serbuan beli asing bersama BMRI dan BBRI — momentum sektor perbankan sedang kuat.", "support": null, "resistance": null },
-    { "symbol": "BBRI.JK", "stance": "menarik", "note": "Melonjak 3,15% ke Rp2.950 pada sesi I Jumat ditopang inflow asing, sejalan dengan sektor keuangan yang jadi motor utama IHSG.", "support": null, "resistance": null },
-    { "symbol": "TLKM.JK", "stance": "menarik", "note": "Tercatat sebagai top gainer sesi I IHSG pada Jumat 17 Juli — momentum berbalik positif dibanding pelemahan beberapa hari sebelumnya.", "support": null, "resistance": null },
-    { "symbol": "BTC-USD", "stance": "pantau", "note": "Bertahan di sekitar $64.160, masih tertahan dari level $65.000 pekan ini akibat sentimen risk-off dari aksi jual saham chip dan eskalasi konflik AS-Iran.", "support": null, "resistance": null },
-    { "symbol": "ETH-USD", "stance": "pantau", "note": "Bergerak di sekitar $1.845, mengikuti pola konsolidasi bitcoin di tengah sentimen pasar yang campur aduk.", "support": null, "resistance": null },
-    { "symbol": "GC=F", "stance": "pantau", "note": "Naik 1,03% ke $4.016,95 ditopang permintaan aset aman dari eskalasi konflik Teluk — sudah naik cukup jauh sehingga entry baru perlu kehati-hatian.", "support": null, "resistance": null },
-    { "symbol": "^GSPC", "stance": "pantau", "note": "Turun 1,01% ke 7.457,69 pada penutupan Jumat akibat rotasi keluar saham chip — perhatikan gap risiko saat pembukaan Senin akibat eskalasi Iran akhir pekan.", "support": null, "resistance": null },
-    { "symbol": "^JKSE", "stance": "menarik", "note": "Melesat 1,10% ke 6.175,53 pada Jumat ditopang rally sektor keuangan dan serbuan beli asing — momentum domestik kuat, tapi rentan terseret jika sentimen risk-off global meluas Senin.", "support": null, "resistance": null },
-    { "symbol": "IDR=X", "stance": "pantau", "note": "USD/IDR relatif stabil di kisaran Rp17.885-17.995 meski dolar AS (DXY) sedang rebound — RDG Bank Indonesia 21-22 Juli jadi katalis besar berikutnya.", "support": null, "resistance": null }
+    { "symbol": "AAPL", "stance": "hindari", "note": "Sempat menembus $332 intraday pekan lalu dan jadi perusahaan paling bernilai dunia — ruang upside jangka pendek terbatas pasca reli sebesar ini.", "support": null, "resistance": 332 },
+    { "symbol": "MSFT", "stance": "pantau", "note": "Bisnis AI Copilot masih tumbuh pesat, tapi ikut tertekan rotasi keluar saham teknologi pekan ini; laporan kuartal fiskal keempat 29 Juli jadi katalis berikutnya.", "support": null, "resistance": null },
+    { "symbol": "NVDA", "stance": "hindari", "note": "Turun 3% ke $206,77 Jumat, ikut terseret bear market saham chip yang sudah anjlok sekitar 20% dari puncak akhir Juni; kompetisi model AI China (Moonshot) menambah tekanan valuasi.", "support": null, "resistance": null },
+    { "symbol": "BBCA.JK", "stance": "menarik", "note": "Bagian dari rally sektor keuangan yang melesat 2,34% Jumat dan turut menikmati beli bersih asing Rp725 miliar — momentum bank besar masih kuat.", "support": null, "resistance": null },
+    { "symbol": "BBRI.JK", "stance": "menarik", "note": "Sama-sama diuntungkan penguatan sektor keuangan dan inflow asing Jumat, sejalan dengan IHSG yang ditutup naik 1,10% ke 6.175,53.", "support": null, "resistance": null },
+    { "symbol": "TLKM.JK", "stance": "pantau", "note": "Sektor teknologi IHSG justru melemah 0,25% Jumat berlawanan arah dengan rally sektor keuangan — perhatikan apakah rotasi keluar saham teknologi berlanjut Senin.", "support": null, "resistance": null },
+    { "symbol": "BTC-USD", "stance": "pantau", "note": "Diperdagangkan sekitar $64.376 Minggu pagi, bertahan di kisaran $63.000-65.000 meski sentimen risk-off global masih membayangi.", "support": 63000, "resistance": 65000 },
+    { "symbol": "ETH-USD", "stance": "pantau", "note": "Bergerak tipis di kisaran $1.835-$1.858 24 jam terakhir, jauh lebih tenang dibanding volatilitas saham dan komoditas.", "support": 1835, "resistance": 1858 },
+    { "symbol": "GC=F", "stance": "pantau", "note": "Tertahan di bawah $4.000/ons dan turun lebih dari 3% sepekan meski konflik Timur Tengah memanas — pasar mulai pricing ekspektasi The Fed tahan suku bunga lebih lama.", "support": null, "resistance": 4000 },
+    { "symbol": "^GSPC", "stance": "pantau", "note": "Turun 1,01% ke 7.457,69 Jumat akibat rotasi keluar saham chip — waspadai gap risk Senin akibat malam kedelapan serangan AS-Iran dan bertambahnya korban tewas militer AS akhir pekan ini.", "support": null, "resistance": null },
+    { "symbol": "^JKSE", "stance": "menarik", "note": "Naik 1,10% ke 6.175,53 Jumat dengan level tertinggi harian 6.192 — rally sektor keuangan solid, tapi rentan terkoreksi bila risk-off global meluas ke domestik Senin, apalagi RDG BI 21-22 Juli jadi katalis besar.", "support": 6079, "resistance": 6192 },
+    { "symbol": "IDR=X", "stance": "pantau", "note": "USD/IDR stabil di Rp17.885-17.995 akhir pekan; RDG BI Rabu 22 Juli (konsensus tahan 5,75%) dan pekan super bank sentral global jadi penentu arah berikutnya.", "support": null, "resistance": null }
   ],
   "calendar": [
-    { "timeWIB": "00:00", "event": "Bursa saham AS, Eropa, dan Asia (termasuk BEI) dibuka kembali Senin setelah libur akhir pekan — waspada gap harga minyak, emas, dan saham akibat eskalasi konflik AS-Iran selama Sabtu-Minggu", "country": "GLOBAL" },
-    { "timeWIB": "14:00", "event": "Konferensi pers hasil Rapat Dewan Gubernur (RDG) Bank Indonesia, pengumuman BI Rate pada hari kedua RDG 21-22 Juli", "country": "ID" }
+    { "timeWIB": "08:15", "event": "Pengumuman Loan Prime Rate (LPR) 1 tahun & 5 tahun oleh People's Bank of China — konsensus tetap di 3% dan 3,5%", "country": "CN" },
+    { "timeWIB": "00:00", "event": "Bursa saham AS, Eropa, dan Asia termasuk BEI dibuka kembali Senin setelah libur akhir pekan — waspada gap harga akibat eskalasi perang AS-Iran selama akhir pekan", "country": "GLOBAL" },
+    { "timeWIB": "14:00", "event": "Pengumuman hasil Rapat Dewan Gubernur (RDG) Bank Indonesia hari kedua — konsensus BI-Rate tetap 5,75%", "country": "ID" },
+    { "timeWIB": "19:15", "event": "Pengumuman keputusan suku bunga European Central Bank — konsensus tetap 2,4%", "country": "EU" },
+    { "timeWIB": "06:30", "event": "Rilis data inflasi Jepang periode Juni — konsensus inflasi inti 1,7% YoY", "country": "JP" }
   ],
   "risks": [
-    "Eskalasi tajam konflik AS-Iran akhir pekan ini — dua tentara AS tewas di Yordania, klaim ledakan kapal tanker dekat Selat Hormuz — berisiko memicu lonjakan harga minyak dan aksi risk-off lebih lanjut saat bursa dibuka Senin.",
-    "Bear market saham semikonduktor global (-24% dari puncak akhir Juni, tergerus $3,3 triliun sejak 22 Juni) berisiko menyeret indeks AS dan Asia lebih dalam jika laporan laba Nvidia, AMD, atau TSMC berikutnya mengecewakan.",
-    "Penguatan IHSG pada Jumat terjadi berlawanan arah dengan pelemahan bursa global — rally ini rentan cepat terkoreksi jika sentimen risk-off dari eskalasi Iran meluas ke pasar domestik pekan depan.",
-    "RDG Bank Indonesia 21-22 Juli menjadi katalis besar berikutnya untuk rupiah dan saham perbankan setelah kumulatif kenaikan suku bunga 100 bps Mei-Juni — keputusan yang mengejutkan pasar bisa membalikkan arah rupiah dan IHSG."
+    "Perang AS-Iran memasuki malam kedelapan serangan balasan berturut-turut; Iran menyatakan menangguhkan MoU dengan AS dan pemimpin tertinggi Iran menyebut tanda tangan Trump 'tidak berharga' — risiko eskalasi lebih lanjut sebelum bursa Asia dan AS dibuka Senin.",
+    "Korban tewas militer AS bertambah — 2 tentara tewas di Yordania (17 Juli) dan 1 lagi di Irak (18 Juli), membawa total korban tewas AS sejak akhir Februari ke setidaknya 16 orang dengan lebih dari 400 luka-luka.",
+    "Bear market saham semikonduktor global (-20% dari puncak akhir Juni) berisiko menyeret indeks AS dan Asia lebih dalam jika laporan laba lanjutan, termasuk Apple akhir Juli, mengonfirmasi perlambatan permintaan AI.",
+    "Pekan super bank sentral (PBoC Senin, Bank Indonesia Rabu, ECB Kamis) berpotensi memicu volatilitas rupiah dan pasar negara berkembang jika keputusan menyimpang dari ekspektasi pasar."
   ],
-  "oneThing": "Fokus akhir pekan ini bukan di bursa saham (yang libur), tapi di eskalasi tajam perang AS-Iran — tentara AS tewas di Yordania dan klaim serangan tanker dekat Selat Hormuz mendorong Brent naik lebih dari 14% sepekan — investor perlu bersiap menghadapi kemungkinan gap harga minyak dan saham saat bursa dibuka kembali Senin, dengan RDG Bank Indonesia (21-22 Juli) sebagai katalis domestik berikutnya.",
+  "oneThing": "Fokus utama akhir pekan ini bukan data pasar (yang masih libur), melainkan eskalasi perang AS-Iran yang memasuki malam kedelapan serangan balasan dengan korban tewas militer AS terus bertambah dan Iran menangguhkan kesepakatannya dengan Washington — investor perlu bersiap menghadapi risiko gap harga minyak, emas, dan saham saat bursa Asia dan AS dibuka kembali Senin, di tengah pekan padat keputusan suku bunga PBoC, Bank Indonesia, dan ECB.",
   "sources": [
-    "Yahoo Finance/TheStreet, 17 Jul 2026",
-    "24/7 Wall St/Fortune, 17 Jul 2026",
-    "CNBC/Bloomberg, 17 Jul 2026",
-    "Fortune, 17 Jul 2026",
-    "ForeignPolicyJournal/Motley Fool, 17 Jul 2026",
+    "Washington Post, 17 Jul 2026",
+    "Bloomberg, 17 Jul 2026",
+    "Motley Fool, 17 Jul 2026",
+    "24/7 Wall St, 13 Jul 2026",
     "Kompas, 17 Jul 2026",
-    "Suara.com, 17 Jul 2026",
-    "Infobanknews, 17 Jul 2026",
+    "CNBC Indonesia, 19 Jul 2026",
+    "Infobanknews, 19 Jul 2026",
+    "CoinDesk, 19 Jul 2026",
+    "CoinMarketCap, 19 Jul 2026",
     "CNBC, 17 Jul 2026",
+    "FX Leaders, 19 Jul 2026",
+    "Al Jazeera, 19 Jul 2026",
+    "CNBC Select, 17 Jul 2026",
     "Trading Economics, 17 Jul 2026",
     "BCA, 18 Jul 2026",
-    "Al Jazeera/CNN/Times of Israel, 18 Jul 2026",
-    "Yahoo Finance/CoinDesk, 18 Jul 2026"
+    "CNN, 18 Jul 2026"
   ]
 }
